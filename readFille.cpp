@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 
-#define ROWS 165470
+#define ROWS 165459
 
 struct table_row {
     int id;
@@ -10,7 +10,7 @@ struct table_row {
 };
 
 // read file data and retunr data as an object array
-struct table_row *createArray(char fileName[]) {
+struct table_row *createArray(const char *fileName) {
 	FILE *fp = fopen(fileName, "r");
 
 	if (!fp) {
@@ -32,10 +32,10 @@ struct table_row *createArray(char fileName[]) {
     return table_rows;
 }
 
-int main() {
+// int main() {
 	
-	struct table_row *dat;
-	dat = createArray("Seattle2012.csv");
+// 	struct table_row *dat;
+// 	dat = createArray("Seattle2012.csv");
 
-	return 0;
-}
+// 	return 0;
+// }
