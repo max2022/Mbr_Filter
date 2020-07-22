@@ -16,12 +16,11 @@
 
 #include "readFille.cpp"
 
-#define INST 3000
+#define INST 90000
 #define FEATURES 50
 
 typedef boost::geometry::model::d2::point_xy<double> point_xy;
 typedef boost::geometry::model::polygon<point_xy > polygon;
-
 
 // returns MBR for a given data point
 polygon getMBR(double px, double py) {
@@ -47,34 +46,25 @@ polygon getMBR(double px, double py) {
 }
 
 // returns MBR for a selected feature
-void getMBRList(struct table_row *data, int li) {
-    int ptr[li+1] = {0};
-    // polygon** arr;
-    std::array<std::array<polygon, INST>, FEATURES> arr;
+polygon** getMBRList(struct table_row *data, int li) {
+    int ptr[FEATURES] = {0};
+    polygon** arr = 0;
 
-    // arr = new polygon *[INST];
+    arr = new polygon *[FEATURES];
 
     for (int i = 0; i < li; ++i)
     {  
-        // if (ptr[i] == 0)
-        //  {
-        //     arr[i] = new polygon [li];
-        //  } 
-        std::cout << data[i].id <<std::endl;
-        arr[data[i].id-1][ptr[data[i].id-1]++] = getMBR(data[i].x, data[i].y);   
-        std::cout << boost::geometry::wkt(getMBR(data[i].x, data[i].y)) <<std::endl;
-        std::cout << boost::geometry::wkt(arr[data[i].id-1][data[i].id-1]) <<std::endl;
-        if (true)
-        {
-            std::cout << data[i].id <<std::endl;
-            std::cout << i <<std::endl;
+        if (ptr[data[i].id-1] == 0)
+         {
+            arr[data[i].id-1] = new polygon [INST];
+         } 
+        // std::cout << data[i].id-1 << ": " << data[i].x << ": " <<data[i].y << ": " << ptr[data[i].id-1] <<std::endl;
 
-            break;
-        }
-
+        arr[data[i].id-1][ptr[data[i].id-1]++] = getMBR(data[i].x, data[i].y);
     }
 
-    // return arr;
+    return arr;
+    // return my2DArray;
 }
 
 // returns CMBR for a given two MBRs
@@ -87,37 +77,37 @@ polygon getCMBR(polygon a, polygon b) {
     return ret;
 }
 
+polygon** getCMBRList(polygon **mbrs, int a, int b) 
+{
+    // 
+}
+
+// clean memory allocated for array
+void cleanMemory(polygon** my2DArray, int height){
+    printf("\n");
+    printf("Cleaning up memory...\n");
+    for (int  h = 0; h < height; h++)
+    {
+    delete [] my2DArray[h];
+    }
+    delete [] my2DArray;
+    my2DArray = 0;
+    printf("Ready.\n");
+}
+
 
 int main()
 {
-
-    // polygon green, blue;
-    // polygon* mbr_array;
-    // std::array<std::array<polygon, INST>, FEATURES> mbr_array;
-
-    // boost::geometry::read_wkt("POLYGON((0 0,0 10, 10 10, 10 0, 0 0))", green);
-  
-
-    // boost::geometry::read_wkt("POLYGON((5 0,5 5,15 5,15 0,5 0))", blue);
-    
-    // std::cout << boost::geometry::wkt(green) << std::endl;
-    // std::cout << boost::geometry::wkt(blue) << std::endl;
-
-  
-
-    // std::deque<polygon> routput;
-    // boost::geometry::intersection(g, b, routput);
-    // std::cout << boost::geometry::wkt(routput) << std::endl;
-    
-
     // read data into a 2D array
     struct table_row *dat;
     dat = createArray("Seattle2012.csv");
     // std::cout << dat[0].x << std::endl;
 
     // calculate MBR for all the datapoints
-    // mbr_array = getMBRList(dat, FEATURES);
-    getMBRList(dat, FEATURES);
+    polygon**  mbr_array = getMBRList(dat, ROWS);
+    // getMBRList(dat, ROWS);
+    std::cout <<  boost::geometry::wkt(mbr_array[41][0]) << std::endl;
+
 
     // calculate CMBR recursively for each of the features
     polygon x = getMBR(5,5);
