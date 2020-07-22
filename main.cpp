@@ -82,20 +82,6 @@ polygon** getCMBRList(polygon **mbrs, int a, int b)
     // 
 }
 
-// clean memory allocated for array
-void cleanMemory(polygon** my2DArray, int height){
-    printf("\n");
-    printf("Cleaning up memory...\n");
-    for (int  h = 0; h < height; h++)
-    {
-    delete [] my2DArray[h];
-    }
-    delete [] my2DArray;
-    my2DArray = 0;
-    printf("Ready.\n");
-}
-
-
 int main()
 {
     // read data into a 2D array
