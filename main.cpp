@@ -57,8 +57,11 @@ polygon** getMBRList(struct table_row *data, int li) {
         if (ptr[data[i].id-1] == 0)
          {
             arr[data[i].id-1] = new polygon [INST];
-         } 
-        // std::cout << data[i].id-1 << ": " << data[i].x << ": " <<data[i].y << ": " << ptr[data[i].id-1] <<std::endl;
+         }
+         if (data[i].id-1 == 8)
+          {
+            std::cout << data[i].id << ": " << data[i].x << ": " <<data[i].y << ": " << ptr[data[i].id-1] <<std::endl;              
+          } 
 
         arr[data[i].id-1][ptr[data[i].id-1]++] = getMBR(data[i].x, data[i].y);
     }
@@ -79,7 +82,24 @@ polygon getCMBR(polygon a, polygon b) {
 
 polygon** getCMBRList(polygon **mbrs, int a, int b) 
 {
-    // 
+    // 2D array to hold all CMBRS. Should represents levels
+    polygon** arr = 0;
+    arr = new polygon *[FEATURES];  
+    int level = 0, insid = 0;
+    long ss = 200000000;  
+
+    //nested loop to check all the combinations of instances and then check CMBRs
+    for (int i = 0; i < INST; ++i)
+    { 
+        arr[i] = new polygon [ss]; 
+        for (int j = 0; j < INST; ++j)
+        {
+            arr[level][insid++] = getCMBR(mbrs[a][i], mbrs[b][j]);
+        }
+    }
+
+    //return 2D array with CMBRs
+    return arr;
 }
 
 int main()
@@ -100,8 +120,10 @@ int main()
     polygon y = getMBR(2,2);
     polygon cmbr;
     cmbr = getCMBR(x, y); 
+    // polygon**  cmbr_array = getCMBRList(mbr_array, 0, 1);
 
-    std::cout << boost::geometry::wkt(cmbr) << std::endl;
+
+    // std::cout << boost::geometry::wkt(cmbr) << std::endl;
 
     // print all CMBRs
     // int i = 0;
