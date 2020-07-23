@@ -5,8 +5,8 @@
 
 struct table_row {
     int id;
-    double x;
-    double y;
+    float x;
+    float y;
 };
 
 // read file data and retunr data as an object array
@@ -25,7 +25,7 @@ struct table_row *createArray(const char *fileName) {
 	fscanf(fp, "%s", str);
 
 	for (; count < ROWS; ++count) {
-		fscanf(fp, "%d, %lf, %lf", &table_rows[count].id, &table_rows[count].x, &table_rows[count].y);
+		fscanf(fp, "%d, %f, %f", &table_rows[count].id, &table_rows[count].x, &table_rows[count].y);
 	}
 
 	fclose(fp);

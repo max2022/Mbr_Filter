@@ -16,19 +16,19 @@
 
 #include "readFille.cpp"
 
-#define INST 90000
+#define INST 40000
 #define FEATURES 50
 
-typedef boost::geometry::model::d2::point_xy<double> point_xy;
+typedef boost::geometry::model::d2::point_xy<float> point_xy;
 typedef boost::geometry::model::polygon<point_xy > polygon;
 
 // returns MBR for a given data point
-polygon getMBR(double px, double py) {
+polygon getMBR(float px, float py) {
     using namespace boost::assign;    
 
     polygon ret;
     // threshhold constant
-    double const d = 2.0;
+    float const d = 2.0;
 
     // Create points to represent a rectagle.
     std::vector<point_xy> points;
@@ -58,10 +58,10 @@ polygon** getMBRList(struct table_row *data, int li) {
          {
             arr[data[i].id-1] = new polygon [INST];
          }
-         if (data[i].id-1 == 8)
-          {
-            std::cout << data[i].id << ": " << data[i].x << ": " <<data[i].y << ": " << ptr[data[i].id-1] <<std::endl;              
-          } 
+         // if (data[i].id-1 == 8)
+         //  {
+            // std::cout << data[i].id << ": " << data[i].x << ": " <<data[i].y << ": " << ptr[data[i].id-1] <<std::endl;              
+         //  } 
 
         arr[data[i].id-1][ptr[data[i].id-1]++] = getMBR(data[i].x, data[i].y);
     }
@@ -84,17 +84,30 @@ polygon** getCMBRList(polygon **mbrs, int a, int b)
 {
     // 2D array to hold all CMBRS. Should represents levels
     polygon** arr = 0;
-    arr = new polygon *[FEATURES];  
-    int level = 0, insid = 0;
-    long ss = 200000000;  
+
+    int level = 0, insid = 0, len = 10000;
+    int ss = 100000;  
+    arr = new polygon *[12]; 
+    arr[level] = new polygon [ss]; 
 
     //nested loop to check all the combinations of instances and then check CMBRs
-    for (int i = 0; i < INST; ++i)
+    for (int i = 0; i < len; ++i)
     { 
-        arr[i] = new polygon [ss]; 
-        for (int j = 0; j < INST; ++j)
+        for (int j = 0; j < len; ++j)
         {
-            arr[level][insid++] = getCMBR(mbrs[a][i], mbrs[b][j]);
+            // if (mbrs[a][i] != 0 && mbrs[b][j] != 0)
+            // {
+                arr[level][insid++] = getCMBR(mbrs[a][i], mbrs[b][j]);   
+                std::cout << i << ": " << j << std::endl;             
+            // }   
+            if (ss <= insid)
+            {
+                break;
+            }       
+        }
+        if (ss <= insid)
+        {
+            break;
         }
     }
 
@@ -120,10 +133,11 @@ int main()
     polygon y = getMBR(2,2);
     polygon cmbr;
     cmbr = getCMBR(x, y); 
-    // polygon**  cmbr_array = getCMBRList(mbr_array, 0, 1);
+    polygon**  cmbr_array = getCMBRList(mbr_array, 0, 7);
 
 
     // std::cout << boost::geometry::wkt(cmbr) << std::endl;
+    // std::cout <<  << std::endl;
 
     // print all CMBRs
     // int i = 0;
