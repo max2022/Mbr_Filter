@@ -1,16 +1,16 @@
 #include <iostream>
 #include <string>
 
-#define ROWS 165470
+#define ROWS 165459
 
 struct table_row {
     int id;
-    double x;
-    double y;
+    float x;
+    float y;
 };
 
 // read file data and retunr data as an object array
-struct table_row *createArray(char fileName[]) {
+struct table_row *createArray(const char *fileName) {
 	FILE *fp = fopen(fileName, "r");
 
 	if (!fp) {
@@ -25,17 +25,22 @@ struct table_row *createArray(char fileName[]) {
 	fscanf(fp, "%s", str);
 
 	for (; count < ROWS; ++count) {
-		fscanf(fp, "%d, %lf, %lf", &table_rows[count].id, &table_rows[count].x, &table_rows[count].y);
+		fscanf(fp, "%d, %f, %f", &table_rows[count].id, &table_rows[count].x, &table_rows[count].y);
 	}
 
 	fclose(fp);
     return table_rows;
 }
 
-int main() {
+// int main() {
 	
-	struct table_row *dat;
-	dat = createArray("Seattle2012.csv");
+// 	struct table_row *dat;
+// 	dat = createArray("Seattle2012.csv");
 
-	return 0;
-}
+// 	for (int i = 0; i < ROWS; ++i)
+// 	{
+// 		std::cout << dat[i].id << ": " << dat[i].x << ": " << dat[i].y << std::endl;
+// 	}
+
+// 	return 0;
+// }
