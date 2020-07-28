@@ -1,6 +1,6 @@
 A, B, C, D
-CMBR(A.B)->[A_1,B_1], [A-2,B_1]
+CMBR(A.B)->[A_1,B_1], [A-2,B_1] [2]
 
-CMBR(A,B,C)->C(A,B).C, A.C, B,C
+CMBR(A,B,C)->{{C(A,B).C [4]}},  A.C [6], B,C [4]
 
-CMBR(A,B,C,D)-> C(A,B,C).D, {C(A,B).C}. D, {A.C}.D, {B,C}.D, A.D, B.D, C.D
+CMBR(A,B,C,D)-> {{ C(A,B,C).D [10], , {A.C}.D [3], {B,C}.D [2]}},  A.D, B.D, C.D
