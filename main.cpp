@@ -401,40 +401,50 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
                 if (temp.count > 0)
                 {
                 	// update combinations global array
+                	// change the required bit related to featured id into 1
 	        		comb.combination.reset();
                 	comb.combination = cmbr_map[k-1][i].combination; // take combintion id from previous step
 					comb.combination[FMAX-2-k] = 1;
 					comb.count = temp.count;	
 
-
+					// the list1 is updated to CMBR insatnce ids to by looking at previous step list1 and list2
+					// loop goes from returned list1 which contains indices of the CMBR instance if the 2D array converted to 1D 
 					for (int a = 0; a < temp.list1.size(); ++a)
 					{
+						// track the size of list2 first row
 						tt = cmbr_map[k-1][i].list2[0].size();
 
+						// goes through list2 of previos k-1 step to find the insatnce which made new CMBRs
 						for (int b = 1; b < cmbr_map[k-1][i].list2[b].size(); ++b)
 						{
+							// check if current row contains the index in the returned list1
 							if ( tt < temp.list1[a][0])
 							{
-								// assign
+								// assign list1 row into new row
 								ttlist1.insert(ttlist1.end(), cmbr_map[k-1][i].list1[b].begin(), cmbr_map[k-1][i].list1[b].end());
 								tt = tt + cmbr_map[k-1][i].list2[b].size()-1 - temp.list1[a][0];
-								// tt=0;
+								// add list2 cell value to the same row. We have the old CMBR instance now
 								ttlist1.push_back(cmbr_map[k-1][i].list2[b][tt]);
-
+								// push the new CMBR instance combination into a 2D array
 								ttlist2.push_back(ttlist1);
+								//clear temporary 1D array. Ready for next combination creation
 								ttlist1.clear();
-
+								// stop looking for more. We have only 1 row-cell combination at a time
 								break;
 							}
+							// if current row does not have search index, move to next row
 							tt += cmbr_map[k-1][i].list2[b].size();					
 						}
 					}				
-
+					// add created CMBR instance list to object
 					comb.list1 = ttlist2;
+					// clear temporary 2D array. ready for next feature combination from k-1 step
 					ttlist1.clear();
+					// add list2 returned from the method
 					comb.list2 = temp.list2;
+					// push created feature combination to output array
 					cmbr_map[k].push_back(comb); 
-						
+					// push created CMBR list and other info to CMBR output array 
                 	arr[k].push_back(temp);                	
                 }           		           	
             }
