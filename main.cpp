@@ -28,12 +28,16 @@ typedef boost::geometry::model::polygon<point_xy > polygon;
 struct cmbr {
 	int count = 0;
 	std::vector<polygon> cmbr_array;
+	std::vector<std::vector<int>> list1;
+	std::vector<std::vector<int>> list2;
 };
 
 // data structure to hold combination and count
 struct cmbr_comb {
 	std::bitset<FMAX> combination;
 	int count;
+	std::vector<std::vector<int>> list1;
+	std::vector<std::vector<int>> list2;
 };
 
 // 2D vector to keep track of all the combinations and counts
@@ -207,16 +211,25 @@ std::vector< std::vector<polygon> > getCMBRList(polygon **mbrs, int *ptr, int *f
 // returns a cmbr structure for selected 2 MBRs with the count of CMBRs
 cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
     // defining temporary size for the vector
-    int ss = 150000;
+    // int ss = 150000;
+    int ss = 10;
 
     // 1D array to hold layer CMBRs
-    std::vector<polygon> arr(ss);
+    std::vector<polygon> arr;
 
     // controls next available sapce in the layer array
     int insid = 0;
 
     // temporary varibale to track of calculated CMBR
-    polygon cmbr;
+    polygon cmbr_v;
+
+    // l1 and l2 maintains the lists from mbr1 and mbr2. l1[0] l2[0] will give 0th CMBR instances
+    std::vector<std::vector<int>> l1;
+    std::vector<std::vector<int>> l2;
+
+    // temporary arrays to hel build l1 and l2 rows
+	std::vector<int> t1;
+	std::vector<int> t2;
 
     //nested loop to check all the CMBRs for all combinations of instances 
     // for (int i = 0; i < a; ++i)
@@ -225,12 +238,16 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
         // for (int j = 0; j < b; ++j)
         for (int j = 0; j < 2000; ++j)
         {
-            cmbr= getCMBR(mbrs1[i], mbrs2[j]);
-            // std::cout << !boost::geometry::is_empty(cmbr) <<std::endl;              
+            cmbr_v= getCMBR(mbrs1[i], mbrs2[j]);
+            // std::cout << !boost::geometry::is_empty(cmbr_v) <<std::endl;              
             // checking if the CMBR exists
-            if (!boost::geometry::is_empty(cmbr))    
+            if (!boost::geometry::is_empty(cmbr_v))    
             {
-                arr[insid++] = cmbr; 
+            	insid++;
+                arr.push_back(cmbr_v); 
+
+                // update l1 and l2
+                t2.push_back(j);
                 // std::cout << i << ": " << j << " ";  
             } 
             // memory safe condition
@@ -240,6 +257,25 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
             {           
                 break;
             }       
+        }
+
+        // if there are any CMBRs for i, add ID i to l1
+        if (t2.size() > 0)
+        {
+        	t1.push_back(i);
+        		
+        }
+
+        // push t1 and t2 into l1 and l2
+        if (t1.size() > 0)
+        {
+        	l1.push_back(t1);
+        	t1 = {};
+        }
+        if (t2.size() > 0)
+        {
+        	l2.push_back(t2);
+        	t2 = {};
         }
         // memory safe condition
         // if we reach max memory for the layer combination allocation, 
@@ -259,6 +295,8 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
     	// ret((insid - 1), arr);
     	ret.count = insid;
     	ret.cmbr_array = arr;
+    	ret.list1 = l1;
+    	ret.list2 = l2;
     }
 
     std::cout << "count: " << ret.count << std::endl;
@@ -272,7 +310,7 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
 // returns a 2D vector of all the CMBRs of the features.  Maintains count for each CMBR
 std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *features) {
     // numbers layers need to consider. (#features-1)
-    int layers = 7;
+    int layers = 3;
     // 2D array to hold all CMBRS. outer D represents the layers and inner D 
     // represents CMBRs of that layer
     std::vector< std::vector<cmbr> > arr(layers); 
@@ -291,6 +329,10 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
     // varibale to temporarily hold combination data and the count of CMBRs for that combination
 	struct cmbr_comb comb;
 
+	int tt=0;
+
+	std::vector<int> ttlist1;
+	std::vector<std::vector<int>> ttlist2;
 
 
     for (int k = 0; k < layers; ++k)
@@ -316,6 +358,8 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 				comb.combination[FMAX-1-k] = 1;
 				comb.combination[FMAX-2-k] = 1;
 				comb.count = temp.count;
+				comb.list1 = temp.list1;
+				comb.list2 = temp.list2;
 				cmbr_map[k].push_back(comb); 
 
 	        	arr[k].push_back(temp);
@@ -336,6 +380,8 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
                 	comb.combination[FMAX-1-i] = 1;
 					comb.combination[FMAX-2-k] = 1;
 					comb.count = temp.count;
+					comb.list1 = temp.list1;
+					comb.list2 = temp.list2;
 					cmbr_map[k].push_back(comb); 
 
 					std::cout << FMAX-1-i << std::endl;
@@ -358,7 +404,35 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 	        		comb.combination.reset();
                 	comb.combination = cmbr_map[k-1][i].combination; // take combintion id from previous step
 					comb.combination[FMAX-2-k] = 1;
-					comb.count = temp.count;
+					comb.count = temp.count;	
+
+
+					for (int a = 0; a < temp.list1.size(); ++a)
+					{
+						tt = cmbr_map[k-1][i].list2[0].size();
+
+						for (int b = 1; b < cmbr_map[k-1][i].list2[b].size(); ++b)
+						{
+							if ( tt < temp.list1[a][0])
+							{
+								// assign
+								ttlist1.insert(ttlist1.end(), cmbr_map[k-1][i].list1[b].begin(), cmbr_map[k-1][i].list1[b].end());
+								tt = tt + cmbr_map[k-1][i].list2[b].size()-1 - temp.list1[a][0];
+								// tt=0;
+								ttlist1.push_back(cmbr_map[k-1][i].list2[b][tt]);
+
+								ttlist2.push_back(ttlist1);
+								ttlist1.clear();
+
+								break;
+							}
+							tt += cmbr_map[k-1][i].list2[b].size();					
+						}
+					}				
+
+					comb.list1 = ttlist2;
+					ttlist1.clear();
+					comb.list2 = temp.list2;
 					cmbr_map[k].push_back(comb); 
 						
                 	arr[k].push_back(temp);                	
