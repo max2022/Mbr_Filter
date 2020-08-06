@@ -15,8 +15,8 @@
 #include <boost/geometry/geometries/adapted/boost_polygon.hpp>
 #include <boost/geometry/geometries/linestring.hpp>
 
-#include <boost/type_traits/is_empty.hpp>
-#include <boost/geometry/algorithms/is_empty.hpp>
+//#include <boost/type_traits/is_empty.hpp>
+//#include <boost/geometry/algorithms/is_empty.hpp>
 
 #include <boost/foreach.hpp>
 
@@ -142,7 +142,8 @@ std::vector<polygon> getCMBRLayer(polygon *mbrs1,  polygon *mbrs2, int a, int b)
             cmbr= getCMBR(mbrs1[i], mbrs2[j]);
             // std::cout << !boost::geometry::is_empty(cmbr) <<std::endl;              
             // checking if the CMBR exists
-            if (!boost::geometry::is_empty(cmbr))    
+            //if (!boost::geometry::is_empty(cmbr))    
+            if(boost::geometry::num_points(cmbr)>0)
             {
                 arr[insid++] = cmbr; 
                 std::cout << i << ": " << j << " ";  
@@ -249,7 +250,8 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
             cmbr_v= getCMBR(mbrs1[i], mbrs2[j]);
             // std::cout << !boost::geometry::is_empty(cmbr_v) <<std::endl;              
             // checking if the CMBR exists
-            if (!boost::geometry::is_empty(cmbr_v))    
+            //if (!boost::geometry::is_empty(cmbr_v))    
+            if(boost::geometry::num_points(cmbr_v)>0)
             {
             	insid++;
                 arr.push_back(cmbr_v); 
