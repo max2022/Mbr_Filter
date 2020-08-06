@@ -139,7 +139,7 @@ std::vector<polygon> getCMBRLayer(polygon *mbrs1,  polygon *mbrs2, int a, int b)
             if (boost::geometry::num_points(cmbr_v))                
             {
                 arr[insid++] = cmbr_v; 
-                std::cout << i << ": " << j << " ";  
+                // std::cout << i << ": " << j << " ";  
             } 
             // memory safe condition
             // if we reach max memory for the layer combination allocation, 
@@ -217,7 +217,7 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
     // int ss = 11000;
 
     // selects set of limited instances
-    int max_rows = 1000;
+    int max_rows = 500;
 
     // 1D array to hold layer CMBRs
     std::vector<polygon> arr;
@@ -407,12 +407,8 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
             for (int i = 0; i < arr[k-1].size(); ++i)
             {    
 	        	std::cout << "Layer: " << k-1 << " loc: " << i << " with feature: " << b+1 << std::endl;
-                std::cout << "prev: " << cmbr_map[k-1][i].combination << std::endl;
-                std::cout << "prevPly: " << boost::geometry::wkt(arr[k-1][i].cmbr_array[0]) << std::endl;
-
 
         		temp = getCMBRLayerWCount(&arr[k-1][i].cmbr_array[0], mbrs[b], arr[k-1][i].count, ptr[b]);        
-                std::cout << "tesssstt 11--------" << std::endl;
             	
                 // if CMBRs exists, add to the layer
                 if (temp.count > 0)
@@ -420,13 +416,10 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
                 	// update combinations global array
                 	// change the required bit related to featured id into 1
 	        		comb.combination.reset();
-                    std::cout << "tesssstt 0000011" << std::endl;
 
                 	comb.combination = cmbr_map[k-1][i].combination; // take combintion id from previous step
-                    std::cout << "tesssstt 00022211" << std::endl;
 					
                     comb.combination[FMAX-2-k] = 1;
-                    std::cout << "tesssstt 11---" << std::endl;
 					
                     comb.count = temp.count;	
 
@@ -443,20 +436,16 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 							// check if current row contains the index in the returned list1
 							if ( tt < temp.list1[aa][0])
 							{
-                                std::cout << "tesssstt 11" << std::endl;
 
 								// assign list1 row into new row
 								ttlist1.insert(ttlist1.end(), cmbr_map[k-1][i].list1[bb].begin(), cmbr_map[k-1][i].list1[bb].end());
 								tt = tt + cmbr_map[k-1][i].list2[bb].size()-1 - temp.list1[aa][0];
-                                std::cout << "tesssstt 22" << std::endl;
 								
                                 // add list2 cell value to the same row. We have the old CMBR instance now
 								ttlist1.push_back(cmbr_map[k-1][i].list2[bb][tt]);
-                                std::cout << "tesssstt 33" << std::endl;
 								
                                 // push the new CMBR instance combination into a 2D array
 								ttlist2.push_back(ttlist1);
-                                std::cout << "tesssstt 444" << std::endl;
 								
                                 //clear temporary 1D array. Ready for next combination creation
 								ttlist1.clear();
@@ -466,7 +455,6 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 							}
                             if (flag)
                             {
-                                std::cout << "tesssstt" << std::endl;
                                 // if current row does not have search index, move to next row
                                 tt += cmbr_map[k-1][i].list2[bb].size();
                                 flag = false;
