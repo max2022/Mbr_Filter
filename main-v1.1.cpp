@@ -614,6 +614,7 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 
 int main()
 {
+    freopen ("mbr_filter.txt","w",stdout);
     //array to hold the number of instances for each feature
     static int feature_sizes[FEATURES] = {0};
 
@@ -647,7 +648,7 @@ int main()
     }
     cout << "Size before = " << prev_size << " Size after = " << curr_size << endl;
     //cout << "Everything Done!" << endl;
-    
+    fclose (stdout);
     // prints the feature sizes 
     // for (int i = 0; i < FEATURES; ++i)
     // {
