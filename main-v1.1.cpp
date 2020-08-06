@@ -21,6 +21,9 @@
 #define INST 40000
 #define FEATURES 50
 #define FMAX 13
+#define PI 0.1
+
+using namespace std;
 
 typedef boost::geometry::model::d2::point_xy<float> point_xy;
 typedef boost::geometry::model::polygon<point_xy > polygon;
@@ -487,6 +490,118 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
                 }           		           	
             }
         }
+
+
+        //Iqra
+        cout << " ***** " << cmbr_map[k].size() <<endl;
+        for(int i = 0; i<cmbr_map[k].size(); i++)
+        {
+          double pr = 1;
+          double pr_1 = 0;
+          double pr_2 = 0;
+          double total_instances;
+          // list_1_each_cell_item_count
+          int L1_item_count;
+          cout << " -----------> " << cmbr_map[k][i].combination << " " << cmbr_map[k][i].count << endl;
+          
+          vector<int> list_1;
+          //vector<int> tempL1;
+          
+          for(int x=0; x<cmbr_map[k][i].list1.size(); x++)
+          {
+             L1_item_count = 0;
+             int tmp = 0;
+             for (int y=0; y<cmbr_map[k][i].list1[x].size(); y++)
+             {
+               cout << " --- List 1 --- > " << cmbr_map[k][i].list1[x][y] ;
+               tmp = cmbr_map[k][i].list1[x][y] ;
+               L1_item_count++;
+               
+             }
+             cout << endl;
+             cout << "L1 item count is " << L1_item_count << endl;
+             if (L1_item_count == 1)
+             {
+               list_1.push_back(tmp);
+             }
+          }
+          if (L1_item_count == 1)
+          {
+            sort(list_1.begin(), list_1.end());
+            list_1.erase(unique(list_1.begin(), list_1.end()), list_1.end());
+            cout << "list 1 unique val " << list_1.size() << endl;
+            //for list1 newly added feature instances we can use mbr_array next time
+            total_instances = 10;
+            pr_1 = list_1.size()/total_instances ;
+            if(pr_1<pr)
+              pr = pr_1;
+            //cout << "List 1 pr -> " << pr_1 << endl;
+          }
+          vector<vector<int>> list_1_2d(L1_item_count);// = cmbr_map[k][i].list1;
+          if(L1_item_count > 1)
+          {
+            for(int j = 0; j<L1_item_count; j++)
+            {
+              cout << "j is -> " << j << endl;
+              for(int z = 0; z<cmbr_map[k][i].list1.size(); z++)
+              {
+                cout << endl << "z is -> " << z << endl;
+                list_1_2d[j].push_back(cmbr_map[k][i].list1[z][j]);
+                cout << "  ^^^   " << endl;
+                cout << "  " << cmbr_map[k][i].list1[z][j];
+                
+              }
+              cout << endl;
+            }
+            
+            for(int j = 0; j<L1_item_count; j++)
+            {
+              sort(list_1_2d[j].begin(), list_1_2d[j].end());
+              list_1_2d[j].erase(unique(list_1_2d[j].begin(), list_1_2d[j].end()), list_1_2d[j].end());
+              cout << "list 2 unique val " << list_1_2d[j].size() << endl;
+              //for list1 newly added feature instances we can use mbr_array next time
+              total_instances = 10;
+              pr_1 = list_1_2d[j].size()/total_instances ;
+              if(pr_1<pr)
+                pr = pr_1;
+              //cout << "List 1 pr -> " << pr_1 << endl;
+            }
+          }
+          
+           
+          vector<int> list_2;
+          for(int x=0; x<cmbr_map[k][i].list2.size(); x++)
+          {
+             for (int y=0; y<cmbr_map[k][i].list2[x].size(); y++)
+             {
+               list_2.push_back(cmbr_map[k][i].list2[x][y]);
+               cout << " --- List 2 --- > " << cmbr_map[k][i].list2[x][y];
+               
+             }    
+             cout << endl;
+           }
+           sort(list_2.begin(), list_2.end());
+           list_2.erase(unique(list_2.begin(), list_2.end()), list_2.end());
+           cout << "list 2 unique val " << list_2.size() << endl;
+           //for list2 newly added feature instances we can use mbr_array next time
+           total_instances = 10;// based on ss
+           pr_2 = list_2.size()/total_instances ;
+           if(pr_2<pr)
+             pr = pr_2;
+             
+           cout << " pr -> " << pr << endl;
+           
+           if (pr<=PI){
+             cout << "comb is " << cmbr_map[k][i].combination << endl;
+             //cmbr_map[k].pop_back();
+             cmbr_map[k].erase(cmbr_map[k].begin() + i);
+             arr[k].erase(arr[k].begin() + i);
+           }
+         }
+         // To Deletes the second element (vec[1])
+         //vec.erase(vec.begin() + 1);
+         
+         //iqra 
         
         // arr[k].insert( arr[k].end(), temp.begin(), temp.end()); 
         std::cout <<"Layer " << k << " Built Successfully!!!" << std::endl;       
