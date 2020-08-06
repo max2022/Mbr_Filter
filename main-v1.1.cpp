@@ -220,7 +220,7 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
     // int ss = 11000;
 
     // selects set of limited instances
-    int max_rows = 1000;
+    int max_rows = 2000;
 
     // 1D array to hold layer CMBRs
     std::vector<polygon> arr;
