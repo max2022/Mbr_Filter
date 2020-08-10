@@ -21,7 +21,7 @@
 #define INST 40000
 #define FEATURES 50
 #define FMAX 13
-#define PI 0.3
+#define PI 0.5
 
 using namespace std;
 
@@ -220,7 +220,7 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
     // int ss = 11000;
 
     // selects set of limited instances
-    int max_rows = 500;
+    int max_rows = 100;
 
     // 1D array to hold layer CMBRs
     std::vector<polygon> arr;
@@ -488,7 +488,7 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
           double pr = 1;
           double pr_1 = 0;
           double pr_2 = 0;
-          double total_instances= 500;
+          double total_instances= 100;
           // list_1_each_cell_item_count
           int L1_item_count;
           cout << " -----------> " << cmbr_map[k][i].combination << " " << cmbr_map[k][i].count << endl;
@@ -566,7 +566,7 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
                //cout << " --- List 2 --- > " << cmbr_map[k][i].list2[x][y];
                
              }    
-             cout << endl;
+             //cout << endl;
            }
            sort(list_2.begin(), list_2.end());
            list_2.erase(unique(list_2.begin(), list_2.end()), list_2.end());
