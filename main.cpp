@@ -21,6 +21,9 @@
 #define INST 40000
 #define FEATURES 50
 #define FMAX 13
+#define PI 0.3
+
+using namespace std;
 
 typedef boost::geometry::model::d2::point_xy<float> point_xy;
 typedef boost::geometry::model::polygon<point_xy > polygon;
@@ -51,7 +54,7 @@ polygon getMBR(float px, float py) {
     // return MBR
     polygon ret;
     // threshhold constant detrmines the MBR size for an instance
-    float const d = 2.0;
+    float const d = 10.0;
 
     // Create points to represent a rectagle.
     std::vector<point_xy> points;
@@ -139,7 +142,7 @@ std::vector<polygon> getCMBRLayer(polygon *mbrs1,  polygon *mbrs2, int a, int b)
             if (boost::geometry::num_points(cmbr_v))                
             {
                 arr[insid++] = cmbr_v; 
-                std::cout << i << ": " << j << " ";  
+                // std::cout << i << ": " << j << " ";  
             } 
             // memory safe condition
             // if we reach max memory for the layer combination allocation, 
@@ -217,7 +220,7 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
     // int ss = 11000;
 
     // selects set of limited instances
-    int max_rows = 1000;
+    int max_rows = 500;
 
     // 1D array to hold layer CMBRs
     std::vector<polygon> arr;
@@ -318,6 +321,7 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
 }
 
 // returns a 2D vector of all the CMBRs of the features.  Maintains count for each CMBR
+int prev_size = 0;
 std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *features) {
     // numbers layers need to consider. (#features-1)
     int layers = 7;
@@ -407,12 +411,8 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
             for (int i = 0; i < arr[k-1].size(); ++i)
             {    
 	        	std::cout << "Layer: " << k-1 << " loc: " << i << " with feature: " << b+1 << std::endl;
-                std::cout << "prev: " << cmbr_map[k-1][i].combination << std::endl;
-                std::cout << "prevPly: " << boost::geometry::wkt(arr[k-1][i].cmbr_array[0]) << std::endl;
-
 
         		temp = getCMBRLayerWCount(&arr[k-1][i].cmbr_array[0], mbrs[b], arr[k-1][i].count, ptr[b]);        
-                std::cout << "tesssstt 11--------" << std::endl;
             	
                 // if CMBRs exists, add to the layer
                 if (temp.count > 0)
@@ -420,13 +420,10 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
                 	// update combinations global array
                 	// change the required bit related to featured id into 1
 	        		comb.combination.reset();
-                    std::cout << "tesssstt 0000011" << std::endl;
 
                 	comb.combination = cmbr_map[k-1][i].combination; // take combintion id from previous step
-                    std::cout << "tesssstt 00022211" << std::endl;
 					
                     comb.combination[FMAX-2-k] = 1;
-                    std::cout << "tesssstt 11---" << std::endl;
 					
                     comb.count = temp.count;	
 
@@ -443,20 +440,16 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 							// check if current row contains the index in the returned list1
 							if ( tt < temp.list1[aa][0])
 							{
-                                std::cout << "tesssstt 11" << std::endl;
 
 								// assign list1 row into new row
 								ttlist1.insert(ttlist1.end(), cmbr_map[k-1][i].list1[bb].begin(), cmbr_map[k-1][i].list1[bb].end());
 								tt = tt + cmbr_map[k-1][i].list2[bb].size()-1 - temp.list1[aa][0];
-                                std::cout << "tesssstt 22" << std::endl;
 								
                                 // add list2 cell value to the same row. We have the old CMBR instance now
 								ttlist1.push_back(cmbr_map[k-1][i].list2[bb][tt]);
-                                std::cout << "tesssstt 33" << std::endl;
 								
                                 // push the new CMBR instance combination into a 2D array
 								ttlist2.push_back(ttlist1);
-                                std::cout << "tesssstt 444" << std::endl;
 								
                                 //clear temporary 1D array. Ready for next combination creation
 								ttlist1.clear();
@@ -466,7 +459,6 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 							}
                             if (flag)
                             {
-                                std::cout << "tesssstt" << std::endl;
                                 // if current row does not have search index, move to next row
                                 tt += cmbr_map[k-1][i].list2[bb].size();
                                 flag = false;
@@ -488,6 +480,116 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
             }
         }
         
+        //Iqra
+        cout << " ***** " << cmbr_map[k].size() <<endl;
+        prev_size += cmbr_map[k].size();
+        for(int i = 0; i<cmbr_map[k].size(); i++)
+        {
+          double pr = 1;
+          double pr_1 = 0;
+          double pr_2 = 0;
+          double total_instances= 500;
+          // list_1_each_cell_item_count
+          int L1_item_count;
+          cout << " -----------> " << cmbr_map[k][i].combination << " " << cmbr_map[k][i].count << endl;
+          
+          vector<int> list_1;
+          //vector<int> tempL1;
+          
+          for(int x=0; x<cmbr_map[k][i].list1.size(); x++)
+          {
+             L1_item_count = 0;
+             int tmp = 0;
+             for (int y=0; y<cmbr_map[k][i].list1[x].size(); y++)
+             {
+               cout << " --- List 1 --- > " << cmbr_map[k][i].list1[x][y] ;
+               tmp = cmbr_map[k][i].list1[x][y] ;
+               L1_item_count++;
+               
+             }
+             cout << endl;
+             cout << "L1 item count is " << L1_item_count << endl;
+             if (L1_item_count == 1)
+             {
+               list_1.push_back(tmp);
+             }
+          }
+          if (L1_item_count == 1)
+          {
+            sort(list_1.begin(), list_1.end());
+            list_1.erase(unique(list_1.begin(), list_1.end()), list_1.end());
+            cout << "list 1 unique val " << list_1.size() << endl;
+            //for list1 newly added feature instances we can use mbr_array next time
+            //total_instances = 500;
+            if((list_1.size()/total_instances) < pr)
+              pr = list_1.size()/total_instances;
+            //cout << "List 1 pr -> " << pr_1 << endl;
+          }
+          vector<vector<int>> list_1_2d(L1_item_count);// = cmbr_map[k][i].list1;
+          if(L1_item_count > 1)
+          {
+            for(int j = 0; j<L1_item_count; j++)
+            {
+              cout << "j is -> " << j << endl;
+              for(int z = 0; z<cmbr_map[k][i].list1.size(); z++)
+              {
+                //cout << endl << "z is -> " << z << endl;
+                list_1_2d[j].push_back(cmbr_map[k][i].list1[z][j]);
+                //cout << "  ^^^   " << endl;
+                //cout << "  " << cmbr_map[k][i].list1[z][j];
+                
+              }
+              cout << endl;
+            }
+            
+            for(int j = 0; j<L1_item_count; j++)
+            {
+              sort(list_1_2d[j].begin(), list_1_2d[j].end());
+              list_1_2d[j].erase(unique(list_1_2d[j].begin(), list_1_2d[j].end()), list_1_2d[j].end());
+              cout << "list 1 2D unique val " << list_1_2d[j].size() << endl;
+              //for list1 newly added feature instances we can use mbr_array next time
+              //total_instances = 500;
+              //pr_1 = list_1_2d[j].size()/total_instances ;
+              if((list_1_2d[j].size()/total_instances) < pr)
+                pr = list_1_2d[j].size()/total_instances;
+              //cout << "List 1 pr -> " << pr_1 << endl;
+            }
+          }
+          
+           
+          vector<int> list_2;
+          for(int x=0; x<cmbr_map[k][i].list2.size(); x++)
+          {
+             for (int y=0; y<cmbr_map[k][i].list2[x].size(); y++)
+             {
+               list_2.push_back(cmbr_map[k][i].list2[x][y]);
+               cout << " --- List 2 --- > " << cmbr_map[k][i].list2[x][y];
+               
+             }    
+             cout << endl;
+           }
+           sort(list_2.begin(), list_2.end());
+           list_2.erase(unique(list_2.begin(), list_2.end()), list_2.end());
+           cout << "list 2 unique val " << list_2.size() << endl;
+           //for list2 newly added feature instances we can use mbr_array next time
+           //total_instances = 500;// based on ss
+           //pr_2 = list_2.size()/total_instances ;
+           if((list_2.size()/total_instances) < pr)
+             pr = list_2.size()/total_instances;
+             
+           cout << " pr -> " << pr << endl;
+           
+           if (pr<=PI){
+             cout << "comb is " << cmbr_map[k][i].combination << endl;
+             //cmbr_map[k].pop_back();
+             cmbr_map[k].erase(cmbr_map[k].begin() + i);
+             arr[k].erase(arr[k].begin() + i);
+           }
+         }
+         // To Deletes the second element (vec[1])
+         //vec.erase(vec.begin() + 1);
+         //iqra 
+        
         // arr[k].insert( arr[k].end(), temp.begin(), temp.end()); 
         std::cout <<"Layer " << k << " Built Successfully!!!" << std::endl;       
     }
@@ -497,6 +599,7 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 
 int main()
 {
+    freopen ("mbr_filter.txt","w",stdout);   
     //array to hold the number of instances for each feature
     static int feature_sizes[FEATURES] = {0};
 
@@ -518,15 +621,19 @@ int main()
     std::vector< std::vector<cmbr> > cmbr_layers = buildCMBRList(mbr_array, feature_sizes, feature_ids);
 
     // print bitmap array
+    int curr_size = 0;
     for (int i = 0; i < cmbr_map.size(); ++i)
     {
     	for (int j = 0; j < cmbr_map[i].size(); ++j)
     	{		
     		std::cout << cmbr_map[i][j].combination << "[" << cmbr_map[i][j].count << "]";
+        curr_size++;
     	}
     	std::cout << "\n";
     }
-
+    cout << "Size before = " << prev_size << " Size after = " << curr_size << endl;
+    //cout << "Everything Done!" << endl;
+    fclose (stdout);
     // prints the feature sizes 
     // for (int i = 0; i < FEATURES; ++i)
     // {
