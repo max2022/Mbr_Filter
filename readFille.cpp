@@ -1,7 +1,9 @@
 #include <iostream>
 #include <string>
+#include <bits/stdc++.h>
 
-#define ROWS 165459
+#define ROWS 44006
+using namespace std;
 
 struct table_row {
     int id;
@@ -24,10 +26,10 @@ struct table_row *createArray(const char *fileName) {
 
 	fscanf(fp, "%s", str);
 
-	for (; count < ROWS; ++count) {
+	for (count = 0; count < ROWS; ++count) {
 		fscanf(fp, "%d, %f, %f", &table_rows[count].id, &table_rows[count].x, &table_rows[count].y);
 	}
-
+	cout << "reading done" << endl;
 	fclose(fp);
     return table_rows;
 }
