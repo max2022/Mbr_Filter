@@ -123,11 +123,11 @@ polygon getCMBR(polygon a, polygon b) {
 // returns a cmbr structure for selected 2 MBRs with the count of CMBRs
 cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
     // defining temporary size for the vector
-    int ss = 150000;
+    //int ss = 150000;
     // int ss = 11000;
 
     // selects set of limited instances
-    int max_rows = 1000;
+    //int max_rows = 1000;
 
     // 1D array to hold layer CMBRs
     std::vector<polygon> arr;
@@ -217,6 +217,8 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
     	ret.cmbr_array = arr;
     	ret.list1 = l1;
     	ret.list2 = l2;
+		l1.clear();
+		l2.clear();
     }
 
     std::cout << "count: " << ret.count << std::endl;
