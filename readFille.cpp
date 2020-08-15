@@ -1,7 +1,8 @@
 #include <iostream>
 #include <string>
 
-#define ROWS 165459
+// #define ROWS 165459 
+#define ROWS 44006
 
 struct table_row {
     int id;

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <deque>
 #include <string>
 #include <vector>
@@ -22,6 +23,11 @@
 #define FEATURES 50
 #define FMAX 13
 
+// for testing
+// #define INST 10
+// #define FEATURES 5
+// #define FMAX 5
+
 typedef boost::geometry::model::d2::point_xy<float> point_xy;
 typedef boost::geometry::model::polygon<point_xy > polygon;
 
@@ -42,7 +48,7 @@ struct cmbr_comb {
 };
 
 // 2D vector to keep track of all the combinations and counts
-std::vector<std::vector<cmbr_comb>> cmbr_map(12);
+std::vector<std::vector<cmbr_comb>> cmbr_map(FMAX - 1);
 
 // returns MBR for a given data point
 polygon getMBR(float px, float py) {
@@ -51,7 +57,7 @@ polygon getMBR(float px, float py) {
     // return MBR
     polygon ret;
     // threshhold constant detrmines the MBR size for an instance
-    float const d = 2.0;
+    float const d = 10.0;
 
     // Create points to represent a rectagle.
     std::vector<point_xy> points;
@@ -75,6 +81,11 @@ polygon** getMBRList(struct table_row *data, int li, int *ptr) {
 
     // Creating 1st-D
     arr = new polygon *[FEATURES];
+    polygon tmp;
+
+    // writing data to file. Visualize purpose
+    std::ofstream myfile;
+    myfile.open ("MBRAll.csv");
 
     for (int i = 0; i < li; ++i)
     { 
@@ -87,8 +98,12 @@ polygon** getMBRList(struct table_row *data, int li, int *ptr) {
          }
 
         // calculate MBR using the getMBR() and assign it to the relavant feature instance
-        arr[data[i].id-1][ptr[data[i].id-1]++] = getMBR(data[i].x, data[i].y);
+        tmp = getMBR(data[i].x, data[i].y);
+        arr[data[i].id-1][ptr[data[i].id-1]++] = tmp;
+        myfile << data[i].id-1 << "," << boost::geometry::dsv(tmp) <<"\n";
     }
+    myfile.close();
+
 
     return arr;
 }
@@ -113,111 +128,15 @@ polygon getCMBR(polygon a, polygon b) {
     return ret;
 }
 
-// returns a 1D vector of CMBRs for a selected layer 
-std::vector<polygon> getCMBRLayer(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
-    // defining temporary size for the vector
-    int ss = 5;
-
-    // 1D array to hold layer CMBRs
-    std::vector<polygon> arr(ss);
-
-    // controls next available sapce in the layer array
-    int insid = 0;
-
-    // temporary varibale to track of calculated CMBR
-    polygon cmbr_v;
-
-    //nested loop to check all the CMBRs for all combinations of instances 
-    for (int i = 0; i < a; ++i)
-    { 
-        for (int j = 0; j < b; ++j)
-        {
-            cmbr_v= getCMBR(mbrs1[i], mbrs2[j]);
-            // std::cout << boost::geometry::wkt(cmbr_v) <<std::endl;              
-            // checking if the CMBR exists
-            // if (!boost::geometry::is_empty(cmbr_v)) 
-            if (boost::geometry::num_points(cmbr_v))                
-            {
-                arr[insid++] = cmbr_v; 
-                // std::cout << i << ": " << j << " ";  
-            } 
-            // memory safe condition
-            // if we reach max memory for the layer combination allocation, 
-            // it may stop assigning further CMBRS
-            if (ss <= insid)
-            {           
-                break;
-            }       
-        }
-        // memory safe condition
-        // if we reach max memory for the layer combination allocation, 
-        // it may stop assigning further CMBRS
-        if (ss <= insid)
-        {
-            std::cout << "Error: CMBR array not enough!!!" <<std::endl;              
-
-            break;
-        }
-    }
-
-    //return 2D array with CMBRs
-    return arr;
-}
-
-// returns a 2D vector of all the CMBRs of the features
-std::vector< std::vector<polygon> > getCMBRList(polygon **mbrs, int *ptr, int *features) {
-    // numbers layers need to consider. (#features-1)
-    int layers = 12;
-    // 2D array to hold all CMBRS. outer D represents the layers and inner D 
-    // represents CMBRs of that layer
-    std::vector< std::vector<polygon> > arr(layers); 
-
-
-    // size of each layer. This can be dynamicaally calculated using ptr[a]*ptr[b]. 
-    // But it can exceed memory alloation
-    int x = 100;
-
-    // temporary 1D array to hold the CMBRs of a layer
-    std::vector<polygon> temp(x);
-
-    for (int k = 0; k < layers; ++k)
-    {  
-        std::cout <<"Layer " << k << " Building ..." << std::endl;
-        // define 2nd-D size 
-        arr[k] = std::vector<polygon>(x);   
-
-        // layer 1. Instance wise CMBR only.No previos layer
-        if (k == 0)
-        {
-            // features[k]-1 returns the feature id -1 value of the kth feature
-            temp = getCMBRLayer(mbrs[features[k]-1], mbrs[features[k+1]-1], ptr[features[k]-1], ptr[features[k+1]-1]);            
-        } else {
-            // find all the CMBRs from kth feature to K+1 feature 
-            for (int i = 0; i <= k; ++i)
-            {    
-                temp = getCMBRLayer(mbrs[features[k]-1], mbrs[features[k+1]-1], ptr[features[k]-1], ptr[features[k+1]-1]); 
-                arr[k].insert( arr[k].end(), temp.begin(), temp.end());
-            }
-
-            // find CMBRs with K+1 feature and previous layer CMBRs
-            temp = getCMBRLayer(&arr[k-1][0], mbrs[features[k+1]-1], arr[k-1].size(), ptr[features[k+1]-1]);        
-        }
-        // append all the calculated CMBRs to the realted layer 
-        arr[k].insert( arr[k].end(), temp.begin(), temp.end()); 
-        std::cout <<"Layer " << k << " Built Successfully!!!" << std::endl;       
-    }
-
-    return arr;
-} 
-
 // returns a cmbr structure for selected 2 MBRs with the count of CMBRs
-cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
+cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b, int kk) {
     // defining temporary size for the vector
     int ss = 150000;
     // int ss = 11000;
 
     // selects set of limited instances
-    int max_rows = 500;
+    // int max_rows = 25000000;
+    int max_rows = 100;
 
     // 1D array to hold layer CMBRs
     std::vector<polygon> arr;
@@ -227,6 +146,10 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
 
     // temporary varibale to track of calculated CMBR
     polygon cmbr_v;
+
+    // writing data to file. Visualize purpose
+    std::ofstream myfile;
+    myfile.open ("CMBRAll.csv", std::ios_base::app);
 
     // l1 and l2 maintains the lists from mbr1 and mbr2. l1[0] l2[0] will give 0th CMBR instances
     std::vector<std::vector<int>> l1;
@@ -245,6 +168,7 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
     {
        b = max_rows; 
     }
+
 
     //nested loop to check all the CMBRs for all combinations of instances 
     for (int i = 0; i < a; ++i)
@@ -267,7 +191,12 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
 
                 // update  l2
                 t2.push_back(j);
-                // std::cout << i << ": " << j << " ";  
+                std::cout << i << ": " << j << std::endl;  
+                std::cout << boost::geometry::dsv(mbrs1[i]) <<std::endl;              
+                std::cout << boost::geometry::dsv(mbrs2[j]) <<std::endl;              
+                std::cout << boost::geometry::dsv(cmbr_v) <<std::endl;     
+                myfile << kk << "," << boost::geometry::dsv(cmbr_v) <<"\n"; 
+
             } 
             // memory safe condition
             // if we reach max memory for the layer combination allocation, 
@@ -311,20 +240,31 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
 
     std::cout << "count: " << ret.count << std::endl;
     std::cout << "Size: " << ret.cmbr_array.size() << std::endl;
+    myfile.close();
     
 
     //return 2D array with CMBRs
     return ret;
 }
 
+// temporary method to vector print to file
+void printToFile(std::vector<std::vector<int>> arr) {
+    for(int i=0; i<arr.size(); ++i) {
+        for (int j = 0; j < arr[i].size(); ++j)
+        {
+            std::cout << arr[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
 // returns a 2D vector of all the CMBRs of the features.  Maintains count for each CMBR
 std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *features) {
     // numbers layers need to consider. (#features-1)
-    int layers = 7;
+    int layers = 4;
     // 2D array to hold all CMBRS. outer D represents the layers and inner D 
     // represents CMBRs of that layer
     std::vector< std::vector<cmbr> > arr(layers); 
-
 
 
     // size of each layer. This can be dynamicaally calculated using ptr[a]*ptr[b]. 
@@ -361,7 +301,7 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 
 	        std::cout << "Feature: " << a+1 << " with feature: " << b+1 << std::endl;
             // features[k]-1 returns the feature id -1 value of the kth feature
-            temp = getCMBRLayerWCount(mbrs[a], mbrs[b], ptr[a], ptr[b]);            
+            temp = getCMBRLayerWCount(mbrs[a], mbrs[b], ptr[a], ptr[b], k);            
 	        // append all the calculated CMBRs to the layer 1 if CMBRs exists
 	        if (temp.count > 0)	
 	        {
@@ -374,6 +314,11 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 				comb.list2 = temp.list2;
 				cmbr_map[k].push_back(comb); 
 
+                std::cout << "List 1" << std::endl;
+                printToFile(comb.list1);                    
+                std::cout << "List 2" << std::endl;
+                printToFile(comb.list2);                    
+
 	        	arr[k].push_back(temp);
 	        }
         } else {
@@ -383,7 +328,7 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
         		a = features[i]-1;
 	        	std::cout << "Feature: " << a+1 << " with feature: " << b+1 << std::endl;
 
-                temp = getCMBRLayerWCount(mbrs[a], mbrs[b], ptr[a], ptr[b]); 
+                temp = getCMBRLayerWCount(mbrs[a], mbrs[b], ptr[a], ptr[b], k); 
                 // if CMBRs exists, add to the layer
                 if (temp.count > 0)
                 {
@@ -396,7 +341,10 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 					comb.list2 = temp.list2;
 					cmbr_map[k].push_back(comb); 
 
-					std::cout << FMAX-1-i << std::endl;
+                    std::cout << "List 1" << std::endl;
+                    printToFile(comb.list1);                    
+                    std::cout << "List 2" << std::endl;
+                    printToFile(comb.list2);
 
                 	arr[k].push_back(temp);                	
                 }
@@ -408,7 +356,7 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
             {    
 	        	std::cout << "Layer: " << k-1 << " loc: " << i << " with feature: " << b+1 << std::endl;
 
-        		temp = getCMBRLayerWCount(&arr[k-1][i].cmbr_array[0], mbrs[b], arr[k-1][i].count, ptr[b]);        
+        		temp = getCMBRLayerWCount(&arr[k-1][i].cmbr_array[0], mbrs[b], arr[k-1][i].count, ptr[b], k);        
             	
                 // if CMBRs exists, add to the layer
                 if (temp.count > 0)
@@ -471,10 +419,16 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 					// push created feature combination to output array
 					cmbr_map[k].push_back(comb); 
 					// push created CMBR list and other info to CMBR output array 
-                	arr[k].push_back(temp);                	
+                	arr[k].push_back(temp);  
+
+                    std::cout << "List 1" << std::endl;
+                    printToFile(comb.list1);                    
+                    std::cout << "List 2" << std::endl;
+                    printToFile(comb.list2);              	
                 }           		           	
             }
         }
+
         
         // arr[k].insert( arr[k].end(), temp.begin(), temp.end()); 
         std::cout <<"Layer " << k << " Built Successfully!!!" << std::endl;       
@@ -486,14 +440,18 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
 int main()
 {
     //array to hold the number of instances for each feature
-    static int feature_sizes[FEATURES] = {0};
+    static int feature_sizes[FMAX] = {0};
 
     // feature id list
-    static int feature_ids[13] = {1, 5, 8, 9, 10, 14, 20, 24, 28, 39, 40, 42, 43};
+    static int feature_ids[FMAX] = {1, 5, 8, 9, 10, 14, 20, 24, 28, 39, 40, 42, 43};
+
+    // std::ofstream out("out.txt");
+    // std::streambuf *coutbuf = std::cout.rdbuf(); //save old buf
+    // std::cout.rdbuf(out.rdbuf()); //redirect std::cout to out.txt!
 
     // read data into a table_row structure type 1D array
     struct table_row *dat;
-    dat = createArray("Seattle2012.csv");
+    dat = createArray("Seattle2012_1.csv");
 
     // calculate MBR for all the datapoints. 
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
@@ -515,32 +473,54 @@ int main()
     	std::cout << "\n";
     }
 
-    // prints the feature sizes 
-    // for (int i = 0; i < FEATURES; ++i)
+    // testing getMBR() START
+    // struct table_row test_dat[14] = {{1, 500,500}, {1, 700,700}, {1, 825, 325}, {1, 130, 200},
+    //                                 {2, 510, 500}, {2, 1000, 1000}, {2, 830, 250}, {2, 101, 101},
+    //                                 {3, 100, 100}, {3, 515, 515},
+    //                                 {4, 1005, 1005}, {4, 135, 205}, {4, 509, 506},
+    //                                 {5, 400, 400}};
+    
+    // static int test_feature_sizes[5] = {0};
+    // static int test_feature_ids[FMAX] = {1, 2, 3, 4, 5};
+
+    // polygon**  test_mbr_array = getMBRList(test_dat, 14, test_feature_sizes);  
+
+    // std::cout << "MBR List: " <<std::endl;
+    // for (int i = 0; i < 6; ++i)
     // {
-    //     std::cout << feature_sizes[i] << std::endl;
+    //     for (int j = 0; j < test_feature_sizes[i]; ++j)
+    //     {
+    //         std::cout << boost::geometry::dsv(test_mbr_array[i][j]) << " " <<std::endl;
+    //     }
+    //     std::cout << std::endl;
     // }
 
-    // testing getMBR()
+
+    // std::vector< std::vector<cmbr> > test_cmbr_layers = buildCMBRList(test_mbr_array, test_feature_sizes, test_feature_ids);
+
+    // std::cout << "map: " << std::endl;
+
+    // for (int i = 0; i < cmbr_map.size(); ++i)
+    // {
+    //     for (int j = 0; j < cmbr_map[i].size(); ++j)
+    //     {       
+    //         std::cout << cmbr_map[i][j].combination << "[" << cmbr_map[i][j].count << "]";
+    //     }
+    //     std::cout << "\n";
+    // }
+    // testing END
+
+
     // polygon x = getMBR(5,5);
     // polygon y = getMBR(2,2);
     // polygon cmbr;
     // cmbr = getCMBR(x, y);
-    // std::cout << boost::geometry::wkt(cmbr) << std::endl;
+    // std::cout << boost::geometry::dsv(x) << std::endl;
+    // std::cout << boost::geometry::dsv(y) << std::endl;
+    // std::cout << boost::geometry::dsv(cmbr) << std::endl;
 
-    
-
-    // std::cout <<  << std::endl;
-
-    // print all CMBRs
-    // int i = 0;
-    // std::cout << "green && blue:" << std::endl;
-    // BOOST_FOREACH(polygon const& p, cmbrs)
-    // {
-    //     std::cout << i++ << ": " << boost::geometry::area(p) << std::endl;
-    //     std::cout << i++ << ": " << boost::geometry::wkt(p) << std::endl;
-    // }
-
+    // std::cout.rdbuf(coutbuf); //reset to standard output again
+    // std::cout << "File writing Completed!" << std::endl;
 
     return 0;
 }
