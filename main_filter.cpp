@@ -49,7 +49,8 @@ std::vector< std::vector<cmbr> > cmbr_arr(FMAX-1);
 
 double const PI = 0.3;
 int prev_size = 0;
-int fcount[FMAX] = {4060, 1404, 1899, 1367, 6617, 2579, 1695, 671, 1528, 940, 10325, 10315, 606};
+//int fcount[FMAX] = {4060, 1404, 1899, 1367, 6617, 2579, 1695, 671, 1528, 940, 10325, 10315, 606};
+int fcount[FMAX] = {12600, 3776, 5058, 6126, 27621, 7499, 14003, 5055, 6160, 4977, 32565, 35365, 4653};
 // feature serial 1, 5, 8, 9, 10, 14, 20, 24, 28, 39, 40, 42, 43
 //small data
 //int fcount[FMAX] = {50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50};
@@ -546,7 +547,7 @@ void buildCMBRList(polygon **mbrs, int *ptr, int *features) {
 
 int main()
 {
-   	freopen ("mbr_filter_1.txt","w",stdout);   
+   	freopen ("mbr_filter.txt","w",stdout);   
     //array to hold the number of instances for each feature
     static int feature_sizes[FMAX] = {0};
 
@@ -555,7 +556,8 @@ int main()
 
     // read data into a table_row structure type 1D array
     struct table_row *dat;
-    dat = createArray("Seattle2012_1.csv");
+    //dat = createArray("Seattle2012_1.csv");
+	dat = createArray("Seattle2012.csv");
 	//small data
 	//dat = createArray("data_iqr.csv");
 
