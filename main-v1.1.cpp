@@ -10,20 +10,16 @@
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/point_xy.hpp>
 #include <boost/geometry/geometries/polygon.hpp>
-#include <boost/geometry/geometries/adapted/boost_polygon.hpp>
-#include <boost/geometry/geometries/linestring.hpp>
-#include <boost/type_traits/is_empty.hpp>
-
-#include <boost/foreach.hpp>
 
 #include "readFille.cpp"
 
-//#define INST 10325 //max instance per feature
+#define INST 45000//10325 //max instance per feature
 //small data
-#define INST 50
+//#define INST 50
 #define FEATURES 43
 #define FMAX 13
 //#define PI 0.5
+#define DIST 10
 
 using namespace std;
 
@@ -51,12 +47,12 @@ std::vector<std::vector<cmbr_comb>> cmbr_map(FMAX-1);
 
 std::vector< std::vector<cmbr> > cmbr_arr(FMAX-1);
 
-double PI = 0.1;
+double const PI = 0.3;
 int prev_size = 0;
-//int fcount[FMAX] = {4060, 1404, 1899, 1367, 6617, 2579, 1695, 671, 1528, 940, 10325, 10315, 606};
+int fcount[FMAX] = {4060, 1404, 1899, 1367, 6617, 2579, 1695, 671, 1528, 940, 10325, 10315, 606};
 // feature serial 1, 5, 8, 9, 10, 14, 20, 24, 28, 39, 40, 42, 43
 //small data
-int fcount[FMAX] = {50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50};
+//int fcount[FMAX] = {50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50};
 
 // returns MBR for a given data point
 polygon getMBR(float px, float py) {
@@ -65,7 +61,7 @@ polygon getMBR(float px, float py) {
     // return MBR
     polygon ret;
     // threshhold constant detrmines the MBR size for an instance
-    float const d = 10.0;
+    float const d = DIST;
 
     // Create points to represent a rectagle.
     std::vector<point_xy> points;
@@ -175,6 +171,17 @@ std::vector<std::vector<int>> instanceCombinationBuild(std::vector<std::vector<i
     return ttlist2;                 
 }
 
+// check if there can be a CMBR
+bool isIntersection(float x1, float x2, float y1, float y2) {
+        // std::cout << x1 << " " << x2 << std::endl;
+
+    if ((abs(x1 - x2) < DIST*2) && (abs(y1 - y2) < DIST*2))
+    {
+        return true;
+    }
+    return false;
+}
+
 // returns a cmbr structure for selected 2 MBRs with the count of CMBRs
 cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
 
@@ -197,22 +204,24 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
 
     //nested loop to check all the CMBRs for all combinations of instances 
     for (int i = 0; i < a; ++i)
-    // for (int i = 0; i < 50; ++i)
     { 
         for (int j = 0; j < b; ++j)
-        // for (int j = 0; j < 50; ++j)
         {
-            cmbr_v= getCMBR(mbrs1[i], mbrs2[j]);
-             
-            if (boost::geometry::num_points(cmbr_v) > 0)
+			auto poly1 = boost::begin(boost::geometry::exterior_ring(mbrs1[i]));
+            auto poly2 = boost::begin(boost::geometry::exterior_ring(mbrs2[j]));
+            if (isIntersection(boost::geometry::get<0>(*poly1), boost::geometry::get<0>(*poly2), boost::geometry::get<1>(*poly1), boost::geometry::get<1>(*poly2)))
             {
-            	insid++;
-                arr.push_back(cmbr_v); 
+		        cmbr_v= getCMBR(mbrs1[i], mbrs2[j]);
+		         
+		        if (boost::geometry::num_points(cmbr_v) > 0)
+		        {
+		        	insid++;
+		            arr.push_back(cmbr_v); 
 
-                // update  l2
-                t2.push_back(j);
-                // std::cout << i << ": " << j << " ";  
-            }       
+		            t2.push_back(j);
+		            // std::cout << i << ": " << j << " ";  
+		        }
+			}       
         }
 
         // if there are any CMBRs for i, add ID i to l1
@@ -235,7 +244,7 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b) {
     	ret.cmbr_array = arr;
     	ret.list1 = l1;
     	ret.list2 = l2;
-		//arr.clear();
+		arr.clear();
 		l1.clear();
 		l2.clear();
     }
@@ -254,7 +263,7 @@ void erase_cmbr_map(int k, vector<int> erase_list)
 	// erase code last to first
 	for(int ii=erase_list.size()-1; ii >= 0 ; ii--)
 	{
-		cout << "erasing " << cmbr_map[k][erase_list[ii]].combination << " index is " << erase_list[ii] << " k is " << k << endl;
+		//cout << "erasing " << cmbr_map[k][erase_list[ii]].combination << " index is " << erase_list[ii] << " k is " << k << endl;
 		cmbr_map[k].erase(cmbr_map[k].begin() + erase_list[ii]);
 		cmbr_arr[k].erase(cmbr_arr[k].begin() + erase_list[ii]);
 	}
@@ -522,15 +531,15 @@ void buildCMBRList(polygon **mbrs, int *ptr, int *features) {
         }
         
 		//Iqra
-        
+        cmbr_filter_layerwise(k);
         //iqra
         // arr[k].insert( arr[k].end(), temp.begin(), temp.end()); 
         std::cout <<"Layer " << k << " Built Successfully!!!" << std::endl;       
     }
-	for (int k=layers-1 ; k>=0; k--)
+	/*for (int k=layers-1 ; k>=0; k--)
 	{
 		cmbr_filter_layerwise(k);
-	}
+	}*/
     return ; //cmbr_arr;
 } 
 
@@ -546,16 +555,14 @@ int main()
 
     // read data into a table_row structure type 1D array
     struct table_row *dat;
-    //dat = createArray("Seattle2012_1.csv");
+    dat = createArray("Seattle2012_1.csv");
 	//small data
-	dat = createArray("data_iqr.csv");
+	//dat = createArray("data_iqr.csv");
 
     // calculate MBR for all the datapoints. 
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
     polygon**  mbr_array = getMBRList(dat, ROWS, feature_sizes);   
 	//cout << "mbr array constructed" << endl;
-    // calculate CMBR list 
-    // std::vector< std::vector<polygon> > cmbr_array = getCMBRList(mbr_array, feature_sizes, feature_ids);
 
     // build CMBR tree 
     //std::vector< std::vector<cmbr> > cmbr_layers = 
@@ -565,6 +572,7 @@ int main()
     int curr_size = 0;
     for (int i = 0; i < cmbr_map.size(); ++i)
     {
+		cout << "CMBR layer is " << i << endl;
     	for (int j = 0; j < cmbr_map[i].size(); ++j)
     	{		
     		std::cout << cmbr_map[i][j].combination << "[" << cmbr_map[i][j].count << "]";

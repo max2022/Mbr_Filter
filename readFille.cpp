@@ -2,9 +2,9 @@
 #include <string>
 #include <bits/stdc++.h>
 
-//#define ROWS 44006
+#define ROWS 44006
 //small data
-#define ROWS 650
+//#define ROWS 650
 
 using namespace std;
 
@@ -38,15 +38,4 @@ struct table_row *createArray(const char *fileName) {
     return table_rows;
 }
 
-// int main() {
-	
-// 	struct table_row *dat;
-// 	dat = createArray("Seattle2012.csv");
 
-// 	for (int i = 0; i < ROWS; ++i)
-// 	{
-// 		std::cout << dat[i].id << ": " << dat[i].x << ": " << dat[i].y << std::endl;
-// 	}
-
-// 	return 0;
-// }
