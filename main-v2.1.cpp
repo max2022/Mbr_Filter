@@ -33,7 +33,7 @@ struct mbr getMBR(float px, float py) {
 	box.x1 = px - DIST;
 	box.y1 = py - DIST;
 	box.x2 = px + DIST;
-	box.y2 = px + DIST;
+	box.y2 = py + DIST;
 
 	return box;
 }
