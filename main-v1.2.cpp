@@ -10,6 +10,8 @@
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/point_xy.hpp>
 #include <boost/geometry/geometries/polygon.hpp>
+#include <boost/geometry/geometries/box.hpp>
+
 
 #include <boost/assign/std/vector.hpp>
 
@@ -33,6 +35,8 @@
 
 typedef boost::geometry::model::d2::point_xy<float> point_xy;
 typedef boost::geometry::model::polygon<point_xy > polygon;
+typedef boost::geometry::model::box<point_xy> box;
+
 
 // data structure hold cmbr info
 struct cmbr {
@@ -110,6 +114,48 @@ polygon** getMBRList(struct table_row *data, int li, int *ptr) {
 
     return arr;
 }
+
+
+bool isIntersect(float ax1, float ay1, float bx1, float by1) { 
+    float ax2 = ax1 + DIST, ay2 = ay1 + DIST, bx2 = bx1 + DIST, by2 = by1 + DIST;
+
+    if (ax2 > bx1 && ax1 < bx2 && ay2 > by1 && ay1 < by2) { 
+        return true; 
+    }
+    return false;
+} 
+
+float getMin(float a, float b) {
+    if (a < b)
+    {
+        return a;
+    }
+    return b;
+}
+
+float getMax(float a, float b) {
+    if (a > b)
+    {
+        return a;
+    }
+    return b;
+}
+
+polygon calculateCMBR(float ax1, float ay1, float bx1, float by1) {
+    polygon ret;
+    box c;
+    float ax2 = ax1 + DIST, ay2 = ay1 + DIST, bx2 = bx1 + DIST, by2 = by1 + DIST;
+  
+    if (ax2 > bx1 && ax1 < bx2 && ay2 > by1 && ay1 < by2) {     
+        c.min_corner().set<0>(getMax(ax1, bx1));
+        c.min_corner().set<1>(getMax(ay1, by1));
+        c.max_corner().set<0>(getMin(ax2, bx2));
+        c.max_corner().set<1>(getMin(ay2, by2));
+    }
+    boost::geometry::convert(c, ret);
+    return ret;
+}
+
 
 // returns CMBR for a given two MBRs
 polygon getCMBR(polygon a, polygon b) {
@@ -237,11 +283,12 @@ cmbr getCMBRLayerWCount(polygon *mbrs1,  polygon *mbrs2, int a, int b, int kk) {
         {
             auto poly1 = boost::begin(boost::geometry::exterior_ring(mbrs1[i]));
             auto poly2 = boost::begin(boost::geometry::exterior_ring(mbrs2[j]));
-            if (isIntersection(boost::geometry::get<0>(*poly1), boost::geometry::get<0>(*poly2), boost::geometry::get<1>(*poly1), boost::geometry::get<1>(*poly2)))
+          
+            if (isIntersect(boost::geometry::get<0>(*poly1), boost::geometry::get<1>(*poly1), boost::geometry::get<0>(*poly2), boost::geometry::get<1>(*poly2)))
             {  
                 // std::cout << i << ": " << j << std::endl;  
-            
-                cmbr_v= getCMBR(mbrs1[i], mbrs2[j]);
+                // cmbr_v= getCMBR(mbrs1[i], mbrs2[j]);                
+                cmbr_v= calculateCMBR(boost::geometry::get<0>(*poly1), boost::geometry::get<1>(*poly1), boost::geometry::get<0>(*poly2), boost::geometry::get<1>(*poly2));
                 // std::cout << boost::geometry::num_points(cmbr_v) <<std::endl; 
                 // std::cout << boost::geometry::wkt(cmbr_v) <<std::endl;              
 
@@ -433,42 +480,47 @@ std::vector<std::vector<cmbr>> buildCMBRList(polygon **mbrs, int *ptr, int *feat
             }
 
             // find CMBRs with K+1 feature and previous layer CMBRs
-            for (int i = 0; i < arr[k-1].size(); ++i)
-            {    
-                std::cout << "Layer: " << k-1 << " loc: " << i << " with feature: " << b+1 << std::endl;
-
-                temp = getCMBRLayerWCount(&arr[k-1][i].cmbr_array[0], mbrs[b], arr[k-1][i].count, ptr[b], k);        
-                
-                // if CMBRs exists, add to the layer
-                if (temp.count > 0)
-                {
-                    // update combinations global array
-                    // change the required bit related to featured id into 1
-                    comb.combination.reset();
-
-                    comb.combination = cmbr_map[k-1][i].combination; // take combintion id from previous step
+            for (int i = 0; i < (k -1); ++i)
+            { 
+               for (int jj = 0; jj < arr[i].size(); ++jj)
+               {
                     
-                    comb.combination[FMAX-2-k] = 1;
+                     
+                    std::cout << "Layer: " << i << " loc: " << jj << " with feature: " << b+1 << std::endl;
+
+                    temp = getCMBRLayerWCount(&arr[i][jj].cmbr_array[0], mbrs[b], arr[i][jj].count, ptr[b], k);        
                     
-                    comb.count = temp.count;    
+                    // if CMBRs exists, add to the layer
+                    if (temp.count > 0)
+                    {
+                        // update combinations global array
+                        // change the required bit related to featured id into 1
+                        comb.combination.reset();
 
-                    // add created CMBR instance list to object
-                    comb.list1 = instanceCombinationBuild(temp.list1, cmbr_map[k-1][i].list1, cmbr_map[k-1][i].list2);
-                    // // clear temporary 2D array. ready for next feature combination from k-1 step
-                    // ttlist1.clear();
-     //                ttlist2.clear();
-                    // add list2 returned from the method
-                    comb.list2 = temp.list2;
-                    // push created feature combination to output array
-                    cmbr_map[k].push_back(comb); 
-                    // push created CMBR list and other info to CMBR output array 
-                    arr[k].push_back(temp);  
+                        comb.combination = cmbr_map[i][jj].combination; // take combintion id from previous step
+                        
+                        comb.combination[FMAX-2-k] = 1;
+                        
+                        comb.count = temp.count;    
 
-                    // std::cout << comb.combination << std::endl;
-                    // std::cout << "List 1" << std::endl;
-                    // printToFile(comb.list1);                    
-                    // std::cout << "List 2" << std::endl;
-                    // printToFile(comb.list2);                
+                        // add created CMBR instance list to object
+                        comb.list1 = instanceCombinationBuild(temp.list1, cmbr_map[i][jj].list1, cmbr_map[i][jj].list2);
+                        // // clear temporary 2D array. ready for next feature combination from k-1 step
+                        // ttlist1.clear();
+         //                ttlist2.clear();
+                        // add list2 returned from the method
+                        comb.list2 = temp.list2;
+                        // push created feature combination to output array
+                        cmbr_map[k].push_back(comb); 
+                        // push created CMBR list and other info to CMBR output array 
+                        arr[k].push_back(temp);  
+
+                        // std::cout << comb.combination << std::endl;
+                        // std::cout << "List 1" << std::endl;
+                        // printToFile(comb.list1);                    
+                        // std::cout << "List 2" << std::endl;
+                        // printToFile(comb.list2);      
+                    }          
                 }                               
             }
         }
@@ -530,10 +582,10 @@ int main()
 
     // testing getMBR() START
     // struct table_row test_dat[14] = {{1, 500,500}, {1, 700,700}, {1, 825, 325}, {1, 130, 200},
-    //                                 {2, 510, 500}, {2, 1000, 1000}, {2, 830, 250}, {2, 101, 101},
-    //                                 {3, 100, 100}, {3, 515, 515},
-    //                                 {4, 1005, 1005}, {4, 135, 205}, {4, 509, 506},
-    //                                 {5, 400, 400}};
+    //                                 {2, 510, 500}, {2, 1000, 1000}, {2, 705, 700}, {2, 101, 101},
+    //                                 {3, 100, 100}, {3, 800, 800},
+    //                                 {4, 1005, 1005}, {4, 135, 205}, {4, 20, 20},
+    //                                 {5, 703, 701}};
     
     // static int test_feature_sizes[5] = {0};
     // static int test_feature_ids[FMAX] = {1, 2, 3, 4, 5};
