@@ -117,7 +117,7 @@ polygon** getMBRList(struct table_row *data, int li, int *ptr) {
 
 
 bool isIntersect(float ax1, float ay1, float bx1, float by1) { 
-    float ax2 = ax1 + DIST, ay2 = ay1 + DIST, bx2 = bx1 + DIST, by2 = by1 + DIST;
+    float ax2 = ax1 + DIST*2, ay2 = ay1 + DIST*2, bx2 = bx1 + DIST*2, by2 = by1 + DIST*2;
 
     if (ax2 > bx1 && ax1 < bx2 && ay2 > by1 && ay1 < by2) { 
         return true; 
@@ -144,7 +144,7 @@ float getMax(float a, float b) {
 polygon calculateCMBR(float ax1, float ay1, float bx1, float by1) {
     polygon ret;
     box c;
-    float ax2 = ax1 + DIST, ay2 = ay1 + DIST, bx2 = bx1 + DIST, by2 = by1 + DIST;
+    float ax2 = ax1 + DIST*2, ay2 = ay1 + DIST*2, bx2 = bx1 + DIST*2, by2 = by1 + DIST*2;
   
     if (ax2 > bx1 && ax1 < bx2 && ay2 > by1 && ay1 < by2) {     
         c.min_corner().set<0>(getMax(ax1, bx1));
