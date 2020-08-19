@@ -2,8 +2,8 @@
 #include <string>
 #include <bits/stdc++.h>
 
-//#define ROWS 44006
-#define ROWS 165458
+#define ROWS 44006
+//#define ROWS 165458
 //small data
 //#define ROWS 650
 

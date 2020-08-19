@@ -13,17 +13,17 @@
 
 #include "readFille.cpp"
 
-#define INST 45000//10325 //max instance per feature
+//#define INST 45000//10325 //max instance per feature
 //small data
 //#define INST 50
-#define FEATURES 43
-#define FMAX 13
+//#define FEATURES 43
+//#define FMAX 13
 
 
 // for testing
-//#define INST 10
-//#define FEATURES 5
-//#define FMAX 5
+#define INST 10
+#define FEATURES 5
+#define FMAX 5
 
 //#define PI 0.5
 #define DIST 10
@@ -56,11 +56,11 @@ std::vector< std::vector<cmbr> > cmbr_arr(FMAX-1);
 
 double const PI = 0.3;
 int prev_size = 0;
-int fcount[FMAX] = {4060, 1404, 1899, 1367, 6617, 2579, 1695, 671, 1528, 940, 10325, 10315, 606};
+//int fcount[FMAX] = {4060, 1404, 1899, 1367, 6617, 2579, 1695, 671, 1528, 940, 10325, 10315, 606};
 // feature serial 1, 5, 8, 9, 10, 14, 20, 24, 28, 39, 40, 42, 43
 //small data
 //int fcount[FMAX] = {50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50};
-//int fcount[FMAX] = {4, 4, 2, 3, 1};
+int fcount[FMAX] = {5, 5, 2, 3, 1};
 
 // returns MBR for a given data point
 polygon getMBR(float px, float py) {
@@ -561,9 +561,9 @@ void buildCMBRList(polygon **mbrs, int *ptr, int *features) {
 
 int main()
 {
-   	freopen ("mbr_filter_1.txt","w",stdout);   
+   	freopen ("mbr_filter_temp.txt","w",stdout);   
     //array to hold the number of instances for each feature
-    static int feature_sizes[FMAX] = {0};
+    /*static int feature_sizes[FMAX] = {0};
 
     // feature id list
     static int feature_ids[FMAX] = {1, 5, 8, 9, 10, 14, 20, 24, 28, 39, 40, 42, 43};
@@ -584,23 +584,23 @@ int main()
 	buildCMBRList(mbr_array, feature_sizes, feature_ids);
 	//cout << "cmbr layers constructed" << endl;
     // print bitmap array
-	
+	*/
 	// testing getMBR() START
-    /*struct table_row test_dat[14] = {{1, 500,500}, {1, 1005,1005}, {1, 825, 325}, {1, 130, 200},
-                                     {2, 510, 500}, {2, 511, 500}, {2, 830, 250}, {2, 101, 101},
-                                     {3, 1010, 1010}, {3, 515, 515},
-                                     {4, 1005, 1005}, {4, 135, 205}, {4, 509, 506},
-                                     {5, 400, 400}};
+    struct table_row test_dat[16] = {{1, 500,500}, {1, 700,700}, {1, 702,700}, {1, 825, 325}, {1, 130, 200},
+                                    {2, 510, 500}, {2, 1000, 1000}, {2, 705, 700}, {2, 706, 700}, {2, 101, 101},
+                                    {3, 100, 100}, {3, 800, 800},
+                                    {4, 1005, 1005}, {4, 135, 205}, {4, 20, 20},
+                                    {5, 703, 701}};
     
     static int test_feature_sizes[5] = {0};
     static int test_feature_ids[FMAX] = {1, 2, 3, 4, 5};
 
-    polygon**  test_mbr_array = getMBRList(test_dat, 14, test_feature_sizes);  
+    polygon**  test_mbr_array = getMBRList(test_dat, 16, test_feature_sizes);  
 
 
     //std::vector< std::vector<cmbr> > test_cmbr_layers =
 buildCMBRList(test_mbr_array, test_feature_sizes, test_feature_ids);
-*/
+
 
     int curr_size = 0;
     for (int i = 0; i < cmbr_map.size(); ++i)
