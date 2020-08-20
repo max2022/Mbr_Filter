@@ -28,8 +28,8 @@ struct mbr {
 };
 
 // calculate MBR for a given datapoint
-struct mbr getMBR(float px, float py) {
-	struct mbr box;
+mbr getMBR(float px, float py) {
+	mbr box;
 	box.x1 = px - DIST;
 	box.y1 = py - DIST;
 	box.x2 = px + DIST;
@@ -106,8 +106,7 @@ float getMax(float a, float b) {
 	return b;
 }
 
-mbr calculateCMBR(float ax1, float ay1, float bx1, float by1) {
-    float ax2 = ax1 + DIST*2, ay2 = ay1 + DIST*2, bx2 = bx1 + DIST*2, by2 = by1 + DIST*2;
+mbr calculateCMBR(float ax1, float ay1, float ax2, float ay2, float bx1, float by1, float bx2, float by2) {
   	mbr c;
   
     if (ax2 > bx1 && ax1 < bx2 && ay2 > by1 && ay1 < by2) {		
@@ -167,7 +166,7 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
 }
 
 // returns a cmbr structure for selected 2 MBRs with the count of CMBRs
-cmbr getCMBRLayerWCount(mbr *mbrs1,  mbr *mbrs2, int a, int b, int kk) {
+cmbr getCMBRLayerWCount(mbr *mbrs1,  mbr *mbrs2, int a, int b) {
 
     // 1D array to hold layer CMBRs
     vector<mbr> arr;
@@ -193,13 +192,13 @@ cmbr getCMBRLayerWCount(mbr *mbrs1,  mbr *mbrs2, int a, int b, int kk) {
         for (int j = 0; j < b; ++j)
         // for (int j = 0; j < 50; ++j)
         {
-            cmbr_v= calculateCMBR(mbrs1[i].x1, mbrs1[i].y1, mbrs2[j].x1, mbrs2[j].y1);
+            cmbr_v= calculateCMBR(mbrs1[i].x1, mbrs1[i].y1, mbrs1[i].x2, mbrs1[i].y2, mbrs2[j].x1, mbrs2[j].y1, mbrs2[j].x2, mbrs2[j].y2);
 
             if (!cmbr_v.empty)
             {              
                 insid++;
                 arr.push_back(cmbr_v); 
-
+                // cout << cmbr_v.x1 << "," << cmbr_v.y1 << " - " << cmbr_v.x2 << "," << cmbr_v.y2 << endl;
                 // update  l2
                 t2.push_back(j);                 
             }    
@@ -273,7 +272,7 @@ vector<vector<cmbr>> buildCMBRList(mbr **mbrs, int *ptr, int *features) {
 
             cout << "Feature: " << a+1 << " with feature: " << b+1 << endl;
             // features[k]-1 returns the feature id -1 value of the kth feature
-            temp = getCMBRLayerWCount(mbrs[a], mbrs[b], ptr[a], ptr[b], k);            
+            temp = getCMBRLayerWCount(mbrs[a], mbrs[b], ptr[a], ptr[b]);            
             // append all the calculated CMBRs to the layer 1 if CMBRs exists
             if (temp.count > 0) 
             {
@@ -289,13 +288,13 @@ vector<vector<cmbr>> buildCMBRList(mbr **mbrs, int *ptr, int *features) {
                 arr[k].push_back(temp);
             }
         } else {
-            // find all the CMBRs from kth feature to K+1 feature 
+            // find all the CMBRs from 1st feature to K+1 feature 
             for (int i = 0; i <= k; ++i)
             {    
                 a = features[i]-1;
                 cout << "Feature: " << a+1 << " with feature: " << b+1 << endl;
 
-                temp = getCMBRLayerWCount(mbrs[a], mbrs[b], ptr[a], ptr[b], k); 
+                temp = getCMBRLayerWCount(mbrs[a], mbrs[b], ptr[a], ptr[b]); 
                 // if CMBRs exists, add to the layer
                 if (temp.count > 0)
                 {
@@ -311,18 +310,18 @@ vector<vector<cmbr>> buildCMBRList(mbr **mbrs, int *ptr, int *features) {
                     arr[k].push_back(temp);                 
                 }
                 // arr[k].insert( arr[k].end(), temp.begin(), temp.end());
-            }
+            // }
 
             // find CMBRs with K+1 feature and previous layer CMBRs
-            for (int i = 0; i < (k -1); ++i)
-            { 
-               for (int jj = 0; jj < arr[i].size(); ++jj)
+            // for (int i = 0; i < k; ++i)
+            // { 
+               for (int jj = 0; jj < arr[i].size() && i < k; ++jj)
                {
                     
                      
                     cout << "Layer: " << i << " loc: " << jj << " with feature: " << b+1 << endl;
 
-                    temp = getCMBRLayerWCount(&arr[i][jj].cmbr_array[0], mbrs[b], arr[i][jj].count, ptr[b], k);        
+                    temp = getCMBRLayerWCount(&arr[i][jj].cmbr_array[0], mbrs[b], arr[i][jj].count, ptr[b]);        
                     
                     // if CMBRs exists, add to the layer
                     if (temp.count > 0)
