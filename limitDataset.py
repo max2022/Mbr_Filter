@@ -19,7 +19,7 @@ def readFile(file, max_x, max_y):
 	## Python will convert \n to os.linesep
 	for i in range(len(data)):
 		if len(data[i]) == 3 and max_x >= float(data[i][1]) and max_y >= float(data[i][2]):
-			limited.append(data[i])
+			limited.append([int(data[i][0]), float(data[i][1]), float(data[i][2])])
 			max += 1
 
 	# writing to csv file  
@@ -33,4 +33,4 @@ def readFile(file, max_x, max_y):
 	    csvwriter.writerows(['\r\n'])
 	    csvwriter.writerow([0, 0, max_x, max_y])	
 
-readFile('Seattle2012_1.csv', 8000.0, 9000.0)
+readFile('Seattle2012_1.csv', 8000, 9000)		

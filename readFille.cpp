@@ -3,6 +3,7 @@
 
 // #define ROWS 165459 
 #define ROWS 44006
+// #define ROWS 31267
 
 struct table_row {
     int id;
@@ -20,12 +21,11 @@ struct table_row *createArray(const char *fileName) {
     }
 
 	char str[1024];
-	struct table_row* table_rows = (struct table_row*)malloc(sizeof(struct table_row) * ROWS);
-	int count = 0;
+	struct table_row* table_rows = (struct table_row*)malloc(sizeof(struct table_row) * ROWS);	
 
 	fscanf(fp, "%s", str);
 
-	for (; count < ROWS; ++count) {
+	for (int count = 0; count < ROWS; ++count) {
 		fscanf(fp, "%d, %f, %f", &table_rows[count].id, &table_rows[count].x, &table_rows[count].y);
 	}
 
