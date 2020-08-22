@@ -106,17 +106,38 @@ float getMax(float a, float b) {
 	return b;
 }
 
+// check if there can be a CMBR
+bool isIntersection(float x1, float y1, float x2, float y2) {
+
+    if ((abs(x1 - x2) < DIST*2) && (abs(y1 - y2) < DIST*2))
+    {
+        return true;
+    }
+    return false;
+}
+
+
 mbr calculateCMBR(float ax1, float ay1, float ax2, float ay2, float bx1, float by1, float bx2, float by2) {
   	mbr c;
   
-    if (ax2 > bx1 && ax1 < bx2 && ay2 > by1 && ay1 < by2) {		
-		c.x1 = getMax(ax1, bx1);
-		c.y1 = getMax(ay1, by1);
-		c.x2 = getMin(ax2, bx2);
-		c.y2 = getMin(ay2, by2);
-		c.empty = false;
+  //   if (ax2 > bx1 && ax1 < bx2 && ay2 > by1 && ay1 < by2) {		
+		// c.x1 = getMax(ax1, bx1);
+		// c.y1 = getMax(ay1, by1);
+		// c.x2 = getMin(ax2, bx2);
+		// c.y2 = getMin(ay2, by2);
+		// c.empty = false;
 
-    }
+  //   }
+  	c.x1 = getMax(ax1, bx1);
+	c.y1 = getMax(ay1, by1);
+	c.x2 = getMin(ax2, bx2);
+	c.y2 = getMin(ay2, by2);
+
+	if (!(c.x1 > c.x2 || c.y1 > c.y2))
+	{
+		c.empty = false;
+	}
+
     return c;
 }
 
@@ -192,15 +213,18 @@ cmbr getCMBRLayerWCount(mbr *mbrs1,  mbr *mbrs2, int a, int b) {
         for (int j = 0; j < b; ++j)
         // for (int j = 0; j < 50; ++j)
         {
-            cmbr_v= calculateCMBR(mbrs1[i].x1, mbrs1[i].y1, mbrs1[i].x2, mbrs1[i].y2, mbrs2[j].x1, mbrs2[j].y1, mbrs2[j].x2, mbrs2[j].y2);
 
-            if (!cmbr_v.empty)
-            {              
-                insid++;
-                arr.push_back(cmbr_v); 
-                // cout << cmbr_v.x1 << "," << cmbr_v.y1 << " - " << cmbr_v.x2 << "," << cmbr_v.y2 << endl;
-                // update  l2
-                t2.push_back(j);                 
+            // if (!cmbr_v.empty)        	
+            if(isIntersection(mbrs1[i].x1, mbrs1[i].y1, mbrs2[j].x1, mbrs2[j].y1))
+            {   
+            	cmbr_v= calculateCMBR(mbrs1[i].x1, mbrs1[i].y1, mbrs1[i].x2, mbrs1[i].y2, mbrs2[j].x1, mbrs2[j].y1, mbrs2[j].x2, mbrs2[j].y2);
+            	if(!cmbr_v.empty) {
+	                insid++;
+	                arr.push_back(cmbr_v); 
+	                // cout << cmbr_v.x1 << "," << cmbr_v.y1 << " - " << cmbr_v.x2 << "," << cmbr_v.y2 << endl;
+	                // update  l2
+	                t2.push_back(j);   
+	            }              
             }    
         }
 
