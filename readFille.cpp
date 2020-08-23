@@ -1,15 +1,17 @@
 #include <iostream>
 #include <string>
+#include <bits/stdc++.h>
 
-// #define ROWS 165459 
-#define ROWS 44006
-// #define ROWS 31267
+using namespace std;
 
 struct table_row {
     int id;
     float x;
     float y;
 };
+
+// number of rows in the data file
+int ROWS;
 
 // read file data and retunr data as an object array
 struct table_row *createArray(const char *fileName) {
@@ -19,29 +21,17 @@ struct table_row *createArray(const char *fileName) {
         printf("Can not open file\n");
         return NULL;
     }
+	
+	fscanf(fp, "%d", &ROWS);
+	cout << "Total rows: " << ROWS << endl;
 
-	char str[1024];
-	struct table_row* table_rows = (struct table_row*)malloc(sizeof(struct table_row) * ROWS);	
-
-	fscanf(fp, "%s", str);
-
+	struct table_row* table_rows = (struct table_row*)malloc(sizeof(struct table_row) * ROWS);
+	
 	for (int count = 0; count < ROWS; ++count) {
 		fscanf(fp, "%d, %f, %f", &table_rows[count].id, &table_rows[count].x, &table_rows[count].y);
-	}
 
+	}
 	fclose(fp);
     return table_rows;
 }
 
-// int main() {
-	
-// 	struct table_row *dat;
-// 	dat = createArray("Seattle2012.csv");
-
-// 	for (int i = 0; i < ROWS; ++i)
-// 	{
-// 		std::cout << dat[i].id << ": " << dat[i].x << ": " << dat[i].y << std::endl;
-// 	}
-
-// 	return 0;
-// }

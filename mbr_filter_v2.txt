@@ -1,0 +1,29 @@
+6897
+ constructed
+mbr array constructed
+map: 
+CMBR layer is 0
+
+CMBR layer is 1
+
+CMBR layer is 2
+
+CMBR layer is 3
+
+CMBR layer is 4
+
+CMBR layer is 5
+
+CMBR layer is 6
+
+CMBR layer is 7
+
+CMBR layer is 8
+
+CMBR layer is 9
+
+CMBR layer is 10
+
+CMBR layer is 11
+
+Size before = 0 Size after = 0

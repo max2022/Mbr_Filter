@@ -269,6 +269,18 @@ cmbr getCMBRLayerWCount(mbr *mbrs1,  mbr *mbrs2, int a, int b) {
     return ret;
 }
 
+// convert feature size array
+vector<int> shrinkArray(int *ptr, int *fid) {
+    vector<int> feature_sizes(FMAX);
+
+    for (int i = 0; i < FMAX; ++i)
+    {
+        feature_sizes[i] = ptr[fid[i]-1];
+        
+    }
+    return feature_sizes;
+}
+
 //erasing filtered out cmbr_maps layerwise
 void erase_cmbr_map(int k, vector<int> erase_list)
 {
@@ -425,7 +437,6 @@ void cmbr_filter_layerwise(int k, int *fcount)
     }//end ii
     erase_cmbr_map(k, erase_list);
     erase_list.clear();
-    return;
 }
 
 // returns a 2D vector of all the CMBRs of the features.  Maintains count for each CMBR
@@ -449,6 +460,8 @@ void buildCMBRList(mbr **mbrs, int *ptr, int *features) {
     int a, b;
     // varibale to temporarily hold combination data and the count of CMBRs for that combination
     struct cmbr_comb comb;
+
+    vector<int> f_Sizes = shrinkArray(ptr, features);
 
     for (int k = 0; k < layers; ++k)
     {  
@@ -545,7 +558,7 @@ void buildCMBRList(mbr **mbrs, int *ptr, int *features) {
         }
 
         //Iqra
-        cmbr_filter_layerwise(k, ptr);
+        cmbr_filter_layerwise(k, &f_Sizes[0]);
         //iqra
         
         // arr[k].insert( arr[k].end(), temp.begin(), temp.end()); 
@@ -576,7 +589,14 @@ int main() {
 
     // build CMBR tree 
     // vector< vector<cmbr> > cmbr_layers = buildCMBRList(mbr_array, feature_sizes, feature_ids);
-    buildCMBRList(mbr_array, feature_sizes, feature_ids);
+    // buildCMBRList(mbr_array, feature_sizes, feature_ids);
+
+    // vector<int> arr = shrinkArray(feature_sizes, feature_ids);
+
+    // for (int i = 0; i < arr.size(); ++i)
+    // {
+    //     cout << arr[i] << " ";
+    // }
 
      // testing getMBR() START
     // struct table_row test_dat[14] = {{1, 500,500}, {1, 700,700}, {1, 825, 325}, {1, 130, 200},
@@ -633,5 +653,5 @@ int main() {
     fclose(stdout);
 
 
-    return 0;
+    // return 0;
 }
