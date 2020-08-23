@@ -530,7 +530,7 @@ void print_cmbr_map(){
 int main()
 {
     
-    freopen ("out.txt","w",stdout);   
+    freopen ("main_test_1.txt","w",stdout);   
 
     // read data into a table_row structure type 1D array
     struct table_row *dat;

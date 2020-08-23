@@ -27,7 +27,7 @@ struct table_row *createArray(const char *fileName) {
     }
 	
 	fscanf(fp, "%d", &ROWS);
-	cout << ROWS << endl;
+	cout << "Total Instances: " << ROWS << endl;
 	
 	struct table_row* table_rows = (struct table_row*)malloc(sizeof(struct table_row) * ROWS);
 	int count = 0;

@@ -1,0 +1,4376 @@
+6897
+mbr array constructed
+Layer 0 Building ...
+Feature: 1 with feature: 5
+ptr[a]= 522 ptr[b]= 334
+count: 890
+Size: 890
+CMBR_MAP K is 0 size is 1
+ii is 0 combination is 1100000000000 and count is 890
+list 1 unique val 188
+test pr before if list 1 0.360153
+List 1 pr -> 0.360153
+list 2 unique val 164
+test pr before if list 2 0.491018
+List 2 -> pr 0.360153
+survivor cmbr is --->  1100000000000
+CMBR MAP before erase 
+1100000000000 
+CMBR MAP after erase 
+1100000000000 
+Layer 0 Built Successfully!!!
+Layer 1 Building ...
+Feature: 1 with feature: (K != 0) 8
+count: 1483
+Size: 1483
+Layer: 0 loc: 0 with feature: 8
+count: 12451
+Size: 12451
+Feature: 5 with feature: (K != 0) 8
+count: 1020
+Size: 1020
+CMBR_MAP K is 1 size is 3
+ii is 0 combination is 1010000000000 and count is 1483
+list 1 unique val 159
+test pr before if list 1 0.304598
+List 1 pr -> 0.304598
+list 2 unique val 183
+test pr before if list 2 0.460957
+List 2 -> pr 0.304598
+survivor cmbr is --->  1010000000000
+ii is 1 combination is 1110000000000 and count is 12451
+list 1 2D unique val 128
+total_instances 522 pos 12
+test pr before if list 1 2d 0.245211
+list 1 2D unique val 124
+total_instances 334 pos 11
+test pr before if list 1 2d 0.371257
+List 1 pr -> 0.245211
+list 2 unique val 144
+test pr before if list 2 0.36272
+List 2 -> pr 0.245211
+ to be removed comb is 1110000000000 index is 1 and K is 1
+pr is 0.245211 PI is 0.3
+ii is 2 combination is 0110000000000 and count is 1020
+list 1 unique val 186
+test pr before if list 1 0.556886
+List 1 pr -> 0.556886
+list 2 unique val 218
+test pr before if list 2 0.549118
+List 2 -> pr 0.549118
+survivor cmbr is --->  0110000000000
+CMBR MAP before erase 
+1010000000000 1110000000000 0110000000000 
+CMBR MAP after erase 
+1010000000000 0110000000000 
+Layer 1 Built Successfully!!!
+Layer 2 Building ...
+Feature: 1 with feature: (K != 0) 9
+count: 869
+Size: 869
+Layer: 0 loc: 0 with feature: 9
+count: 5502
+Size: 5502
+Feature: 5 with feature: (K != 0) 9
+count: 596
+Size: 596
+Layer: 1 loc: 0 with feature: 9
+count: 12576
+Size: 12576
+Layer: 1 loc: 1 with feature: 9
+count: 6855
+Size: 6855
+Feature: 8 with feature: (K != 0) 9
+count: 910
+Size: 910
+CMBR_MAP K is 2 size is 6
+ii is 0 combination is 1001000000000 and count is 869
+list 1 unique val 209
+test pr before if list 1 0.400383
+List 1 pr -> 0.400383
+list 2 unique val 136
+test pr before if list 2 0.49635
+List 2 -> pr 0.400383
+survivor cmbr is --->  1001000000000
+ii is 1 combination is 1101000000000 and count is 5502
+list 1 2D unique val 151
+total_instances 522 pos 12
+test pr before if list 1 2d 0.289272
+list 1 2D unique val 128
+total_instances 334 pos 11
+test pr before if list 1 2d 0.383234
+List 1 pr -> 0.289272
+list 2 unique val 107
+test pr before if list 2 0.390511
+List 2 -> pr 0.289272
+ to be removed comb is 1101000000000 index is 1 and K is 2
+pr is 0.289272 PI is 0.3
+ii is 2 combination is 0101000000000 and count is 596
+list 1 unique val 189
+test pr before if list 1 0.565868
+List 1 pr -> 0.565868
+list 2 unique val 158
+test pr before if list 2 0.576642
+List 2 -> pr 0.565868
+survivor cmbr is --->  0101000000000
+ii is 3 combination is 1011000000000 and count is 12576
+list 1 2D unique val 128
+total_instances 522 pos 12
+test pr before if list 1 2d 0.245211
+list 1 2D unique val 144
+total_instances 397 pos 10
+test pr before if list 1 2d 0.36272
+List 1 pr -> 0.245211
+list 2 unique val 86
+test pr before if list 2 0.313869
+List 2 -> pr 0.245211
+ to be removed comb is 1011000000000 index is 3 and K is 2
+pr is 0.245211 PI is 0.3
+ii is 4 combination is 0111000000000 and count is 6855
+list 1 2D unique val 135
+total_instances 334 pos 11
+test pr before if list 1 2d 0.404192
+list 1 2D unique val 158
+total_instances 397 pos 10
+test pr before if list 1 2d 0.397985
+List 1 pr -> 0.397985
+list 2 unique val 102
+test pr before if list 2 0.372263
+List 2 -> pr 0.372263
+survivor cmbr is --->  0111000000000
+ii is 5 combination is 0011000000000 and count is 910
+list 1 unique val 201
+test pr before if list 1 0.506297
+List 1 pr -> 0.506297
+list 2 unique val 141
+test pr before if list 2 0.514599
+List 2 -> pr 0.506297
+survivor cmbr is --->  0011000000000
+CMBR MAP before erase 
+1001000000000 1101000000000 0101000000000 1011000000000 0111000000000 0011000000000 
+CMBR MAP after erase 
+1001000000000 0101000000000 0111000000000 0011000000000 
+Layer 2 Built Successfully!!!
+Layer 3 Building ...
+Feature: 1 with feature: (K != 0) 10
+count: 4275
+Size: 4275
+Layer: 0 loc: 0 with feature: 10
+count: 28630
+Size: 28630
+Feature: 5 with feature: (K != 0) 10
+count: 3032
+Size: 3032
+Layer: 1 loc: 0 with feature: 10
+count: 69790
+Size: 69790
+Layer: 1 loc: 1 with feature: 10
+count: 36896
+Size: 36896
+Feature: 8 with feature: (K != 0) 10
+count: 4827
+Size: 4827
+Layer: 2 loc: 0 with feature: 10
+count: 28387
+Size: 28387
+Layer: 2 loc: 1 with feature: 10
+count: 15893
+Size: 15893
+Layer: 2 loc: 2 with feature: 10
+count: 349203
+Size: 349203
+Layer: 2 loc: 3 with feature: 10
+count: 38959
+Size: 38959
+Feature: 9 with feature: (K != 0) 10
+count: 2551
+Size: 2551
+CMBR_MAP K is 3 size is 11
+ii is 0 combination is 1000100000000 and count is 4275
+list 1 unique val 332
+test pr before if list 1 0.636015
+List 1 pr -> 0.636015
+list 2 unique val 739
+test pr before if list 2 0.530129
+List 2 -> pr 0.530129
+survivor cmbr is --->  1000100000000
+ii is 1 combination is 1100100000000 and count is 28630
+list 1 2D unique val 181
+total_instances 522 pos 12
+test pr before if list 1 2d 0.346743
+list 1 2D unique val 157
+total_instances 334 pos 11
+test pr before if list 1 2d 0.47006
+List 1 pr -> 0.346743
+list 2 unique val 538
+test pr before if list 2 0.38594
+List 2 -> pr 0.346743
+survivor cmbr is --->  1100100000000
+ii is 2 combination is 0100100000000 and count is 3032
+list 1 unique val 248
+test pr before if list 1 0.742515
+List 1 pr -> 0.742515
+list 2 unique val 752
+test pr before if list 2 0.539455
+List 2 -> pr 0.539455
+survivor cmbr is --->  0100100000000
+ii is 3 combination is 1010100000000 and count is 69790
+list 1 2D unique val 146
+total_instances 522 pos 12
+test pr before if list 1 2d 0.279693
+list 1 2D unique val 164
+total_instances 397 pos 10
+test pr before if list 1 2d 0.413098
+List 1 pr -> 0.279693
+list 2 unique val 480
+test pr before if list 2 0.344333
+List 2 -> pr 0.279693
+ to be removed comb is 1010100000000 index is 3 and K is 3
+pr is 0.279693 PI is 0.3
+ii is 4 combination is 0110100000000 and count is 36896
+list 1 2D unique val 164
+total_instances 334 pos 11
+test pr before if list 1 2d 0.491018
+list 1 2D unique val 185
+total_instances 397 pos 10
+test pr before if list 1 2d 0.465995
+List 1 pr -> 0.465995
+list 2 unique val 533
+test pr before if list 2 0.382353
+List 2 -> pr 0.382353
+survivor cmbr is --->  0110100000000
+ii is 5 combination is 0010100000000 and count is 4827
+list 1 unique val 273
+test pr before if list 1 0.687657
+List 1 pr -> 0.687657
+list 2 unique val 721
+test pr before if list 2 0.517217
+List 2 -> pr 0.517217
+survivor cmbr is --->  0010100000000
+ii is 6 combination is 1001100000000 and count is 28387
+list 1 2D unique val 183
+total_instances 522 pos 12
+test pr before if list 1 2d 0.350575
+list 1 2D unique val 124
+total_instances 274 pos 9
+test pr before if list 1 2d 0.452555
+List 1 pr -> 0.350575
+list 2 unique val 516
+test pr before if list 2 0.370158
+List 2 -> pr 0.350575
+survivor cmbr is --->  1001100000000
+ii is 7 combination is 0101100000000 and count is 15893
+list 1 2D unique val 173
+total_instances 334 pos 11
+test pr before if list 1 2d 0.517964
+list 1 2D unique val 138
+total_instances 274 pos 9
+test pr before if list 1 2d 0.50365
+List 1 pr -> 0.50365
+list 2 unique val 560
+test pr before if list 2 0.401722
+List 2 -> pr 0.401722
+survivor cmbr is --->  0101100000000
+ii is 8 combination is 0111100000000 and count is 349203
+list 1 2D unique val 129
+total_instances 334 pos 11
+test pr before if list 1 2d 0.386228
+list 1 2D unique val 149
+total_instances 397 pos 10
+test pr before if list 1 2d 0.375315
+list 1 2D unique val 95
+total_instances 274 pos 9
+test pr before if list 1 2d 0.346715
+List 1 pr -> 0.346715
+list 2 unique val 426
+test pr before if list 2 0.305595
+List 2 -> pr 0.305595
+survivor cmbr is --->  0111100000000
+ii is 9 combination is 0011100000000 and count is 38959
+list 1 2D unique val 175
+total_instances 397 pos 10
+test pr before if list 1 2d 0.440806
+list 1 2D unique val 117
+total_instances 274 pos 9
+test pr before if list 1 2d 0.427007
+List 1 pr -> 0.427007
+list 2 unique val 501
+test pr before if list 2 0.359397
+List 2 -> pr 0.359397
+survivor cmbr is --->  0011100000000
+ii is 10 combination is 0001100000000 and count is 2551
+list 1 unique val 194
+test pr before if list 1 0.708029
+List 1 pr -> 0.708029
+list 2 unique val 701
+test pr before if list 2 0.502869
+List 2 -> pr 0.502869
+survivor cmbr is --->  0001100000000
+CMBR MAP before erase 
+1000100000000 1100100000000 0100100000000 1010100000000 0110100000000 0010100000000 1001100000000 0101100000000 0111100000000 0011100000000 0001100000000 
+CMBR MAP after erase 
+1000100000000 1100100000000 0100100000000 0110100000000 0010100000000 1001100000000 0101100000000 0111100000000 0011100000000 0001100000000 
+Layer 3 Built Successfully!!!
+Layer 4 Building ...
+Feature: 1 with feature: (K != 0) 14
+count: 1436
+Size: 1436
+Layer: 0 loc: 0 with feature: 14
+count: 11272
+Size: 11272
+Feature: 5 with feature: (K != 0) 14
+count: 980
+Size: 980
+Layer: 1 loc: 0 with feature: 14
+count: 34102
+Size: 34102
+Layer: 1 loc: 1 with feature: 14
+count: 17713
+Size: 17713
+Feature: 8 with feature: (K != 0) 14
+count: 2151
+Size: 2151
+Layer: 2 loc: 0 with feature: 14
+count: 11317
+Size: 11317
+Layer: 2 loc: 1 with feature: 14
+count: 6169
+Size: 6169
+Layer: 2 loc: 2 with feature: 14
+count: 175256
+Size: 175256
+Layer: 2 loc: 3 with feature: 14
+count: 18563
+Size: 18563
+Feature: 9 with feature: (K != 0) 14
+count: 879
+Size: 879
+Layer: 3 loc: 0 with feature: 14
+count: 61165
+Size: 61165
+Layer: 3 loc: 1 with feature: 14
+count: 560566
+Size: 560566
+Layer: 3 loc: 2 with feature: 14
+count: 33571
+Size: 33571
+Layer: 3 loc: 3 with feature: 14
+count: 964327
+Size: 964327
+Layer: 3 loc: 4 with feature: 14
+count: 101257
+Size: 101257
+Layer: 3 loc: 5 with feature: 14
+count: 609211
+Size: 609211
+Layer: 3 loc: 6 with feature: 14
+count: 302555
+Size: 302555
+Layer: 3 loc: 7 with feature: 14
+count: 10274400
+Size: 10274400
+Layer: 3 loc: 8 with feature: 14
+count: 1066360
+Size: 1066360
+Layer: 3 loc: 9 with feature: 14
+count: 34284
+Size: 34284
+Feature: 10 with feature: (K != 0) 14
+count: 4497
+Size: 4497
+CMBR_MAP K is 4 size is 22
+ii is 0 combination is 1000010000000 and count is 1436
+list 1 unique val 154
+test pr before if list 1 0.295019
+List 1 pr -> 0.295019
+list 2 unique val 222
+test pr before if list 2 0.532374
+List 2 -> pr 0.295019
+ to be removed comb is 1000010000000 index is 0 and K is 4
+pr is 0.295019 PI is 0.3
+ii is 1 combination is 1100010000000 and count is 11272
+list 1 2D unique val 119
+total_instances 522 pos 12
+test pr before if list 1 2d 0.227969
+list 1 2D unique val 104
+total_instances 334 pos 11
+test pr before if list 1 2d 0.311377
+List 1 pr -> 0.227969
+list 2 unique val 145
+test pr before if list 2 0.347722
+List 2 -> pr 0.227969
+ to be removed comb is 1100010000000 index is 1 and K is 4
+pr is 0.227969 PI is 0.3
+ii is 2 combination is 0100010000000 and count is 980
+list 1 unique val 153
+test pr before if list 1 0.458084
+List 1 pr -> 0.458084
+list 2 unique val 198
+test pr before if list 2 0.47482
+List 2 -> pr 0.458084
+survivor cmbr is --->  0100010000000
+ii is 3 combination is 1010010000000 and count is 34102
+list 1 2D unique val 118
+total_instances 522 pos 12
+test pr before if list 1 2d 0.226054
+list 1 2D unique val 142
+total_instances 397 pos 10
+test pr before if list 1 2d 0.357683
+List 1 pr -> 0.226054
+list 2 unique val 154
+test pr before if list 2 0.369305
+List 2 -> pr 0.226054
+ to be removed comb is 1010010000000 index is 3 and K is 4
+pr is 0.226054 PI is 0.3
+ii is 4 combination is 0110010000000 and count is 17713
+list 1 2D unique val 120
+total_instances 334 pos 11
+test pr before if list 1 2d 0.359281
+list 1 2D unique val 150
+total_instances 397 pos 10
+test pr before if list 1 2d 0.377834
+List 1 pr -> 0.359281
+list 2 unique val 161
+test pr before if list 2 0.386091
+List 2 -> pr 0.359281
+survivor cmbr is --->  0110010000000
+ii is 5 combination is 0010010000000 and count is 2151
+list 1 unique val 224
+test pr before if list 1 0.564232
+List 1 pr -> 0.564232
+list 2 unique val 235
+test pr before if list 2 0.563549
+List 2 -> pr 0.563549
+survivor cmbr is --->  0010010000000
+ii is 6 combination is 1001010000000 and count is 11317
+list 1 2D unique val 127
+total_instances 522 pos 12
+test pr before if list 1 2d 0.243295
+list 1 2D unique val 83
+total_instances 274 pos 9
+test pr before if list 1 2d 0.30292
+List 1 pr -> 0.243295
+list 2 unique val 175
+test pr before if list 2 0.419664
+List 2 -> pr 0.243295
+ to be removed comb is 1001010000000 index is 6 and K is 4
+pr is 0.243295 PI is 0.3
+ii is 7 combination is 0101010000000 and count is 6169
+list 1 2D unique val 128
+total_instances 334 pos 11
+test pr before if list 1 2d 0.383234
+list 1 2D unique val 101
+total_instances 274 pos 9
+test pr before if list 1 2d 0.368613
+List 1 pr -> 0.368613
+list 2 unique val 153
+test pr before if list 2 0.366906
+List 2 -> pr 0.366906
+survivor cmbr is --->  0101010000000
+ii is 8 combination is 0111010000000 and count is 175256
+list 1 2D unique val 105
+total_instances 334 pos 11
+test pr before if list 1 2d 0.314371
+list 1 2D unique val 132
+total_instances 397 pos 10
+test pr before if list 1 2d 0.332494
+list 1 2D unique val 78
+total_instances 274 pos 9
+test pr before if list 1 2d 0.284672
+List 1 pr -> 0.284672
+list 2 unique val 131
+test pr before if list 2 0.314149
+List 2 -> pr 0.284672
+ to be removed comb is 0111010000000 index is 8 and K is 4
+pr is 0.284672 PI is 0.3
+ii is 9 combination is 0011010000000 and count is 18563
+list 1 2D unique val 153
+total_instances 397 pos 10
+test pr before if list 1 2d 0.38539
+list 1 2D unique val 94
+total_instances 274 pos 9
+test pr before if list 1 2d 0.343066
+List 1 pr -> 0.343066
+list 2 unique val 154
+test pr before if list 2 0.369305
+List 2 -> pr 0.343066
+survivor cmbr is --->  0011010000000
+ii is 10 combination is 0001010000000 and count is 879
+list 1 unique val 131
+test pr before if list 1 0.478102
+List 1 pr -> 0.478102
+list 2 unique val 228
+test pr before if list 2 0.546763
+List 2 -> pr 0.478102
+survivor cmbr is --->  0001010000000
+ii is 11 combination is 1000110000000 and count is 61165
+list 1 2D unique val 146
+total_instances 522 pos 12
+test pr before if list 1 2d 0.279693
+list 1 2D unique val 448
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.321377
+List 1 pr -> 0.279693
+list 2 unique val 211
+test pr before if list 2 0.505995
+List 2 -> pr 0.279693
+ to be removed comb is 1000110000000 index is 11 and K is 4
+pr is 0.279693 PI is 0.3
+ii is 12 combination is 1100110000000 and count is 560566
+list 1 2D unique val 119
+total_instances 522 pos 12
+test pr before if list 1 2d 0.227969
+list 1 2D unique val 104
+total_instances 334 pos 11
+test pr before if list 1 2d 0.311377
+list 1 2D unique val 380
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.272597
+List 1 pr -> 0.227969
+list 2 unique val 145
+test pr before if list 2 0.347722
+List 2 -> pr 0.227969
+ to be removed comb is 1100110000000 index is 12 and K is 4
+pr is 0.227969 PI is 0.3
+ii is 13 combination is 0100110000000 and count is 33571
+list 1 2D unique val 135
+total_instances 334 pos 11
+test pr before if list 1 2d 0.404192
+list 1 2D unique val 457
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.327834
+List 1 pr -> 0.327834
+list 2 unique val 175
+test pr before if list 2 0.419664
+List 2 -> pr 0.327834
+survivor cmbr is --->  0100110000000
+ii is 14 combination is 0110110000000 and count is 964327
+list 1 2D unique val 111
+total_instances 334 pos 11
+test pr before if list 1 2d 0.332335
+list 1 2D unique val 138
+total_instances 397 pos 10
+test pr before if list 1 2d 0.347607
+list 1 2D unique val 360
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.25825
+List 1 pr -> 0.25825
+list 2 unique val 152
+test pr before if list 2 0.364508
+List 2 -> pr 0.25825
+ to be removed comb is 0110110000000 index is 14 and K is 4
+pr is 0.25825 PI is 0.3
+ii is 15 combination is 0010110000000 and count is 101257
+list 1 2D unique val 173
+total_instances 397 pos 10
+test pr before if list 1 2d 0.435768
+list 1 2D unique val 450
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.322812
+List 1 pr -> 0.322812
+list 2 unique val 188
+test pr before if list 2 0.450839
+List 2 -> pr 0.322812
+survivor cmbr is --->  0010110000000
+ii is 16 combination is 1001110000000 and count is 609211
+list 1 2D unique val 125
+total_instances 522 pos 12
+test pr before if list 1 2d 0.239464
+list 1 2D unique val 81
+total_instances 274 pos 9
+test pr before if list 1 2d 0.29562
+list 1 2D unique val 371
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.266141
+List 1 pr -> 0.239464
+list 2 unique val 173
+test pr before if list 2 0.414868
+List 2 -> pr 0.239464
+ to be removed comb is 1001110000000 index is 16 and K is 4
+pr is 0.239464 PI is 0.3
+ii is 17 combination is 0101110000000 and count is 302555
+list 1 2D unique val 120
+total_instances 334 pos 11
+test pr before if list 1 2d 0.359281
+list 1 2D unique val 90
+total_instances 274 pos 9
+test pr before if list 1 2d 0.328467
+list 1 2D unique val 398
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.285509
+List 1 pr -> 0.285509
+list 2 unique val 144
+test pr before if list 2 0.345324
+List 2 -> pr 0.285509
+ to be removed comb is 0101110000000 index is 17 and K is 4
+pr is 0.285509 PI is 0.3
+ii is 18 combination is 0111110000000 and count is 10274400
+list 1 2D unique val 101
+total_instances 334 pos 11
+test pr before if list 1 2d 0.302395
+list 1 2D unique val 127
+total_instances 397 pos 10
+test pr before if list 1 2d 0.319899
+list 1 2D unique val 73
+total_instances 274 pos 9
+test pr before if list 1 2d 0.266423
+list 1 2D unique val 329
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.236011
+List 1 pr -> 0.236011
+list 2 unique val 128
+test pr before if list 2 0.306954
+List 2 -> pr 0.236011
+ to be removed comb is 0111110000000 index is 18 and K is 4
+pr is 0.236011 PI is 0.3
+ii is 19 combination is 0011110000000 and count is 1066360
+list 1 2D unique val 140
+total_instances 397 pos 10
+test pr before if list 1 2d 0.352645
+list 1 2D unique val 82
+total_instances 274 pos 9
+test pr before if list 1 2d 0.29927
+list 1 2D unique val 374
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.268293
+List 1 pr -> 0.268293
+list 2 unique val 139
+test pr before if list 2 0.333333
+List 2 -> pr 0.268293
+ to be removed comb is 0011110000000 index is 19 and K is 4
+pr is 0.268293 PI is 0.3
+ii is 20 combination is 0001110000000 and count is 34284
+list 1 2D unique val 106
+total_instances 274 pos 9
+test pr before if list 1 2d 0.386861
+list 1 2D unique val 461
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.330703
+List 1 pr -> 0.330703
+list 2 unique val 198
+test pr before if list 2 0.47482
+List 2 -> pr 0.330703
+survivor cmbr is --->  0001110000000
+ii is 21 combination is 0000110000000 and count is 4497
+list 1 unique val 644
+test pr before if list 1 0.46198
+List 1 pr -> 0.46198
+list 2 unique val 299
+test pr before if list 2 0.717026
+List 2 -> pr 0.46198
+survivor cmbr is --->  0000110000000
+CMBR MAP before erase 
+1000010000000 1100010000000 0100010000000 1010010000000 0110010000000 0010010000000 1001010000000 0101010000000 0111010000000 0011010000000 0001010000000 1000110000000 1100110000000 0100110000000 0110110000000 0010110000000 1001110000000 0101110000000 0111110000000 0011110000000 0001110000000 0000110000000 
+CMBR MAP after erase 
+0100010000000 0110010000000 0010010000000 0101010000000 0011010000000 0001010000000 0100110000000 0010110000000 0001110000000 0000110000000 
+Layer 4 Built Successfully!!!
+Layer 5 Building ...
+Feature: 1 with feature: (K != 0) 20
+count: 515
+Size: 515
+Layer: 0 loc: 0 with feature: 20
+count: 2852
+Size: 2852
+Feature: 5 with feature: (K != 0) 20
+count: 261
+Size: 261
+Layer: 1 loc: 0 with feature: 20
+count: 4297
+Size: 4297
+Layer: 1 loc: 1 with feature: 20
+count: 2273
+Size: 2273
+Feature: 8 with feature: (K != 0) 20
+count: 402
+Size: 402
+Layer: 2 loc: 0 with feature: 20
+count: 3859
+Size: 3859
+Layer: 2 loc: 1 with feature: 20
+count: 1958
+Size: 1958
+Layer: 2 loc: 2 with feature: 20
+count: 20677
+Size: 20677
+Layer: 2 loc: 3 with feature: 20
+count: 3415
+Size: 3415
+Feature: 9 with feature: (K != 0) 20
+count: 348
+Size: 348
+Layer: 3 loc: 0 with feature: 20
+count: 21759
+Size: 21759
+Layer: 3 loc: 1 with feature: 20
+count: 135465
+Size: 135465
+Layer: 3 loc: 2 with feature: 20
+count: 11210
+Size: 11210
+Layer: 3 loc: 3 with feature: 20
+count: 119380
+Size: 119380
+Layer: 3 loc: 4 with feature: 20
+count: 19723
+Size: 19723
+Layer: 3 loc: 5 with feature: 20
+count: 202494
+Size: 202494
+Layer: 3 loc: 6 with feature: 20
+count: 101506
+Size: 101506
+Layer: 3 loc: 7 with feature: 20
+count: 1154712
+Size: 1154712
+Layer: 3 loc: 8 with feature: 20
+count: 191108
+Size: 191108
+Layer: 3 loc: 9 with feature: 20
+count: 16854
+Size: 16854
+Feature: 10 with feature: (K != 0) 20
+count: 2153
+Size: 2153
+Layer: 4 loc: 0 with feature: 20
+count: 2585
+Size: 2585
+Layer: 4 loc: 1 with feature: 20
+count: 27530
+Size: 27530
+Layer: 4 loc: 2 with feature: 20
+count: 4575
+Size: 4575
+Layer: 4 loc: 3 with feature: 20
+count: 23008
+Size: 23008
+Layer: 4 loc: 4 with feature: 20
+count: 43263
+Size: 43263
+Layer: 4 loc: 5 with feature: 20
+count: 3779
+Size: 3779
+Layer: 4 loc: 6 with feature: 20
+count: 132582
+Size: 132582
+Layer: 4 loc: 7 with feature: 20
+count: 249276
+Size: 249276
+Layer: 4 loc: 8 with feature: 20
+count: 208976
+Size: 208976
+Layer: 4 loc: 9 with feature: 20
+count: 21928
+Size: 21928
+Feature: 14 with feature: (K != 0) 20
+count: 472
+Size: 472
+CMBR_MAP K is 5 size is 33
+ii is 0 combination is 1000001000000 and count is 515
+list 1 unique val 125
+test pr before if list 1 0.239464
+List 1 pr -> 0.239464
+list 2 unique val 74
+test pr before if list 2 0.666667
+List 2 -> pr 0.239464
+ to be removed comb is 1000001000000 index is 0 and K is 5
+pr is 0.239464 PI is 0.3
+ii is 1 combination is 1100001000000 and count is 2852
+list 1 2D unique val 91
+total_instances 522 pos 12
+test pr before if list 1 2d 0.17433
+list 1 2D unique val 69
+total_instances 334 pos 11
+test pr before if list 1 2d 0.206587
+List 1 pr -> 0.17433
+list 2 unique val 50
+test pr before if list 2 0.45045
+List 2 -> pr 0.17433
+ to be removed comb is 1100001000000 index is 1 and K is 5
+pr is 0.17433 PI is 0.3
+ii is 2 combination is 0100001000000 and count is 261
+list 1 unique val 78
+test pr before if list 1 0.233533
+List 1 pr -> 0.233533
+list 2 unique val 54
+test pr before if list 2 0.486486
+List 2 -> pr 0.233533
+ to be removed comb is 0100001000000 index is 2 and K is 5
+pr is 0.233533 PI is 0.3
+ii is 3 combination is 1010001000000 and count is 4297
+list 1 2D unique val 72
+total_instances 522 pos 12
+test pr before if list 1 2d 0.137931
+list 1 2D unique val 48
+total_instances 397 pos 10
+test pr before if list 1 2d 0.120907
+List 1 pr -> 0.120907
+list 2 unique val 44
+test pr before if list 2 0.396396
+List 2 -> pr 0.120907
+ to be removed comb is 1010001000000 index is 3 and K is 5
+pr is 0.120907 PI is 0.3
+ii is 4 combination is 0110001000000 and count is 2273
+list 1 2D unique val 71
+total_instances 334 pos 11
+test pr before if list 1 2d 0.212575
+list 1 2D unique val 51
+total_instances 397 pos 10
+test pr before if list 1 2d 0.128463
+List 1 pr -> 0.128463
+list 2 unique val 44
+test pr before if list 2 0.396396
+List 2 -> pr 0.128463
+ to be removed comb is 0110001000000 index is 4 and K is 5
+pr is 0.128463 PI is 0.3
+ii is 5 combination is 0010001000000 and count is 402
+list 1 unique val 69
+test pr before if list 1 0.173804
+List 1 pr -> 0.173804
+list 2 unique val 58
+test pr before if list 2 0.522523
+List 2 -> pr 0.173804
+ to be removed comb is 0010001000000 index is 5 and K is 5
+pr is 0.173804 PI is 0.3
+ii is 6 combination is 1001001000000 and count is 3859
+list 1 2D unique val 90
+total_instances 522 pos 12
+test pr before if list 1 2d 0.172414
+list 1 2D unique val 51
+total_instances 274 pos 9
+test pr before if list 1 2d 0.186131
+List 1 pr -> 0.172414
+list 2 unique val 49
+test pr before if list 2 0.441441
+List 2 -> pr 0.172414
+ to be removed comb is 1001001000000 index is 6 and K is 5
+pr is 0.172414 PI is 0.3
+ii is 7 combination is 0101001000000 and count is 1958
+list 1 2D unique val 73
+total_instances 334 pos 11
+test pr before if list 1 2d 0.218563
+list 1 2D unique val 53
+total_instances 274 pos 9
+test pr before if list 1 2d 0.193431
+List 1 pr -> 0.193431
+list 2 unique val 49
+test pr before if list 2 0.441441
+List 2 -> pr 0.193431
+ to be removed comb is 0101001000000 index is 7 and K is 5
+pr is 0.193431 PI is 0.3
+ii is 8 combination is 0111001000000 and count is 20677
+list 1 2D unique val 69
+total_instances 334 pos 11
+test pr before if list 1 2d 0.206587
+list 1 2D unique val 50
+total_instances 397 pos 10
+test pr before if list 1 2d 0.125945
+list 1 2D unique val 44
+total_instances 274 pos 9
+test pr before if list 1 2d 0.160584
+List 1 pr -> 0.125945
+list 2 unique val 43
+test pr before if list 2 0.387387
+List 2 -> pr 0.125945
+ to be removed comb is 0111001000000 index is 8 and K is 5
+pr is 0.125945 PI is 0.3
+ii is 9 combination is 0011001000000 and count is 3415
+list 1 2D unique val 54
+total_instances 397 pos 10
+test pr before if list 1 2d 0.13602
+list 1 2D unique val 49
+total_instances 274 pos 9
+test pr before if list 1 2d 0.178832
+List 1 pr -> 0.13602
+list 2 unique val 45
+test pr before if list 2 0.405405
+List 2 -> pr 0.13602
+ to be removed comb is 0011001000000 index is 9 and K is 5
+pr is 0.13602 PI is 0.3
+ii is 10 combination is 0001001000000 and count is 348
+list 1 unique val 61
+test pr before if list 1 0.222628
+List 1 pr -> 0.222628
+list 2 unique val 54
+test pr before if list 2 0.486486
+List 2 -> pr 0.222628
+ to be removed comb is 0001001000000 index is 10 and K is 5
+pr is 0.222628 PI is 0.3
+ii is 11 combination is 1000101000000 and count is 21759
+list 1 2D unique val 123
+total_instances 522 pos 12
+test pr before if list 1 2d 0.235632
+list 1 2D unique val 288
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.2066
+List 1 pr -> 0.2066
+list 2 unique val 72
+test pr before if list 2 0.648649
+List 2 -> pr 0.2066
+ to be removed comb is 1000101000000 index is 11 and K is 5
+pr is 0.2066 PI is 0.3
+ii is 12 combination is 1100101000000 and count is 135465
+list 1 2D unique val 91
+total_instances 522 pos 12
+test pr before if list 1 2d 0.17433
+list 1 2D unique val 69
+total_instances 334 pos 11
+test pr before if list 1 2d 0.206587
+list 1 2D unique val 249
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.178623
+List 1 pr -> 0.17433
+list 2 unique val 50
+test pr before if list 2 0.45045
+List 2 -> pr 0.17433
+ to be removed comb is 1100101000000 index is 12 and K is 5
+pr is 0.17433 PI is 0.3
+ii is 13 combination is 0100101000000 and count is 11210
+list 1 2D unique val 78
+total_instances 334 pos 11
+test pr before if list 1 2d 0.233533
+list 1 2D unique val 283
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.203013
+List 1 pr -> 0.203013
+list 2 unique val 54
+test pr before if list 2 0.486486
+List 2 -> pr 0.203013
+ to be removed comb is 0100101000000 index is 13 and K is 5
+pr is 0.203013 PI is 0.3
+ii is 14 combination is 0110101000000 and count is 119380
+list 1 2D unique val 71
+total_instances 334 pos 11
+test pr before if list 1 2d 0.212575
+list 1 2D unique val 51
+total_instances 397 pos 10
+test pr before if list 1 2d 0.128463
+list 1 2D unique val 239
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.171449
+List 1 pr -> 0.128463
+list 2 unique val 44
+test pr before if list 2 0.396396
+List 2 -> pr 0.128463
+ to be removed comb is 0110101000000 index is 14 and K is 5
+pr is 0.128463 PI is 0.3
+ii is 15 combination is 0010101000000 and count is 19723
+list 1 2D unique val 67
+total_instances 397 pos 10
+test pr before if list 1 2d 0.168766
+list 1 2D unique val 273
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.195839
+List 1 pr -> 0.168766
+list 2 unique val 57
+test pr before if list 2 0.513514
+List 2 -> pr 0.168766
+ to be removed comb is 0010101000000 index is 15 and K is 5
+pr is 0.168766 PI is 0.3
+ii is 16 combination is 1001101000000 and count is 202494
+list 1 2D unique val 89
+total_instances 522 pos 12
+test pr before if list 1 2d 0.170498
+list 1 2D unique val 50
+total_instances 274 pos 9
+test pr before if list 1 2d 0.182482
+list 1 2D unique val 235
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.16858
+List 1 pr -> 0.16858
+list 2 unique val 48
+test pr before if list 2 0.432432
+List 2 -> pr 0.16858
+ to be removed comb is 1001101000000 index is 16 and K is 5
+pr is 0.16858 PI is 0.3
+ii is 17 combination is 0101101000000 and count is 101506
+list 1 2D unique val 73
+total_instances 334 pos 11
+test pr before if list 1 2d 0.218563
+list 1 2D unique val 53
+total_instances 274 pos 9
+test pr before if list 1 2d 0.193431
+list 1 2D unique val 257
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.184362
+List 1 pr -> 0.184362
+list 2 unique val 49
+test pr before if list 2 0.441441
+List 2 -> pr 0.184362
+ to be removed comb is 0101101000000 index is 17 and K is 5
+pr is 0.184362 PI is 0.3
+ii is 18 combination is 0111101000000 and count is 1154712
+list 1 2D unique val 69
+total_instances 334 pos 11
+test pr before if list 1 2d 0.206587
+list 1 2D unique val 50
+total_instances 397 pos 10
+test pr before if list 1 2d 0.125945
+list 1 2D unique val 44
+total_instances 274 pos 9
+test pr before if list 1 2d 0.160584
+list 1 2D unique val 230
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.164993
+List 1 pr -> 0.125945
+list 2 unique val 43
+test pr before if list 2 0.387387
+List 2 -> pr 0.125945
+ to be removed comb is 0111101000000 index is 18 and K is 5
+pr is 0.125945 PI is 0.3
+ii is 19 combination is 0011101000000 and count is 191108
+list 1 2D unique val 52
+total_instances 397 pos 10
+test pr before if list 1 2d 0.130982
+list 1 2D unique val 47
+total_instances 274 pos 9
+test pr before if list 1 2d 0.171533
+list 1 2D unique val 242
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.173601
+List 1 pr -> 0.130982
+list 2 unique val 44
+test pr before if list 2 0.396396
+List 2 -> pr 0.130982
+ to be removed comb is 0011101000000 index is 19 and K is 5
+pr is 0.130982 PI is 0.3
+ii is 20 combination is 0001101000000 and count is 16854
+list 1 2D unique val 58
+total_instances 274 pos 9
+test pr before if list 1 2d 0.211679
+list 1 2D unique val 275
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.197274
+List 1 pr -> 0.197274
+list 2 unique val 52
+test pr before if list 2 0.468468
+List 2 -> pr 0.197274
+ to be removed comb is 0001101000000 index is 20 and K is 5
+pr is 0.197274 PI is 0.3
+ii is 21 combination is 0000101000000 and count is 2153
+list 1 unique val 385
+test pr before if list 1 0.276184
+List 1 pr -> 0.276184
+list 2 unique val 102
+test pr before if list 2 0.918919
+List 2 -> pr 0.276184
+ to be removed comb is 0000101000000 index is 21 and K is 5
+pr is 0.276184 PI is 0.3
+ii is 22 combination is 0100011000000 and count is 2585
+list 1 2D unique val 58
+total_instances 334 pos 11
+test pr before if list 1 2d 0.173653
+list 1 2D unique val 62
+total_instances 417 pos 7
+test pr before if list 1 2d 0.148681
+List 1 pr -> 0.148681
+list 2 unique val 42
+test pr before if list 2 0.378378
+List 2 -> pr 0.148681
+ to be removed comb is 0100011000000 index is 22 and K is 5
+pr is 0.148681 PI is 0.3
+ii is 23 combination is 0110011000000 and count is 27530
+list 1 2D unique val 54
+total_instances 334 pos 11
+test pr before if list 1 2d 0.161677
+list 1 2D unique val 44
+total_instances 397 pos 10
+test pr before if list 1 2d 0.110831
+list 1 2D unique val 58
+total_instances 417 pos 7
+test pr before if list 1 2d 0.139089
+List 1 pr -> 0.110831
+list 2 unique val 39
+test pr before if list 2 0.351351
+List 2 -> pr 0.110831
+ to be removed comb is 0110011000000 index is 23 and K is 5
+pr is 0.110831 PI is 0.3
+ii is 24 combination is 0010011000000 and count is 4575
+list 1 2D unique val 53
+total_instances 397 pos 10
+test pr before if list 1 2d 0.133501
+list 1 2D unique val 70
+total_instances 417 pos 7
+test pr before if list 1 2d 0.167866
+List 1 pr -> 0.133501
+list 2 unique val 45
+test pr before if list 2 0.405405
+List 2 -> pr 0.133501
+ to be removed comb is 0010011000000 index is 24 and K is 5
+pr is 0.133501 PI is 0.3
+ii is 25 combination is 0101011000000 and count is 23008
+list 1 2D unique val 55
+total_instances 334 pos 11
+test pr before if list 1 2d 0.164671
+list 1 2D unique val 39
+total_instances 274 pos 9
+test pr before if list 1 2d 0.142336
+list 1 2D unique val 52
+total_instances 417 pos 7
+test pr before if list 1 2d 0.1247
+List 1 pr -> 0.1247
+list 2 unique val 40
+test pr before if list 2 0.36036
+List 2 -> pr 0.1247
+ to be removed comb is 0101011000000 index is 25 and K is 5
+pr is 0.1247 PI is 0.3
+ii is 26 combination is 0011011000000 and count is 43263
+list 1 2D unique val 47
+total_instances 397 pos 10
+test pr before if list 1 2d 0.118388
+list 1 2D unique val 39
+total_instances 274 pos 9
+test pr before if list 1 2d 0.142336
+list 1 2D unique val 55
+total_instances 417 pos 7
+test pr before if list 1 2d 0.131894
+List 1 pr -> 0.118388
+list 2 unique val 40
+test pr before if list 2 0.36036
+List 2 -> pr 0.118388
+ to be removed comb is 0011011000000 index is 26 and K is 5
+pr is 0.118388 PI is 0.3
+ii is 27 combination is 0001011000000 and count is 3779
+list 1 2D unique val 45
+total_instances 274 pos 9
+test pr before if list 1 2d 0.164234
+list 1 2D unique val 60
+total_instances 417 pos 7
+test pr before if list 1 2d 0.143885
+List 1 pr -> 0.143885
+list 2 unique val 43
+test pr before if list 2 0.387387
+List 2 -> pr 0.143885
+ to be removed comb is 0001011000000 index is 27 and K is 5
+pr is 0.143885 PI is 0.3
+ii is 28 combination is 0100111000000 and count is 132582
+list 1 2D unique val 58
+total_instances 334 pos 11
+test pr before if list 1 2d 0.173653
+list 1 2D unique val 223
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.159971
+list 1 2D unique val 62
+total_instances 417 pos 7
+test pr before if list 1 2d 0.148681
+List 1 pr -> 0.148681
+list 2 unique val 42
+test pr before if list 2 0.378378
+List 2 -> pr 0.148681
+ to be removed comb is 0100111000000 index is 28 and K is 5
+pr is 0.148681 PI is 0.3
+ii is 29 combination is 0010111000000 and count is 249276
+list 1 2D unique val 51
+total_instances 397 pos 10
+test pr before if list 1 2d 0.128463
+list 1 2D unique val 216
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.15495
+list 1 2D unique val 66
+total_instances 417 pos 7
+test pr before if list 1 2d 0.158273
+List 1 pr -> 0.128463
+list 2 unique val 44
+test pr before if list 2 0.396396
+List 2 -> pr 0.128463
+ to be removed comb is 0010111000000 index is 29 and K is 5
+pr is 0.128463 PI is 0.3
+ii is 30 combination is 0001111000000 and count is 208976
+list 1 2D unique val 43
+total_instances 274 pos 9
+test pr before if list 1 2d 0.156934
+list 1 2D unique val 221
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.158537
+list 1 2D unique val 56
+total_instances 417 pos 7
+test pr before if list 1 2d 0.134293
+List 1 pr -> 0.134293
+list 2 unique val 42
+test pr before if list 2 0.378378
+List 2 -> pr 0.134293
+ to be removed comb is 0001111000000 index is 30 and K is 5
+pr is 0.134293 PI is 0.3
+ii is 31 combination is 0000111000000 and count is 21928
+list 1 2D unique val 265
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.1901
+list 1 2D unique val 77
+total_instances 417 pos 7
+test pr before if list 1 2d 0.184652
+List 1 pr -> 0.184652
+list 2 unique val 58
+test pr before if list 2 0.522523
+List 2 -> pr 0.184652
+ to be removed comb is 0000111000000 index is 31 and K is 5
+pr is 0.184652 PI is 0.3
+ii is 32 combination is 0000011000000 and count is 472
+list 1 unique val 83
+test pr before if list 1 0.199041
+List 1 pr -> 0.199041
+list 2 unique val 60
+test pr before if list 2 0.540541
+List 2 -> pr 0.199041
+ to be removed comb is 0000011000000 index is 32 and K is 5
+pr is 0.199041 PI is 0.3
+CMBR MAP before erase 
+1000001000000 1100001000000 0100001000000 1010001000000 0110001000000 0010001000000 1001001000000 0101001000000 0111001000000 0011001000000 0001001000000 1000101000000 1100101000000 0100101000000 0110101000000 0010101000000 1001101000000 0101101000000 0111101000000 0011101000000 0001101000000 0000101000000 0100011000000 0110011000000 0010011000000 0101011000000 0011011000000 0001011000000 0100111000000 0010111000000 0001111000000 0000111000000 0000011000000 
+CMBR MAP after erase 
+
+Layer 5 Built Successfully!!!
+Layer 6 Building ...
+Feature: 1 with feature: (K != 0) 24
+count: 360
+Size: 360
+Layer: 0 loc: 0 with feature: 24
+count: 2110
+Size: 2110
+Feature: 5 with feature: (K != 0) 24
+count: 189
+Size: 189
+Layer: 1 loc: 0 with feature: 24
+count: 6199
+Size: 6199
+Layer: 1 loc: 1 with feature: 24
+count: 3146
+Size: 3146
+Feature: 8 with feature: (K != 0) 24
+count: 402
+Size: 402
+Layer: 2 loc: 0 with feature: 24
+count: 2654
+Size: 2654
+Layer: 2 loc: 1 with feature: 24
+count: 1314
+Size: 1314
+Layer: 2 loc: 2 with feature: 24
+count: 31506
+Size: 31506
+Layer: 2 loc: 3 with feature: 24
+count: 3669
+Size: 3669
+Feature: 9 with feature: (K != 0) 24
+count: 221
+Size: 221
+Layer: 3 loc: 0 with feature: 24
+count: 14628
+Size: 14628
+Layer: 3 loc: 1 with feature: 24
+count: 112427
+Size: 112427
+Layer: 3 loc: 2 with feature: 24
+count: 7478
+Size: 7478
+Layer: 3 loc: 3 with feature: 24
+count: 177169
+Size: 177169
+Layer: 3 loc: 4 with feature: 24
+count: 20748
+Size: 20748
+Layer: 3 loc: 5 with feature: 24
+count: 143871
+Size: 143871
+Layer: 3 loc: 6 with feature: 24
+count: 71150
+Size: 71150
+Layer: 3 loc: 7 with feature: 24
+count: 1855086
+Size: 1855086
+Layer: 3 loc: 8 with feature: 24
+count: 213704
+Size: 213704
+Layer: 3 loc: 9 with feature: 24
+count: 9822
+Size: 9822
+Feature: 10 with feature: (K != 0) 24
+count: 1323
+Size: 1323
+Layer: 4 loc: 0 with feature: 24
+count: 2647
+Size: 2647
+Layer: 4 loc: 1 with feature: 24
+count: 82501
+Size: 82501
+Layer: 4 loc: 2 with feature: 24
+count: 8895
+Size: 8895
+Layer: 4 loc: 3 with feature: 24
+count: 27060
+Size: 27060
+Layer: 4 loc: 4 with feature: 24
+count: 94774
+Size: 94774
+Layer: 4 loc: 5 with feature: 24
+count: 3241
+Size: 3241
+Layer: 4 loc: 6 with feature: 24
+count: 152412
+Size: 152412
+Layer: 4 loc: 7 with feature: 24
+count: 529974
+Size: 529974
+Layer: 4 loc: 8 with feature: 24
+count: 190743
+Size: 190743
+Layer: 4 loc: 9 with feature: 24
+count: 18467
+Size: 18467
+Feature: 14 with feature: (K != 0) 24
+count: 356
+Size: 356
+Feature: 20 with feature: (K != 0) 24
+count: 314
+Size: 314
+CMBR_MAP K is 6 size is 34
+ii is 0 combination is 1000000100000 and count is 360
+list 1 unique val 116
+test pr before if list 1 0.222222
+List 1 pr -> 0.222222
+list 2 unique val 56
+test pr before if list 2 0.57732
+List 2 -> pr 0.222222
+ to be removed comb is 1000000100000 index is 0 and K is 6
+pr is 0.222222 PI is 0.3
+ii is 1 combination is 1100000100000 and count is 2110
+list 1 2D unique val 79
+total_instances 522 pos 12
+test pr before if list 1 2d 0.151341
+list 1 2D unique val 47
+total_instances 334 pos 11
+test pr before if list 1 2d 0.140719
+List 1 pr -> 0.140719
+list 2 unique val 43
+test pr before if list 2 0.443299
+List 2 -> pr 0.140719
+ to be removed comb is 1100000100000 index is 1 and K is 6
+pr is 0.140719 PI is 0.3
+ii is 2 combination is 0100000100000 and count is 189
+list 1 unique val 66
+test pr before if list 1 0.197605
+List 1 pr -> 0.197605
+list 2 unique val 61
+test pr before if list 2 0.628866
+List 2 -> pr 0.197605
+ to be removed comb is 0100000100000 index is 2 and K is 6
+pr is 0.197605 PI is 0.3
+ii is 3 combination is 1010000100000 and count is 6199
+list 1 2D unique val 55
+total_instances 522 pos 12
+test pr before if list 1 2d 0.105364
+list 1 2D unique val 79
+total_instances 397 pos 10
+test pr before if list 1 2d 0.198992
+List 1 pr -> 0.105364
+list 2 unique val 34
+test pr before if list 2 0.350515
+List 2 -> pr 0.105364
+ to be removed comb is 1010000100000 index is 3 and K is 6
+pr is 0.105364 PI is 0.3
+ii is 4 combination is 0110000100000 and count is 3146
+list 1 2D unique val 41
+total_instances 334 pos 11
+test pr before if list 1 2d 0.122754
+list 1 2D unique val 81
+total_instances 397 pos 10
+test pr before if list 1 2d 0.20403
+List 1 pr -> 0.122754
+list 2 unique val 38
+test pr before if list 2 0.391753
+List 2 -> pr 0.122754
+ to be removed comb is 0110000100000 index is 4 and K is 6
+pr is 0.122754 PI is 0.3
+ii is 5 combination is 0010000100000 and count is 402
+list 1 unique val 91
+test pr before if list 1 0.229219
+List 1 pr -> 0.229219
+list 2 unique val 47
+test pr before if list 2 0.484536
+List 2 -> pr 0.229219
+ to be removed comb is 0010000100000 index is 5 and K is 6
+pr is 0.229219 PI is 0.3
+ii is 6 combination is 1001000100000 and count is 2654
+list 1 2D unique val 76
+total_instances 522 pos 12
+test pr before if list 1 2d 0.145594
+list 1 2D unique val 50
+total_instances 274 pos 9
+test pr before if list 1 2d 0.182482
+List 1 pr -> 0.145594
+list 2 unique val 36
+test pr before if list 2 0.371134
+List 2 -> pr 0.145594
+ to be removed comb is 1001000100000 index is 6 and K is 6
+pr is 0.145594 PI is 0.3
+ii is 7 combination is 0101000100000 and count is 1314
+list 1 2D unique val 46
+total_instances 334 pos 11
+test pr before if list 1 2d 0.137725
+list 1 2D unique val 56
+total_instances 274 pos 9
+test pr before if list 1 2d 0.20438
+List 1 pr -> 0.137725
+list 2 unique val 39
+test pr before if list 2 0.402062
+List 2 -> pr 0.137725
+ to be removed comb is 0101000100000 index is 7 and K is 6
+pr is 0.137725 PI is 0.3
+ii is 8 combination is 0111000100000 and count is 31506
+list 1 2D unique val 33
+total_instances 334 pos 11
+test pr before if list 1 2d 0.0988024
+list 1 2D unique val 75
+total_instances 397 pos 10
+test pr before if list 1 2d 0.188917
+list 1 2D unique val 33
+total_instances 274 pos 9
+test pr before if list 1 2d 0.120438
+List 1 pr -> 0.0988024
+list 2 unique val 29
+test pr before if list 2 0.298969
+List 2 -> pr 0.0988024
+ to be removed comb is 0111000100000 index is 8 and K is 6
+pr is 0.0988024 PI is 0.3
+ii is 9 combination is 0011000100000 and count is 3669
+list 1 2D unique val 80
+total_instances 397 pos 10
+test pr before if list 1 2d 0.201511
+list 1 2D unique val 36
+total_instances 274 pos 9
+test pr before if list 1 2d 0.131387
+List 1 pr -> 0.131387
+list 2 unique val 32
+test pr before if list 2 0.329897
+List 2 -> pr 0.131387
+ to be removed comb is 0011000100000 index is 9 and K is 6
+pr is 0.131387 PI is 0.3
+ii is 10 combination is 0001000100000 and count is 221
+list 1 unique val 62
+test pr before if list 1 0.226277
+List 1 pr -> 0.226277
+list 2 unique val 44
+test pr before if list 2 0.453608
+List 2 -> pr 0.226277
+ to be removed comb is 0001000100000 index is 10 and K is 6
+pr is 0.226277 PI is 0.3
+ii is 11 combination is 1000100100000 and count is 14628
+list 1 2D unique val 104
+total_instances 522 pos 12
+test pr before if list 1 2d 0.199234
+list 1 2D unique val 294
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.210904
+List 1 pr -> 0.199234
+list 2 unique val 55
+test pr before if list 2 0.56701
+List 2 -> pr 0.199234
+ to be removed comb is 1000100100000 index is 11 and K is 6
+pr is 0.199234 PI is 0.3
+ii is 12 combination is 1100100100000 and count is 112427
+list 1 2D unique val 79
+total_instances 522 pos 12
+test pr before if list 1 2d 0.151341
+list 1 2D unique val 47
+total_instances 334 pos 11
+test pr before if list 1 2d 0.140719
+list 1 2D unique val 256
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.183644
+List 1 pr -> 0.140719
+list 2 unique val 43
+test pr before if list 2 0.443299
+List 2 -> pr 0.140719
+ to be removed comb is 1100100100000 index is 12 and K is 6
+pr is 0.140719 PI is 0.3
+ii is 13 combination is 0100100100000 and count is 7478
+list 1 2D unique val 62
+total_instances 334 pos 11
+test pr before if list 1 2d 0.185629
+list 1 2D unique val 311
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.223099
+List 1 pr -> 0.185629
+list 2 unique val 58
+test pr before if list 2 0.597938
+List 2 -> pr 0.185629
+ to be removed comb is 0100100100000 index is 13 and K is 6
+pr is 0.185629 PI is 0.3
+ii is 14 combination is 0110100100000 and count is 177169
+list 1 2D unique val 41
+total_instances 334 pos 11
+test pr before if list 1 2d 0.122754
+list 1 2D unique val 81
+total_instances 397 pos 10
+test pr before if list 1 2d 0.20403
+list 1 2D unique val 235
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.16858
+List 1 pr -> 0.122754
+list 2 unique val 38
+test pr before if list 2 0.391753
+List 2 -> pr 0.122754
+ to be removed comb is 0110100100000 index is 14 and K is 6
+pr is 0.122754 PI is 0.3
+ii is 15 combination is 0010100100000 and count is 20748
+list 1 2D unique val 88
+total_instances 397 pos 10
+test pr before if list 1 2d 0.221662
+list 1 2D unique val 258
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.185079
+List 1 pr -> 0.185079
+list 2 unique val 45
+test pr before if list 2 0.463918
+List 2 -> pr 0.185079
+ to be removed comb is 0010100100000 index is 15 and K is 6
+pr is 0.185079 PI is 0.3
+ii is 16 combination is 1001100100000 and count is 143871
+list 1 2D unique val 76
+total_instances 522 pos 12
+test pr before if list 1 2d 0.145594
+list 1 2D unique val 50
+total_instances 274 pos 9
+test pr before if list 1 2d 0.182482
+list 1 2D unique val 227
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.162841
+List 1 pr -> 0.145594
+list 2 unique val 36
+test pr before if list 2 0.371134
+List 2 -> pr 0.145594
+ to be removed comb is 1001100100000 index is 16 and K is 6
+pr is 0.145594 PI is 0.3
+ii is 17 combination is 0101100100000 and count is 71150
+list 1 2D unique val 43
+total_instances 334 pos 11
+test pr before if list 1 2d 0.128743
+list 1 2D unique val 52
+total_instances 274 pos 9
+test pr before if list 1 2d 0.189781
+list 1 2D unique val 240
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.172166
+List 1 pr -> 0.128743
+list 2 unique val 37
+test pr before if list 2 0.381443
+List 2 -> pr 0.128743
+ to be removed comb is 0101100100000 index is 17 and K is 6
+pr is 0.128743 PI is 0.3
+ii is 18 combination is 0111100100000 and count is 1855086
+list 1 2D unique val 33
+total_instances 334 pos 11
+test pr before if list 1 2d 0.0988024
+list 1 2D unique val 75
+total_instances 397 pos 10
+test pr before if list 1 2d 0.188917
+list 1 2D unique val 33
+total_instances 274 pos 9
+test pr before if list 1 2d 0.120438
+list 1 2D unique val 203
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.145624
+List 1 pr -> 0.0988024
+list 2 unique val 29
+test pr before if list 2 0.298969
+List 2 -> pr 0.0988024
+ to be removed comb is 0111100100000 index is 18 and K is 6
+pr is 0.0988024 PI is 0.3
+ii is 19 combination is 0011100100000 and count is 213704
+list 1 2D unique val 78
+total_instances 397 pos 10
+test pr before if list 1 2d 0.196474
+list 1 2D unique val 35
+total_instances 274 pos 9
+test pr before if list 1 2d 0.127737
+list 1 2D unique val 208
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.149211
+List 1 pr -> 0.127737
+list 2 unique val 31
+test pr before if list 2 0.319588
+List 2 -> pr 0.127737
+ to be removed comb is 0011100100000 index is 19 and K is 6
+pr is 0.127737 PI is 0.3
+ii is 20 combination is 0001100100000 and count is 9822
+list 1 2D unique val 55
+total_instances 274 pos 9
+test pr before if list 1 2d 0.20073
+list 1 2D unique val 250
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.17934
+List 1 pr -> 0.17934
+list 2 unique val 40
+test pr before if list 2 0.412371
+List 2 -> pr 0.17934
+ to be removed comb is 0001100100000 index is 20 and K is 6
+pr is 0.17934 PI is 0.3
+ii is 21 combination is 0000100100000 and count is 1323
+list 1 unique val 386
+test pr before if list 1 0.276901
+List 1 pr -> 0.276901
+list 2 unique val 80
+test pr before if list 2 0.824742
+List 2 -> pr 0.276901
+ to be removed comb is 0000100100000 index is 21 and K is 6
+pr is 0.276901 PI is 0.3
+ii is 22 combination is 0100010100000 and count is 2647
+list 1 2D unique val 40
+total_instances 334 pos 11
+test pr before if list 1 2d 0.11976
+list 1 2D unique val 72
+total_instances 417 pos 7
+test pr before if list 1 2d 0.172662
+List 1 pr -> 0.11976
+list 2 unique val 27
+test pr before if list 2 0.278351
+List 2 -> pr 0.11976
+ to be removed comb is 0100010100000 index is 22 and K is 6
+pr is 0.11976 PI is 0.3
+ii is 23 combination is 0110010100000 and count is 82501
+list 1 2D unique val 32
+total_instances 334 pos 11
+test pr before if list 1 2d 0.0958084
+list 1 2D unique val 71
+total_instances 397 pos 10
+test pr before if list 1 2d 0.178841
+list 1 2D unique val 62
+total_instances 417 pos 7
+test pr before if list 1 2d 0.148681
+List 1 pr -> 0.0958084
+list 2 unique val 19
+test pr before if list 2 0.195876
+List 2 -> pr 0.0958084
+ to be removed comb is 0110010100000 index is 23 and K is 6
+pr is 0.0958084 PI is 0.3
+ii is 24 combination is 0010010100000 and count is 8895
+list 1 2D unique val 77
+total_instances 397 pos 10
+test pr before if list 1 2d 0.193955
+list 1 2D unique val 68
+total_instances 417 pos 7
+test pr before if list 1 2d 0.16307
+List 1 pr -> 0.16307
+list 2 unique val 24
+test pr before if list 2 0.247423
+List 2 -> pr 0.16307
+ to be removed comb is 0010010100000 index is 24 and K is 6
+pr is 0.16307 PI is 0.3
+ii is 25 combination is 0101010100000 and count is 27060
+list 1 2D unique val 35
+total_instances 334 pos 11
+test pr before if list 1 2d 0.10479
+list 1 2D unique val 34
+total_instances 274 pos 9
+test pr before if list 1 2d 0.124088
+list 1 2D unique val 59
+total_instances 417 pos 7
+test pr before if list 1 2d 0.141487
+List 1 pr -> 0.10479
+list 2 unique val 23
+test pr before if list 2 0.237113
+List 2 -> pr 0.10479
+ to be removed comb is 0101010100000 index is 25 and K is 6
+pr is 0.10479 PI is 0.3
+ii is 26 combination is 0011010100000 and count is 94774
+list 1 2D unique val 74
+total_instances 397 pos 10
+test pr before if list 1 2d 0.186398
+list 1 2D unique val 29
+total_instances 274 pos 9
+test pr before if list 1 2d 0.105839
+list 1 2D unique val 56
+total_instances 417 pos 7
+test pr before if list 1 2d 0.134293
+List 1 pr -> 0.105839
+list 2 unique val 20
+test pr before if list 2 0.206186
+List 2 -> pr 0.105839
+ to be removed comb is 0011010100000 index is 26 and K is 6
+pr is 0.105839 PI is 0.3
+ii is 27 combination is 0001010100000 and count is 3241
+list 1 2D unique val 36
+total_instances 274 pos 9
+test pr before if list 1 2d 0.131387
+list 1 2D unique val 61
+total_instances 417 pos 7
+test pr before if list 1 2d 0.146283
+List 1 pr -> 0.131387
+list 2 unique val 25
+test pr before if list 2 0.257732
+List 2 -> pr 0.131387
+ to be removed comb is 0001010100000 index is 27 and K is 6
+pr is 0.131387 PI is 0.3
+ii is 28 combination is 0100110100000 and count is 152412
+list 1 2D unique val 38
+total_instances 334 pos 11
+test pr before if list 1 2d 0.113772
+list 1 2D unique val 202
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.144907
+list 1 2D unique val 71
+total_instances 417 pos 7
+test pr before if list 1 2d 0.170264
+List 1 pr -> 0.113772
+list 2 unique val 26
+test pr before if list 2 0.268041
+List 2 -> pr 0.113772
+ to be removed comb is 0100110100000 index is 28 and K is 6
+pr is 0.113772 PI is 0.3
+ii is 29 combination is 0010110100000 and count is 529974
+list 1 2D unique val 75
+total_instances 397 pos 10
+test pr before if list 1 2d 0.188917
+list 1 2D unique val 178
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.12769
+list 1 2D unique val 67
+total_instances 417 pos 7
+test pr before if list 1 2d 0.160671
+List 1 pr -> 0.12769
+list 2 unique val 23
+test pr before if list 2 0.237113
+List 2 -> pr 0.12769
+ to be removed comb is 0010110100000 index is 29 and K is 6
+pr is 0.12769 PI is 0.3
+ii is 30 combination is 0001110100000 and count is 190743
+list 1 2D unique val 34
+total_instances 274 pos 9
+test pr before if list 1 2d 0.124088
+list 1 2D unique val 178
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.12769
+list 1 2D unique val 59
+total_instances 417 pos 7
+test pr before if list 1 2d 0.141487
+List 1 pr -> 0.124088
+list 2 unique val 23
+test pr before if list 2 0.237113
+List 2 -> pr 0.124088
+ to be removed comb is 0001110100000 index is 30 and K is 6
+pr is 0.124088 PI is 0.3
+ii is 31 combination is 0000110100000 and count is 18467
+list 1 2D unique val 239
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.171449
+list 1 2D unique val 83
+total_instances 417 pos 7
+test pr before if list 1 2d 0.199041
+List 1 pr -> 0.171449
+list 2 unique val 35
+test pr before if list 2 0.360825
+List 2 -> pr 0.171449
+ to be removed comb is 0000110100000 index is 31 and K is 6
+pr is 0.171449 PI is 0.3
+ii is 32 combination is 0000010100000 and count is 356
+list 1 unique val 86
+test pr before if list 1 0.206235
+List 1 pr -> 0.206235
+list 2 unique val 38
+test pr before if list 2 0.391753
+List 2 -> pr 0.206235
+ to be removed comb is 0000010100000 index is 32 and K is 6
+pr is 0.206235 PI is 0.3
+ii is 33 combination is 0000001100000 and count is 314
+list 1 unique val 49
+test pr before if list 1 0.441441
+List 1 pr -> 0.441441
+list 2 unique val 37
+test pr before if list 2 0.381443
+List 2 -> pr 0.381443
+survivor cmbr is --->  0000001100000
+CMBR MAP before erase 
+1000000100000 1100000100000 0100000100000 1010000100000 0110000100000 0010000100000 1001000100000 0101000100000 0111000100000 0011000100000 0001000100000 1000100100000 1100100100000 0100100100000 0110100100000 0010100100000 1001100100000 0101100100000 0111100100000 0011100100000 0001100100000 0000100100000 0100010100000 0110010100000 0010010100000 0101010100000 0011010100000 0001010100000 0100110100000 0010110100000 0001110100000 0000110100000 0000010100000 0000001100000 
+CMBR MAP after erase 
+0000001100000 
+Layer 6 Built Successfully!!!
+Layer 7 Building ...
+Feature: 1 with feature: (K != 0) 28
+count: 1320
+Size: 1320
+Layer: 0 loc: 0 with feature: 28
+count: 10006
+Size: 10006
+Feature: 5 with feature: (K != 0) 28
+count: 767
+Size: 767
+Layer: 1 loc: 0 with feature: 28
+count: 21742
+Size: 21742
+Layer: 1 loc: 1 with feature: 28
+count: 11286
+Size: 11286
+Feature: 8 with feature: (K != 0) 28
+count: 1353
+Size: 1353
+Layer: 2 loc: 0 with feature: 28
+count: 9104
+Size: 9104
+Layer: 2 loc: 1 with feature: 28
+count: 4735
+Size: 4735
+Layer: 2 loc: 2 with feature: 28
+count: 108077
+Size: 108077
+Layer: 2 loc: 3 with feature: 28
+count: 11559
+Size: 11559
+Feature: 9 with feature: (K != 0) 28
+count: 701
+Size: 701
+Layer: 3 loc: 0 with feature: 28
+count: 48557
+Size: 48557
+Layer: 3 loc: 1 with feature: 28
+count: 424907
+Size: 424907
+Layer: 3 loc: 2 with feature: 28
+count: 24068
+Size: 24068
+Layer: 3 loc: 3 with feature: 28
+count: 592502
+Size: 592502
+Layer: 3 loc: 4 with feature: 28
+count: 63232
+Size: 63232
+Layer: 3 loc: 5 with feature: 28
+count: 424168
+Size: 424168
+Layer: 3 loc: 6 with feature: 28
+count: 205592
+Size: 205592
+Layer: 3 loc: 7 with feature: 28
+count: 6176946
+Size: 6176946
+Layer: 3 loc: 8 with feature: 28
+count: 644198
+Size: 644198
+Layer: 3 loc: 9 with feature: 28
+count: 24406
+Size: 24406
+Feature: 10 with feature: (K != 0) 28
+count: 3660
+Size: 3660
+Layer: 4 loc: 0 with feature: 28
+count: 9821
+Size: 9821
+Layer: 4 loc: 1 with feature: 28
+count: 306662
+Size: 306662
+Layer: 4 loc: 2 with feature: 28
+count: 31532
+Size: 31532
+Layer: 4 loc: 3 with feature: 28
+count: 93000
+Size: 93000
+Layer: 4 loc: 4 with feature: 28
+count: 333957
+Size: 333957
+Layer: 4 loc: 5 with feature: 28
+count: 10082
+Size: 10082
+Layer: 4 loc: 6 with feature: 28
+count: 502568
+Size: 502568
+Layer: 4 loc: 7 with feature: 28
+count: 1844026
+Size: 1844026
+Layer: 4 loc: 8 with feature: 28
+count: 548212
+Size: 548212
+Layer: 4 loc: 9 with feature: 28
+count: 54040
+Size: 54040
+Feature: 14 with feature: (K != 0) 28
+count: 1215
+Size: 1215
+Feature: 20 with feature: (K != 0) 28
+count: 334
+Size: 334
+Layer: 6 loc: 0 with feature: 28
+count: 2235
+Size: 2235
+Feature: 24 with feature: (K != 0) 28
+count: 281
+Size: 281
+CMBR_MAP K is 7 size is 36
+ii is 0 combination is 1000000010000 and count is 1320
+list 1 unique val 198
+test pr before if list 1 0.37931
+List 1 pr -> 0.37931
+list 2 unique val 169
+test pr before if list 2 0.612319
+List 2 -> pr 0.37931
+survivor cmbr is --->  1000000010000
+ii is 1 combination is 1100000010000 and count is 10006
+list 1 2D unique val 149
+total_instances 522 pos 12
+test pr before if list 1 2d 0.285441
+list 1 2D unique val 121
+total_instances 334 pos 11
+test pr before if list 1 2d 0.362275
+List 1 pr -> 0.285441
+list 2 unique val 129
+test pr before if list 2 0.467391
+List 2 -> pr 0.285441
+ to be removed comb is 1100000010000 index is 1 and K is 7
+pr is 0.285441 PI is 0.3
+ii is 2 combination is 0100000010000 and count is 767
+list 1 unique val 165
+test pr before if list 1 0.494012
+List 1 pr -> 0.494012
+list 2 unique val 169
+test pr before if list 2 0.612319
+List 2 -> pr 0.494012
+survivor cmbr is --->  0100000010000
+ii is 3 combination is 1010000010000 and count is 21742
+list 1 2D unique val 127
+total_instances 522 pos 12
+test pr before if list 1 2d 0.243295
+list 1 2D unique val 139
+total_instances 397 pos 10
+test pr before if list 1 2d 0.350126
+List 1 pr -> 0.243295
+list 2 unique val 125
+test pr before if list 2 0.452899
+List 2 -> pr 0.243295
+ to be removed comb is 1010000010000 index is 3 and K is 7
+pr is 0.243295 PI is 0.3
+ii is 4 combination is 0110000010000 and count is 11286
+list 1 2D unique val 117
+total_instances 334 pos 11
+test pr before if list 1 2d 0.350299
+list 1 2D unique val 147
+total_instances 397 pos 10
+test pr before if list 1 2d 0.370277
+List 1 pr -> 0.350299
+list 2 unique val 127
+test pr before if list 2 0.460145
+List 2 -> pr 0.350299
+survivor cmbr is --->  0110000010000
+ii is 5 combination is 0010000010000 and count is 1353
+list 1 unique val 187
+test pr before if list 1 0.471033
+List 1 pr -> 0.471033
+list 2 unique val 162
+test pr before if list 2 0.586957
+List 2 -> pr 0.471033
+survivor cmbr is --->  0010000010000
+ii is 6 combination is 1001000010000 and count is 9104
+list 1 2D unique val 147
+total_instances 522 pos 12
+test pr before if list 1 2d 0.281609
+list 1 2D unique val 103
+total_instances 274 pos 9
+test pr before if list 1 2d 0.375912
+List 1 pr -> 0.281609
+list 2 unique val 130
+test pr before if list 2 0.471014
+List 2 -> pr 0.281609
+ to be removed comb is 1001000010000 index is 6 and K is 7
+pr is 0.281609 PI is 0.3
+ii is 7 combination is 0101000010000 and count is 4735
+list 1 2D unique val 128
+total_instances 334 pos 11
+test pr before if list 1 2d 0.383234
+list 1 2D unique val 116
+total_instances 274 pos 9
+test pr before if list 1 2d 0.423358
+List 1 pr -> 0.383234
+list 2 unique val 130
+test pr before if list 2 0.471014
+List 2 -> pr 0.383234
+survivor cmbr is --->  0101000010000
+ii is 8 combination is 0111000010000 and count is 108077
+list 1 2D unique val 99
+total_instances 334 pos 11
+test pr before if list 1 2d 0.296407
+list 1 2D unique val 127
+total_instances 397 pos 10
+test pr before if list 1 2d 0.319899
+list 1 2D unique val 83
+total_instances 274 pos 9
+test pr before if list 1 2d 0.30292
+List 1 pr -> 0.296407
+list 2 unique val 111
+test pr before if list 2 0.402174
+List 2 -> pr 0.296407
+ to be removed comb is 0111000010000 index is 8 and K is 7
+pr is 0.296407 PI is 0.3
+ii is 9 combination is 0011000010000 and count is 11559
+list 1 2D unique val 139
+total_instances 397 pos 10
+test pr before if list 1 2d 0.350126
+list 1 2D unique val 92
+total_instances 274 pos 9
+test pr before if list 1 2d 0.335766
+List 1 pr -> 0.335766
+list 2 unique val 127
+test pr before if list 2 0.460145
+List 2 -> pr 0.335766
+survivor cmbr is --->  0011000010000
+ii is 10 combination is 0001000010000 and count is 701
+list 1 unique val 140
+test pr before if list 1 0.510949
+List 1 pr -> 0.510949
+list 2 unique val 162
+test pr before if list 2 0.586957
+List 2 -> pr 0.510949
+survivor cmbr is --->  0001000010000
+ii is 11 combination is 1000100010000 and count is 48557
+list 1 2D unique val 190
+total_instances 522 pos 12
+test pr before if list 1 2d 0.363985
+list 1 2D unique val 541
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.388092
+List 1 pr -> 0.363985
+list 2 unique val 161
+test pr before if list 2 0.583333
+List 2 -> pr 0.363985
+survivor cmbr is --->  1000100010000
+ii is 12 combination is 1100100010000 and count is 424907
+list 1 2D unique val 147
+total_instances 522 pos 12
+test pr before if list 1 2d 0.281609
+list 1 2D unique val 118
+total_instances 334 pos 11
+test pr before if list 1 2d 0.353293
+list 1 2D unique val 435
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.312052
+List 1 pr -> 0.281609
+list 2 unique val 127
+test pr before if list 2 0.460145
+List 2 -> pr 0.281609
+ to be removed comb is 1100100010000 index is 12 and K is 7
+pr is 0.281609 PI is 0.3
+ii is 13 combination is 0100100010000 and count is 24068
+list 1 2D unique val 153
+total_instances 334 pos 11
+test pr before if list 1 2d 0.458084
+list 1 2D unique val 519
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.37231
+List 1 pr -> 0.37231
+list 2 unique val 157
+test pr before if list 2 0.568841
+List 2 -> pr 0.37231
+survivor cmbr is --->  0100100010000
+ii is 14 combination is 0110100010000 and count is 592502
+list 1 2D unique val 111
+total_instances 334 pos 11
+test pr before if list 1 2d 0.332335
+list 1 2D unique val 138
+total_instances 397 pos 10
+test pr before if list 1 2d 0.347607
+list 1 2D unique val 387
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.277618
+List 1 pr -> 0.277618
+list 2 unique val 122
+test pr before if list 2 0.442029
+List 2 -> pr 0.277618
+ to be removed comb is 0110100010000 index is 14 and K is 7
+pr is 0.277618 PI is 0.3
+ii is 15 combination is 0010100010000 and count is 63232
+list 1 2D unique val 167
+total_instances 397 pos 10
+test pr before if list 1 2d 0.420655
+list 1 2D unique val 483
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.346485
+List 1 pr -> 0.346485
+list 2 unique val 151
+test pr before if list 2 0.547101
+List 2 -> pr 0.346485
+survivor cmbr is --->  0010100010000
+ii is 16 combination is 1001100010000 and count is 424168
+list 1 2D unique val 146
+total_instances 522 pos 12
+test pr before if list 1 2d 0.279693
+list 1 2D unique val 101
+total_instances 274 pos 9
+test pr before if list 1 2d 0.368613
+list 1 2D unique val 429
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.307747
+List 1 pr -> 0.279693
+list 2 unique val 128
+test pr before if list 2 0.463768
+List 2 -> pr 0.279693
+ to be removed comb is 1001100010000 index is 16 and K is 7
+pr is 0.279693 PI is 0.3
+ii is 17 combination is 0101100010000 and count is 205592
+list 1 2D unique val 124
+total_instances 334 pos 11
+test pr before if list 1 2d 0.371257
+list 1 2D unique val 109
+total_instances 274 pos 9
+test pr before if list 1 2d 0.39781
+list 1 2D unique val 424
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.304161
+List 1 pr -> 0.304161
+list 2 unique val 127
+test pr before if list 2 0.460145
+List 2 -> pr 0.304161
+survivor cmbr is --->  0101100010000
+ii is 18 combination is 0111100010000 and count is 6176946
+list 1 2D unique val 96
+total_instances 334 pos 11
+test pr before if list 1 2d 0.287425
+list 1 2D unique val 122
+total_instances 397 pos 10
+test pr before if list 1 2d 0.307305
+list 1 2D unique val 79
+total_instances 274 pos 9
+test pr before if list 1 2d 0.288321
+list 1 2D unique val 334
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.239598
+List 1 pr -> 0.239598
+list 2 unique val 109
+test pr before if list 2 0.394928
+List 2 -> pr 0.239598
+ to be removed comb is 0111100010000 index is 18 and K is 7
+pr is 0.239598 PI is 0.3
+ii is 19 combination is 0011100010000 and count is 644198
+list 1 2D unique val 133
+total_instances 397 pos 10
+test pr before if list 1 2d 0.335013
+list 1 2D unique val 87
+total_instances 274 pos 9
+test pr before if list 1 2d 0.317518
+list 1 2D unique val 386
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.276901
+List 1 pr -> 0.276901
+list 2 unique val 124
+test pr before if list 2 0.449275
+List 2 -> pr 0.276901
+ to be removed comb is 0011100010000 index is 19 and K is 7
+pr is 0.276901 PI is 0.3
+ii is 20 combination is 0001100010000 and count is 24406
+list 1 2D unique val 124
+total_instances 274 pos 9
+test pr before if list 1 2d 0.452555
+list 1 2D unique val 493
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.353659
+List 1 pr -> 0.353659
+list 2 unique val 152
+test pr before if list 2 0.550725
+List 2 -> pr 0.353659
+survivor cmbr is --->  0001100010000
+ii is 21 combination is 0000100010000 and count is 3660
+list 1 unique val 715
+test pr before if list 1 0.512912
+List 1 pr -> 0.512912
+list 2 unique val 227
+test pr before if list 2 0.822464
+List 2 -> pr 0.512912
+survivor cmbr is --->  0000100010000
+ii is 22 combination is 0100010010000 and count is 9821
+list 1 2D unique val 96
+total_instances 334 pos 11
+test pr before if list 1 2d 0.287425
+list 1 2D unique val 137
+total_instances 417 pos 7
+test pr before if list 1 2d 0.328537
+List 1 pr -> 0.287425
+list 2 unique val 103
+test pr before if list 2 0.373188
+List 2 -> pr 0.287425
+ to be removed comb is 0100010010000 index is 22 and K is 7
+pr is 0.287425 PI is 0.3
+ii is 23 combination is 0110010010000 and count is 306662
+list 1 2D unique val 78
+total_instances 334 pos 11
+test pr before if list 1 2d 0.233533
+list 1 2D unique val 111
+total_instances 397 pos 10
+test pr before if list 1 2d 0.279597
+list 1 2D unique val 115
+total_instances 417 pos 7
+test pr before if list 1 2d 0.275779
+List 1 pr -> 0.233533
+list 2 unique val 87
+test pr before if list 2 0.315217
+List 2 -> pr 0.233533
+ to be removed comb is 0110010010000 index is 23 and K is 7
+pr is 0.233533 PI is 0.3
+ii is 24 combination is 0010010010000 and count is 31532
+list 1 2D unique val 133
+total_instances 397 pos 10
+test pr before if list 1 2d 0.335013
+list 1 2D unique val 137
+total_instances 417 pos 7
+test pr before if list 1 2d 0.328537
+List 1 pr -> 0.328537
+list 2 unique val 104
+test pr before if list 2 0.376812
+List 2 -> pr 0.328537
+survivor cmbr is --->  0010010010000
+ii is 25 combination is 0101010010000 and count is 93000
+list 1 2D unique val 86
+total_instances 334 pos 11
+test pr before if list 1 2d 0.257485
+list 1 2D unique val 78
+total_instances 274 pos 9
+test pr before if list 1 2d 0.284672
+list 1 2D unique val 112
+total_instances 417 pos 7
+test pr before if list 1 2d 0.268585
+List 1 pr -> 0.257485
+list 2 unique val 93
+test pr before if list 2 0.336957
+List 2 -> pr 0.257485
+ to be removed comb is 0101010010000 index is 25 and K is 7
+pr is 0.257485 PI is 0.3
+ii is 26 combination is 0011010010000 and count is 333957
+list 1 2D unique val 111
+total_instances 397 pos 10
+test pr before if list 1 2d 0.279597
+list 1 2D unique val 68
+total_instances 274 pos 9
+test pr before if list 1 2d 0.248175
+list 1 2D unique val 105
+total_instances 417 pos 7
+test pr before if list 1 2d 0.251799
+List 1 pr -> 0.248175
+list 2 unique val 92
+test pr before if list 2 0.333333
+List 2 -> pr 0.248175
+ to be removed comb is 0011010010000 index is 26 and K is 7
+pr is 0.248175 PI is 0.3
+ii is 27 combination is 0001010010000 and count is 10082
+list 1 2D unique val 88
+total_instances 274 pos 9
+test pr before if list 1 2d 0.321168
+list 1 2D unique val 134
+total_instances 417 pos 7
+test pr before if list 1 2d 0.321343
+List 1 pr -> 0.321168
+list 2 unique val 111
+test pr before if list 2 0.402174
+List 2 -> pr 0.321168
+survivor cmbr is --->  0001010010000
+ii is 28 combination is 0100110010000 and count is 502568
+list 1 2D unique val 92
+total_instances 334 pos 11
+test pr before if list 1 2d 0.275449
+list 1 2D unique val 334
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.239598
+list 1 2D unique val 131
+total_instances 417 pos 7
+test pr before if list 1 2d 0.314149
+List 1 pr -> 0.239598
+list 2 unique val 99
+test pr before if list 2 0.358696
+List 2 -> pr 0.239598
+ to be removed comb is 0100110010000 index is 28 and K is 7
+pr is 0.239598 PI is 0.3
+ii is 29 combination is 0010110010000 and count is 1844026
+list 1 2D unique val 123
+total_instances 397 pos 10
+test pr before if list 1 2d 0.309824
+list 1 2D unique val 312
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.223816
+list 1 2D unique val 130
+total_instances 417 pos 7
+test pr before if list 1 2d 0.311751
+List 1 pr -> 0.223816
+list 2 unique val 100
+test pr before if list 2 0.362319
+List 2 -> pr 0.223816
+ to be removed comb is 0010110010000 index is 29 and K is 7
+pr is 0.223816 PI is 0.3
+ii is 30 combination is 0001110010000 and count is 548212
+list 1 2D unique val 80
+total_instances 274 pos 9
+test pr before if list 1 2d 0.291971
+list 1 2D unique val 335
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.240316
+list 1 2D unique val 129
+total_instances 417 pos 7
+test pr before if list 1 2d 0.309353
+List 1 pr -> 0.240316
+list 2 unique val 107
+test pr before if list 2 0.387681
+List 2 -> pr 0.240316
+ to be removed comb is 0001110010000 index is 30 and K is 7
+pr is 0.240316 PI is 0.3
+ii is 31 combination is 0000110010000 and count is 54040
+list 1 2D unique val 414
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.296987
+list 1 2D unique val 174
+total_instances 417 pos 7
+test pr before if list 1 2d 0.417266
+List 1 pr -> 0.296987
+list 2 unique val 129
+test pr before if list 2 0.467391
+List 2 -> pr 0.296987
+ to be removed comb is 0000110010000 index is 31 and K is 7
+pr is 0.296987 PI is 0.3
+ii is 32 combination is 0000010010000 and count is 1215
+list 1 unique val 190
+test pr before if list 1 0.455635
+List 1 pr -> 0.455635
+list 2 unique val 139
+test pr before if list 2 0.503623
+List 2 -> pr 0.455635
+survivor cmbr is --->  0000010010000
+ii is 33 combination is 0000001010000 and count is 334
+list 1 unique val 59
+test pr before if list 1 0.531532
+List 1 pr -> 0.531532
+list 2 unique val 78
+test pr before if list 2 0.282609
+List 2 -> pr 0.282609
+ to be removed comb is 0000001010000 index is 33 and K is 7
+pr is 0.282609 PI is 0.3
+ii is 34 combination is 0000001110000 and count is 2235
+list 1 2D unique val 37
+total_instances 111 pos 6
+test pr before if list 1 2d 0.333333
+list 1 2D unique val 31
+total_instances 97 pos 5
+test pr before if list 1 2d 0.319588
+List 1 pr -> 0.319588
+list 2 unique val 35
+test pr before if list 2 0.126812
+List 2 -> pr 0.126812
+ to be removed comb is 0000001110000 index is 34 and K is 7
+pr is 0.126812 PI is 0.3
+ii is 35 combination is 0000000110000 and count is 281
+list 1 unique val 53
+test pr before if list 1 0.546392
+List 1 pr -> 0.546392
+list 2 unique val 80
+test pr before if list 2 0.289855
+List 2 -> pr 0.289855
+ to be removed comb is 0000000110000 index is 35 and K is 7
+pr is 0.289855 PI is 0.3
+CMBR MAP before erase 
+1000000010000 1100000010000 0100000010000 1010000010000 0110000010000 0010000010000 1001000010000 0101000010000 0111000010000 0011000010000 0001000010000 1000100010000 1100100010000 0100100010000 0110100010000 0010100010000 1001100010000 0101100010000 0111100010000 0011100010000 0001100010000 0000100010000 0100010010000 0110010010000 0010010010000 0101010010000 0011010010000 0001010010000 0100110010000 0010110010000 0001110010000 0000110010000 0000010010000 0000001010000 0000001110000 0000000110000 
+CMBR MAP after erase 
+1000000010000 0100000010000 0110000010000 0010000010000 0101000010000 0011000010000 0001000010000 1000100010000 0100100010000 0010100010000 0101100010000 0001100010000 0000100010000 0010010010000 0001010010000 0000010010000 
+Layer 7 Built Successfully!!!
+Layer 8 Building ...
+Feature: 1 with feature: (K != 0) 39
+count: 1041
+Size: 1041
+Layer: 0 loc: 0 with feature: 39
+count: 7907
+Size: 7907
+Feature: 5 with feature: (K != 0) 39
+count: 484
+Size: 484
+Layer: 1 loc: 0 with feature: 39
+count: 6111
+Size: 6111
+Layer: 1 loc: 1 with feature: 39
+count: 2929
+Size: 2929
+Feature: 8 with feature: (K != 0) 39
+count: 355
+Size: 355
+Layer: 2 loc: 0 with feature: 39
+count: 6142
+Size: 6142
+Layer: 2 loc: 1 with feature: 39
+count: 2743
+Size: 2743
+Layer: 2 loc: 2 with feature: 39
+count: 27767
+Size: 27767
+Layer: 2 loc: 3 with feature: 39
+count: 2956
+Size: 2956
+Feature: 9 with feature: (K != 0) 39
+count: 488
+Size: 488
+Layer: 3 loc: 0 with feature: 39
+count: 29654
+Size: 29654
+Layer: 3 loc: 1 with feature: 39
+count: 257519
+Size: 257519
+Layer: 3 loc: 2 with feature: 39
+count: 12725
+Size: 12725
+Layer: 3 loc: 3 with feature: 39
+count: 149678
+Size: 149678
+Layer: 3 loc: 4 with feature: 39
+count: 15708
+Size: 15708
+Layer: 3 loc: 5 with feature: 39
+count: 207056
+Size: 207056
+Layer: 3 loc: 6 with feature: 39
+count: 89572
+Size: 89572
+Layer: 3 loc: 7 with feature: 39
+count: 1551760
+Size: 1551760
+Layer: 3 loc: 8 with feature: 39
+count: 159689
+Size: 159689
+Layer: 3 loc: 9 with feature: 39
+count: 11606
+Size: 11606
+Feature: 10 with feature: (K != 0) 39
+count: 2074
+Size: 2074
+Layer: 4 loc: 0 with feature: 39
+count: 3991
+Size: 3991
+Layer: 4 loc: 1 with feature: 39
+count: 77108
+Size: 77108
+Layer: 4 loc: 2 with feature: 39
+count: 7972
+Size: 7972
+Layer: 4 loc: 3 with feature: 39
+count: 32052
+Size: 32052
+Layer: 4 loc: 4 with feature: 39
+count: 83279
+Size: 83279
+Layer: 4 loc: 5 with feature: 39
+count: 3541
+Size: 3541
+Layer: 4 loc: 6 with feature: 39
+count: 166533
+Size: 166533
+Layer: 4 loc: 7 with feature: 39
+count: 458262
+Size: 458262
+Layer: 4 loc: 8 with feature: 39
+count: 161145
+Size: 161145
+Layer: 4 loc: 9 with feature: 39
+count: 18034
+Size: 18034
+Feature: 14 with feature: (K != 0) 39
+count: 500
+Size: 500
+Feature: 20 with feature: (K != 0) 39
+count: 302
+Size: 302
+Layer: 6 loc: 0 with feature: 39
+count: 315
+Size: 315
+Feature: 24 with feature: (K != 0) 39
+count: 67
+Size: 67
+Layer: 7 loc: 0 with feature: 39
+count: 14906
+Size: 14906
+Layer: 7 loc: 1 with feature: 39
+count: 6257
+Size: 6257
+Layer: 7 loc: 2 with feature: 39
+count: 52687
+Size: 52687
+Layer: 7 loc: 3 with feature: 39
+count: 5512
+Size: 5512
+Layer: 7 loc: 4 with feature: 39
+count: 41579
+Size: 41579
+Layer: 7 loc: 5 with feature: 39
+count: 54031
+Size: 54031
+Layer: 7 loc: 6 with feature: 39
+count: 5123
+Size: 5123
+Layer: 7 loc: 7 with feature: 39
+count: 490700
+Size: 490700
+Layer: 7 loc: 8 with feature: 39
+count: 205302
+Size: 205302
+Layer: 7 loc: 9 with feature: 39
+count: 293367
+Size: 293367
+Layer: 7 loc: 10 with feature: 39
+count: 1538096
+Size: 1538096
+Layer: 7 loc: 11 with feature: 39
+count: 170862
+Size: 170862
+Layer: 7 loc: 12 with feature: 39
+count: 24033
+Size: 24033
+Layer: 7 loc: 13 with feature: 39
+count: 152059
+Size: 152059
+Layer: 7 loc: 14 with feature: 39
+count: 61492
+Size: 61492
+Layer: 7 loc: 15 with feature: 39
+count: 7459
+Size: 7459
+Feature: 28 with feature: (K != 0) 39
+count: 877
+Size: 877
+CMBR_MAP K is 8 size is 53
+ii is 0 combination is 1000000001000 and count is 1041
+list 1 unique val 89
+test pr before if list 1 0.170498
+List 1 pr -> 0.170498
+list 2 unique val 129
+test pr before if list 2 0.902098
+List 2 -> pr 0.170498
+ to be removed comb is 1000000001000 index is 0 and K is 8
+pr is 0.170498 PI is 0.3
+ii is 1 combination is 1100000001000 and count is 7907
+list 1 2D unique val 77
+total_instances 522 pos 12
+test pr before if list 1 2d 0.14751
+list 1 2D unique val 43
+total_instances 334 pos 11
+test pr before if list 1 2d 0.128743
+List 1 pr -> 0.128743
+list 2 unique val 107
+test pr before if list 2 0.748252
+List 2 -> pr 0.128743
+ to be removed comb is 1100000001000 index is 1 and K is 8
+pr is 0.128743 PI is 0.3
+ii is 2 combination is 0100000001000 and count is 484
+list 1 unique val 48
+test pr before if list 1 0.143713
+List 1 pr -> 0.143713
+list 2 unique val 113
+test pr before if list 2 0.79021
+List 2 -> pr 0.143713
+ to be removed comb is 0100000001000 index is 2 and K is 8
+pr is 0.143713 PI is 0.3
+ii is 3 combination is 1010000001000 and count is 6111
+list 1 2D unique val 67
+total_instances 522 pos 12
+test pr before if list 1 2d 0.128352
+list 1 2D unique val 78
+total_instances 397 pos 10
+test pr before if list 1 2d 0.196474
+List 1 pr -> 0.128352
+list 2 unique val 67
+test pr before if list 2 0.468531
+List 2 -> pr 0.128352
+ to be removed comb is 1010000001000 index is 3 and K is 8
+pr is 0.128352 PI is 0.3
+ii is 4 combination is 0110000001000 and count is 2929
+list 1 2D unique val 43
+total_instances 334 pos 11
+test pr before if list 1 2d 0.128743
+list 1 2D unique val 77
+total_instances 397 pos 10
+test pr before if list 1 2d 0.193955
+List 1 pr -> 0.128743
+list 2 unique val 70
+test pr before if list 2 0.48951
+List 2 -> pr 0.128743
+ to be removed comb is 0110000001000 index is 4 and K is 8
+pr is 0.128743 PI is 0.3
+ii is 5 combination is 0010000001000 and count is 355
+list 1 unique val 84
+test pr before if list 1 0.211587
+List 1 pr -> 0.211587
+list 2 unique val 74
+test pr before if list 2 0.517483
+List 2 -> pr 0.211587
+ to be removed comb is 0010000001000 index is 5 and K is 8
+pr is 0.211587 PI is 0.3
+ii is 6 combination is 1001000001000 and count is 6142
+list 1 2D unique val 71
+total_instances 522 pos 12
+test pr before if list 1 2d 0.136015
+list 1 2D unique val 43
+total_instances 274 pos 9
+test pr before if list 1 2d 0.156934
+List 1 pr -> 0.136015
+list 2 unique val 102
+test pr before if list 2 0.713287
+List 2 -> pr 0.136015
+ to be removed comb is 1001000001000 index is 6 and K is 8
+pr is 0.136015 PI is 0.3
+ii is 7 combination is 0101000001000 and count is 2743
+list 1 2D unique val 42
+total_instances 334 pos 11
+test pr before if list 1 2d 0.125749
+list 1 2D unique val 43
+total_instances 274 pos 9
+test pr before if list 1 2d 0.156934
+List 1 pr -> 0.125749
+list 2 unique val 103
+test pr before if list 2 0.72028
+List 2 -> pr 0.125749
+ to be removed comb is 0101000001000 index is 7 and K is 8
+pr is 0.125749 PI is 0.3
+ii is 8 combination is 0111000001000 and count is 27767
+list 1 2D unique val 39
+total_instances 334 pos 11
+test pr before if list 1 2d 0.116766
+list 1 2D unique val 72
+total_instances 397 pos 10
+test pr before if list 1 2d 0.18136
+list 1 2D unique val 37
+total_instances 274 pos 9
+test pr before if list 1 2d 0.135036
+List 1 pr -> 0.116766
+list 2 unique val 63
+test pr before if list 2 0.440559
+List 2 -> pr 0.116766
+ to be removed comb is 0111000001000 index is 8 and K is 8
+pr is 0.116766 PI is 0.3
+ii is 9 combination is 0011000001000 and count is 2956
+list 1 2D unique val 76
+total_instances 397 pos 10
+test pr before if list 1 2d 0.191436
+list 1 2D unique val 38
+total_instances 274 pos 9
+test pr before if list 1 2d 0.138686
+List 1 pr -> 0.138686
+list 2 unique val 65
+test pr before if list 2 0.454545
+List 2 -> pr 0.138686
+ to be removed comb is 0011000001000 index is 9 and K is 8
+pr is 0.138686 PI is 0.3
+ii is 10 combination is 0001000001000 and count is 488
+list 1 unique val 45
+test pr before if list 1 0.164234
+List 1 pr -> 0.164234
+list 2 unique val 106
+test pr before if list 2 0.741259
+List 2 -> pr 0.164234
+ to be removed comb is 0001000001000 index is 10 and K is 8
+pr is 0.164234 PI is 0.3
+ii is 11 combination is 1000100001000 and count is 29654
+list 1 2D unique val 88
+total_instances 522 pos 12
+test pr before if list 1 2d 0.168582
+list 1 2D unique val 239
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.171449
+List 1 pr -> 0.168582
+list 2 unique val 128
+test pr before if list 2 0.895105
+List 2 -> pr 0.168582
+ to be removed comb is 1000100001000 index is 11 and K is 8
+pr is 0.168582 PI is 0.3
+ii is 12 combination is 1100100001000 and count is 257519
+list 1 2D unique val 77
+total_instances 522 pos 12
+test pr before if list 1 2d 0.14751
+list 1 2D unique val 43
+total_instances 334 pos 11
+test pr before if list 1 2d 0.128743
+list 1 2D unique val 206
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.147776
+List 1 pr -> 0.128743
+list 2 unique val 107
+test pr before if list 2 0.748252
+List 2 -> pr 0.128743
+ to be removed comb is 1100100001000 index is 12 and K is 8
+pr is 0.128743 PI is 0.3
+ii is 13 combination is 0100100001000 and count is 12725
+list 1 2D unique val 48
+total_instances 334 pos 11
+test pr before if list 1 2d 0.143713
+list 1 2D unique val 214
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.153515
+List 1 pr -> 0.143713
+list 2 unique val 113
+test pr before if list 2 0.79021
+List 2 -> pr 0.143713
+ to be removed comb is 0100100001000 index is 13 and K is 8
+pr is 0.143713 PI is 0.3
+ii is 14 combination is 0110100001000 and count is 149678
+list 1 2D unique val 43
+total_instances 334 pos 11
+test pr before if list 1 2d 0.128743
+list 1 2D unique val 77
+total_instances 397 pos 10
+test pr before if list 1 2d 0.193955
+list 1 2D unique val 188
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.134864
+List 1 pr -> 0.128743
+list 2 unique val 70
+test pr before if list 2 0.48951
+List 2 -> pr 0.128743
+ to be removed comb is 0110100001000 index is 14 and K is 8
+pr is 0.128743 PI is 0.3
+ii is 15 combination is 0010100001000 and count is 15708
+list 1 2D unique val 84
+total_instances 397 pos 10
+test pr before if list 1 2d 0.211587
+list 1 2D unique val 194
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.139168
+List 1 pr -> 0.139168
+list 2 unique val 74
+test pr before if list 2 0.517483
+List 2 -> pr 0.139168
+ to be removed comb is 0010100001000 index is 15 and K is 8
+pr is 0.139168 PI is 0.3
+ii is 16 combination is 1001100001000 and count is 207056
+list 1 2D unique val 71
+total_instances 522 pos 12
+test pr before if list 1 2d 0.136015
+list 1 2D unique val 43
+total_instances 274 pos 9
+test pr before if list 1 2d 0.156934
+list 1 2D unique val 196
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.140603
+List 1 pr -> 0.136015
+list 2 unique val 102
+test pr before if list 2 0.713287
+List 2 -> pr 0.136015
+ to be removed comb is 1001100001000 index is 16 and K is 8
+pr is 0.136015 PI is 0.3
+ii is 17 combination is 0101100001000 and count is 89572
+list 1 2D unique val 42
+total_instances 334 pos 11
+test pr before if list 1 2d 0.125749
+list 1 2D unique val 43
+total_instances 274 pos 9
+test pr before if list 1 2d 0.156934
+list 1 2D unique val 200
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.143472
+List 1 pr -> 0.125749
+list 2 unique val 103
+test pr before if list 2 0.72028
+List 2 -> pr 0.125749
+ to be removed comb is 0101100001000 index is 17 and K is 8
+pr is 0.125749 PI is 0.3
+ii is 18 combination is 0111100001000 and count is 1551760
+list 1 2D unique val 39
+total_instances 334 pos 11
+test pr before if list 1 2d 0.116766
+list 1 2D unique val 72
+total_instances 397 pos 10
+test pr before if list 1 2d 0.18136
+list 1 2D unique val 37
+total_instances 274 pos 9
+test pr before if list 1 2d 0.135036
+list 1 2D unique val 178
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.12769
+List 1 pr -> 0.116766
+list 2 unique val 63
+test pr before if list 2 0.440559
+List 2 -> pr 0.116766
+ to be removed comb is 0111100001000 index is 18 and K is 8
+pr is 0.116766 PI is 0.3
+ii is 19 combination is 0011100001000 and count is 159689
+list 1 2D unique val 76
+total_instances 397 pos 10
+test pr before if list 1 2d 0.191436
+list 1 2D unique val 38
+total_instances 274 pos 9
+test pr before if list 1 2d 0.138686
+list 1 2D unique val 180
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.129125
+List 1 pr -> 0.129125
+list 2 unique val 65
+test pr before if list 2 0.454545
+List 2 -> pr 0.129125
+ to be removed comb is 0011100001000 index is 19 and K is 8
+pr is 0.129125 PI is 0.3
+ii is 20 combination is 0001100001000 and count is 11606
+list 1 2D unique val 45
+total_instances 274 pos 9
+test pr before if list 1 2d 0.164234
+list 1 2D unique val 204
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.146341
+List 1 pr -> 0.146341
+list 2 unique val 106
+test pr before if list 2 0.741259
+List 2 -> pr 0.146341
+ to be removed comb is 0001100001000 index is 20 and K is 8
+pr is 0.146341 PI is 0.3
+ii is 21 combination is 0000100001000 and count is 2074
+list 1 unique val 250
+test pr before if list 1 0.17934
+List 1 pr -> 0.17934
+list 2 unique val 136
+test pr before if list 2 0.951049
+List 2 -> pr 0.17934
+ to be removed comb is 0000100001000 index is 21 and K is 8
+pr is 0.17934 PI is 0.3
+ii is 22 combination is 0100010001000 and count is 3991
+list 1 2D unique val 40
+total_instances 334 pos 11
+test pr before if list 1 2d 0.11976
+list 1 2D unique val 71
+total_instances 417 pos 7
+test pr before if list 1 2d 0.170264
+List 1 pr -> 0.11976
+list 2 unique val 72
+test pr before if list 2 0.503497
+List 2 -> pr 0.11976
+ to be removed comb is 0100010001000 index is 22 and K is 8
+pr is 0.11976 PI is 0.3
+ii is 23 combination is 0110010001000 and count is 77108
+list 1 2D unique val 38
+total_instances 334 pos 11
+test pr before if list 1 2d 0.113772
+list 1 2D unique val 75
+total_instances 397 pos 10
+test pr before if list 1 2d 0.188917
+list 1 2D unique val 70
+total_instances 417 pos 7
+test pr before if list 1 2d 0.167866
+List 1 pr -> 0.113772
+list 2 unique val 63
+test pr before if list 2 0.440559
+List 2 -> pr 0.113772
+ to be removed comb is 0110010001000 index is 23 and K is 8
+pr is 0.113772 PI is 0.3
+ii is 24 combination is 0010010001000 and count is 7972
+list 1 2D unique val 82
+total_instances 397 pos 10
+test pr before if list 1 2d 0.206549
+list 1 2D unique val 77
+total_instances 417 pos 7
+test pr before if list 1 2d 0.184652
+List 1 pr -> 0.184652
+list 2 unique val 67
+test pr before if list 2 0.468531
+List 2 -> pr 0.184652
+ to be removed comb is 0010010001000 index is 24 and K is 8
+pr is 0.184652 PI is 0.3
+ii is 25 combination is 0101010001000 and count is 32052
+list 1 2D unique val 38
+total_instances 334 pos 11
+test pr before if list 1 2d 0.113772
+list 1 2D unique val 38
+total_instances 274 pos 9
+test pr before if list 1 2d 0.138686
+list 1 2D unique val 65
+total_instances 417 pos 7
+test pr before if list 1 2d 0.155875
+List 1 pr -> 0.113772
+list 2 unique val 69
+test pr before if list 2 0.482517
+List 2 -> pr 0.113772
+ to be removed comb is 0101010001000 index is 25 and K is 8
+pr is 0.113772 PI is 0.3
+ii is 26 combination is 0011010001000 and count is 83279
+list 1 2D unique val 75
+total_instances 397 pos 10
+test pr before if list 1 2d 0.188917
+list 1 2D unique val 37
+total_instances 274 pos 9
+test pr before if list 1 2d 0.135036
+list 1 2D unique val 66
+total_instances 417 pos 7
+test pr before if list 1 2d 0.158273
+List 1 pr -> 0.135036
+list 2 unique val 62
+test pr before if list 2 0.433566
+List 2 -> pr 0.135036
+ to be removed comb is 0011010001000 index is 26 and K is 8
+pr is 0.135036 PI is 0.3
+ii is 27 combination is 0001010001000 and count is 3541
+list 1 2D unique val 39
+total_instances 274 pos 9
+test pr before if list 1 2d 0.142336
+list 1 2D unique val 67
+total_instances 417 pos 7
+test pr before if list 1 2d 0.160671
+List 1 pr -> 0.142336
+list 2 unique val 71
+test pr before if list 2 0.496503
+List 2 -> pr 0.142336
+ to be removed comb is 0001010001000 index is 27 and K is 8
+pr is 0.142336 PI is 0.3
+ii is 28 combination is 0100110001000 and count is 166533
+list 1 2D unique val 40
+total_instances 334 pos 11
+test pr before if list 1 2d 0.11976
+list 1 2D unique val 185
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.132712
+list 1 2D unique val 71
+total_instances 417 pos 7
+test pr before if list 1 2d 0.170264
+List 1 pr -> 0.11976
+list 2 unique val 72
+test pr before if list 2 0.503497
+List 2 -> pr 0.11976
+ to be removed comb is 0100110001000 index is 28 and K is 8
+pr is 0.11976 PI is 0.3
+ii is 29 combination is 0010110001000 and count is 458262
+list 1 2D unique val 82
+total_instances 397 pos 10
+test pr before if list 1 2d 0.206549
+list 1 2D unique val 180
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.129125
+list 1 2D unique val 77
+total_instances 417 pos 7
+test pr before if list 1 2d 0.184652
+List 1 pr -> 0.129125
+list 2 unique val 67
+test pr before if list 2 0.468531
+List 2 -> pr 0.129125
+ to be removed comb is 0010110001000 index is 29 and K is 8
+pr is 0.129125 PI is 0.3
+ii is 30 combination is 0001110001000 and count is 161145
+list 1 2D unique val 39
+total_instances 274 pos 9
+test pr before if list 1 2d 0.142336
+list 1 2D unique val 185
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.132712
+list 1 2D unique val 67
+total_instances 417 pos 7
+test pr before if list 1 2d 0.160671
+List 1 pr -> 0.132712
+list 2 unique val 71
+test pr before if list 2 0.496503
+List 2 -> pr 0.132712
+ to be removed comb is 0001110001000 index is 30 and K is 8
+pr is 0.132712 PI is 0.3
+ii is 31 combination is 0000110001000 and count is 18034
+list 1 2D unique val 201
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.144189
+list 1 2D unique val 81
+total_instances 417 pos 7
+test pr before if list 1 2d 0.194245
+List 1 pr -> 0.144189
+list 2 unique val 78
+test pr before if list 2 0.545455
+List 2 -> pr 0.144189
+ to be removed comb is 0000110001000 index is 31 and K is 8
+pr is 0.144189 PI is 0.3
+ii is 32 combination is 0000010001000 and count is 500
+list 1 unique val 84
+test pr before if list 1 0.201439
+List 1 pr -> 0.201439
+list 2 unique val 79
+test pr before if list 2 0.552448
+List 2 -> pr 0.201439
+ to be removed comb is 0000010001000 index is 32 and K is 8
+pr is 0.201439 PI is 0.3
+ii is 33 combination is 0000001001000 and count is 302
+list 1 unique val 52
+test pr before if list 1 0.468468
+List 1 pr -> 0.468468
+list 2 unique val 106
+test pr before if list 2 0.741259
+List 2 -> pr 0.468468
+survivor cmbr is --->  0000001001000
+ii is 34 combination is 0000001101000 and count is 315
+list 1 2D unique val 36
+total_instances 111 pos 6
+test pr before if list 1 2d 0.324324
+list 1 2D unique val 17
+total_instances 97 pos 5
+test pr before if list 1 2d 0.175258
+List 1 pr -> 0.175258
+list 2 unique val 13
+test pr before if list 2 0.0909091
+List 2 -> pr 0.0909091
+ to be removed comb is 0000001101000 index is 34 and K is 8
+pr is 0.0909091 PI is 0.3
+ii is 35 combination is 0000000101000 and count is 67
+list 1 unique val 22
+test pr before if list 1 0.226804
+List 1 pr -> 0.226804
+list 2 unique val 18
+test pr before if list 2 0.125874
+List 2 -> pr 0.125874
+ to be removed comb is 0000000101000 index is 35 and K is 8
+pr is 0.125874 PI is 0.3
+ii is 36 combination is 1000000011000 and count is 14906
+list 1 2D unique val 73
+total_instances 522 pos 12
+test pr before if list 1 2d 0.139847
+list 1 2D unique val 64
+total_instances 276 pos 4
+test pr before if list 1 2d 0.231884
+List 1 pr -> 0.139847
+list 2 unique val 118
+test pr before if list 2 0.825175
+List 2 -> pr 0.139847
+ to be removed comb is 1000000011000 index is 36 and K is 8
+pr is 0.139847 PI is 0.3
+ii is 37 combination is 0100000011000 and count is 6257
+list 1 2D unique val 44
+total_instances 334 pos 11
+test pr before if list 1 2d 0.131737
+list 1 2D unique val 63
+total_instances 276 pos 4
+test pr before if list 1 2d 0.228261
+List 1 pr -> 0.131737
+list 2 unique val 109
+test pr before if list 2 0.762238
+List 2 -> pr 0.131737
+ to be removed comb is 0100000011000 index is 37 and K is 8
+pr is 0.131737 PI is 0.3
+ii is 38 combination is 0110000011000 and count is 52687
+list 1 2D unique val 41
+total_instances 334 pos 11
+test pr before if list 1 2d 0.122754
+list 1 2D unique val 70
+total_instances 397 pos 10
+test pr before if list 1 2d 0.176322
+list 1 2D unique val 57
+total_instances 276 pos 4
+test pr before if list 1 2d 0.206522
+List 1 pr -> 0.122754
+list 2 unique val 69
+test pr before if list 2 0.482517
+List 2 -> pr 0.122754
+ to be removed comb is 0110000011000 index is 38 and K is 8
+pr is 0.122754 PI is 0.3
+ii is 39 combination is 0010000011000 and count is 5512
+list 1 2D unique val 73
+total_instances 397 pos 10
+test pr before if list 1 2d 0.183879
+list 1 2D unique val 59
+total_instances 276 pos 4
+test pr before if list 1 2d 0.213768
+List 1 pr -> 0.183879
+list 2 unique val 71
+test pr before if list 2 0.496503
+List 2 -> pr 0.183879
+ to be removed comb is 0010000011000 index is 39 and K is 8
+pr is 0.183879 PI is 0.3
+ii is 40 combination is 0101000011000 and count is 41579
+list 1 2D unique val 40
+total_instances 334 pos 11
+test pr before if list 1 2d 0.11976
+list 1 2D unique val 42
+total_instances 274 pos 9
+test pr before if list 1 2d 0.153285
+list 1 2D unique val 60
+total_instances 276 pos 4
+test pr before if list 1 2d 0.217391
+List 1 pr -> 0.11976
+list 2 unique val 102
+test pr before if list 2 0.713287
+List 2 -> pr 0.11976
+ to be removed comb is 0101000011000 index is 40 and K is 8
+pr is 0.11976 PI is 0.3
+ii is 41 combination is 0011000011000 and count is 54031
+list 1 2D unique val 65
+total_instances 397 pos 10
+test pr before if list 1 2d 0.163728
+list 1 2D unique val 36
+total_instances 274 pos 9
+test pr before if list 1 2d 0.131387
+list 1 2D unique val 54
+total_instances 276 pos 4
+test pr before if list 1 2d 0.195652
+List 1 pr -> 0.131387
+list 2 unique val 62
+test pr before if list 2 0.433566
+List 2 -> pr 0.131387
+ to be removed comb is 0011000011000 index is 41 and K is 8
+pr is 0.131387 PI is 0.3
+ii is 42 combination is 0001000011000 and count is 5123
+list 1 2D unique val 42
+total_instances 274 pos 9
+test pr before if list 1 2d 0.153285
+list 1 2D unique val 60
+total_instances 276 pos 4
+test pr before if list 1 2d 0.217391
+List 1 pr -> 0.153285
+list 2 unique val 102
+test pr before if list 2 0.713287
+List 2 -> pr 0.153285
+ to be removed comb is 0001000011000 index is 42 and K is 8
+pr is 0.153285 PI is 0.3
+ii is 43 combination is 1000100011000 and count is 490700
+list 1 2D unique val 73
+total_instances 522 pos 12
+test pr before if list 1 2d 0.139847
+list 1 2D unique val 206
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.147776
+list 1 2D unique val 64
+total_instances 276 pos 4
+test pr before if list 1 2d 0.231884
+List 1 pr -> 0.139847
+list 2 unique val 118
+test pr before if list 2 0.825175
+List 2 -> pr 0.139847
+ to be removed comb is 1000100011000 index is 43 and K is 8
+pr is 0.139847 PI is 0.3
+ii is 44 combination is 0100100011000 and count is 205302
+list 1 2D unique val 44
+total_instances 334 pos 11
+test pr before if list 1 2d 0.131737
+list 1 2D unique val 199
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.142755
+list 1 2D unique val 63
+total_instances 276 pos 4
+test pr before if list 1 2d 0.228261
+List 1 pr -> 0.131737
+list 2 unique val 109
+test pr before if list 2 0.762238
+List 2 -> pr 0.131737
+ to be removed comb is 0100100011000 index is 44 and K is 8
+pr is 0.131737 PI is 0.3
+ii is 45 combination is 0010100011000 and count is 293367
+list 1 2D unique val 73
+total_instances 397 pos 10
+test pr before if list 1 2d 0.183879
+list 1 2D unique val 181
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.129842
+list 1 2D unique val 59
+total_instances 276 pos 4
+test pr before if list 1 2d 0.213768
+List 1 pr -> 0.129842
+list 2 unique val 71
+test pr before if list 2 0.496503
+List 2 -> pr 0.129842
+ to be removed comb is 0010100011000 index is 45 and K is 8
+pr is 0.129842 PI is 0.3
+ii is 46 combination is 0101100011000 and count is 1538096
+list 1 2D unique val 40
+total_instances 334 pos 11
+test pr before if list 1 2d 0.11976
+list 1 2D unique val 42
+total_instances 274 pos 9
+test pr before if list 1 2d 0.153285
+list 1 2D unique val 189
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.135581
+list 1 2D unique val 60
+total_instances 276 pos 4
+test pr before if list 1 2d 0.217391
+List 1 pr -> 0.11976
+list 2 unique val 102
+test pr before if list 2 0.713287
+List 2 -> pr 0.11976
+ to be removed comb is 0101100011000 index is 46 and K is 8
+pr is 0.11976 PI is 0.3
+ii is 47 combination is 0001100011000 and count is 170862
+list 1 2D unique val 42
+total_instances 274 pos 9
+test pr before if list 1 2d 0.153285
+list 1 2D unique val 189
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.135581
+list 1 2D unique val 60
+total_instances 276 pos 4
+test pr before if list 1 2d 0.217391
+List 1 pr -> 0.135581
+list 2 unique val 102
+test pr before if list 2 0.713287
+List 2 -> pr 0.135581
+ to be removed comb is 0001100011000 index is 47 and K is 8
+pr is 0.135581 PI is 0.3
+ii is 48 combination is 0000100011000 and count is 24033
+list 1 2D unique val 215
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.154232
+list 1 2D unique val 67
+total_instances 276 pos 4
+test pr before if list 1 2d 0.242754
+List 1 pr -> 0.154232
+list 2 unique val 125
+test pr before if list 2 0.874126
+List 2 -> pr 0.154232
+ to be removed comb is 0000100011000 index is 48 and K is 8
+pr is 0.154232 PI is 0.3
+ii is 49 combination is 0010010011000 and count is 152059
+list 1 2D unique val 71
+total_instances 397 pos 10
+test pr before if list 1 2d 0.178841
+list 1 2D unique val 74
+total_instances 417 pos 7
+test pr before if list 1 2d 0.177458
+list 1 2D unique val 56
+total_instances 276 pos 4
+test pr before if list 1 2d 0.202899
+List 1 pr -> 0.177458
+list 2 unique val 64
+test pr before if list 2 0.447552
+List 2 -> pr 0.177458
+ to be removed comb is 0010010011000 index is 49 and K is 8
+pr is 0.177458 PI is 0.3
+ii is 50 combination is 0001010011000 and count is 61492
+list 1 2D unique val 37
+total_instances 274 pos 9
+test pr before if list 1 2d 0.135036
+list 1 2D unique val 64
+total_instances 417 pos 7
+test pr before if list 1 2d 0.153477
+list 1 2D unique val 56
+total_instances 276 pos 4
+test pr before if list 1 2d 0.202899
+List 1 pr -> 0.135036
+list 2 unique val 68
+test pr before if list 2 0.475524
+List 2 -> pr 0.135036
+ to be removed comb is 0001010011000 index is 50 and K is 8
+pr is 0.135036 PI is 0.3
+ii is 51 combination is 0000010011000 and count is 7459
+list 1 2D unique val 75
+total_instances 417 pos 7
+test pr before if list 1 2d 0.179856
+list 1 2D unique val 59
+total_instances 276 pos 4
+test pr before if list 1 2d 0.213768
+List 1 pr -> 0.179856
+list 2 unique val 73
+test pr before if list 2 0.51049
+List 2 -> pr 0.179856
+ to be removed comb is 0000010011000 index is 51 and K is 8
+pr is 0.179856 PI is 0.3
+ii is 52 combination is 0000000011000 and count is 877
+list 1 unique val 69
+test pr before if list 1 0.25
+List 1 pr -> 0.25
+list 2 unique val 127
+test pr before if list 2 0.888112
+List 2 -> pr 0.25
+ to be removed comb is 0000000011000 index is 52 and K is 8
+pr is 0.25 PI is 0.3
+CMBR MAP before erase 
+1000000001000 1100000001000 0100000001000 1010000001000 0110000001000 0010000001000 1001000001000 0101000001000 0111000001000 0011000001000 0001000001000 1000100001000 1100100001000 0100100001000 0110100001000 0010100001000 1001100001000 0101100001000 0111100001000 0011100001000 0001100001000 0000100001000 0100010001000 0110010001000 0010010001000 0101010001000 0011010001000 0001010001000 0100110001000 0010110001000 0001110001000 0000110001000 0000010001000 0000001001000 0000001101000 0000000101000 1000000011000 0100000011000 0110000011000 0010000011000 0101000011000 0011000011000 0001000011000 1000100011000 0100100011000 0010100011000 0101100011000 0001100011000 0000100011000 0010010011000 0001010011000 0000010011000 0000000011000 
+CMBR MAP after erase 
+0000001001000 
+Layer 8 Built Successfully!!!
+Layer 9 Building ...
+Feature: 1 with feature: (K != 0) 40
+count: 6040
+Size: 6040
+Layer: 0 loc: 0 with feature: 40
+count: 37190
+Size: 37190
+Feature: 5 with feature: (K != 0) 40
+count: 3816
+Size: 3816
+Layer: 1 loc: 0 with feature: 40
+count: 76089
+Size: 76089
+Layer: 1 loc: 1 with feature: 40
+count: 41916
+Size: 41916
+Feature: 8 with feature: (K != 0) 40
+count: 5775
+Size: 5775
+Layer: 2 loc: 0 with feature: 40
+count: 39317
+Size: 39317
+Layer: 2 loc: 1 with feature: 40
+count: 21753
+Size: 21753
+Layer: 2 loc: 2 with feature: 40
+count: 375712
+Size: 375712
+Layer: 2 loc: 3 with feature: 40
+count: 45614
+Size: 45614
+Feature: 9 with feature: (K != 0) 40
+count: 3656
+Size: 3656
+Layer: 3 loc: 0 with feature: 40
+count: 212286
+Size: 212286
+Layer: 3 loc: 1 with feature: 40
+count: 1621437
+Size: 1621437
+Layer: 3 loc: 2 with feature: 40
+count: 120668
+Size: 120668
+Layer: 3 loc: 3 with feature: 40
+count: 2090327
+Size: 2090327
+Layer: 3 loc: 4 with feature: 40
+count: 253752
+Size: 253752
+Layer: 3 loc: 5 with feature: 40
+count: 1901955
+Size: 1901955
+Layer: 3 loc: 6 with feature: 40
+count: 974592
+Size: 974592
+Layer: 3 loc: 7 with feature: 40
+count: 20937955
+Size: 20937955
+Layer: 3 loc: 8 with feature: 40
+count: 2489321
+Size: 2489321
+Layer: 3 loc: 9 with feature: 40
+count: 136178
+Size: 136178
+Feature: 10 with feature: (K != 0) 40
+count: 20191
+Size: 20191
+Layer: 4 loc: 0 with feature: 40
+count: 39737
+Size: 39737
+Layer: 4 loc: 1 with feature: 40
+count: 923178
+Size: 923178
+Layer: 4 loc: 2 with feature: 40
+count: 103199
+Size: 103199
+Layer: 4 loc: 3 with feature: 40
+count: 342705
+Size: 342705
+Layer: 4 loc: 4 with feature: 40
+count: 1047781
+Size: 1047781
+Layer: 4 loc: 5 with feature: 40
+count: 43202
+Size: 43202
+Layer: 4 loc: 6 with feature: 40
+count: 1914618
+Size: 1914618
+Layer: 4 loc: 7 with feature: 40
+count: 5822681
+Size: 5822681
+Layer: 4 loc: 8 with feature: 40
+count: 2307566
+Size: 2307566
+Layer: 4 loc: 9 with feature: 40
+count: 239264
+Size: 239264
+Feature: 14 with feature: (K != 0) 40
+count: 5699
+Size: 5699
+Feature: 20 with feature: (K != 0) 40
+count: 4344
+Size: 4344
+Layer: 6 loc: 0 with feature: 40
+count: 37436
+Size: 37436
+Feature: 24 with feature: (K != 0) 40
+count: 2110
+Size: 2110
+Layer: 7 loc: 0 with feature: 40
+count: 57358
+Size: 57358
+Layer: 7 loc: 1 with feature: 40
+count: 29464
+Size: 29464
+Layer: 7 loc: 2 with feature: 40
+count: 582497
+Size: 582497
+Layer: 7 loc: 3 with feature: 40
+count: 65164
+Size: 65164
+Layer: 7 loc: 4 with feature: 40
+count: 241549
+Size: 241549
+Layer: 7 loc: 5 with feature: 40
+count: 641532
+Size: 641532
+Layer: 7 loc: 6 with feature: 40
+count: 30796
+Size: 30796
+Layer: 7 loc: 7 with feature: 40
+count: 2649245
+Size: 2649245
+Layer: 7 loc: 8 with feature: 40
+count: 1299038
+Size: 1299038
+Layer: 7 loc: 9 with feature: 40
+count: 3566099
+Size: 3566099
+Layer: 7 loc: 10 with feature: 40
+count: 12191476
+Size: 12191476
+Layer: 7 loc: 11 with feature: 40
+count: 1504267
+Size: 1504267
+Layer: 7 loc: 12 with feature: 40
+count: 165796
+Size: 165796
+Layer: 7 loc: 13 with feature: 40
+count: 1678919
+Size: 1678919
+Layer: 7 loc: 14 with feature: 40
+count: 572397
+Size: 572397
+Layer: 7 loc: 15 with feature: 40
+count: 58537
+Size: 58537
+Feature: 28 with feature: (K != 0) 40
+count: 4328
+Size: 4328
+Layer: 8 loc: 0 with feature: 40
+count: 9311
+Size: 9311
+Feature: 39 with feature: (K != 0) 40
+count: 2454
+Size: 2454
+CMBR_MAP K is 9 size is 55
+ii is 0 combination is 1000000000100 and count is 6040
+list 1 unique val 401
+test pr before if list 1 0.768199
+List 1 pr -> 0.768199
+list 2 unique val 919
+test pr before if list 2 0.530294
+List 2 -> pr 0.530294
+survivor cmbr is --->  1000000000100
+ii is 1 combination is 1100000000100 and count is 37190
+list 1 2D unique val 183
+total_instances 522 pos 12
+test pr before if list 1 2d 0.350575
+list 1 2D unique val 159
+total_instances 334 pos 11
+test pr before if list 1 2d 0.476048
+List 1 pr -> 0.350575
+list 2 unique val 655
+test pr before if list 2 0.377957
+List 2 -> pr 0.350575
+survivor cmbr is --->  1100000000100
+ii is 2 combination is 0100000000100 and count is 3816
+list 1 unique val 284
+test pr before if list 1 0.850299
+List 1 pr -> 0.850299
+list 2 unique val 902
+test pr before if list 2 0.520485
+List 2 -> pr 0.520485
+survivor cmbr is --->  0100000000100
+ii is 3 combination is 1010000000100 and count is 76089
+list 1 2D unique val 148
+total_instances 522 pos 12
+test pr before if list 1 2d 0.283525
+list 1 2D unique val 173
+total_instances 397 pos 10
+test pr before if list 1 2d 0.435768
+List 1 pr -> 0.283525
+list 2 unique val 562
+test pr before if list 2 0.324293
+List 2 -> pr 0.283525
+ to be removed comb is 1010000000100 index is 3 and K is 9
+pr is 0.283525 PI is 0.3
+ii is 4 combination is 0110000000100 and count is 41916
+list 1 2D unique val 173
+total_instances 334 pos 11
+test pr before if list 1 2d 0.517964
+list 1 2D unique val 201
+total_instances 397 pos 10
+test pr before if list 1 2d 0.506297
+List 1 pr -> 0.506297
+list 2 unique val 620
+test pr before if list 2 0.357761
+List 2 -> pr 0.357761
+survivor cmbr is --->  0110000000100
+ii is 5 combination is 0010000000100 and count is 5775
+list 1 unique val 330
+test pr before if list 1 0.831234
+List 1 pr -> 0.831234
+list 2 unique val 823
+test pr before if list 2 0.474899
+List 2 -> pr 0.474899
+survivor cmbr is --->  0010000000100
+ii is 6 combination is 1001000000100 and count is 39317
+list 1 2D unique val 198
+total_instances 522 pos 12
+test pr before if list 1 2d 0.37931
+list 1 2D unique val 128
+total_instances 274 pos 9
+test pr before if list 1 2d 0.467153
+List 1 pr -> 0.37931
+list 2 unique val 634
+test pr before if list 2 0.36584
+List 2 -> pr 0.36584
+survivor cmbr is --->  1001000000100
+ii is 7 combination is 0101000000100 and count is 21753
+list 1 2D unique val 181
+total_instances 334 pos 11
+test pr before if list 1 2d 0.541916
+list 1 2D unique val 153
+total_instances 274 pos 9
+test pr before if list 1 2d 0.558394
+List 1 pr -> 0.541916
+list 2 unique val 694
+test pr before if list 2 0.400462
+List 2 -> pr 0.400462
+survivor cmbr is --->  0101000000100
+ii is 8 combination is 0111000000100 and count is 375712
+list 1 2D unique val 131
+total_instances 334 pos 11
+test pr before if list 1 2d 0.392216
+list 1 2D unique val 152
+total_instances 397 pos 10
+test pr before if list 1 2d 0.382872
+list 1 2D unique val 98
+total_instances 274 pos 9
+test pr before if list 1 2d 0.357664
+List 1 pr -> 0.357664
+list 2 unique val 535
+test pr before if list 2 0.308713
+List 2 -> pr 0.308713
+survivor cmbr is --->  0111000000100
+ii is 9 combination is 0011000000100 and count is 45614
+list 1 2D unique val 186
+total_instances 397 pos 10
+test pr before if list 1 2d 0.468514
+list 1 2D unique val 127
+total_instances 274 pos 9
+test pr before if list 1 2d 0.463504
+List 1 pr -> 0.463504
+list 2 unique val 600
+test pr before if list 2 0.34622
+List 2 -> pr 0.34622
+survivor cmbr is --->  0011000000100
+ii is 10 combination is 0001000000100 and count is 3656
+list 1 unique val 225
+test pr before if list 1 0.821168
+List 1 pr -> 0.821168
+list 2 unique val 848
+test pr before if list 2 0.489325
+List 2 -> pr 0.489325
+survivor cmbr is --->  0001000000100
+ii is 11 combination is 1000100000100 and count is 212286
+list 1 2D unique val 304
+total_instances 522 pos 12
+test pr before if list 1 2d 0.582375
+list 1 2D unique val 704
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.505022
+List 1 pr -> 0.505022
+list 2 unique val 841
+test pr before if list 2 0.485286
+List 2 -> pr 0.485286
+survivor cmbr is --->  1000100000100
+ii is 12 combination is 1100100000100 and count is 1621437
+list 1 2D unique val 179
+total_instances 522 pos 12
+test pr before if list 1 2d 0.342912
+list 1 2D unique val 155
+total_instances 334 pos 11
+test pr before if list 1 2d 0.464072
+list 1 2D unique val 531
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.380918
+List 1 pr -> 0.342912
+list 2 unique val 652
+test pr before if list 2 0.376226
+List 2 -> pr 0.342912
+survivor cmbr is --->  1100100000100
+ii is 13 combination is 0100100000100 and count is 120668
+list 1 2D unique val 233
+total_instances 334 pos 11
+test pr before if list 1 2d 0.697605
+list 1 2D unique val 724
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.519369
+List 1 pr -> 0.519369
+list 2 unique val 806
+test pr before if list 2 0.465089
+List 2 -> pr 0.465089
+survivor cmbr is --->  0100100000100
+ii is 14 combination is 0110100000100 and count is 2090327
+list 1 2D unique val 158
+total_instances 334 pos 11
+test pr before if list 1 2d 0.473054
+list 1 2D unique val 177
+total_instances 397 pos 10
+test pr before if list 1 2d 0.445844
+list 1 2D unique val 521
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.373745
+List 1 pr -> 0.373745
+list 2 unique val 589
+test pr before if list 2 0.339873
+List 2 -> pr 0.339873
+survivor cmbr is --->  0110100000100
+ii is 15 combination is 0010100000100 and count is 253752
+list 1 2D unique val 251
+total_instances 397 pos 10
+test pr before if list 1 2d 0.632242
+list 1 2D unique val 695
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.498565
+List 1 pr -> 0.498565
+list 2 unique val 737
+test pr before if list 2 0.425274
+List 2 -> pr 0.425274
+survivor cmbr is --->  0010100000100
+ii is 16 combination is 1001100000100 and count is 1901955
+list 1 2D unique val 177
+total_instances 522 pos 12
+test pr before if list 1 2d 0.33908
+list 1 2D unique val 120
+total_instances 274 pos 9
+test pr before if list 1 2d 0.437956
+list 1 2D unique val 509
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.365136
+List 1 pr -> 0.33908
+list 2 unique val 620
+test pr before if list 2 0.357761
+List 2 -> pr 0.33908
+survivor cmbr is --->  1001100000100
+ii is 17 combination is 0101100000100 and count is 974592
+list 1 2D unique val 167
+total_instances 334 pos 11
+test pr before if list 1 2d 0.5
+list 1 2D unique val 135
+total_instances 274 pos 9
+test pr before if list 1 2d 0.492701
+list 1 2D unique val 556
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.398852
+List 1 pr -> 0.398852
+list 2 unique val 669
+test pr before if list 2 0.386036
+List 2 -> pr 0.386036
+survivor cmbr is --->  0101100000100
+ii is 18 combination is 0111100000100 and count is 20937955
+list 1 2D unique val 127
+total_instances 334 pos 11
+test pr before if list 1 2d 0.38024
+list 1 2D unique val 147
+total_instances 397 pos 10
+test pr before if list 1 2d 0.370277
+list 1 2D unique val 93
+total_instances 274 pos 9
+test pr before if list 1 2d 0.339416
+list 1 2D unique val 425
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.304878
+List 1 pr -> 0.304878
+list 2 unique val 530
+test pr before if list 2 0.305828
+List 2 -> pr 0.304878
+survivor cmbr is --->  0111100000100
+ii is 19 combination is 0011100000100 and count is 2489321
+list 1 2D unique val 171
+total_instances 397 pos 10
+test pr before if list 1 2d 0.43073
+list 1 2D unique val 113
+total_instances 274 pos 9
+test pr before if list 1 2d 0.412409
+list 1 2D unique val 497
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.356528
+List 1 pr -> 0.356528
+list 2 unique val 582
+test pr before if list 2 0.335834
+List 2 -> pr 0.335834
+survivor cmbr is --->  0011100000100
+ii is 20 combination is 0001100000100 and count is 136178
+list 1 2D unique val 178
+total_instances 274 pos 9
+test pr before if list 1 2d 0.649635
+list 1 2D unique val 673
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.482783
+List 1 pr -> 0.482783
+list 2 unique val 778
+test pr before if list 2 0.448932
+List 2 -> pr 0.448932
+survivor cmbr is --->  0001100000100
+ii is 21 combination is 0000100000100 and count is 20191
+list 1 unique val 1209
+test pr before if list 1 0.867288
+List 1 pr -> 0.867288
+list 2 unique val 1271
+test pr before if list 2 0.73341
+List 2 -> pr 0.73341
+survivor cmbr is --->  0000100000100
+ii is 22 combination is 0100010000100 and count is 39737
+list 1 2D unique val 142
+total_instances 334 pos 11
+test pr before if list 1 2d 0.42515
+list 1 2D unique val 191
+total_instances 417 pos 7
+test pr before if list 1 2d 0.458034
+List 1 pr -> 0.42515
+list 2 unique val 583
+test pr before if list 2 0.336411
+List 2 -> pr 0.336411
+survivor cmbr is --->  0100010000100
+ii is 23 combination is 0110010000100 and count is 923178
+list 1 2D unique val 116
+total_instances 334 pos 11
+test pr before if list 1 2d 0.347305
+list 1 2D unique val 145
+total_instances 397 pos 10
+test pr before if list 1 2d 0.365239
+list 1 2D unique val 158
+total_instances 417 pos 7
+test pr before if list 1 2d 0.378897
+List 1 pr -> 0.347305
+list 2 unique val 476
+test pr before if list 2 0.274668
+List 2 -> pr 0.274668
+ to be removed comb is 0110010000100 index is 23 and K is 9
+pr is 0.274668 PI is 0.3
+ii is 24 combination is 0010010000100 and count is 103199
+list 1 2D unique val 212
+total_instances 397 pos 10
+test pr before if list 1 2d 0.534005
+list 1 2D unique val 221
+total_instances 417 pos 7
+test pr before if list 1 2d 0.529976
+List 1 pr -> 0.529976
+list 2 unique val 574
+test pr before if list 2 0.331218
+List 2 -> pr 0.331218
+survivor cmbr is --->  0010010000100
+ii is 25 combination is 0101010000100 and count is 342705
+list 1 2D unique val 121
+total_instances 334 pos 11
+test pr before if list 1 2d 0.362275
+list 1 2D unique val 97
+total_instances 274 pos 9
+test pr before if list 1 2d 0.354015
+list 1 2D unique val 150
+total_instances 417 pos 7
+test pr before if list 1 2d 0.359712
+List 1 pr -> 0.354015
+list 2 unique val 534
+test pr before if list 2 0.308136
+List 2 -> pr 0.308136
+survivor cmbr is --->  0101010000100
+ii is 26 combination is 0011010000100 and count is 1047781
+list 1 2D unique val 149
+total_instances 397 pos 10
+test pr before if list 1 2d 0.375315
+list 1 2D unique val 90
+total_instances 274 pos 9
+test pr before if list 1 2d 0.328467
+list 1 2D unique val 150
+total_instances 417 pos 7
+test pr before if list 1 2d 0.359712
+List 1 pr -> 0.328467
+list 2 unique val 487
+test pr before if list 2 0.281016
+List 2 -> pr 0.281016
+ to be removed comb is 0011010000100 index is 26 and K is 9
+pr is 0.281016 PI is 0.3
+ii is 27 combination is 0001010000100 and count is 43202
+list 1 2D unique val 119
+total_instances 274 pos 9
+test pr before if list 1 2d 0.434307
+list 1 2D unique val 213
+total_instances 417 pos 7
+test pr before if list 1 2d 0.510791
+List 1 pr -> 0.434307
+list 2 unique val 592
+test pr before if list 2 0.341604
+List 2 -> pr 0.341604
+survivor cmbr is --->  0001010000100
+ii is 28 combination is 0100110000100 and count is 1914618
+list 1 2D unique val 127
+total_instances 334 pos 11
+test pr before if list 1 2d 0.38024
+list 1 2D unique val 446
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.319943
+list 1 2D unique val 171
+total_instances 417 pos 7
+test pr before if list 1 2d 0.410072
+List 1 pr -> 0.319943
+list 2 unique val 557
+test pr before if list 2 0.321408
+List 2 -> pr 0.319943
+survivor cmbr is --->  0100110000100
+ii is 29 combination is 0010110000100 and count is 5822681
+list 1 2D unique val 166
+total_instances 397 pos 10
+test pr before if list 1 2d 0.418136
+list 1 2D unique val 443
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.317791
+list 1 2D unique val 181
+total_instances 417 pos 7
+test pr before if list 1 2d 0.434053
+List 1 pr -> 0.317791
+list 2 unique val 536
+test pr before if list 2 0.30929
+List 2 -> pr 0.30929
+survivor cmbr is --->  0010110000100
+ii is 30 combination is 0001110000100 and count is 2307566
+list 1 2D unique val 100
+total_instances 274 pos 9
+test pr before if list 1 2d 0.364964
+list 1 2D unique val 452
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.324247
+list 1 2D unique val 191
+total_instances 417 pos 7
+test pr before if list 1 2d 0.458034
+List 1 pr -> 0.324247
+list 2 unique val 567
+test pr before if list 2 0.327178
+List 2 -> pr 0.324247
+survivor cmbr is --->  0001110000100
+ii is 31 combination is 0000110000100 and count is 239264
+list 1 2D unique val 617
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.442611
+list 1 2D unique val 272
+total_instances 417 pos 7
+test pr before if list 1 2d 0.652278
+List 1 pr -> 0.442611
+list 2 unique val 694
+test pr before if list 2 0.400462
+List 2 -> pr 0.400462
+survivor cmbr is --->  0000110000100
+ii is 32 combination is 0000010000100 and count is 5699
+list 1 unique val 342
+test pr before if list 1 0.820144
+List 1 pr -> 0.820144
+list 2 unique val 766
+test pr before if list 2 0.442008
+List 2 -> pr 0.442008
+survivor cmbr is --->  0000010000100
+ii is 33 combination is 0000001000100 and count is 4344
+list 1 unique val 100
+test pr before if list 1 0.900901
+List 1 pr -> 0.900901
+list 2 unique val 494
+test pr before if list 2 0.285055
+List 2 -> pr 0.285055
+ to be removed comb is 0000001000100 index is 33 and K is 9
+pr is 0.285055 PI is 0.3
+ii is 34 combination is 0000001100100 and count is 37436
+list 1 2D unique val 49
+total_instances 111 pos 6
+test pr before if list 1 2d 0.441441
+list 1 2D unique val 37
+total_instances 97 pos 5
+test pr before if list 1 2d 0.381443
+List 1 pr -> 0.381443
+list 2 unique val 264
+test pr before if list 2 0.152337
+List 2 -> pr 0.152337
+ to be removed comb is 0000001100100 index is 34 and K is 9
+pr is 0.152337 PI is 0.3
+ii is 35 combination is 0000000100100 and count is 2110
+list 1 unique val 89
+test pr before if list 1 0.917526
+List 1 pr -> 0.917526
+list 2 unique val 472
+test pr before if list 2 0.27236
+List 2 -> pr 0.27236
+ to be removed comb is 0000000100100 index is 35 and K is 9
+pr is 0.27236 PI is 0.3
+ii is 36 combination is 1000000010100 and count is 57358
+list 1 2D unique val 193
+total_instances 522 pos 12
+test pr before if list 1 2d 0.369732
+list 1 2D unique val 165
+total_instances 276 pos 4
+test pr before if list 1 2d 0.597826
+List 1 pr -> 0.369732
+list 2 unique val 638
+test pr before if list 2 0.368148
+List 2 -> pr 0.368148
+survivor cmbr is --->  1000000010100
+ii is 37 combination is 0100000010100 and count is 29464
+list 1 2D unique val 157
+total_instances 334 pos 11
+test pr before if list 1 2d 0.47006
+list 1 2D unique val 160
+total_instances 276 pos 4
+test pr before if list 1 2d 0.57971
+List 1 pr -> 0.47006
+list 2 unique val 616
+test pr before if list 2 0.355453
+List 2 -> pr 0.355453
+survivor cmbr is --->  0100000010100
+ii is 38 combination is 0110000010100 and count is 582497
+list 1 2D unique val 113
+total_instances 334 pos 11
+test pr before if list 1 2d 0.338323
+list 1 2D unique val 141
+total_instances 397 pos 10
+test pr before if list 1 2d 0.355164
+list 1 2D unique val 124
+total_instances 276 pos 4
+test pr before if list 1 2d 0.449275
+List 1 pr -> 0.338323
+list 2 unique val 494
+test pr before if list 2 0.285055
+List 2 -> pr 0.285055
+ to be removed comb is 0110000010100 index is 38 and K is 9
+pr is 0.285055 PI is 0.3
+ii is 39 combination is 0010000010100 and count is 65164
+list 1 2D unique val 173
+total_instances 397 pos 10
+test pr before if list 1 2d 0.435768
+list 1 2D unique val 153
+total_instances 276 pos 4
+test pr before if list 1 2d 0.554348
+List 1 pr -> 0.435768
+list 2 unique val 569
+test pr before if list 2 0.328332
+List 2 -> pr 0.328332
+survivor cmbr is --->  0010000010100
+ii is 40 combination is 0101000010100 and count is 241549
+list 1 2D unique val 125
+total_instances 334 pos 11
+test pr before if list 1 2d 0.374251
+list 1 2D unique val 113
+total_instances 274 pos 9
+test pr before if list 1 2d 0.412409
+list 1 2D unique val 128
+total_instances 276 pos 4
+test pr before if list 1 2d 0.463768
+List 1 pr -> 0.374251
+list 2 unique val 555
+test pr before if list 2 0.320254
+List 2 -> pr 0.320254
+survivor cmbr is --->  0101000010100
+ii is 41 combination is 0011000010100 and count is 641532
+list 1 2D unique val 132
+total_instances 397 pos 10
+test pr before if list 1 2d 0.332494
+list 1 2D unique val 87
+total_instances 274 pos 9
+test pr before if list 1 2d 0.317518
+list 1 2D unique val 123
+total_instances 276 pos 4
+test pr before if list 1 2d 0.445652
+List 1 pr -> 0.317518
+list 2 unique val 489
+test pr before if list 2 0.28217
+List 2 -> pr 0.28217
+ to be removed comb is 0011000010100 index is 41 and K is 9
+pr is 0.28217 PI is 0.3
+ii is 42 combination is 0001000010100 and count is 30796
+list 1 2D unique val 131
+total_instances 274 pos 9
+test pr before if list 1 2d 0.478102
+list 1 2D unique val 156
+total_instances 276 pos 4
+test pr before if list 1 2d 0.565217
+List 1 pr -> 0.478102
+list 2 unique val 617
+test pr before if list 2 0.35603
+List 2 -> pr 0.35603
+survivor cmbr is --->  0001000010100
+ii is 43 combination is 1000100010100 and count is 2649245
+list 1 2D unique val 187
+total_instances 522 pos 12
+test pr before if list 1 2d 0.358238
+list 1 2D unique val 539
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.386657
+list 1 2D unique val 159
+total_instances 276 pos 4
+test pr before if list 1 2d 0.576087
+List 1 pr -> 0.358238
+list 2 unique val 627
+test pr before if list 2 0.3618
+List 2 -> pr 0.358238
+survivor cmbr is --->  1000100010100
+ii is 44 combination is 0100100010100 and count is 1299038
+list 1 2D unique val 148
+total_instances 334 pos 11
+test pr before if list 1 2d 0.443114
+list 1 2D unique val 511
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.366571
+list 1 2D unique val 152
+total_instances 276 pos 4
+test pr before if list 1 2d 0.550725
+List 1 pr -> 0.366571
+list 2 unique val 597
+test pr before if list 2 0.344489
+List 2 -> pr 0.344489
+survivor cmbr is --->  0100100010100
+ii is 45 combination is 0010100010100 and count is 3566099
+list 1 2D unique val 160
+total_instances 397 pos 10
+test pr before if list 1 2d 0.403023
+list 1 2D unique val 479
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.343615
+list 1 2D unique val 147
+total_instances 276 pos 4
+test pr before if list 1 2d 0.532609
+List 1 pr -> 0.343615
+list 2 unique val 553
+test pr before if list 2 0.3191
+List 2 -> pr 0.3191
+survivor cmbr is --->  0010100010100
+ii is 46 combination is 0101100010100 and count is 12191476
+list 1 2D unique val 122
+total_instances 334 pos 11
+test pr before if list 1 2d 0.365269
+list 1 2D unique val 107
+total_instances 274 pos 9
+test pr before if list 1 2d 0.390511
+list 1 2D unique val 423
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.303443
+list 1 2D unique val 126
+total_instances 276 pos 4
+test pr before if list 1 2d 0.456522
+List 1 pr -> 0.303443
+list 2 unique val 550
+test pr before if list 2 0.317369
+List 2 -> pr 0.303443
+survivor cmbr is --->  0101100010100
+ii is 47 combination is 0001100010100 and count is 1504267
+list 1 2D unique val 121
+total_instances 274 pos 9
+test pr before if list 1 2d 0.441606
+list 1 2D unique val 491
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.352224
+list 1 2D unique val 150
+total_instances 276 pos 4
+test pr before if list 1 2d 0.543478
+List 1 pr -> 0.352224
+list 2 unique val 602
+test pr before if list 2 0.347374
+List 2 -> pr 0.347374
+survivor cmbr is --->  0001100010100
+ii is 48 combination is 0000100010100 and count is 165796
+list 1 2D unique val 691
+total_instances 1394 pos 8
+test pr before if list 1 2d 0.495696
+list 1 2D unique val 213
+total_instances 276 pos 4
+test pr before if list 1 2d 0.771739
+List 1 pr -> 0.495696
+list 2 unique val 763
+test pr before if list 2 0.440277
+List 2 -> pr 0.440277
+survivor cmbr is --->  0000100010100
+ii is 49 combination is 0010010010100 and count is 1678919
+list 1 2D unique val 130
+total_instances 397 pos 10
+test pr before if list 1 2d 0.327456
+list 1 2D unique val 134
+total_instances 417 pos 7
+test pr before if list 1 2d 0.321343
+list 1 2D unique val 102
+total_instances 276 pos 4
+test pr before if list 1 2d 0.369565
+List 1 pr -> 0.321343
+list 2 unique val 428
+test pr before if list 2 0.246971
+List 2 -> pr 0.246971
+ to be removed comb is 0010010010100 index is 49 and K is 9
+pr is 0.246971 PI is 0.3
+ii is 50 combination is 0001010010100 and count is 572397
+list 1 2D unique val 85
+total_instances 274 pos 9
+test pr before if list 1 2d 0.310219
+list 1 2D unique val 131
+total_instances 417 pos 7
+test pr before if list 1 2d 0.314149
+list 1 2D unique val 109
+total_instances 276 pos 4
+test pr before if list 1 2d 0.394928
+List 1 pr -> 0.310219
+list 2 unique val 466
+test pr before if list 2 0.268898
+List 2 -> pr 0.268898
+ to be removed comb is 0001010010100 index is 50 and K is 9
+pr is 0.268898 PI is 0.3
+ii is 51 combination is 0000010010100 and count is 58537
+list 1 2D unique val 181
+total_instances 417 pos 7
+test pr before if list 1 2d 0.434053
+list 1 2D unique val 134
+total_instances 276 pos 4
+test pr before if list 1 2d 0.485507
+List 1 pr -> 0.434053
+list 2 unique val 525
+test pr before if list 2 0.302943
+List 2 -> pr 0.302943
+survivor cmbr is --->  0000010010100
+ii is 52 combination is 0000000010100 and count is 4328
+list 1 unique val 238
+test pr before if list 1 0.862319
+List 1 pr -> 0.862319
+list 2 unique val 809
+test pr before if list 2 0.466821
+List 2 -> pr 0.466821
+survivor cmbr is --->  0000000010100
+ii is 53 combination is 0000001001100 and count is 9311
+list 1 2D unique val 52
+total_instances 111 pos 6
+test pr before if list 1 2d 0.468468
+list 1 2D unique val 106
+total_instances 143 pos 3
+test pr before if list 1 2d 0.741259
+List 1 pr -> 0.468468
+list 2 unique val 240
+test pr before if list 2 0.138488
+List 2 -> pr 0.138488
+ to be removed comb is 0000001001100 index is 53 and K is 9
+pr is 0.138488 PI is 0.3
+ii is 54 combination is 0000000001100 and count is 2454
+list 1 unique val 137
+test pr before if list 1 0.958042
+List 1 pr -> 0.958042
+list 2 unique val 334
+test pr before if list 2 0.192729
+List 2 -> pr 0.192729
+ to be removed comb is 0000000001100 index is 54 and K is 9
+pr is 0.192729 PI is 0.3
+CMBR MAP before erase 
+1000000000100 1100000000100 0100000000100 1010000000100 0110000000100 0010000000100 1001000000100 0101000000100 0111000000100 0011000000100 0001000000100 1000100000100 1100100000100 0100100000100 0110100000100 0010100000100 1001100000100 0101100000100 0111100000100 0011100000100 0001100000100 0000100000100 0100010000100 0110010000100 0010010000100 0101010000100 0011010000100 0001010000100 0100110000100 0010110000100 0001110000100 0000110000100 0000010000100 0000001000100 0000001100100 0000000100100 1000000010100 0100000010100 0110000010100 0010000010100 0101000010100 0011000010100 0001000010100 1000100010100 0100100010100 0010100010100 0101100010100 0001100010100 0000100010100 0010010010100 0001010010100 0000010010100 0000000010100 0000001001100 0000000001100 
+CMBR MAP after erase 
+1000000000100 1100000000100 0100000000100 0110000000100 0010000000100 1001000000100 0101000000100 0111000000100 0011000000100 0001000000100 1000100000100 1100100000100 0100100000100 0110100000100 0010100000100 1001100000100 0101100000100 0111100000100 0011100000100 0001100000100 0000100000100 0100010000100 0010010000100 0101010000100 0001010000100 0100110000100 0010110000100 0001110000100 0000110000100 0000010000100 1000000010100 0100000010100 0010000010100 0101000010100 0001000010100 1000100010100 0100100010100 0010100010100 0101100010100 0001100010100 0000100010100 0000010010100 0000000010100 
+Layer 9 Built Successfully!!!
+Layer 10 Building ...
+Feature: 1 with feature: (K != 0) 42
+count: 3660
+Size: 3660
+Layer: 0 loc: 0 with feature: 42
+count: 20729
+Size: 20729
+Feature: 5 with feature: (K != 0) 42
+count: 1875
+Size: 1875
+Layer: 1 loc: 0 with feature: 42
+count: 56983
+Size: 56983
+Layer: 1 loc: 1 with feature: 42
+count: 31407
+Size: 31407
+Feature: 8 with feature: (K != 0) 42
+count: 3637
+Size: 3637
+Layer: 2 loc: 0 with feature: 42
+count: 19555
+Size: 19555
+Layer: 2 loc: 1 with feature: 42
+count: 11432
+Size: 11432
+Layer: 2 loc: 2 with feature: 42
+count: 291100
+Size: 291100
+Layer: 2 loc: 3 with feature: 42
+count: 30796
+Size: 30796
+Feature: 9 with feature: (K != 0) 42
+count: 1624
+Size: 1624
+Layer: 3 loc: 0 with feature: 42
+count: 104488
+Size: 104488
+Layer: 3 loc: 1 with feature: 42
+count: 946344
+Size: 946344
+Layer: 3 loc: 2 with feature: 42
+count: 59314
+Size: 59314
+Layer: 3 loc: 3 with feature: 42
+count: 1594855
+Size: 1594855
+Layer: 3 loc: 4 with feature: 42
+count: 167003
+Size: 167003
+Layer: 3 loc: 5 with feature: 42
+count: 978267
+Size: 978267
+Layer: 3 loc: 6 with feature: 42
+count: 504273
+Size: 504273
+Layer: 3 loc: 7 with feature: 42
+count: 16402556
+Size: 16402556
+Layer: 3 loc: 8 with feature: 42
+count: 1700525
+Size: 1700525
+Layer: 3 loc: 9 with feature: 42
+count: 57329
+Size: 57329
+Feature: 10 with feature: (K != 0) 42
+count: 8277
+Size: 8277
+Layer: 4 loc: 0 with feature: 42
+count: 25624
+Size: 25624
+Layer: 4 loc: 1 with feature: 42
+count: 822607
+Size: 822607
+Layer: 4 loc: 2 with feature: 42
+count: 84627
+Size: 84627
+Layer: 4 loc: 3 with feature: 42
+count: 239726
+Size: 239726
+Layer: 4 loc: 4 with feature: 42
+count: 887432
+Size: 887432
+Layer: 4 loc: 5 with feature: 42
+count: 26067
+Size: 26067
+Layer: 4 loc: 6 with feature: 42
+count: 1305028
+Size: 1305028
+Layer: 4 loc: 7 with feature: 42
+count: 4892391
+Size: 4892391
+Layer: 4 loc: 8 with feature: 42
+count: 1415880
+Size: 1415880
+Layer: 4 loc: 9 with feature: 42
+count: 138751
+Size: 138751
+Feature: 14 with feature: (K != 0) 42
+count: 3135
+Size: 3135
+Feature: 20 with feature: (K != 0) 42
+count: 764
+Size: 764
+Layer: 6 loc: 0 with feature: 42
+count: 5539
+Size: 5539
+Feature: 24 with feature: (K != 0) 42
+count: 681
+Size: 681
+Layer: 7 loc: 0 with feature: 42
+count: 33327
+Size: 33327
+Layer: 7 loc: 1 with feature: 42
+count: 18434
+Size: 18434
+Layer: 7 loc: 2 with feature: 42
+count: 514801
+Size: 514801
+Layer: 7 loc: 3 with feature: 42
+count: 52842
+Size: 52842
+Layer: 7 loc: 4 with feature: 42
+count: 158707
+Size: 158707
+Layer: 7 loc: 5 with feature: 42
+count: 536313
+Size: 536313
+Layer: 7 loc: 6 with feature: 42
+count: 17376
+Size: 17376
+Layer: 7 loc: 7 with feature: 42
+count: 1686082
+Size: 1686082
+Layer: 7 loc: 8 with feature: 42
+count: 849526
+Size: 849526
+Layer: 7 loc: 9 with feature: 42
+count: 2956748
+Size: 2956748
+Layer: 7 loc: 10 with feature: 42
+count: 8372566
+Size: 8372566
+Layer: 7 loc: 11 with feature: 42
+count: 883200
+Size: 883200
+Layer: 7 loc: 12 with feature: 42
+count: 91684
+Size: 91684
+Layer: 7 loc: 13 with feature: 42
+count: 1576482
+Size: 1576482
+Layer: 7 loc: 14 with feature: 42
+count: 441745
+Size: 441745
+Layer: 7 loc: 15 with feature: 42
+count: 43190
+Size: 43190
+Feature: 28 with feature: (K != 0) 42
+count: 2306
+Size: 2306
+Layer: 8 loc: 0 with feature: 42
+count: 1580
+Size: 1580
+Feature: 39 with feature: (K != 0) 42
+count: 760
+Size: 760
+Layer: 9 loc: 0 with feature: 42
+count: 127644
+Size: 127644
+Layer: 9 loc: 1 with feature: 42
+count: 1051835
+Size: 1051835
+Layer: 9 loc: 2 with feature: 42
+count: 73820
+Size: 73820
+Layer: 9 loc: 3 with feature: 42
+count: 1590111
+Size: 1590111
+Layer: 9 loc: 4 with feature: 42
+count: 174779
+Size: 174779
+Layer: 9 loc: 5 with feature: 42
+count: 1101486
+Size: 1101486
+Layer: 9 loc: 6 with feature: 42
+count: 592709
+Size: 592709
+Layer: 9 loc: 7 with feature: 42
+count: 15545544
+Size: 15545544
+Layer: 9 loc: 8 with feature: 42
+count: 1696044
+Size: 1696044
+Layer: 9 loc: 9 with feature: 42
+count: 74604
+Size: 74604
+Layer: 9 loc: 10 with feature: 42
+count: 6106669
+Size: 6106669
+Layer: 9 loc: 11 with feature: 42
+count: 52979560
+Size: 52979560
+Layer: 9 loc: 12 with feature: 42
+count: 3253902
+Size: 3253902
+Layer: 9 loc: 13 with feature: 42
+count: 86391345
+Size: 86391345
+Layer: 9 loc: 14 with feature: 42
+count: 9403314
+Size: 9403314
+Layer: 9 loc: 15 with feature: 42
+count: 60499014
+Size: 60499014
+Layer: 9 loc: 16 with feature: 42
+count: 30401935
+Size: 30401935
+Layer: 9 loc: 17 with feature: 42
+count: 899680938
+Size: 899680938
+Layer: 9 loc: 18 with feature: 42
+count: 97611086
+Size: 97611086
+Layer: 9 loc: 19 with feature: 42
+count: 3709258
+Size: 3709258
+Layer: 9 loc: 20 with feature: 42
+count: 402042
+Size: 402042
+Layer: 9 loc: 21 with feature: 42
+count: 1318560
+Size: 1318560
+Layer: 9 loc: 22 with feature: 42
+count: 4461625
+Size: 4461625
+Layer: 9 loc: 23 with feature: 42
+count: 13062705
+Size: 13062705
+Layer: 9 loc: 24 with feature: 42
+count: 1467164
+Size: 1467164
+Layer: 9 loc: 25 with feature: 42
+count: 72441863
+Size: 72441863
