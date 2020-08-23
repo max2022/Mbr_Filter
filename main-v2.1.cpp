@@ -208,7 +208,7 @@ cmbr getCMBRLayerWCount(vector<mbr> mbrs1,  vector<mbr> mbrs2) {
         l2.clear();
     }
     cout << "count: " << ret.count << endl;
-    cout << "Size: " << ret.cmbr_array.size() << endl;
+    // cout << "Size: " << ret.cmbr_array.size() << endl;
     //return 2D array with CMBRs
     return ret;
 }
@@ -385,6 +385,7 @@ void cmbr_filter_layerwise(int k)
     return;
 }
 
+
 // returns a 2D vector of all the CMBRs of the features.  Maintains count for each CMBR
 void buildCMBRList(vector<vector<mbr>> mbrs, int *features) {
     // numbers layers need to consider. (#features-1)
@@ -423,6 +424,8 @@ void buildCMBRList(vector<vector<mbr>> mbrs, int *features) {
                 comb.list2 = temp.list2;
                 cmbr_map[k].push_back(comb); 
                 cmbr_arr[k].push_back(temp);
+
+                cout << comb.combination << endl;
             }
         } else {
             // find all the CMBRs from 1st feature to K+1 feature 
@@ -431,7 +434,7 @@ void buildCMBRList(vector<vector<mbr>> mbrs, int *features) {
                 a = features[i]-1;
                 cout << "Feature: " << a+1 << " with feature: (K != 0) " << b+1 << endl;
 
-                temp = getCMBRLayerWCount(mbrs[k], mbrs[k+1]); 
+                temp = getCMBRLayerWCount(mbrs[i], mbrs[k+1]); 
                 // if CMBRs exists, add to the layer
                 if (temp.count > 0)
                 {
@@ -443,7 +446,10 @@ void buildCMBRList(vector<vector<mbr>> mbrs, int *features) {
                     comb.list1 = temp.list1;
                     comb.list2 = temp.list2;
                     cmbr_map[k].push_back(comb); 
-                    cmbr_arr[k].push_back(temp);                    
+                    cmbr_arr[k].push_back(temp); 
+
+                    cout << comb.combination << endl;
+
                 }
                 // arr[k].insert( arr[k].end(), temp.begin(), temp.end());
             //}
@@ -452,7 +458,7 @@ void buildCMBRList(vector<vector<mbr>> mbrs, int *features) {
             //for (int i = 0; i < k ; ++i)
             //{    
                 for(int jj=0; jj< cmbr_arr[i].size() && i<k ; ++jj)
-                    {
+                {
                     cout << "Layer: " << i << " loc: " << jj << " with feature: " << b+1 << endl;
                     temp = getCMBRLayerWCount(cmbr_arr[i][jj].cmbr_array, mbrs[k+1]);        
                     
@@ -474,7 +480,10 @@ void buildCMBRList(vector<vector<mbr>> mbrs, int *features) {
                         // push created feature combination to output array
                         cmbr_map[k].push_back(comb); 
                         // push created CMBR list and other info to CMBR output array 
-                        cmbr_arr[k].push_back(temp);  
+                        cmbr_arr[k].push_back(temp); 
+
+                        cout << comb.combination << endl;
+
                     }               
                 }                               
             }
@@ -497,7 +506,7 @@ int main()
 
     // read data into a table_row structure type 1D array
     struct table_row *dat;
-    dat = createArray("Seattle2012_tt_1.csv");
+    dat = createArray("Seattle2012_1.csv");
 
     // calculate MBR for all the datapoints. 
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
@@ -510,6 +519,11 @@ int main()
     cout << "cmbr layers constructed" << endl;
 
     // print bitmap array
+
+    // for (int i = 0; i < fcount.size(); ++i)
+    // {
+    //     cout << fcount[i] << endl;
+    // }
     
     // testing getMBR() START
     /*struct table_row test_dat[14] = {{1, 500,500}, {1, 1005,1005}, {1, 825, 325}, {1, 130, 200},
@@ -527,19 +541,19 @@ int main()
     //vector< vector<cmbr> > test_cmbr_layers =
 buildCMBRList(test_mbr_array, test_feature_sizes, test_feature_ids);
 */
-    cout << "map: " << endl;
-    int curr_size = 0;
-    for (int i = 0; i < cmbr_map.size(); ++i)
-    {
-        cout << "CMBR layer is " << i << endl;
-        for (int j = 0; j < cmbr_map[i].size(); ++j)
-        {       
-            cout << cmbr_map[i][j].combination << "[" << cmbr_map[i][j].count << "]";
-            curr_size++;
-        }
-        cout << "\n";
-    }
-    cout << "Size before = " << prev_size << " Size after = " << curr_size << endl;
+    // cout << "map: " << endl;
+    // int curr_size = 0;
+    // for (int i = 0; i < cmbr_map.size(); ++i)
+    // {
+    //     cout << "CMBR layer is " << i << endl;
+    //     for (int j = 0; j < cmbr_map[i].size(); ++j)
+    //     {       
+    //         cout << cmbr_map[i][j].combination << "[" << cmbr_map[i][j].count << "]";
+    //         curr_size++;
+    //     }
+    //     cout << "\n";
+    // }
+    // cout << "Size before = " << prev_size << " Size after = " << curr_size << endl;
     // fclose(stdout);
 
     return 0;
