@@ -18,13 +18,14 @@
 //#define FMAX 5
 
 //#define PI 0.5
-#define DIST 10
+#define DIST 5//10
 
 using namespace std;
 
 double const PI = 0.3;
 int prev_size = 0;
-int fcount[FMAX] = {4060, 1404, 1899, 1367, 6617, 2579, 1695, 671, 1528, 940, 10325, 10315, 606};
+vector<int> fcount;
+//int fcount[FMAX] = {4060, 1404, 1899, 1367, 6617, 2579, 1695, 671, 1528, 940, 10325, 10315, 606};
 // feature serial 1, 5, 8, 9, 10, 14, 20, 24, 28, 39, 40, 42, 43
 //small data
 //int fcount[FMAX] = {50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50};
@@ -113,13 +114,15 @@ float getMax(float a, float b) {
 // returns CMBR for a given two MBRs
 mbr calculateCMBR(float ax1, float ay1, float ax2, float ay2, float bx1, float by1, float bx2, float by2) {
   	mbr c;
-    if (ax2 > bx1 && ax1 < bx2 && ay2 > by1 && ay1 < by2) {		
-		c.x1 = getMax(ax1, bx1);
-		c.y1 = getMax(ay1, by1);
-		c.x2 = getMin(ax2, bx2);
-		c.y2 = getMin(ay2, by2);
+    //if (ax2 > bx1 && ax1 < bx2 && ay2 > by1 && ay1 < by2) {}		
+	c.x1 = getMax(ax1, bx1);
+	c.y1 = getMax(ay1, by1);
+	c.x2 = getMin(ax2, bx2);
+	c.y2 = getMin(ay2, by2);
+	if(!(c.x1 > c.x2 || c.y1 > c.y2))	
+	{
 		c.empty = false;
-    }
+	}
     return c;
 }
 
@@ -232,6 +235,12 @@ cmbr getCMBRLayerWCount(mbr *mbrs1,  mbr *mbrs2, int a, int b) {
 //erasing filtered out cmbr_maps layerwise
 void erase_cmbr_map(int k, vector<int> erase_list)
 {
+	//before erase
+	cout << "CMBR MAP before erase " << endl;
+	for(int i = 0; i<cmbr_map[k].size(); i++){
+		cout << cmbr_map[k][i].combination << " "; 	
+	}
+	cout << endl;	
 	// erase code last to first
 	for(int ii=erase_list.size()-1; ii >= 0 ; ii--)
 	{
@@ -239,6 +248,13 @@ void erase_cmbr_map(int k, vector<int> erase_list)
 		cmbr_map[k].erase(cmbr_map[k].begin() + erase_list[ii]);
 		cmbr_arr[k].erase(cmbr_arr[k].begin() + erase_list[ii]);
 	}
+
+	//after erase
+	cout << "CMBR MAP after erase " << endl;
+	for(int i = 0; i<cmbr_map[k].size(); i++){
+		cout << cmbr_map[k][i].combination << " "; 	
+	}
+	cout << endl;
 	return;
 }
 
@@ -388,7 +404,6 @@ void cmbr_filter_layerwise(int k)
 	return;
 }
 
-
 // returns a 2D vector of all the CMBRs of the features.  Maintains count for each CMBR
 void buildCMBRList(mbr **mbrs, int *ptr, int *features) {
     // numbers layers need to consider. (#features-1)
@@ -493,6 +508,14 @@ void buildCMBRList(mbr **mbrs, int *ptr, int *features) {
     return ;
 } 
 
+//convert feature size array
+void shrinkArray(int *f_size, int *f_id) {
+    for (int i = 0; i < FMAX; ++i)
+    {
+        fcount.push_back(f_size[f_id[i]-1]);   
+    }
+    return;
+}
 
 int main()
 {
@@ -507,7 +530,7 @@ int main()
 
     // read data into a table_row structure type 1D array
     struct table_row *dat;
-    dat = createArray("Seattle2012_1.csv");
+    dat = createArray("Seattle2012_tt_1.csv");
 	//small data
 	//dat = createArray("data_iqr.csv");
 
@@ -515,8 +538,14 @@ int main()
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
     mbr**  mbr_array = getMBRList(dat, ROWS, feature_sizes);   
 	//cout << "mbr array constructed" << endl;
-
-    // build CMBR tree 
+	//create the fcount array with index-wise(feature-wise) total instance count
+	shrinkArray(feature_sizes, feature_ids);
+	/*for(int x=0;x<fcount.size();x++){
+		cout << fcount[x] << " ";
+	}
+	cout << "fcount print done " << endl;
+	*/    
+	// build CMBR tree 
     //vector< vector<cmbr> > cmbr_layers = 
 	buildCMBRList(mbr_array, feature_sizes, feature_ids);
 	//cout << "cmbr layers constructed" << endl;

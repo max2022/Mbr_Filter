@@ -2,7 +2,7 @@
 #include <string>
 #include <bits/stdc++.h>
 
-#define ROWS 44006
+//#define ROWS 44006
 //#define ROWS 165458
 //small data
 //#define ROWS 650
@@ -15,6 +15,8 @@ struct table_row {
     float y;
 };
 
+int ROWS;
+
 // read file data and retunr data as an object array
 struct table_row *createArray(const char *fileName) {
 	FILE *fp = fopen(fileName, "r");
@@ -23,13 +25,14 @@ struct table_row *createArray(const char *fileName) {
         printf("Can not open file\n");
         return NULL;
     }
-
-	char str[1024];
+	
+	fscanf(fp, "%d", &ROWS);
+	cout << ROWS << endl;
+	
 	struct table_row* table_rows = (struct table_row*)malloc(sizeof(struct table_row) * ROWS);
 	int count = 0;
 
-	fscanf(fp, "%s", str);
-	cout << str << endl;
+	
 	for (count = 0; count < ROWS; ++count) {
 		fscanf(fp, "%d, %f, %f", &table_rows[count].id, &table_rows[count].x, &table_rows[count].y);
 		//cout << "id is -> "<< table_rows[count].id << endl;
