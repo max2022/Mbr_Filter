@@ -4,7 +4,7 @@
 #SBATCH -t 40:00:00
 #SBATCH --ntasks-per-node 1
  
-g++ main_test.cpp -o c.out -std=gnu++11
+g++ main_test_1.cpp -o c.out -std=gnu++11
 ./c.out
 
  
