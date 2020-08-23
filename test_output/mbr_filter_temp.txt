@@ -1,0 +1,121 @@
+Layer 0 Building ...
+Feature: 1 with feature: 2
+ptr[a]= 5 ptr[b]= 5
+count: 5
+Size: 5
+CMBR_MAP K is 0 size is 1
+ii is 0 combination is 11000 and count is 5
+list 1 unique val 3
+test pr before if list 1 0.6
+List 1 pr -> 0.6
+list 2 unique val 3
+test pr before if list 2 0.6
+List 2 -> pr 0.6
+survivor cmbr is --->  11000
+Layer 0 Built Successfully!!!
+Layer 1 Building ...
+Feature: 1 with feature: (K != 0) 3
+count: 0
+Size: 0
+Feature: 2 with feature: (K != 0) 3
+count: 1
+Size: 1
+CMBR_MAP K is 1 size is 1
+ii is 0 combination is 01100 and count is 1
+list 1 unique val 1
+test pr before if list 1 0.2
+List 1 pr -> 0.2
+list 2 unique val 1
+test pr before if list 2 0.5
+List 2 -> pr 0.2
+ to be removed comb is 01100 index is 0 and K is 1
+pr is 0.2 PI is 0.3
+Layer 1 Built Successfully!!!
+Layer 2 Building ...
+Feature: 1 with feature: (K != 0) 4
+count: 1
+Size: 1
+Feature: 2 with feature: (K != 0) 4
+count: 1
+Size: 1
+Feature: 3 with feature: (K != 0) 4
+count: 0
+Size: 0
+Layer: 0 loc: 0 with feature: 4
+count: 0
+Size: 0
+CMBR_MAP K is 2 size is 2
+ii is 0 combination is 10010 and count is 1
+list 1 unique val 1
+test pr before if list 1 0.2
+List 1 pr -> 0.2
+list 2 unique val 1
+test pr before if list 2 0.333333
+List 2 -> pr 0.2
+ to be removed comb is 10010 index is 0 and K is 2
+pr is 0.2 PI is 0.3
+ii is 1 combination is 01010 and count is 1
+list 1 unique val 1
+test pr before if list 1 0.2
+List 1 pr -> 0.2
+list 2 unique val 1
+test pr before if list 2 0.333333
+List 2 -> pr 0.2
+ to be removed comb is 01010 index is 1 and K is 2
+pr is 0.2 PI is 0.3
+Layer 2 Built Successfully!!!
+Layer 3 Building ...
+Feature: 1 with feature: (K != 0) 5
+count: 2
+Size: 2
+Feature: 2 with feature: (K != 0) 5
+count: 2
+Size: 2
+Feature: 3 with feature: (K != 0) 5
+count: 0
+Size: 0
+Feature: 4 with feature: (K != 0) 5
+count: 0
+Size: 0
+Layer: 0 loc: 0 with feature: 5
+count: 4
+Size: 4
+CMBR_MAP K is 3 size is 3
+ii is 0 combination is 10001 and count is 2
+list 1 unique val 2
+test pr before if list 1 0.4
+List 1 pr -> 0.4
+list 2 unique val 1
+test pr before if list 2 1
+List 2 -> pr 0.4
+survivor cmbr is --->  10001
+ii is 1 combination is 01001 and count is 2
+list 1 unique val 2
+test pr before if list 1 0.4
+List 1 pr -> 0.4
+list 2 unique val 1
+test pr before if list 2 1
+List 2 -> pr 0.4
+survivor cmbr is --->  01001
+ii is 2 combination is 11001 and count is 4
+list 1 2D unique val 2
+total_instances 5 pos 4
+test pr before if list 1 2d 0.4
+list 1 2D unique val 2
+total_instances 5 pos 3
+test pr before if list 1 2d 0.4
+List 1 pr -> 0.4
+list 2 unique val 1
+test pr before if list 2 1
+List 2 -> pr 0.4
+survivor cmbr is --->  11001
+Layer 3 Built Successfully!!!
+CMBR layer is 0
+11000[5]
+CMBR layer is 1
+
+CMBR layer is 2
+
+CMBR layer is 3
+10001[2]01001[2]11001[4]
+Size before = 7 Size after = 4

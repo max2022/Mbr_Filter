@@ -1,0 +1,751 @@
+650
+Layer 0 Building ...
+Feature: 1 with feature: 5
+ptr[a]= 50 ptr[b]= 50
+count: 3
+Size: 3
+CMBR_MAP Kth size is 1
+ii is 0 combination is 1100000000000 and count is 3
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 3
+List 2 -> pr 0.04
+ to be removed comb is 1100000000000 index is 0 and K is 0
+pr is 0.04 PI is 0.1
+Layer 0 Built Successfully!!!
+Layer 1 Building ...
+Feature: 1 with feature: (K != 0) 8
+count: 0
+Size: 0
+Feature: 5 with feature: (K != 0) 8
+count: 2
+Size: 2
+CMBR_MAP Kth size is 1
+ii is 0 combination is 0110000000000 and count is 2
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0110000000000 index is 0 and K is 1
+pr is 0.02 PI is 0.1
+Layer 1 Built Successfully!!!
+Layer 2 Building ...
+Feature: 1 with feature: (K != 0) 9
+count: 1
+Size: 1
+Feature: 5 with feature: (K != 0) 9
+count: 0
+Size: 0
+Feature: 8 with feature: (K != 0) 9
+count: 3
+Size: 3
+CMBR_MAP Kth size is 2
+ii is 0 combination is 1001000000000 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 1001000000000 index is 0 and K is 2
+pr is 0.02 PI is 0.1
+ii is 1 combination is 0011000000000 and count is 3
+list 1 unique val 3
+List 1 pr -> 0.06
+list 2 unique val 3
+List 2 -> pr 0.06
+ to be removed comb is 0011000000000 index is 1 and K is 2
+pr is 0.06 PI is 0.1
+Layer 2 Built Successfully!!!
+Layer 3 Building ...
+Feature: 1 with feature: (K != 0) 10
+count: 4
+Size: 4
+Feature: 5 with feature: (K != 0) 10
+count: 1
+Size: 1
+Feature: 8 with feature: (K != 0) 10
+count: 2
+Size: 2
+Feature: 9 with feature: (K != 0) 10
+count: 3
+Size: 3
+CMBR_MAP Kth size is 4
+ii is 0 combination is 1000100000000 and count is 4
+list 1 unique val 4
+List 1 pr -> 0.08
+list 2 unique val 3
+List 2 -> pr 0.06
+ to be removed comb is 1000100000000 index is 0 and K is 3
+pr is 0.06 PI is 0.1
+ii is 1 combination is 0100100000000 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0100100000000 index is 1 and K is 3
+pr is 0.02 PI is 0.1
+ii is 2 combination is 0010100000000 and count is 2
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 2
+List 2 -> pr 0.04
+ to be removed comb is 0010100000000 index is 2 and K is 3
+pr is 0.04 PI is 0.1
+ii is 3 combination is 0001100000000 and count is 3
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 3
+List 2 -> pr 0.04
+ to be removed comb is 0001100000000 index is 3 and K is 3
+pr is 0.04 PI is 0.1
+Layer 3 Built Successfully!!!
+Layer 4 Building ...
+Feature: 1 with feature: (K != 0) 14
+count: 0
+Size: 0
+Feature: 5 with feature: (K != 0) 14
+count: 1
+Size: 1
+Feature: 8 with feature: (K != 0) 14
+count: 3
+Size: 3
+Feature: 9 with feature: (K != 0) 14
+count: 0
+Size: 0
+Feature: 10 with feature: (K != 0) 14
+count: 3
+Size: 3
+CMBR_MAP Kth size is 3
+ii is 0 combination is 0100010000000 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0100010000000 index is 0 and K is 4
+pr is 0.02 PI is 0.1
+ii is 1 combination is 0010010000000 and count is 3
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 3
+List 2 -> pr 0.02
+ to be removed comb is 0010010000000 index is 1 and K is 4
+pr is 0.02 PI is 0.1
+ii is 2 combination is 0000110000000 and count is 3
+list 1 unique val 3
+List 1 pr -> 0.06
+list 2 unique val 3
+List 2 -> pr 0.06
+ to be removed comb is 0000110000000 index is 2 and K is 4
+pr is 0.06 PI is 0.1
+Layer 4 Built Successfully!!!
+Layer 5 Building ...
+Feature: 1 with feature: (K != 0) 20
+count: 6
+Size: 6
+Feature: 5 with feature: (K != 0) 20
+count: 0
+Size: 0
+Feature: 8 with feature: (K != 0) 20
+count: 0
+Size: 0
+Feature: 9 with feature: (K != 0) 20
+count: 0
+Size: 0
+Feature: 10 with feature: (K != 0) 20
+count: 0
+Size: 0
+Feature: 14 with feature: (K != 0) 20
+count: 1
+Size: 1
+CMBR_MAP Kth size is 2
+ii is 0 combination is 1000001000000 and count is 6
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 6
+List 2 -> pr 0.04
+ to be removed comb is 1000001000000 index is 0 and K is 5
+pr is 0.04 PI is 0.1
+ii is 1 combination is 0000011000000 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0000011000000 index is 1 and K is 5
+pr is 0.02 PI is 0.1
+Layer 5 Built Successfully!!!
+Layer 6 Building ...
+Feature: 1 with feature: (K != 0) 24
+count: 10
+Size: 10
+Feature: 5 with feature: (K != 0) 24
+count: 7
+Size: 7
+Feature: 8 with feature: (K != 0) 24
+count: 2
+Size: 2
+Feature: 9 with feature: (K != 0) 24
+count: 0
+Size: 0
+Feature: 10 with feature: (K != 0) 24
+count: 4
+Size: 4
+Feature: 14 with feature: (K != 0) 24
+count: 1
+Size: 1
+Feature: 20 with feature: (K != 0) 24
+count: 4
+Size: 4
+CMBR_MAP Kth size is 6
+ii is 0 combination is 1000000100000 and count is 10
+list 1 unique val 7
+List 1 pr -> 0.14
+list 2 unique val 9
+List 2 -> pr 0.14
+survivor cmbr is --->  1000000100000
+ii is 1 combination is 0100000100000 and count is 7
+list 1 unique val 3
+List 1 pr -> 0.06
+list 2 unique val 5
+List 2 -> pr 0.06
+ to be removed comb is 0100000100000 index is 1 and K is 6
+pr is 0.06 PI is 0.1
+ii is 2 combination is 0010000100000 and count is 2
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 2
+List 2 -> pr 0.04
+ to be removed comb is 0010000100000 index is 2 and K is 6
+pr is 0.04 PI is 0.1
+ii is 3 combination is 0000100100000 and count is 4
+list 1 unique val 3
+List 1 pr -> 0.06
+list 2 unique val 4
+List 2 -> pr 0.06
+ to be removed comb is 0000100100000 index is 3 and K is 6
+pr is 0.06 PI is 0.1
+ii is 4 combination is 0000010100000 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0000010100000 index is 4 and K is 6
+pr is 0.02 PI is 0.1
+ii is 5 combination is 0000001100000 and count is 4
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 4
+List 2 -> pr 0.02
+ to be removed comb is 0000001100000 index is 5 and K is 6
+pr is 0.02 PI is 0.1
+Layer 6 Built Successfully!!!
+Layer 7 Building ...
+Feature: 1 with feature: (K != 0) 28
+count: 3
+Size: 3
+Feature: 5 with feature: (K != 0) 28
+count: 8
+Size: 8
+Feature: 8 with feature: (K != 0) 28
+count: 2
+Size: 2
+Feature: 9 with feature: (K != 0) 28
+count: 3
+Size: 3
+Feature: 10 with feature: (K != 0) 28
+count: 4
+Size: 4
+Feature: 14 with feature: (K != 0) 28
+count: 4
+Size: 4
+Feature: 20 with feature: (K != 0) 28
+count: 0
+Size: 0
+Feature: 24 with feature: (K != 0) 28
+count: 10
+Size: 10
+Layer: 6 loc: 0 with feature: 28
+count: 0
+Size: 0
+CMBR_MAP Kth size is 7
+ii is 0 combination is 1000000010000 and count is 3
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 3
+List 2 -> pr 0.04
+ to be removed comb is 1000000010000 index is 0 and K is 7
+pr is 0.04 PI is 0.1
+ii is 1 combination is 0100000010000 and count is 8
+list 1 unique val 7
+List 1 pr -> 0.14
+list 2 unique val 6
+List 2 -> pr 0.12
+survivor cmbr is --->  0100000010000
+ii is 2 combination is 0010000010000 and count is 2
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0010000010000 index is 2 and K is 7
+pr is 0.02 PI is 0.1
+ii is 3 combination is 0001000010000 and count is 3
+list 1 unique val 3
+List 1 pr -> 0.06
+list 2 unique val 2
+List 2 -> pr 0.04
+ to be removed comb is 0001000010000 index is 3 and K is 7
+pr is 0.04 PI is 0.1
+ii is 4 combination is 0000100010000 and count is 4
+list 1 unique val 4
+List 1 pr -> 0.08
+list 2 unique val 4
+List 2 -> pr 0.08
+ to be removed comb is 0000100010000 index is 4 and K is 7
+pr is 0.08 PI is 0.1
+ii is 5 combination is 0000010010000 and count is 4
+list 1 unique val 4
+List 1 pr -> 0.08
+list 2 unique val 4
+List 2 -> pr 0.08
+ to be removed comb is 0000010010000 index is 5 and K is 7
+pr is 0.08 PI is 0.1
+ii is 6 combination is 0000000110000 and count is 10
+list 1 unique val 7
+List 1 pr -> 0.14
+list 2 unique val 5
+List 2 -> pr 0.1
+survivor cmbr is --->  0000000110000
+Layer 7 Built Successfully!!!
+Layer 8 Building ...
+Feature: 1 with feature: (K != 0) 39
+count: 11
+Size: 11
+Feature: 5 with feature: (K != 0) 39
+count: 5
+Size: 5
+Feature: 8 with feature: (K != 0) 39
+count: 2
+Size: 2
+Feature: 9 with feature: (K != 0) 39
+count: 6
+Size: 6
+Feature: 10 with feature: (K != 0) 39
+count: 2
+Size: 2
+Feature: 14 with feature: (K != 0) 39
+count: 12
+Size: 12
+Feature: 20 with feature: (K != 0) 39
+count: 11
+Size: 11
+Feature: 24 with feature: (K != 0) 39
+count: 11
+Size: 11
+Feature: 28 with feature: (K != 0) 39
+count: 10
+Size: 10
+Layer: 7 loc: 0 with feature: 39
+count: 0
+Size: 0
+Layer: 7 loc: 1 with feature: 39
+count: 0
+Size: 0
+CMBR_MAP Kth size is 9
+ii is 0 combination is 1000000001000 and count is 11
+list 1 unique val 5
+List 1 pr -> 0.1
+list 2 unique val 9
+List 2 -> pr 0.1
+survivor cmbr is --->  1000000001000
+ii is 1 combination is 0100000001000 and count is 5
+list 1 unique val 4
+List 1 pr -> 0.08
+list 2 unique val 4
+List 2 -> pr 0.08
+ to be removed comb is 0100000001000 index is 1 and K is 8
+pr is 0.08 PI is 0.1
+ii is 2 combination is 0010000001000 and count is 2
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 2
+List 2 -> pr 0.02
+ to be removed comb is 0010000001000 index is 2 and K is 8
+pr is 0.02 PI is 0.1
+ii is 3 combination is 0001000001000 and count is 6
+list 1 unique val 3
+List 1 pr -> 0.06
+list 2 unique val 6
+List 2 -> pr 0.06
+ to be removed comb is 0001000001000 index is 3 and K is 8
+pr is 0.06 PI is 0.1
+ii is 4 combination is 0000100001000 and count is 2
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 2
+List 2 -> pr 0.02
+ to be removed comb is 0000100001000 index is 4 and K is 8
+pr is 0.02 PI is 0.1
+ii is 5 combination is 0000010001000 and count is 12
+list 1 unique val 5
+List 1 pr -> 0.1
+list 2 unique val 8
+List 2 -> pr 0.1
+survivor cmbr is --->  0000010001000
+ii is 6 combination is 0000001001000 and count is 11
+list 1 unique val 11
+List 1 pr -> 0.22
+list 2 unique val 2
+List 2 -> pr 0.04
+ to be removed comb is 0000001001000 index is 6 and K is 8
+pr is 0.04 PI is 0.1
+ii is 7 combination is 0000000101000 and count is 11
+list 1 unique val 5
+List 1 pr -> 0.1
+list 2 unique val 10
+List 2 -> pr 0.1
+survivor cmbr is --->  0000000101000
+ii is 8 combination is 0000000011000 and count is 10
+list 1 unique val 5
+List 1 pr -> 0.1
+list 2 unique val 10
+List 2 -> pr 0.1
+survivor cmbr is --->  0000000011000
+Layer 8 Built Successfully!!!
+Layer 9 Building ...
+Feature: 1 with feature: (K != 0) 40
+count: 0
+Size: 0
+Feature: 5 with feature: (K != 0) 40
+count: 4
+Size: 4
+Feature: 8 with feature: (K != 0) 40
+count: 1
+Size: 1
+Feature: 9 with feature: (K != 0) 40
+count: 2
+Size: 2
+Feature: 10 with feature: (K != 0) 40
+count: 5
+Size: 5
+Feature: 14 with feature: (K != 0) 40
+count: 2
+Size: 2
+Feature: 20 with feature: (K != 0) 40
+count: 0
+Size: 0
+Feature: 24 with feature: (K != 0) 40
+count: 1
+Size: 1
+Feature: 28 with feature: (K != 0) 40
+count: 3
+Size: 3
+Feature: 39 with feature: (K != 0) 40
+count: 1
+Size: 1
+Layer: 8 loc: 0 with feature: 40
+count: 0
+Size: 0
+Layer: 8 loc: 1 with feature: 40
+count: 0
+Size: 0
+Layer: 8 loc: 2 with feature: 40
+count: 0
+Size: 0
+Layer: 8 loc: 3 with feature: 40
+count: 0
+Size: 0
+CMBR_MAP Kth size is 8
+ii is 0 combination is 0100000000100 and count is 4
+list 1 unique val 4
+List 1 pr -> 0.08
+list 2 unique val 3
+List 2 -> pr 0.06
+ to be removed comb is 0100000000100 index is 0 and K is 9
+pr is 0.06 PI is 0.1
+ii is 1 combination is 0010000000100 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0010000000100 index is 1 and K is 9
+pr is 0.02 PI is 0.1
+ii is 2 combination is 0001000000100 and count is 2
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 2
+List 2 -> pr 0.04
+ to be removed comb is 0001000000100 index is 2 and K is 9
+pr is 0.04 PI is 0.1
+ii is 3 combination is 0000100000100 and count is 5
+list 1 unique val 5
+List 1 pr -> 0.1
+list 2 unique val 5
+List 2 -> pr 0.1
+survivor cmbr is --->  0000100000100
+ii is 4 combination is 0000010000100 and count is 2
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 2
+List 2 -> pr 0.04
+ to be removed comb is 0000010000100 index is 4 and K is 9
+pr is 0.04 PI is 0.1
+ii is 5 combination is 0000000100100 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0000000100100 index is 5 and K is 9
+pr is 0.02 PI is 0.1
+ii is 6 combination is 0000000010100 and count is 3
+list 1 unique val 3
+List 1 pr -> 0.06
+list 2 unique val 2
+List 2 -> pr 0.04
+ to be removed comb is 0000000010100 index is 6 and K is 9
+pr is 0.04 PI is 0.1
+ii is 7 combination is 0000000001100 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0000000001100 index is 7 and K is 9
+pr is 0.02 PI is 0.1
+Layer 9 Built Successfully!!!
+Layer 10 Building ...
+Feature: 1 with feature: (K != 0) 42
+count: 3
+Size: 3
+Feature: 5 with feature: (K != 0) 42
+count: 0
+Size: 0
+Feature: 8 with feature: (K != 0) 42
+count: 1
+Size: 1
+Feature: 9 with feature: (K != 0) 42
+count: 0
+Size: 0
+Feature: 10 with feature: (K != 0) 42
+count: 1
+Size: 1
+Feature: 14 with feature: (K != 0) 42
+count: 4
+Size: 4
+Feature: 20 with feature: (K != 0) 42
+count: 12
+Size: 12
+Feature: 24 with feature: (K != 0) 42
+count: 1
+Size: 1
+Feature: 28 with feature: (K != 0) 42
+count: 3
+Size: 3
+Feature: 39 with feature: (K != 0) 42
+count: 7
+Size: 7
+Feature: 40 with feature: (K != 0) 42
+count: 2
+Size: 2
+Layer: 9 loc: 0 with feature: 42
+count: 0
+Size: 0
+CMBR_MAP Kth size is 9
+ii is 0 combination is 1000000000010 and count is 3
+list 1 unique val 3
+List 1 pr -> 0.06
+list 2 unique val 3
+List 2 -> pr 0.06
+ to be removed comb is 1000000000010 index is 0 and K is 10
+pr is 0.06 PI is 0.1
+ii is 1 combination is 0010000000010 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0010000000010 index is 1 and K is 10
+pr is 0.02 PI is 0.1
+ii is 2 combination is 0000100000010 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0000100000010 index is 2 and K is 10
+pr is 0.02 PI is 0.1
+ii is 3 combination is 0000010000010 and count is 4
+list 1 unique val 4
+List 1 pr -> 0.08
+list 2 unique val 2
+List 2 -> pr 0.04
+ to be removed comb is 0000010000010 index is 3 and K is 10
+pr is 0.04 PI is 0.1
+ii is 4 combination is 0000001000010 and count is 12
+list 1 unique val 12
+List 1 pr -> 0.24
+list 2 unique val 4
+List 2 -> pr 0.08
+ to be removed comb is 0000001000010 index is 4 and K is 10
+pr is 0.08 PI is 0.1
+ii is 5 combination is 0000000100010 and count is 1
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 1
+List 2 -> pr 0.02
+ to be removed comb is 0000000100010 index is 5 and K is 10
+pr is 0.02 PI is 0.1
+ii is 6 combination is 0000000010010 and count is 3
+list 1 unique val 3
+List 1 pr -> 0.06
+list 2 unique val 3
+List 2 -> pr 0.06
+ to be removed comb is 0000000010010 index is 6 and K is 10
+pr is 0.06 PI is 0.1
+ii is 7 combination is 0000000001010 and count is 7
+list 1 unique val 7
+List 1 pr -> 0.14
+list 2 unique val 4
+List 2 -> pr 0.08
+ to be removed comb is 0000000001010 index is 7 and K is 10
+pr is 0.08 PI is 0.1
+ii is 8 combination is 0000000000110 and count is 2
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 2
+List 2 -> pr 0.04
+ to be removed comb is 0000000000110 index is 8 and K is 10
+pr is 0.04 PI is 0.1
+Layer 10 Built Successfully!!!
+Layer 11 Building ...
+Feature: 1 with feature: (K != 0) 43
+count: 15
+Size: 15
+Feature: 5 with feature: (K != 0) 43
+count: 0
+Size: 0
+Feature: 8 with feature: (K != 0) 43
+count: 3
+Size: 3
+Feature: 9 with feature: (K != 0) 43
+count: 3
+Size: 3
+Feature: 10 with feature: (K != 0) 43
+count: 12
+Size: 12
+Feature: 14 with feature: (K != 0) 43
+count: 2
+Size: 2
+Feature: 20 with feature: (K != 0) 43
+count: 37
+Size: 37
+Feature: 24 with feature: (K != 0) 43
+count: 13
+Size: 13
+Feature: 28 with feature: (K != 0) 43
+count: 5
+Size: 5
+Feature: 39 with feature: (K != 0) 43
+count: 16
+Size: 16
+Feature: 40 with feature: (K != 0) 43
+count: 2
+Size: 2
+Feature: 42 with feature: (K != 0) 43
+count: 3
+Size: 3
+CMBR_MAP Kth size is 11
+ii is 0 combination is 1000000000001 and count is 15
+list 1 unique val 4
+List 1 pr -> 0.08
+list 2 unique val 9
+List 2 -> pr 0.08
+ to be removed comb is 1000000000001 index is 0 and K is 11
+pr is 0.08 PI is 0.1
+ii is 1 combination is 0010000000001 and count is 3
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 3
+List 2 -> pr 0.04
+ to be removed comb is 0010000000001 index is 1 and K is 11
+pr is 0.04 PI is 0.1
+ii is 2 combination is 0001000000001 and count is 3
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 3
+List 2 -> pr 0.04
+ to be removed comb is 0001000000001 index is 2 and K is 11
+pr is 0.04 PI is 0.1
+ii is 3 combination is 0000100000001 and count is 12
+list 1 unique val 5
+List 1 pr -> 0.1
+list 2 unique val 12
+List 2 -> pr 0.1
+survivor cmbr is --->  0000100000001
+ii is 4 combination is 0000010000001 and count is 2
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 2
+List 2 -> pr 0.04
+ to be removed comb is 0000010000001 index is 4 and K is 11
+pr is 0.04 PI is 0.1
+ii is 5 combination is 0000001000001 and count is 37
+list 1 unique val 23
+List 1 pr -> 0.46
+list 2 unique val 6
+List 2 -> pr 0.12
+survivor cmbr is --->  0000001000001
+ii is 6 combination is 0000000100001 and count is 13
+list 1 unique val 4
+List 1 pr -> 0.08
+list 2 unique val 10
+List 2 -> pr 0.08
+ to be removed comb is 0000000100001 index is 6 and K is 11
+pr is 0.08 PI is 0.1
+ii is 7 combination is 0000000010001 and count is 5
+list 1 unique val 5
+List 1 pr -> 0.1
+list 2 unique val 4
+List 2 -> pr 0.08
+ to be removed comb is 0000000010001 index is 7 and K is 11
+pr is 0.08 PI is 0.1
+ii is 8 combination is 0000000001001 and count is 16
+list 1 unique val 5
+List 1 pr -> 0.1
+list 2 unique val 9
+List 2 -> pr 0.1
+survivor cmbr is --->  0000000001001
+ii is 9 combination is 0000000000101 and count is 2
+list 1 unique val 1
+List 1 pr -> 0.02
+list 2 unique val 2
+List 2 -> pr 0.02
+ to be removed comb is 0000000000101 index is 9 and K is 11
+pr is 0.02 PI is 0.1
+ii is 10 combination is 0000000000011 and count is 3
+list 1 unique val 2
+List 1 pr -> 0.04
+list 2 unique val 3
+List 2 -> pr 0.04
+ to be removed comb is 0000000000011 index is 10 and K is 11
+pr is 0.04 PI is 0.1
+Layer 11 Built Successfully!!!
+CMBR layer is 0
+
+CMBR layer is 1
+
+CMBR layer is 2
+
+CMBR layer is 3
+
+CMBR layer is 4
+
+CMBR layer is 5
+
+CMBR layer is 6
+1000000100000[10]
+CMBR layer is 7
+0100000010000[8]0000000110000[10]
+CMBR layer is 8
+1000000001000[11]0000010001000[12]0000000101000[11]0000000011000[10]
+CMBR layer is 9
+0000100000100[5]
+CMBR layer is 10
+
+CMBR layer is 11
+0000100000001[12]0000001000001[37]0000000001001[16]
+Size before = 63 Size after = 11
