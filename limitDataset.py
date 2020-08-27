@@ -28,9 +28,9 @@ def readFile(file, max_x, max_y):
 	    csvwriter = csv.writer(csvfile)  
 	        
 	    # writing the data rows  
-	    csvwriter.writerow([max])	
+	    csvwriter.writerow([int(max)])	
 	    csvwriter.writerows(limited)
-	    csvwriter.writerows(['\r\n'])
-	    csvwriter.writerow([0, 0, max_x, max_y])	
+	    csvwriter.writerow([])
+	    csvwriter.writerow([0, 0, float(max_x), float(max_y)])	
 
-readFile('Seattle2012_1.csv', 8000, 9000)		
+readFile('Seattle2012.csv', 6000, 8000)		

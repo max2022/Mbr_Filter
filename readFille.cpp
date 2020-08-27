@@ -10,6 +10,10 @@ struct table_row {
     float y;
 };
 
+vector<int> seletedFeaturesSizes;
+vector<int> seletedFeatures;
+
+
 // number of rows in the data file
 int ROWS;
 
@@ -35,3 +39,39 @@ struct table_row *createArray(const char *fileName) {
     return table_rows;
 }
 
+// read Arpan's outfile as input
+void readCombinations(const char *file) {
+	string myText;
+	int b = 0, c;
+
+	ifstream MyReadFile(file);
+
+	while (getline (MyReadFile, myText)) {
+		c = 0;
+		while ((b = myText.find(",")) != std::string::npos) {
+		    seletedFeatures.push_back(stoi(myText.substr(0, b)));
+		    myText.erase(0, b + 1);
+		    c++;
+		} 
+	    seletedFeaturesSizes.push_back(++c);	
+		seletedFeatures.push_back(stoi(myText));
+	}
+	
+	MyReadFile.close();
+}
+
+// int main() {
+// 	vector<int> x;
+// 	readCombinations("Arpan-input.txt");
+// 	for (int i = 0; i < seletedFeatures.size(); ++i)
+// 	{
+// 		cout << seletedFeatures[i] << endl;
+// 	}
+
+// 	cout << "---" << endl;
+
+// 	for (int i = 0; i < seletedFeaturesSizes.size(); ++i)
+// 	{
+// 		cout << seletedFeaturesSizes[i] << endl;
+// 	}
+// }
