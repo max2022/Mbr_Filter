@@ -4,14 +4,18 @@
 
 using namespace std;
 
+// number features
+int const FMAX = 13;
+
 struct table_row {
     int id;
     float x;
     float y;
 };
 
-vector<int> seletedFeaturesSizes;
-vector<int> seletedFeatures;
+typedef std::bitset<FMAX> thirteenBits;
+
+vector<thirteenBits> seletedFeatures;
 
 
 // number of rows in the data file
@@ -43,18 +47,21 @@ struct table_row *createArray(const char *fileName) {
 void readCombinations(const char *file) {
 	string myText;
 	int b = 0, c;
+	thirteenBits n;
 
 	ifstream MyReadFile(file);
 
 	while (getline (MyReadFile, myText)) {
 		c = 0;
+		n.reset();
 		while ((b = myText.find(",")) != std::string::npos) {
-		    seletedFeatures.push_back(stoi(myText.substr(0, b)));
+			n[FMAX - 1 - stoi(myText.substr(0, b))] = 1;
+		    // seletedFeatures.push_back(stoi(myText.substr(0, b)));
 		    myText.erase(0, b + 1);
 		    c++;
 		} 
-	    seletedFeaturesSizes.push_back(++c);	
-		seletedFeatures.push_back(stoi(myText));
+		n[FMAX - 1 - stoi(myText)] = 1;	    
+		seletedFeatures.push_back(n);
 	}
 	
 	MyReadFile.close();
@@ -66,12 +73,5 @@ void readCombinations(const char *file) {
 // 	for (int i = 0; i < seletedFeatures.size(); ++i)
 // 	{
 // 		cout << seletedFeatures[i] << endl;
-// 	}
-
-// 	cout << "---" << endl;
-
-// 	for (int i = 0; i < seletedFeaturesSizes.size(); ++i)
-// 	{
-// 		cout << seletedFeaturesSizes[i] << endl;
 // 	}
 // }

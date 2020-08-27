@@ -3,8 +3,11 @@
 #include <array>
 #include <bitset>
 #include<string>
+#include <chrono> 
 
 #include "readFille.cpp"
+
+using namespace std::chrono;
 
 // distance threshold
 float const DIST = 5.0;
@@ -93,6 +96,10 @@ float getMax(float a, float b) {
     return b;
 }
 
+void print_time(string str){
+    cout << "Time -> " << str << endl;
+}
+
 // returns CMBR for a given two MBRs
 mbr calculateCMBR(float ax1, float ay1, float ax2, float ay2, float bx1, float by1, float bx2, float by2) {
     mbr c;
@@ -113,7 +120,7 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
     vector<int> ttlist1;
     vector<vector<int>> ttlist2;
     int tt=0;
-
+    auto start = high_resolution_clock::now();
     for (int aa = 0; aa < list1.size(); ++aa)
     {
         // goes through list2 of previos k-1 step to find the insatnce which made new CMBRs
@@ -148,6 +155,9 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
             }                    
         }
     }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: instanceCombinationBuild " + to_string(duration.count()));
     return ttlist2;                 
 }
 
@@ -171,6 +181,7 @@ cmbr getCMBRLayerWCount(vector<mbr> mbrs1,  vector<mbr> mbrs2) {
     vector<int> t1;
     vector<int> t2;
 
+    auto start = high_resolution_clock::now();
     //nested loop to check all the CMBRs for all combinations of instances 
     for (int i = 0; i < mbrs1.size(); ++i)
     { 
@@ -194,7 +205,9 @@ cmbr getCMBRLayerWCount(vector<mbr> mbrs1,  vector<mbr> mbrs2) {
             t2.clear(); //clear 1D array                
         }
     }
-
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: getCMBRLayerWCount " + to_string(duration.count()));
     // create return structure
     struct cmbr ret;
     if (insid > 0)
@@ -224,13 +237,16 @@ void erase_cmbr_map(int k, vector<int> erase_list)
     //}
     //cout << endl;   
     // erase code last to first
+    auto start = high_resolution_clock::now();
     for(int ii=erase_list.size()-1; ii >= 0 ; ii--)
     {
         ////cout << "erasing " << cmbr_map[k][erase_list[ii]].combination << " index is " << erase_list[ii] << " k is " << k << endl;
         cmbr_map[k].erase(cmbr_map[k].begin() + erase_list[ii]);
         cmbr_arr[k].erase(cmbr_arr[k].begin() + erase_list[ii]);
     }
-
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: erase_cmbr_map " + to_string(duration.count()));
     //after erase
     //cout << "CMBR MAP after erase " << endl;
     //for(int i = 0; i<cmbr_map[k].size(); i++){
@@ -246,25 +262,27 @@ void cmbr_filter_layerwise(int k)
     cout << "CMBR Filter Layer is " << k << " and size is " << cmbr_map[k].size() <<endl;
     prev_size += cmbr_map[k].size();
     vector<int> erase_list;
+
+    auto start = high_resolution_clock::now();
     for(int ii = 0; ii<cmbr_map[k].size(); ii++)
     {
-		string result = "";
+        string result = "";
         double pr = 1.0;
         double total_instances= 0;
         bitset<FMAX> bit_comb = cmbr_map[k][ii].combination;
-		result += "(";
-		int flag =0;
-		for(int n = FMAX-1; n>=0; n--){
-			if(bit_comb[n]==1 && flag==1){
-				result += ", ";	
-			}
-			if(bit_comb[n]==1){
-				result += to_string(FMAX-1-n);
-				flag=1;
-			}		
-		}
-		result += ") -> (";
-		//cout << result << endl;
+        result += "(";
+        int flag =0;
+        for(int n = FMAX-1; n>=0; n--){
+            if(bit_comb[n]==1 && flag==1){
+                result += ", "; 
+            }
+            if(bit_comb[n]==1){
+                result += to_string(FMAX-1-n);
+                flag=1;
+            }       
+        }
+        result += ") -> (";
+        //cout << result << endl;
         // list_1_each_cell_item_count
         int L1_item_count;
         //cout << "ii is " << ii << " combination is " << bit_comb << " and count is " << cmbr_map[k][ii].count << endl;
@@ -302,7 +320,7 @@ void cmbr_filter_layerwise(int k)
             }
             total_instances = fcount[FMAX-1-first_pos];
             //cout << "test pr before if list 1 " << list_1.size()/total_instances << endl;
-			result += to_string(list_1.size()) + ":" + to_string(fcount[FMAX-1-first_pos]) + ", ";
+            result += to_string(list_1.size()) + ":" + to_string(fcount[FMAX-1-first_pos]) + ", ";
             if((list_1.size()/total_instances) < pr)
             {   
                 pr = list_1.size()/total_instances;
@@ -345,7 +363,7 @@ void cmbr_filter_layerwise(int k)
                 total_instances = fcount[FMAX-1-pos];
                 //cout << "total_instances " << total_instances << " pos " << pos << endl;
                 //cout << "test pr before if list 1 2d " << list_1_2d[j].size()/total_instances << endl;
-				result += to_string(list_1_2d[j].size()) + ":" + to_string(fcount[FMAX-1-pos]) + ", ";
+                result += to_string(list_1_2d[j].size()) + ":" + to_string(fcount[FMAX-1-pos]) + ", ";
                 if(((list_1_2d[j].size())/total_instances) < pr)
                 {
                     pr = (list_1_2d[j].size())/total_instances;
@@ -378,7 +396,7 @@ void cmbr_filter_layerwise(int k)
         }
         total_instances = fcount[FMAX-1-last_pos];
         //cout << "test pr before if list 2 " << list_2.size()/total_instances << endl;
-		result += to_string(list_2.size()) + ":" + to_string(fcount[FMAX-1-last_pos]) + ") -> " + to_string(cmbr_map[k][ii].count);
+        result += to_string(list_2.size()) + ":" + to_string(fcount[FMAX-1-last_pos]) + ") -> " + to_string(cmbr_map[k][ii].count);
         if((list_2.size()/total_instances) < pr)
         {
             pr = list_2.size()/total_instances;
@@ -391,15 +409,19 @@ void cmbr_filter_layerwise(int k)
             //cout << "pr is " << pr << " PI is " << PI << endl;
             erase_list.push_back(ii);
             pr = 1.0;
-			result = "";
+            result = "";
         }
         else
         {
             //cout << "survivor cmbr is --->  " << cmbr_map[k][ii].combination << endl;
-			//Debug format for comparison
-			cout << result << endl;
+            //Debug format for comparison
+            cout << result << endl;
         }
     }//end ii
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: cmbr_filter_layerwise " + to_string(duration.count()));
+
     erase_cmbr_map(k, erase_list);
     erase_list.clear();
     return;
@@ -441,8 +463,8 @@ void buildCMBRList(vector<vector<mbr>> mbrs) {//, int *features) {
     // varible to temporariy hold feature IDs
     //int a, b;
     // varibale to temporarily hold combination data and the count of CMBRs for that combination
-    struct cmbr_comb comb;
-
+    struct cmbr_comb comb; 
+    auto start = high_resolution_clock::now();
     for (int k = 0; k < layers; ++k)
     {  
         //cout <<"Layer " << k << " Building ..." << endl;
@@ -458,7 +480,8 @@ void buildCMBRList(vector<vector<mbr>> mbrs) {//, int *features) {
             comb.combination[FMAX-2-k] = 1;
 
             if (isCombinationValid(comb.combination))
-            {            
+            { 
+
                 //cout << "Feature: " << a+1 << " with feature: " << b+1 << endl;
                 //cout << "ptr[a]= " << fcount[k] << " ptr[b]= " << fcount[k+1] << endl;
                 // features[k]-1 returns the feature id -1 value of the kth feature
@@ -480,9 +503,9 @@ void buildCMBRList(vector<vector<mbr>> mbrs) {//, int *features) {
 
 
             // check whether the combination appeared in Arpan's - End
-
         } else {
             // find all the CMBRs from 1st feature to K+1 feature 
+            auto start_i = high_resolution_clock::now();
             for (int i = 0; i <= k; ++i)
             {    
                 //a = features[i]-1;
@@ -520,11 +543,11 @@ void buildCMBRList(vector<vector<mbr>> mbrs) {//, int *features) {
 
             // find CMBRs with K+1 feature and previous layer CMBRs
             //for (int i = 0; i < k ; ++i)
-            //{    
+            //{   
+                auto start_jj = high_resolution_clock::now();  
                 for(int jj=0; jj< cmbr_arr[i].size() && i<k ; ++jj)
-                    {
+                {
                     //cout << "Layer: " << i << " loc: " << jj << " with feature: " << b+1 << endl;
-                    
                     // check whether the combination appeared in Arpan's - Start
                     comb.combination.reset();
                     comb.combination = cmbr_map[i][jj].combination; // take combintion id from previous step
@@ -532,8 +555,8 @@ void buildCMBRList(vector<vector<mbr>> mbrs) {//, int *features) {
 
                     if (isCombinationValid(comb.combination))
                     {
-                        temp = getCMBRLayerWCount(cmbr_arr[i][jj].cmbr_array, mbrs[k+1]);      
-
+                        temp = getCMBRLayerWCount(cmbr_arr[i][jj].cmbr_array, mbrs[k+1]);        
+                        
                         // if CMBRs exists, add to the layer
                         if (temp.count > 0)
                         {
@@ -551,25 +574,32 @@ void buildCMBRList(vector<vector<mbr>> mbrs) {//, int *features) {
                             cmbr_map[k].push_back(comb); 
                             // push created CMBR list and other info to CMBR output array 
                             cmbr_arr[k].push_back(temp);  
-                        }
+                        }    
                     }
 
 
-                    // check whether the combination appeared in Arpan's - End               
-                }                               
+                    // check whether the combination appeared in Arpan's - End            
+                }
+                auto stop_jj = high_resolution_clock::now();
+                auto duration_jj = duration_cast<microseconds>(stop_jj - start_jj); 
+                print_time("Function: buildCMBR jj to i loop " + to_string(duration_jj.count()));                               
             }
+            auto stop_i = high_resolution_clock::now();
+            auto duration_i = duration_cast<microseconds>(stop_i - start_i); 
+            print_time("Function: buildCMBR k to i loop " + to_string(duration_i.count()));
         }
         
         cmbr_filter_layerwise(k); 
         //cout <<"Layer " << k << " Built Successfully!!!" << endl;       
     }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: buildCMBRList " + to_string(duration.count()));
     return ;
 } 
 
 void print_cmbr_map(){
-	
-
-	//cout << "map: " << endl;
+    //cout << "map: " << endl;
     int curr_size = 0;
     for (int i = 0; i < cmbr_map.size(); ++i)
     {
@@ -581,9 +611,8 @@ void print_cmbr_map(){
         }
         //cout << "\n";
     }
-    cout << "Size before = " << prev_size << " Size after = " << curr_size << endl;
-    
-	return;
+    cout << "Size before = " << prev_size << " Size after = " << curr_size << endl; 
+    return;
 }
 
 int main()
@@ -593,26 +622,21 @@ int main()
 
     // read data into a table_row structure type 1D array
     struct table_row *dat;
-    dat = createArray("Seattle2012_tt_1.csv");
+    dat = createArray("Seattle2012_1.csv");
 
     // calculate MBR for all the datapoints. 
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
     vector<vector<mbr>>  mbr_array = getMBRList(dat); 
 
-    // read combinations from Arpan's output
-    readCombinations("Arpan-input.txt");
-
     //cout << "mbr array constructed" << endl;
+
+    // read combinations from Arpan's output
+    readCombinations("Arpan-input44006.txt");
    
     // build CMBR tree 
     buildCMBRList(mbr_array);//, feature_ids);
-	// print_cmbr_map();
-	cout << "cmbr layers constructed" << endl;
-
-    // thirteenBits tt(string("0000100000110"));
-    // cout << isCombinationValid(tt);
-
-
+    //print_cmbr_map();
+    cout << "cmbr layers constructed" << endl;
     // fclose(stdout);
 
     return 0;
