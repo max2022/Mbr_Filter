@@ -618,11 +618,11 @@ void print_cmbr_map(){
 int main()
 {
     
-    // freopen ("out.txt","w",stdout);   
+    freopen ("out44006.txt","w",stdout);   
 
     // read data into a table_row structure type 1D array
     struct table_row *dat;
-    dat = createArray("Seattle2012_tt_1.csv");
+    dat = createArray("data/Seattle2012_1.csv");
 
     // calculate MBR for all the datapoints. 
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 

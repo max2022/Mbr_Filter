@@ -1,12 +1,41 @@
 Total rows: 1676
-1100000000000: 0
 CMBR Filter Layer is 0 and size is 0
+Time -> Function: cmbr_filter_layerwise 0
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: getCMBRLayerWCount 514
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 622
 CMBR Filter Layer is 1 and size is 1
 (1, 2) -> (36:76, 38:115) -> 111
+Time -> Function: cmbr_filter_layerwise 47
+Time -> Function: erase_cmbr_map 0
+Time -> Function: getCMBRLayerWCount 449
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: getCMBRLayerWCount 455
+Time -> Function: buildCMBR jj to i loop 7
+Time -> Function: getCMBRLayerWCount 554
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 1739
 CMBR Filter Layer is 2 and size is 3
 (0, 3) -> (30:95, 31:90) -> 66
 (1, 3) -> (35:76, 31:90) -> 100
 (2, 3) -> (54:115, 46:90) -> 156
+Time -> Function: cmbr_filter_layerwise 128
+Time -> Function: erase_cmbr_map 0
+Time -> Function: getCMBRLayerWCount 1612
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: getCMBRLayerWCount 1362
+Time -> Function: buildCMBR jj to i loop 7
+Time -> Function: getCMBRLayerWCount 1908
+Time -> Function: getCMBRLayerWCount 1726
+Time -> Function: instanceCombinationBuild 80
+Time -> Function: getCMBRLayerWCount 2584
+Time -> Function: instanceCombinationBuild 137
+Time -> Function: buildCMBR jj to i loop 5110
+Time -> Function: getCMBRLayerWCount 1412
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 11904
 CMBR Filter Layer is 3 and size is 6
 (0, 4) -> (54:95, 139:314) -> 276
 (1, 4) -> (46:76, 140:314) -> 399
@@ -14,17 +43,103 @@ CMBR Filter Layer is 3 and size is 6
 (1, 3, 4) -> (32:76, 29:90, 107:314) -> 1424
 (2, 3, 4) -> (42:115, 35:90, 105:314) -> 2312
 (3, 4) -> (51:90, 143:314) -> 430
+Time -> Function: cmbr_filter_layerwise 1332
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 6
+Time -> Function: getCMBRLayerWCount 1045
+Time -> Function: buildCMBR jj to i loop 20
+Time -> Function: getCMBRLayerWCount 815
+Time -> Function: buildCMBR jj to i loop 39
+Time -> Function: getCMBRLayerWCount 2792
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 5174
 CMBR Filter Layer is 4 and size is 3
 (2, 5) -> (60:115, 75:179) -> 275
 (3, 5) -> (38:90, 80:179) -> 227
 (4, 5) -> (155:314, 96:179) -> 653
+Time -> Function: cmbr_filter_layerwise 310
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 5
+Time -> Function: buildCMBR jj to i loop 17
+Time -> Function: buildCMBR jj to i loop 35
+Time -> Function: buildCMBR jj to i loop 17
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 122
 CMBR Filter Layer is 5 and size is 0
+Time -> Function: cmbr_filter_layerwise 0
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 5
+Time -> Function: buildCMBR jj to i loop 16
+Time -> Function: buildCMBR jj to i loop 32
+Time -> Function: buildCMBR jj to i loop 16
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: getCMBRLayerWCount 35
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 204
 CMBR Filter Layer is 6 and size is 1
 (6, 7) -> (7:17, 11:28) -> 17
+Time -> Function: cmbr_filter_layerwise 12
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: getCMBRLayerWCount 254
+Time -> Function: buildCMBR jj to i loop 5
+Time -> Function: buildCMBR jj to i loop 16
+Time -> Function: buildCMBR jj to i loop 32
+Time -> Function: getCMBRLayerWCount 1026
+Time -> Function: buildCMBR jj to i loop 15
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 5
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 1650
 CMBR Filter Layer is 7 and size is 2
 (1, 8) -> (33:76, 25:60) -> 54
 (4, 8) -> (129:314, 31:60) -> 228
+Time -> Function: cmbr_filter_layerwise 101
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 4
+Time -> Function: buildCMBR jj to i loop 12
+Time -> Function: buildCMBR jj to i loop 25
+Time -> Function: buildCMBR jj to i loop 12
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 4
+Time -> Function: buildCMBR jj to i loop 8
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 124
 CMBR Filter Layer is 8 and size is 0
+Time -> Function: cmbr_filter_layerwise 0
+Time -> Function: erase_cmbr_map 0
+Time -> Function: getCMBRLayerWCount 2039
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: getCMBRLayerWCount 1605
+Time -> Function: buildCMBR jj to i loop 6
+Time -> Function: getCMBRLayerWCount 2426
+Time -> Function: buildCMBR jj to i loop 18
+Time -> Function: getCMBRLayerWCount 1907
+Time -> Function: getCMBRLayerWCount 5926
+Time -> Function: instanceCombinationBuild 261
+Time -> Function: getCMBRLayerWCount 9168
+Time -> Function: instanceCombinationBuild 334
+Time -> Function: getCMBRLayerWCount 10537
+Time -> Function: instanceCombinationBuild 472
+Time -> Function: getCMBRLayerWCount 9011
+Time -> Function: instanceCombinationBuild 366
+Time -> Function: buildCMBR jj to i loop 39776
+Time -> Function: getCMBRLayerWCount 6664
+Time -> Function: buildCMBR jj to i loop 17
+Time -> Function: getCMBRLayerWCount 3769
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 5
+Time -> Function: getCMBRLayerWCount 4863
+Time -> Function: instanceCombinationBuild 294
+Time -> Function: buildCMBR jj to i loop 5638
+Time -> Function: getCMBRLayerWCount 1283
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 66555
 CMBR Filter Layer is 9 and size is 12
 (0, 10) -> (69:95, 159:423) -> 382
 (1, 10) -> (55:76, 166:423) -> 443
@@ -38,6 +153,29 @@ CMBR Filter Layer is 9 and size is 12
 (5, 10) -> (129:179, 188:423) -> 949
 (4, 8, 10) -> (116:314, 25:60, 139:423) -> 3064
 (8, 10) -> (33:60, 153:423) -> 247
+Time -> Function: cmbr_filter_layerwise 10156
+Time -> Function: erase_cmbr_map 0
+Time -> Function: getCMBRLayerWCount 1155
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 10
+Time -> Function: getCMBRLayerWCount 3256
+Time -> Function: instanceCombinationBuild 209
+Time -> Function: buildCMBR jj to i loop 3879
+Time -> Function: getCMBRLayerWCount 3812
+Time -> Function: buildCMBR jj to i loop 10
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 6
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: getCMBRLayerWCount 4574
+Time -> Function: instanceCombinationBuild 332
+Time -> Function: getCMBRLayerWCount 25088
+Time -> Function: instanceCombinationBuild 4540
+Time -> Function: buildCMBR jj to i loop 38572
+Time -> Function: getCMBRLayerWCount 4951
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 53674
 CMBR Filter Layer is 10 and size is 6
 (0, 11) -> (61:95, 94:239) -> 219
 (0, 4, 11) -> (42:95, 110:314, 76:239) -> 1234
@@ -45,5 +183,23 @@ CMBR Filter Layer is 10 and size is 6
 (0, 10, 11) -> (51:95, 132:423, 79:239) -> 1935
 (4, 10, 11) -> (181:314, 193:423, 96:239) -> 10187
 (10, 11) -> (230:423, 160:239) -> 911
+Time -> Function: cmbr_filter_layerwise 4743
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 4
+Time -> Function: buildCMBR jj to i loop 8
+Time -> Function: buildCMBR jj to i loop 4
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 2
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 16
+Time -> Function: buildCMBR jj to i loop 8
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 85
 CMBR Filter Layer is 11 and size is 0
+Time -> Function: cmbr_filter_layerwise 0
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBRList 158830
 cmbr layers constructed
