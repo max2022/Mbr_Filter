@@ -3,14 +3,16 @@
 #include <array>
 #include <bitset>
 #include<string>
-#include <chrono> 
+#include <chrono>
+
+// distance threshold
+float const DIST = 5.0;
 
 #include "readFille.cpp"
 
 using namespace std::chrono;
 
-// distance threshold
-float const DIST = 5.0;
+
 // prevalence threshold
 double const PI = 0.3;
 int prev_size = 0;
@@ -49,6 +51,21 @@ vector<vector<cmbr_comb>> cmbr_map(FMAX-1);
 // 2D vector for holding all the cmbr info
 vector<vector<cmbr> > cmbr_arr(FMAX-1);
 
+// grid cell combination info
+struct cellCombinations {
+    bitset<FMAX> combination;
+    int size = 0;
+};
+
+// grid structure
+struct gridCell {
+    vector<vector<int>> instances;
+    vector<cellCombinations> combinations;
+};
+
+// global grid structure
+vector<gridCell> gridStructure;
+
 // calculate MBR for a given datapoint
 mbr getMBR(float px, float py) {
     mbr box;
@@ -79,6 +96,8 @@ vector<vector<mbr>> getMBRList(struct table_row *data) {
     }
     return arr;
 }
+
+// set grid 
 
 float getMin(float a, float b) {
     if (a < b)
@@ -114,6 +133,59 @@ mbr calculateCMBR(float ax1, float ay1, float ax2, float ay2, float bx1, float b
     }
     return c;
 }
+
+// assign default combinations to grid cell combinations
+void assignCellCombinations() {
+    // set grid size
+    gridStructure.resize(GRID_ROWS*GRID_COLS);
+
+    for (int i = 0; i < gridStructure.size(); ++i)
+    {
+        gridStructure[i].combinations.resize(FMAX);
+        gridStructure[i].instances.resize(FMAX);
+    }
+}
+
+// set grid
+void setGrid(vector<vector<mbr>>  mbr_arr) {
+    // temporary variables
+    int r, c;
+
+    // list iterator to insert into list
+    // list<int>::iterator it;
+    
+    // group all MBRs into cells regarind their min corner point
+    for (int i = 0; i < mbr_arr.size(); ++i)
+    {
+        for (int j = 0; j < mbr_arr[i].size(); ++j)
+        {
+            // cout << i << ": " << j << endl;
+            r = floor(mbr_arr[i][j].x1 / (DIST * 2));
+            c = GRID_ROWS - 1 - floor(mbr_arr[i][j].y1 / (DIST * 2));
+            // cout << r << " **** " << c << endl;
+            // cout << gridStructure.size() << endl;
+
+            // if (gridStructure[WIDTH * c].instances.size() <= 0)
+            // {
+            //     gridStructure[WIDTH * c].instances.assign(1, j);   
+            // cout << i << ": --" << j << endl;            
+
+            // } else {
+                // initialize iterator to begining of list
+                // it = gridStructure[(GRID_COLS * c) + r].instances.begin();
+                // cout << i << ": --" << j << endl; 
+
+                // point iterator
+                // advance(it, gridStructure[(GRID_COLS * c) + r].combinations[i].size);
+                // insert new instance to cell instances array
+                // gridStructure[(GRID_COLS * c) + r].instances.insert(it, j);
+            // }
+            gridStructure[(GRID_COLS * c) + r].instances[i].push_back(j);            
+            ++gridStructure[(GRID_COLS * c) + r].combinations[i].size;
+        }
+    }
+}
+
 
 // read previous stel cmbr instance combination and save it to list1
 vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<vector<int>> map_l1, vector<vector<int>> map_l2) {
@@ -618,23 +690,81 @@ void print_cmbr_map(){
 int main()
 {
     
-    // freopen ("bt_0.txt","w",stdout);   
+    // freopen ("out.txt","w",stdout);   
 
     // read data into a table_row structure type 1D array
-    struct table_row *dat;
-    dat = createArray("data/newData/Seattle2012_bt_0.csv");
+    // struct table_row *dat;
+    // dat = createArray("data/newData/Seattle2012_bt_1.csv");
 
-    // calculate MBR for all the datapoints. 
-    // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
-    vector<vector<mbr>>  mbr_array = getMBRList(dat); 
+    // // calculate MBR for all the datapoints. 
+    // // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
+    // vector<vector<mbr>>  mbr_array = getMBRList(dat); 
 
     //cout << "mbr array constructed" << endl;
 
+    // testing getMBR() START
+    struct table_row test_dat[14] = {{1, 500,500}, {1, 700,700}, {1, 825, 325}, {1, 1020, 1020},
+                                    {2, 510, 500}, {2, 1000, 1000}, {2, 705, 700}, {2, 706, 700},
+                                    {3, 100, 100}, {3, 800, 800},
+                                    {4, 1005, 1005}, {4, 135, 205}, {4, 20, 20},
+                                    {5, 703, 701}};
+    
+    ROWS = 14;
+    GRID_ROWS = 102;
+    GRID_COLS = 102;
+    vector<vector<mbr>>  mbr_array = getMBRList(test_dat); 
+
+    // create grid structure
+    assignCellCombinations();
+
+    // assign MBRs to grid cells
+    setGrid(mbr_array); 
+
+    std::cout << "MBR List: " <<std::endl;
+    for (int i = 0; i < mbr_array.size(); ++i)
+    {
+        for (int j = 0; j < mbr_array[i].size(); ++j)
+        {
+            std::cout << "(" << mbr_array[i][j].x1 << ", " << mbr_array[i][j].y1 << ")";
+        }
+        std::cout << mbr_array[i].size() << std::endl;
+    }
+
+    cout << "Grid--" << gridStructure.size() << endl;
+
+    bool f = true;
+
+    for (int i = 0; i < gridStructure.size(); ++i)
+    {
+        for (int j = 0; j < gridStructure[i].instances.size(); ++j)
+        {
+            for (int k = 0; k < gridStructure[i].instances[j].size(); ++k)
+            {
+                cout << i << ">" << j << "- " << gridStructure[i].instances[j][k] << "[";  
+                cout << gridStructure[i].combinations[j].size << "], "; 
+
+            } 
+            if (gridStructure[i].instances[j].size() > 0)
+            {            
+                cout << endl;
+            }         
+        }
+        
+    }
+
+    // testing END
+
+    // // create grid structure
+    // assignCellCombinations();
+
+    // // assign MBRs to grid cells
+    // setGrid(mbr_array);
+
     // read combinations from Arpan's output
-    readCombinations("Arpan-uf-bt_0.txt");
+    // readCombinations("Arpan-input44006.txt");
    
     // build CMBR tree 
-    buildCMBRList(mbr_array);//, feature_ids);
+    // buildCMBRList(mbr_array);//, feature_ids);
     //print_cmbr_map();
     cout << "cmbr layers constructed" << endl;
     // fclose(stdout);
