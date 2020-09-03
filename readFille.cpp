@@ -23,10 +23,10 @@ vector<thirteenBits> seletedFeatures;
 int ROWS;
 
 // grid number of rows
-float GRID_ROWS;
+int GRID_ROWS;
 
 // grid number of columns
-float GRID_COLS;
+int GRID_COLS;
 
 // grid origin
 float GRID_MIN_X, GRID_MIN_Y;
@@ -49,10 +49,14 @@ struct table_row *createArray(const char *fileName) {
 		fscanf(fp, "%d, %f, %f", &table_rows[count].id, &table_rows[count].x, &table_rows[count].y);
 
 	}
+	float x,y;
 
-	fscanf(fp, "%f, %f, %f, %f", &GRID_MIN_X, &GRID_MIN_Y, &GRID_COLS, &GRID_ROWS);
-	GRID_COLS = ceil(GRID_COLS/(DIST * 2));
-	GRID_ROWS = ceil(GRID_ROWS/(DIST * 2));
+	fscanf(fp, "%f, %f, %f, %f", &GRID_MIN_X, &GRID_MIN_Y, &x, &y);
+
+	GRID_COLS = ceil(x/(DIST * 2));
+	GRID_ROWS = ceil(y/(DIST * 2));
+	cout << GRID_ROWS << " " << GRID_COLS << endl;
+
 
 	fclose(fp);
     return table_rows;

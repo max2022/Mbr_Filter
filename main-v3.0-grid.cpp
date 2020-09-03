@@ -46,6 +46,9 @@ struct cmbr_comb {
     vector<vector<int>> list2;
 };
 
+// saves all mbr information
+vector<vector<mbr>>  mbr_array(FMAX);
+
 // 2D vector to keep track of all the combinations and counts
 vector<vector<cmbr_comb>> cmbr_map(FMAX-1);
 // 2D vector for holding all the cmbr info
@@ -78,9 +81,8 @@ mbr getMBR(float px, float py) {
 }
 
 // returns MBR list for a selected feature
-vector<vector<mbr>> getMBRList(struct table_row *data) {
-    // output 2D mbr. 
-    vector<vector<mbr>> arr(FMAX);
+void getMBRList(struct table_row *data) {
+
     int j = 0, k = 0;
 
     for (int i = 0; i < ROWS; ++i) { 
@@ -91,10 +93,10 @@ vector<vector<mbr>> getMBRList(struct table_row *data) {
         }
 
         // calculate MBR using the getMBR() and assign it to the relavant feature instance
-        arr[k].push_back(getMBR(data[i].x, data[i].y));
+        mbr_array[k].push_back(getMBR(data[i].x, data[i].y));
         fcount[k] += 1; 
     }
-    return arr;
+
 }
 
 // set grid 
@@ -147,7 +149,7 @@ void assignCellCombinations() {
 }
 
 // set grid
-void setGrid(vector<vector<mbr>>  mbr_arr) {
+void setGrid() {
     // temporary variables
     int r, c;
 
@@ -155,14 +157,12 @@ void setGrid(vector<vector<mbr>>  mbr_arr) {
     // list<int>::iterator it;
     
     // group all MBRs into cells regarind their min corner point
-    for (int i = 0; i < mbr_arr.size(); ++i)
+    for (int i = 0; i < mbr_array.size(); ++i)
     {
-        for (int j = 0; j < mbr_arr[i].size(); ++j)
+        for (int j = 0; j < mbr_array[i].size(); ++j)
         {
-            // cout << i << ": " << j << endl;
-            r = floor(mbr_arr[i][j].x1 / (DIST * 2));
-            c = GRID_ROWS - 1 - floor(mbr_arr[i][j].y1 / (DIST * 2));
-            // cout << r << " **** " << c << endl;
+            r = floor(mbr_array[i][j].x1 / (DIST * 2));
+            c = GRID_ROWS - 1 - floor(mbr_array[i][j].y1 / (DIST * 2));
             // cout << gridStructure.size() << endl;
 
             // if (gridStructure[WIDTH * c].instances.size() <= 0)
@@ -233,6 +233,7 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
     return ttlist2;                 
 }
 
+
 // returns a cmbr structure for selected 2 MBRs with the count of CMBRs
 cmbr getCMBRLayerWCount(vector<mbr> mbrs1,  vector<mbr> mbrs2) {
 
@@ -277,6 +278,126 @@ cmbr getCMBRLayerWCount(vector<mbr> mbrs1,  vector<mbr> mbrs2) {
             t2.clear(); //clear 1D array                
         }
     }
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: getCMBRLayerWCount " + to_string(duration.count()));
+    // create return structure
+    struct cmbr ret;
+    if (insid > 0)
+    {
+        // ret((insid - 1), arr);
+        ret.count = insid;
+        ret.cmbr_array = arr;
+        ret.list1 = l1;
+        ret.list2 = l2;
+        arr.clear();
+        l1.clear();
+        l2.clear();
+    }
+    //cout << "count: " << ret.count << endl;
+    //cout << "Size: " << ret.cmbr_array.size() << endl;
+    //return 2D array with CMBRs
+    return ret;
+}
+
+// returns a cmbr structure for selected 2 MBRs with the count of CMBRs
+cmbr getCMBRLayerWCount2(int fid1, int fid2) {
+
+    // 1D array to hold layer CMBRs
+    vector<mbr> arr;
+
+    // controls next available sapce in the layer array
+    int insid = 0;
+
+    // temporary varibale to track of calculated CMBR
+    mbr cmbr_v;
+
+    // l1 and l2 maintains the lists from mbr1 and mbr2. l1[0] l2[0] will give 0th CMBR instances
+    vector<vector<int>> l1;
+    vector<vector<int>> l2;
+
+    // temporary arrays to hel build l1 and l2 rows
+    vector<int> t1;
+    vector<int> t2;
+
+    // instances ids for feature1 and feature2
+    int id1, id2, ggid;
+
+    // new idfor cmbr
+    int newId = gridStructure[0].instances.size();
+
+    int c, r;
+
+    int neighbours[2] = {0, GRID_COLS};
+
+    auto start = high_resolution_clock::now();
+
+    // traverse grid
+    for (int gid = 0; gid < gridStructure.size(); ++gid)
+    {
+
+        gridStructure[gid].combinations.resize(gridStructure[gid].combinations.size()+1);
+        gridStructure[gid].instances.resize(gridStructure[gid].instances.size()+1);
+
+        for (int i = 0; i < gridStructure[gid].instances[fid1].size(); ++i)
+        {
+            id1 = gridStructure[gid].instances[fid1][i];
+            for (int ii = 0; ii < 2 ; ii++)
+            {                   
+                ggid = gid + neighbours[ii];  
+                // cout << "ggid=" << ggid << endl;         
+                for (int j = 0; (ggid < gridStructure.size()) && j < gridStructure[ggid].instances[fid2].size(); ++j)
+                {                    
+                    id2 = gridStructure[ggid].instances[fid2][j];
+                    // cout << id1 << "-" << id2 << endl;
+                    cmbr_v = calculateCMBR(mbr_array[fid1][id1].x1, mbr_array[fid1][id1].y1, mbr_array[fid1][id1].x2, mbr_array[fid1][id1].y2, mbr_array[fid2][id2].x1, mbr_array[fid2][id2].y1, mbr_array[fid2][id2].x2, mbr_array[fid2][id2].y2);
+                    if (!cmbr_v.empty)
+                    {
+                        arr.push_back(cmbr_v); 
+                        t2.push_back(id2);
+                        r = floor(cmbr_v.x1 / (DIST * 2));
+                        c = GRID_ROWS - 1 - floor(cmbr_v.y1 / (DIST * 2));
+                        gridStructure[(GRID_COLS * c) + r].instances[newId].push_back(insid);         
+                        ++gridStructure[(GRID_COLS * c) + r].combinations[newId].size;
+                        insid++;
+                    } 
+                }
+
+                ggid++;   
+                // cout << "ggid=" << ggid << endl;  
+                // cout <<   ggid/GRID_COLS << " " << (ggid-1)/GRID_COLS << endl; 
+                // cout <<   gridStructure[ggid].instances[fid2].size() << endl;
+
+                for (int j = 0; (ggid/GRID_COLS == (ggid-1)/GRID_COLS) && j < gridStructure[ggid].instances[fid2].size(); ++j)
+                {
+                    id2 = gridStructure[ggid].instances[fid2][j];
+                    // cout << id1 << "-" << id2 << endl;
+                    cmbr_v = calculateCMBR(mbr_array[fid1][id1].x1, mbr_array[fid1][id1].y1, mbr_array[fid1][id1].x2, mbr_array[fid1][id1].y2, mbr_array[fid2][id2].x1, mbr_array[fid2][id2].y1, mbr_array[fid2][id2].x2, mbr_array[fid2][id2].y2);
+                    if (!cmbr_v.empty)
+                    {
+                        arr.push_back(cmbr_v); 
+                        t2.push_back(id2);
+                        r = floor(cmbr_v.x1 / (DIST * 2));
+                        c = GRID_ROWS - 1 - floor(cmbr_v.y1 / (DIST * 2));
+                        gridStructure[(GRID_COLS * c) + r].instances[newId].push_back(insid);         
+                        ++gridStructure[(GRID_COLS * c) + r].combinations[newId].size;
+                        insid++;
+                    } 
+                }
+                
+            }
+            // if there are any CMBRs for i, add ID i to l1
+            if (t2.size() > 0)
+            {
+                t1.push_back(id1);
+                l1.push_back(t1); // push 1D arrays to 2D array
+                l2.push_back(t2); // push 1D arrays to 2D array
+                t1.clear(); //clear 1D array
+                t2.clear(); //clear 1D array                
+            }
+        }
+    }
+
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start); 
     print_time("Function: getCMBRLayerWCount " + to_string(duration.count()));
@@ -544,37 +665,26 @@ void buildCMBRList(vector<vector<mbr>> mbrs) {//, int *features) {
 
         // layer 1. Instance wise CMBR only.No previos layer
         if (k == 0) {
-            //a = features[k]-1;
+            //a = features[k]-1;      
 
-            // check whether the combination appeared in Arpan's - Start
-            comb.combination.reset();               
-            comb.combination[FMAX-1-k] = 1;
-            comb.combination[FMAX-2-k] = 1;
-
-            if (isCombinationValid(comb.combination))
-            { 
-
-                //cout << "Feature: " << a+1 << " with feature: " << b+1 << endl;
-                //cout << "ptr[a]= " << fcount[k] << " ptr[b]= " << fcount[k+1] << endl;
-                // features[k]-1 returns the feature id -1 value of the kth feature
-                temp = getCMBRLayerWCount(mbrs[k], mbrs[k+1]);            
-                // append all the calculated CMBRs to the layer 1 if CMBRs exists
-                if (temp.count > 0) 
-                {
-                    // update combinations global array
-                    // comb.combination.reset();               
-                    // comb.combination[FMAX-1-k] = 1;
-                    // comb.combination[FMAX-2-k] = 1;
-                    comb.count = temp.count;
-                    comb.list1 = temp.list1;
-                    comb.list2 = temp.list2;
-                    cmbr_map[k].push_back(comb); 
-                    cmbr_arr[k].push_back(temp);
-                }
+            //cout << "Feature: " << a+1 << " with feature: " << b+1 << endl;
+            //cout << "ptr[a]= " << fcount[k] << " ptr[b]= " << fcount[k+1] << endl;
+            // features[k]-1 returns the feature id -1 value of the kth feature
+            temp = getCMBRLayerWCount2(k, k+1);            
+            // append all the calculated CMBRs to the layer 1 if CMBRs exists
+            if (temp.count > 0) 
+            {
+                // update combinations global array
+                comb.combination.reset();               
+                comb.combination[FMAX-1-k] = 1;
+                comb.combination[FMAX-2-k] = 1;
+                comb.count = temp.count;
+                comb.list1 = temp.list1;
+                comb.list2 = temp.list2;
+                cmbr_map[k].push_back(comb); 
+                cmbr_arr[k].push_back(temp);
             }
 
-
-            // check whether the combination appeared in Arpan's - End
         } else {
             // find all the CMBRs from 1st feature to K+1 feature 
             auto start_i = high_resolution_clock::now();
@@ -583,33 +693,21 @@ void buildCMBRList(vector<vector<mbr>> mbrs) {//, int *features) {
                 //a = features[i]-1;
                 //cout << "Feature: " << a+1 << " with feature: (K != 0) " << b+1 << endl;
 
-                // check whether the combination appeared in Arpan's - Start
-                comb.combination.reset();
-                comb.combination[FMAX-1-i] = 1;
-                comb.combination[FMAX-2-k] = 1;
-
-                if (isCombinationValid(comb.combination))
+                temp = getCMBRLayerWCount2(i, k+1); 
+                // if CMBRs exists, add to the layer
+                if (temp.count > 0)
                 {
-
-                    temp = getCMBRLayerWCount(mbrs[i], mbrs[k+1]); 
-                    // if CMBRs exists, add to the layer
-                    if (temp.count > 0)
-                    {
-                        // update combinations global array
-                        // comb.combination.reset();
-                        // comb.combination[FMAX-1-i] = 1;
-                        // comb.combination[FMAX-2-k] = 1;
-                        comb.count = temp.count;
-                        comb.list1 = temp.list1;
-                        comb.list2 = temp.list2;
-                        cmbr_map[k].push_back(comb); 
-                        cmbr_arr[k].push_back(temp);                    
-                    }
+                    // update combinations global array
+                    comb.combination.reset();
+                    comb.combination[FMAX-1-i] = 1;
+                    comb.combination[FMAX-2-k] = 1;
+                    comb.count = temp.count;
+                    comb.list1 = temp.list1;
+                    comb.list2 = temp.list2;
+                    cmbr_map[k].push_back(comb);  
+                    cmbr_arr[k].push_back(temp);                    
                 }
-
-
-                // check whether the combination appeared in Arpan's - End
-
+                
                 // arr[k].insert( arr[k].end(), temp.begin(), temp.end());
             //}
 
@@ -620,35 +718,27 @@ void buildCMBRList(vector<vector<mbr>> mbrs) {//, int *features) {
                 for(int jj=0; jj< cmbr_arr[i].size() && i<k ; ++jj)
                 {
                     //cout << "Layer: " << i << " loc: " << jj << " with feature: " << b+1 << endl;
-                    // check whether the combination appeared in Arpan's - Start
-                    comb.combination.reset();
-                    comb.combination = cmbr_map[i][jj].combination; // take combintion id from previous step
-                    comb.combination[FMAX-2-k] = 1;
 
-                    if (isCombinationValid(comb.combination))
+                    temp = getCMBRLayerWCount(cmbr_arr[i][jj].cmbr_array, mbrs[k+1]);        
+                    
+                    // if CMBRs exists, add to the layer
+                    if (temp.count > 0)
                     {
-                        temp = getCMBRLayerWCount(cmbr_arr[i][jj].cmbr_array, mbrs[k+1]);        
-                        
-                        // if CMBRs exists, add to the layer
-                        if (temp.count > 0)
-                        {
-                            // update combinations global array
-                            // change the required bit related to featured id into 1
-                            // comb.combination.reset();
-                            // comb.combination = cmbr_map[i][jj].combination; // take combintion id from previous step
-                            // comb.combination[FMAX-2-k] = 1;
-                            comb.count = temp.count;    
-                            // add created CMBR instance list to object
-                            comb.list1 =  instanceCombinationBuild(temp.list1, cmbr_map[i][jj].list1, cmbr_map[i][jj].list2);
-                            // add list2 returned from the method
-                            comb.list2 = temp.list2;
-                            // push created feature combination to output array
-                            cmbr_map[k].push_back(comb); 
-                            // push created CMBR list and other info to CMBR output array 
-                            cmbr_arr[k].push_back(temp);  
-                        }    
-                    }
-
+                        // update combinations global array
+                        // change the required bit related to featured id into 1
+                        comb.combination.reset();
+                        comb.combination = cmbr_map[i][jj].combination; // take combintion id from previous step
+                        comb.combination[FMAX-2-k] = 1;
+                        comb.count = temp.count;    
+                        // add created CMBR instance list to object
+                        comb.list1 =  instanceCombinationBuild(temp.list1, cmbr_map[i][jj].list1, cmbr_map[i][jj].list2);
+                        // add list2 returned from the method
+                        comb.list2 = temp.list2;
+                        // push created feature combination to output array
+                        cmbr_map[k].push_back(comb); 
+                        // push created CMBR list and other info to CMBR output array 
+                        cmbr_arr[k].push_back(temp);  
+                    }    
 
                     // check whether the combination appeared in Arpan's - End            
                 }
@@ -693,80 +783,120 @@ int main()
     // freopen ("out.txt","w",stdout);   
 
     // read data into a table_row structure type 1D array
-    // struct table_row *dat;
-    // dat = createArray("data/newData/Seattle2012_bt_1.csv");
+    struct table_row *dat;
+    dat = createArray("data/newData/Seattle2012_bt_0.csv");
 
-    // // calculate MBR for all the datapoints. 
-    // // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
-    // vector<vector<mbr>>  mbr_array = getMBRList(dat); 
+    // calculate MBR for all the datapoints. 
+    // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
+    getMBRList(dat); 
 
-    //cout << "mbr array constructed" << endl;
+    cout << "mbr array constructed" << endl;
 
     // testing getMBR() START
-    struct table_row test_dat[14] = {{1, 500,500}, {1, 700,700}, {1, 825, 325}, {1, 1020, 1020},
-                                    {2, 510, 500}, {2, 1000, 1000}, {2, 705, 700}, {2, 706, 700},
-                                    {3, 100, 100}, {3, 800, 800},
-                                    {4, 1005, 1005}, {4, 135, 205}, {4, 20, 20},
-                                    {5, 703, 701}};
+    // struct table_row test_dat[14] = {{1, 500,500}, {1, 700,700}, {1, 825, 325}, {1, 1020, 1020},
+    //                                 {2, 510, 500}, {2, 1000, 1000}, {2, 705, 700}, {2, 706, 700},
+    //                                 {3, 100, 100}, {3, 800, 800},
+    //                                 {4, 1005, 1005}, {4, 135, 205}, {4, 20, 20},
+    //                                 {5, 703, 701}};
     
-    ROWS = 14;
-    GRID_ROWS = 102;
-    GRID_COLS = 102;
-    vector<vector<mbr>>  mbr_array = getMBRList(test_dat); 
+    // ROWS = 14;
+    // GRID_ROWS = 102;
+    // GRID_COLS = 102;
+    // getMBRList(test_dat); 
 
-    // create grid structure
-    assignCellCombinations();
+    // cout << "***=====" << endl;
 
-    // assign MBRs to grid cells
-    setGrid(mbr_array); 
-
-    std::cout << "MBR List: " <<std::endl;
-    for (int i = 0; i < mbr_array.size(); ++i)
-    {
-        for (int j = 0; j < mbr_array[i].size(); ++j)
-        {
-            std::cout << "(" << mbr_array[i][j].x1 << ", " << mbr_array[i][j].y1 << ")";
-        }
-        std::cout << mbr_array[i].size() << std::endl;
-    }
-
-    cout << "Grid--" << gridStructure.size() << endl;
-
-    bool f = true;
-
-    for (int i = 0; i < gridStructure.size(); ++i)
-    {
-        for (int j = 0; j < gridStructure[i].instances.size(); ++j)
-        {
-            for (int k = 0; k < gridStructure[i].instances[j].size(); ++k)
-            {
-                cout << i << ">" << j << "- " << gridStructure[i].instances[j][k] << "[";  
-                cout << gridStructure[i].combinations[j].size << "], "; 
-
-            } 
-            if (gridStructure[i].instances[j].size() > 0)
-            {            
-                cout << endl;
-            }         
-        }
-        
-    }
-
-    // testing END
 
     // // create grid structure
     // assignCellCombinations();
 
-    // // assign MBRs to grid cells
-    // setGrid(mbr_array);
+    // cout << "***" << endl;
 
+    // // assign MBRs to grid cells
+    // setGrid(); 
+    // cout << "***++++++" << endl;
+
+
+    // std::cout << "MBR List: " <<std::endl;
+    // for (int i = 0; i < mbr_array.size(); ++i)
+    // {
+    //     for (int j = 0; j < mbr_array[i].size(); ++j)
+    //     {
+    //         std::cout << "(" << mbr_array[i][j].x1 << ", " << mbr_array[i][j].y1 << ")";
+    //     }
+    //     std::cout << mbr_array[i].size() << std::endl;
+    // }
+
+    // cout << "Grid--" << gridStructure.size() << endl;
+
+    // bool f = true;
+
+    // for (int i = 0; i < gridStructure.size(); ++i)
+    // {
+    //     for (int j = 0; j < gridStructure[i].instances.size(); ++j)
+    //     {
+    //         for (int k = 0; k < gridStructure[i].instances[j].size(); ++k)
+    //         {
+    //             cout << i << ">" << j << "- " << gridStructure[i].instances[j][k] << "[";  
+    //             cout << gridStructure[i].combinations[j].size << "], "; 
+
+    //         } 
+    //         if (gridStructure[i].instances[j].size() > 0)
+    //         {            
+    //             cout << endl;
+    //         }         
+    //     }
+        
+    // }
+    // testing END
+    cout << "set ----" << endl;
+
+    // create grid structure
+    assignCellCombinations();
+    cout << "set comb" << endl;
+
+    // assign MBRs to grid cells
+    setGrid();
+
+    cout << "set grid" << endl;
     // read combinations from Arpan's output
     // readCombinations("Arpan-input44006.txt");
+
+    // cout << "Grid--" << gridStructure.size() << endl;
+
+    // for (int i = 0; i < gridStructure.size(); ++i)
+    // {
+    //     for (int j = 0; j < gridStructure[i].instances.size(); ++j)
+    //     {
+    //         for (int k = 0; k < gridStructure[i].instances[j].size(); ++k)
+    //         {
+    //             cout << i << ">" << j << "- " << gridStructure[i].instances[j][k] << "[";  
+    //             cout << gridStructure[i].combinations[j].size << "], "; 
+
+    //         } 
+    //         if (gridStructure[i].instances[j].size() > 0)
+    //         {            
+    //             cout << endl;
+    //         }         
+    //     }
+        
+    // }
    
     // build CMBR tree 
-    // buildCMBRList(mbr_array);//, feature_ids);
+    buildCMBRList(mbr_array);//, feature_ids);
     //print_cmbr_map();
     cout << "cmbr layers constructed" << endl;
+
+    // print cmbr array
+    for (int i = 0; i < cmbr_map.size(); ++i)
+    {
+        for (int j = 0; j < cmbr_map[i].size(); ++j)
+        {
+            cout << cmbr_map[i][j].combination << "[" << cmbr_map[i][j].count << "] ";
+        }
+        cout << endl;
+    }
+
     // fclose(stdout);
 
     return 0;
