@@ -739,7 +739,7 @@ int main()
 
     // read data into a table_row structure type 1D array
     struct table_row *dat;
-    dat = createArray("data/newData/Seattle2012_tt_1.csv");
+    dat = createArray("data/newData/Seattle2012_bt_2_0.csv");
 
     // calculate MBR for all the datapoints. 
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
