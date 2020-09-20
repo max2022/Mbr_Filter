@@ -40,7 +40,7 @@ struct mbr {
 
 // data structure hold cmbr info
 struct cmbr {
-    bitset<FMAX> combination;
+    bitset<FMAX> combination; ABC
     bool isDeleted = false;
     vector<mbr> cmbr_array;
     vector<vector<int>> list1;
@@ -110,7 +110,7 @@ float getMax(float a, float b) {
 }
 
 void print_time(string str){
-    // cout << "Time -> " << str << endl;
+    cout << "Time -> " << str << endl;
 }
 
 // returns CMBR for a given two MBRs
@@ -145,6 +145,8 @@ void setGrid() {
     // temporary variables
     int r, c;
 
+    auto start = high_resolution_clock::now();
+
     // group all MBRs into cells regarind their min corner point
     for (int i = 0; i < mbr_array.size(); ++i)
     {
@@ -160,12 +162,18 @@ void setGrid() {
             gridStructure[(GRID_COLS * c) + r].instances[i].push_back(j);   
         }
     }
+
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: setGrid " + to_string(duration.count()));
 }
 
 // update grid for calculated CMBRs
 void appendCMBR(int k) {
 
     int c, r;
+
+    auto start = high_resolution_clock::now();
 
     for (int i = 0; i < cmbr_map[k].size(); ++i)
     {        
@@ -178,7 +186,10 @@ void appendCMBR(int k) {
             // ++gridStructure[(GRID_COLS * c) + r].sizes[CMBR_ID];
         }
         CMBR_ID++;
-    }    
+    } 
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: appendCMBR " + to_string(duration.count()));   
 }
 
 
@@ -187,7 +198,7 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
     vector<int> ttlist1;
     vector<vector<int>> ttlist2;
     int tt=0;
-    // auto start = high_resolution_clock::now();
+    auto start = high_resolution_clock::now();
     for (int aa = 0; aa < list1.size(); ++aa)
     {
         // goes through list2 of previos k-1 step to find the insatnce which made new CMBRs
@@ -222,9 +233,9 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
             }                    
         }
     }
-    // auto stop = high_resolution_clock::now();
-    // auto duration = duration_cast<microseconds>(stop - start); 
-    // print_time("Function: instanceCombinationBuild " + to_string(duration.count()));
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: instanceCombinationBuild " + to_string(duration.count()));
     return ttlist2;                 
 }
 
@@ -269,7 +280,7 @@ cmbr getCMBRLayerWCount2(int fid1, int fid2, int crow, int sum, bool cmbrFlag) {
         box1 = mbr_array[fid1];
     }
 
-    // auto start = high_resolution_clock::now();
+    auto start = high_resolution_clock::now();
 
     // traverse grid
     for (int gid = 0; gid < gridStructure.size(); ++gid)
@@ -321,9 +332,9 @@ cmbr getCMBRLayerWCount2(int fid1, int fid2, int crow, int sum, bool cmbrFlag) {
         }
     }
 
-    // auto stop = high_resolution_clock::now();
-    // auto duration = duration_cast<microseconds>(stop - start); 
-    // print_time("Function: getCMBRLayerWCount " + to_string(duration.count()));
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: getCMBRLayerWCount2 " + to_string(duration.count()));
     // create return structure
     cmbr ret;
     if (insid > 0)
@@ -355,7 +366,7 @@ void erase_cmbr_map(int k, vector<int> erase_list)
     //}
     //cout << endl;   
     // erase code last to first
-    // auto start = high_resolution_clock::now();
+    auto start = high_resolution_clock::now();
     for(int ii=erase_list.size()-1; ii >= 0 ; ii--)
     {
         // cout << "erasing " << cmbr_map[k][erase_list[ii]].combination << " index is " << erase_list[ii] << " k is " << k << endl;
@@ -368,9 +379,9 @@ void erase_cmbr_map(int k, vector<int> erase_list)
         cmbr_map[k][erase_list[ii]].list1.clear();
         cmbr_map[k][erase_list[ii]].list2.clear();
     }
-    // auto stop = high_resolution_clock::now();
-    // auto duration = duration_cast<microseconds>(stop - start); 
-    // print_time("Function: erase_cmbr_map " + to_string(duration.count()));
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: erase_cmbr_map " + to_string(duration.count()));
     //after erase
     //cout << "CMBR MAP after erase " << endl;
     //for(int i = 0; i<cmbr_map[k].size(); i++){
@@ -387,7 +398,7 @@ void cmbr_filter_layerwise(int k)
     prev_size += cmbr_map[k].size();
     vector<int> erase_list;
 
-    // auto start = high_resolution_clock::now();
+    auto start = high_resolution_clock::now();
     for(int ii = 0; ii<cmbr_map[k].size(); ii++)
     {
         if (!cmbr_map[k][ii].isDeleted)
@@ -546,9 +557,9 @@ void cmbr_filter_layerwise(int k)
             }
         }
     }//end ii
-    // auto stop = high_resolution_clock::now();
-    // auto duration = duration_cast<microseconds>(stop - start); 
-    // print_time("Function: cmbr_filter_layerwise " + to_string(duration.count()));
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start); 
+    print_time("Function: cmbr_filter_layerwise " + to_string(duration.count()));
 
     erase_cmbr_map(k, erase_list);
     erase_list.clear();
@@ -722,6 +733,7 @@ int main()
     // read data into a table_row structure type 1D array
     struct table_row *dat;
     dat = createArray("data/newData/Seattle2012_tt_1.csv");
+    // dat = createArray("data/Point_Of_Interest_modified.csv");
 
     // calculate MBR for all the datapoints. 
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
