@@ -5,9 +5,6 @@
 
 using namespace std;
 
-// number features
-int const FMAX = 13;
-
 struct table_row {
     int id;
     float x;

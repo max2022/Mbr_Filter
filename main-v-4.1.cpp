@@ -14,6 +14,10 @@
 // distance threshold
 float const DIST = 5.0;
 
+// number features
+int const FMAX = 13;
+// int const FMAX = 5;
+
 #include "readFille.cpp"
 
 using namespace std::chrono;
@@ -29,7 +33,7 @@ int MAX_COMB = FMAX+1;
 // saves all counts for features
 vector<int> fcount(FMAX);
 // feature id list
-int feature_ids[FMAX] = {1, 5, 8, 9, 10, 14, 20, 24, 28, 39, 40, 42, 43};
+// int feature_ids[FMAX] = {1, 5, 8, 9, 10, 14, 20, 24, 28, 39, 40, 42, 43};
 
 // data structure to save MBR info
 struct mbr {
@@ -73,6 +77,7 @@ void getMBRList(struct table_row *data) {
     int row, col;
     mbr temp;
 
+    cout << ROWS << endl;
     for (int i = 0; i < ROWS; ++i) { 
         // check if feature id changes
         if (j != (data[i].id - 1)) {
@@ -86,6 +91,7 @@ void getMBRList(struct table_row *data) {
 
         // calculate MBR using the getMBR() and assign it to the relavant feature instance
         mbr_array[row][col][k].push_back(temp);
+        // cout << "row " << row << " col " << col << " fid " << k << " point " << data[i].x << ", " << data[i].y << endl;
         fcount[k] += 1; 
     }
 
@@ -285,9 +291,14 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                     } else {
                         ret.cmbr_array = arr1;
                         ret.list1 = arr1l1;
-                        ret.list2 = arr1l2;
+                        // check if matching is CMBR vs MBR                        
+                        if (cmbrFlag)
+                        {
+                            ret.list2 = instanceCombinationBuild(arr1l2, cmbr_map[row][col][crow][fid1].list1, cmbr_map[row][col][crow][fid1].list2);                            
+                        } else {
+                            ret.list2 = arr1l2;
+                        }
                     }
-                    //  when cmbr_map is used -> ret.list2 = instanceCombinationBuild(ret.list1, cmbr_map[i][jj].list1, cmbr_map[i][jj].list2);
                     arr1l1.clear();
                     arr1l2.clear();
                     arr1.clear();                        
@@ -307,7 +318,13 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                     {
                         ret.cmbr_array = arr2;
                         ret.list1 = arr2l1;
-                        ret.list2 = arr2l2;
+                        // check if matching is CMBR vs MBR
+                        if (cmbrFlag)
+                        {
+                            ret.list2 = instanceCombinationBuild(arr2l2, cmbr_map[row][col][crow][fid1].list1, cmbr_map[row][col][crow][fid1].list2);                            
+                        } else {
+                            ret.list2 = arr2l2;
+                        }
                         arr2l1.clear();
                         arr2l2.clear();
                         arr2.clear();
@@ -665,6 +682,31 @@ int main()
     dat = createArray("data/newData/Seattle2012_tt_1.csv");
     // dat = createArray("data/Point_Of_Interest_modified.csv");
 
+    // test ----- START ----
+
+    // number of rows in the data file
+    // ROWS = 14;
+
+    // // grid origin
+    // GRID_MIN_X = 0.0, GRID_MIN_Y = 0.0;
+
+    // // grid number of rows
+    // GRID_ROWS = ceil((1010 - GRID_MIN_X)/DIST * 2);
+
+    // // grid number of columns
+    // GRID_COLS = ceil((1010 - GRID_MIN_Y)/DIST * 2);
+
+
+    // struct table_row dat[14] = {{1, 500,500}, {1, 1005,1005}, {1, 825, 325}, {1, 130, 200},
+    //                                  {2, 505, 500}, {2, 506, 500}, {2, 830, 250}, {2, 101, 101},
+    //                                  {3, 1010, 1010}, {3, 515, 515},
+    //                                  {4, 1005, 1005}, {4, 135, 205}, {4, 509, 506},
+    //                                  {5, 400, 400}};
+
+
+
+    // test ----- END -----
+
     // calculate MBR for all the datapoints. 
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
     getMBRList(dat); 
@@ -676,18 +718,25 @@ int main()
     //print_cmbr_map();
     cout << "cmbr layers constructed" << endl;
 
-    // // print cmbr array
-    // for (int i = 0; i < cmbr_map.size(); ++i)
-    // {
-    //     for (int j = 0; j < cmbr_map[i].size(); ++j)
-    //     {
-    //         if (!cmbr_map[i][j].isDeleted)
-    //         {
-    //             cout << cmbr_map[i][j].combination << "[" << cmbr_map[i][j].cmbr_array.size() << "] ";                
-    //         }
-    //     }
-    //     cout << endl;
-    // }
+    // print cmbr array
+    for (int r = 0; r < GRID_ROWS; ++r)
+    {
+        for (int c = 0; c < GRID_COLS; ++c)
+        {
+            for (int i = 0; i < cmbr_map[r][c].size(); ++i)
+            {
+                for (int j = 0; j < cmbr_map[r][c][i].size(); ++j)
+                {
+                    if (!cmbr_map[r][c][i][j].isDeleted && cmbr_map[r][c][i][j].cmbr_array.size() > 0)
+                    {
+                        cout << cmbr_map[r][c][i][j].combination << "[" << cmbr_map[r][c][i][j].cmbr_array.size() << "] ";                
+                    }
+                }
+                // cout << endl;
+            }
+        }
+    }
+    
 
     // fclose(stdout);
 
