@@ -54,10 +54,10 @@ struct cmbr {
 };
 
 // saves all mbr information
-vector<vector<vector<vector<mbr>>>>  mbr_array(800, vector<vector<vector<mbr>>>(600, vector<vector<mbr>>(FMAX)));
+vector<vector<vector<vector<mbr>>>>  mbr_array(801, vector<vector<vector<mbr>>>(601, vector<vector<mbr>>(FMAX)));
 
 // 2D vector to keep track of all the combinations and instances realted
-vector<vector<vector<vector<cmbr>>>>  cmbr_map(800, vector<vector<vector<cmbr>>>(600, vector<vector<cmbr>>(FMAX-1)));
+vector<vector<vector<vector<cmbr>>>>  cmbr_map(801, vector<vector<vector<cmbr>>>(601, vector<vector<cmbr>>(FMAX-1)));
 
 // calculate MBR for a given datapoint
 mbr getMBR(float px, float py) {
@@ -77,7 +77,6 @@ void getMBRList(struct table_row *data) {
     int row, col;
     mbr temp;
 
-    cout << ROWS << endl;
     for (int i = 0; i < ROWS; ++i) { 
         // check if feature id changes
         if (j != (data[i].id - 1)) {
@@ -87,7 +86,8 @@ void getMBRList(struct table_row *data) {
 
         temp = getMBR(data[i].x, data[i].y);
         col = floor((temp.x1 - GRID_MIN_X) / (DIST * 2));
-        row = GRID_ROWS - 1 - floor((temp.y1 - GRID_MIN_Y) / (DIST * 2));
+        row = GRID_ROWS - 1 - floor((temp.y2 - GRID_MIN_Y) / (DIST * 2));
+        // cout << "row " << row << " col " << col << " fid " << k << " point " << floor(temp.y2 - GRID_MIN_Y) / (DIST * 2) << ", " << temp.y2 << endl;
 
         // calculate MBR using the getMBR() and assign it to the relavant feature instance
         mbr_array[row][col][k].push_back(temp);
@@ -182,7 +182,7 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
 void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMAX> comb) {
 
     // 1D array to hold layer CMBRs
-    vector<mbr> arr1, arr2;
+    vector<mbr> arr;
     // temporary cmbr reference
     cmbr ret;
 
@@ -190,16 +190,12 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
     mbr cmbr_v;
 
     // l1 and l2 maintains the lists from mbr1 and mbr2. l1[0] l2[0] will give 0th CMBR instances
-    vector<vector<int>> arr1l1;
-    vector<vector<int>> arr1l2;
-    vector<vector<int>> arr2l1;
-    vector<vector<int>> arr2l2;
+    vector<vector<int>> l1;
+    vector<vector<int>> l2;
 
     // temporary arrays to hel build l1 and l2 rows
-    vector<int> arr1t1;
-    vector<int> arr1t2;
-    vector<int> arr2t1;
-    vector<int> arr2t2;
+    vector<int> t1;
+    vector<int> t2;
 
     int c, r, nrow, ncol, s;
 
@@ -246,92 +242,53 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                         if (!cmbr_v.empty)
                         {                              
                             c = floor((cmbr_v.x1 - GRID_MIN_X) / (DIST * 2));
-                            r = GRID_ROWS - 1 - floor((cmbr_v.y1 - GRID_MIN_Y) / (DIST * 2));
+                            r = GRID_ROWS - 1 - floor((cmbr_v.y2 - GRID_MIN_Y) / (DIST * 2));
 
-                            if (row == r && col == c)
-                            {
-                                arr1.push_back(cmbr_v); 
-                                arr1t2.push_back(j);
-                            } else {
-                                arr2.push_back(cmbr_v); 
-                                arr2t2.push_back(j);
-
-                            }
+                            arr.push_back(cmbr_v); 
+                            t2.push_back(j);                            
                         } 
                     }
                     // if there are any CMBRs for i, add ID i to l1
-                    if (arr1t2.size() > 0)
+                    if (t2.size() > 0)
                     {
-                        arr1t1.push_back(i);
-                        arr1l1.push_back(arr1t1); // push 1D arrays to 2D array
-                        arr1l2.push_back(arr1t2); // push 1D arrays to 2D array
-                        arr1t1.clear(); //clear 1D array
-                        arr1t2.clear(); //clear 1D array                
-                    }
-                    // if there are any CMBRs for i, add ID i to l1
-                    if (arr2t2.size() > 0)
-                    {
-                        arr2t1.push_back(i);
-                        arr2l1.push_back(arr2t1); // push 1D arrays to 2D array
-                        arr2l2.push_back(arr2t2); // push 1D arrays to 2D array
-                        arr2t1.clear(); //clear 1D array
-                        arr2t2.clear(); //clear 1D array                
+                        t1.push_back(i);
+                        l1.push_back(t1); // push 1D arrays to 2D array
+                        l2.push_back(t2); // push 1D arrays to 2D array
+                        t1.clear(); //clear 1D array
+                        t2.clear(); //clear 1D array                
                     }
                 }
                 ret.combination = comb;  
-                s = cmbr_map[row][col][fid2-1].size();                
-                if (arr1.size() > 0)
+                s = cmbr_map[nrow][ncol][fid2-1].size();                
+                if (arr.size() > 0)
                 {
                     // check if the CMBR pattern already exists in the selected cell
                     if (init_layer_count < s)
                     {
-                        cmbr_map[row][col][fid2-1][s-1].cmbr_array.insert(cmbr_map[row][col][fid2-1][s-1].cmbr_array.end(), arr1.begin(), arr1.end());
-                        cmbr_map[row][col][fid2-1][s-1].list1.insert(cmbr_map[row][col][fid2-1][s-1].list1.end(), arr1l1.begin(), arr1l1.end());
-                        cmbr_map[row][col][fid2-1][s-1].list1.insert(cmbr_map[row][col][fid2-1][s-1].list1.end(), arr1l2.begin(), arr1l2.end());
+                        cmbr_map[nrow][ncol][fid2-1][s-1].cmbr_array.insert(cmbr_map[nrow][ncol][fid2-1][s-1].cmbr_array.end(), arr.begin(), arr.end());
+                        cmbr_map[nrow][ncol][fid2-1][s-1].list1.insert(cmbr_map[nrow][ncol][fid2-1][s-1].list1.end(), l1.begin(), l1.end());
+                        cmbr_map[nrow][ncol][fid2-1][s-1].list1.insert(cmbr_map[nrow][ncol][fid2-1][s-1].list1.end(), l2.begin(), l2.end());
                     } else {
-                        ret.cmbr_array = arr1;
-                        ret.list1 = arr1l1;
+                        ret.cmbr_array = arr;
+                        ret.list1 = l1;
                         // check if matching is CMBR vs MBR                        
                         if (cmbrFlag)
                         {
-                            ret.list2 = instanceCombinationBuild(arr1l2, cmbr_map[row][col][crow][fid1].list1, cmbr_map[row][col][crow][fid1].list2);                            
+                            ret.list2 = instanceCombinationBuild(l2, cmbr_map[row][col][crow][fid1].list1, cmbr_map[row][col][crow][fid1].list2);                            
                         } else {
-                            ret.list2 = arr1l2;
+                            ret.list2 = l2;
                         }
                     }
-                    arr1l1.clear();
-                    arr1l2.clear();
-                    arr1.clear();                        
+                    l1.clear();
+                    l2.clear();
+                    arr.clear();                        
                 }
                 // insert new feature combination if it does not exist in the cell 
                 if (init_layer_count >= s)
                 {
-                    cmbr_map[row][col][fid2-1].push_back(ret);
-                }                
-
-                ret = {}; //reset ret
-
-                if (row != nrow || col != ncol)
-                {
-                    ret.combination = comb;                
-                    if (arr2.size() > 0)
-                    {
-                        ret.cmbr_array = arr2;
-                        ret.list1 = arr2l1;
-                        // check if matching is CMBR vs MBR
-                        if (cmbrFlag)
-                        {
-                            ret.list2 = instanceCombinationBuild(arr2l2, cmbr_map[row][col][crow][fid1].list1, cmbr_map[row][col][crow][fid1].list2);                            
-                        } else {
-                            ret.list2 = arr2l2;
-                        }
-                        arr2l1.clear();
-                        arr2l2.clear();
-                        arr2.clear();
-                    }
                     cmbr_map[nrow][ncol][fid2-1].push_back(ret);
-                    ret = {}; //reset ret    
-                } 
+                }            
+                ret = {}; //reset ret
             }           
         }
     }
@@ -655,23 +612,6 @@ void buildCMBRList() {
     return ;
 } 
 
-// void print_cmbr_map(){
-//     //cout << "map: " << endl;
-//     int curr_size = 0;
-//     for (int i = 0; i < cmbr_map.size(); ++i)
-//     {
-//         //cout << "CMBR layer is " << i << endl;
-//         for (int j = 0; j < cmbr_map[i].size(); ++j)
-//         {       
-//             //cout << cmbr_map[i][j].combination << "[" << cmbr_map[i][j].count << "]";
-//             curr_size++;
-//         }
-//         //cout << "\n";
-//     }
-//     cout << "Size before = " << prev_size << " Size after = " << curr_size << endl; 
-//     return;
-// }
-
 int main()
 {
     
@@ -713,29 +653,44 @@ int main()
 
     cout << "mbr array constructed" << endl;
 
+    // print mbr array
+    // for (int r = 0; r < GRID_ROWS; ++r)
+    // {
+    //     for (int c = 0; c < GRID_COLS; ++c)
+    //     {
+    //         for (int i = 0; i < mbr_array[r][c].size(); ++i)
+    //         {
+    //             if (mbr_array[r][c][i].size() > 0)
+    //             {
+    //                 // cout << "Row: " << r << " Column: " << " Feature id: " << i << " Count: " << mbr_array[r][c][i].size() << endl;
+    //                 cout << r << "," << c << "," << i << "," << mbr_array[r][c][i].size() << endl;                    
+    //             }
+    //         }
+    //     }
+    // }
+
     // build CMBR tree 
     buildCMBRList();
-    //print_cmbr_map();
     cout << "cmbr layers constructed" << endl;
 
-    // print cmbr array
-    for (int r = 0; r < GRID_ROWS; ++r)
-    {
-        for (int c = 0; c < GRID_COLS; ++c)
-        {
-            for (int i = 0; i < cmbr_map[r][c].size(); ++i)
-            {
-                for (int j = 0; j < cmbr_map[r][c][i].size(); ++j)
-                {
-                    if (!cmbr_map[r][c][i][j].isDeleted && cmbr_map[r][c][i][j].cmbr_array.size() > 0)
-                    {
-                        cout << cmbr_map[r][c][i][j].combination << "[" << cmbr_map[r][c][i][j].cmbr_array.size() << "] ";                
-                    }
-                }
-                // cout << endl;
-            }
-        }
-    }
+    // // print cmbr array
+    // for (int r = 0; r < GRID_ROWS; ++r)
+    // {
+    //     for (int c = 0; c < GRID_COLS; ++c)
+    //     {
+    //         for (int i = 0; i < cmbr_map[r][c].size(); ++i)
+    //         {
+    //             for (int j = 0; j < cmbr_map[r][c][i].size(); ++j)
+    //             {
+    //                 if (!cmbr_map[r][c][i][j].isDeleted && cmbr_map[r][c][i][j].cmbr_array.size() > 0)
+    //                 {
+    //                     cout << cmbr_map[r][c][i][j].combination << "[" << cmbr_map[r][c][i][j].cmbr_array.size() << "] ";                
+    //                 }
+    //             }
+    //             // cout << endl;
+    //         }
+    //     }
+    // }
     
 
     // fclose(stdout);
