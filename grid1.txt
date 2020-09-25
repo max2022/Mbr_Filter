@@ -1,0 +1,6 @@
+Total rows: 1000480
+1001 1001
+mbr array constructed
+set ----
+set comb
+set grid

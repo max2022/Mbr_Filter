@@ -1,11 +1,11 @@
 #!/bin/bash
 #SBATCH -N 1
 #SBATCH -p defq
-#SBATCH -t 40:00:00
+#SBATCH -t 5:00:00
 #SBATCH --ntasks-per-node 1
  
-g++ main_test_1.cpp -o c.out -std=gnu++11
-./c.out
+g++ main_nongrid.cpp -o b.out -std=gnu++11
+./b.out
 
  
 

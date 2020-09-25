@@ -1,0 +1,153 @@
+Total rows: 1676
+800 600
+mbr array constructed
+Cells initialized
+Grid is Set!!!
+CMBR Filter Layer is 0 and size is 1
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 148529
+CMBR Filter Layer is 1 and size is 2
+(1, 2) -> (36:76, 38:115) -> 111
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 74389
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 292705
+CMBR Filter Layer is 2 and size is 4
+(0, 3) -> (30:95, 31:90) -> 66
+(1, 3) -> (35:76, 31:90) -> 100
+(2, 3) -> (54:115, 46:90) -> 156
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 85195
+Time -> Function: buildCMBR jj to i loop 2076106
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 2556132
+CMBR Filter Layer is 3 and size is 8
+(0, 4) -> (54:95, 139:314) -> 276
+(1, 4) -> (46:76, 140:314) -> 399
+(2, 4) -> (55:115, 128:314) -> 495
+(1, 3, 4) -> (32:76, 29:90, 107:314) -> 1424
+(2, 3, 4) -> (42:115, 35:90, 105:314) -> 2312
+(3, 4) -> (51:90, 143:314) -> 430
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 81061
+Time -> Function: buildCMBR jj to i loop 234024
+Time -> Function: buildCMBR jj to i loop 537930
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 1278199
+CMBR Filter Layer is 4 and size is 15
+(2, 5) -> (60:115, 75:179) -> 275
+(3, 5) -> (38:90, 80:179) -> 227
+(4, 5) -> (155:314, 96:179) -> 653
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 78111
+Time -> Function: buildCMBR jj to i loop 254991
+Time -> Function: buildCMBR jj to i loop 3544431
+Time -> Function: buildCMBR jj to i loop 306901
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 4650090
+CMBR Filter Layer is 5 and size is 19
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 81591
+Time -> Function: buildCMBR jj to i loop 242413
+Time -> Function: buildCMBR jj to i loop 519815
+Time -> Function: buildCMBR jj to i loop 246673
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 1688433
+CMBR Filter Layer is 6 and size is 20
+(6, 7) -> (7:17, 11:28) -> 17
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 81440
+Time -> Function: buildCMBR jj to i loop 245673
+Time -> Function: buildCMBR jj to i loop 538223
+Time -> Function: buildCMBR jj to i loop 238216
+Time -> Function: buildCMBR jj to i loop 5
+Time -> Function: buildCMBR jj to i loop 76784
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 1833258
+CMBR Filter Layer is 7 and size is 22
+(1, 8) -> (33:76, 25:60) -> 54
+(4, 8) -> (129:314, 31:60) -> 228
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 83695
+Time -> Function: buildCMBR jj to i loop 245603
+Time -> Function: buildCMBR jj to i loop 532886
+Time -> Function: buildCMBR jj to i loop 250864
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 84871
+Time -> Function: buildCMBR jj to i loop 166408
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 8157406
+CMBR Filter Layer is 8 and size is 19
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 83498
+Time -> Function: buildCMBR jj to i loop 253568
+Time -> Function: buildCMBR jj to i loop 544370
+Time -> Function: buildCMBR jj to i loop 320320
+Time -> Function: buildCMBR jj to i loop 4
+Time -> Function: buildCMBR jj to i loop 82729
+Time -> Function: buildCMBR jj to i loop 167487
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 2292421
+CMBR Filter Layer is 9 and size is 26
+(0, 10) -> (69:95, 159:423) -> 382
+(1, 10) -> (55:76, 166:423) -> 443
+(2, 10) -> (82:115, 161:423) -> 617
+(1, 3, 10) -> (35:76, 31:90, 129:423) -> 1684
+(3, 10) -> (63:90, 188:423) -> 513
+(0, 4, 10) -> (47:95, 131:314, 142:423) -> 3644
+(1, 4, 10) -> (44:76, 136:314, 150:423) -> 5900
+(2, 4, 10) -> (53:115, 125:314, 138:423) -> 10598
+(3, 4, 10) -> (43:90, 132:314, 158:423) -> 7587
+(4, 10) -> (250:314, 261:423) -> 2158
+(4, 5, 10) -> (151:314, 91:179, 160:423) -> 12163
+(5, 10) -> (129:179, 188:423) -> 949
+(4, 8, 10) -> (116:314, 25:60, 139:423) -> 3064
+(8, 10) -> (33:60, 153:423) -> 247
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 84848
+Time -> Function: buildCMBR jj to i loop 251811
+Time -> Function: buildCMBR jj to i loop 526830
+Time -> Function: buildCMBR jj to i loop 319543
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 82800
+Time -> Function: buildCMBR jj to i loop 169270
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 1360062
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 3735341
+CMBR Filter Layer is 10 and size is 35
+(0, 11) -> (61:95, 94:239) -> 219
+(0, 4, 11) -> (42:95, 110:314, 76:239) -> 1234
+(4, 11) -> (204:314, 124:239) -> 692
+(10, 11) -> (230:423, 160:239) -> 911
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 83291
+Time -> Function: buildCMBR jj to i loop 247836
+Time -> Function: buildCMBR jj to i loop 12435315
+Time -> Function: buildCMBR jj to i loop 329041
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 108462
+Time -> Function: buildCMBR jj to i loop 211923
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 1584105
+Time -> Function: buildCMBR jj to i loop 422098
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 16663515
+CMBR Filter Layer is 11 and size is 34
+Time -> Function: buildCMBRList 44237623
+cmbr layers constructed
+
+0110000000000[111] 
+1001000000000[66] 0101000000000[100] 0011000000000[156] 
+1000100000000[276] 0100100000000[399] 0010100000000[495] 0101100000000[1424] 0011100000000[2312] 0001100000000[430] 
+0010010000000[275] 0001010000000[227] 0000110000000[653] 
+
+0000001100000[17] 
+0100000010000[54] 0000100010000[228] 
+
+1000000000100[382] 0100000000100[443] 0010000000100[617] 0101000000100[1684] 0001000000100[513] 1000100000100[3644] 0100100000100[5900] 0010100000100[10598] 0001100000100[7587] 0000100000100[2158] 0000110000100[12163] 0000010000100[949] 0000100010100[3064] 0000000010100[247] 
+1000000000010[219] 1000100000010[1234] 0000100000010[692] 0000000000110[911] 
+
