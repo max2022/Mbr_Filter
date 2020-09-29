@@ -1,4 +1,3 @@
-// tepmporary data structure distributed over grid cells
 // grid approach changed. Added more dimentions
 // isDeleted added for cmbr_arr and cmbr_map
 // grid update at the all-to-all matching level
@@ -60,8 +59,8 @@ vector<vector<vector<vector<mbr>>>>  mbr_array(801, vector<vector<vector<mbr>>>(
 // 2D vector to keep track of all the combinations and instances realted
 vector<vector<vector<vector<cmbr>>>>  cmbr_map(801, vector<vector<vector<cmbr>>>(601, vector<vector<cmbr>>(FMAX-1)));
 
-// intermediate data structure to hold unique instances ids for cmbrs in a perticular step in each cell
-vector<vector<vector<vector<set<int>>>>> instance_array;
+// intermediate data structure to hold unique instances ids for cmbrs in a perticular step
+vector<vector<set<int>>> instance_array;
 
 // calculate MBR for a given datapoint
 mbr getMBR(float px, float py) {
@@ -277,7 +276,7 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
 
                             arr.push_back(cmbr_v); 
                             t2.push_back(j); 
-                            instance_array[row + iii%2][col + iii%2][init_layer_count+1][1].insert(j);                           
+                            instance_array[init_layer_count+1][1].insert(j);                           
                         } 
                     }
                     // if there are any CMBRs for i, add ID i to l1
@@ -290,7 +289,7 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                         t2.clear(); //clear 1D array    
                         if (!cmbrFlag)
                         {
-                            instance_array[row + iii%2][col + iii%2][init_layer_count+1][0].insert(i);                
+                            instance_array[init_layer_count+1][0].insert(i);                
                         }            
                     }
                 }
