@@ -171,10 +171,10 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
                 ttlist2.push_back(ttlist1);
                 // cout << r << " " <<  c << " " << k << " tt size: " << ttlist1.size() << endl;
                 // update global temporary cmbr unique instance set
-                for (int ii = 0; ii < ttlist1.size(); ++ii)
+                for (int ii = 0, j = ttlist1.size()-1; ii < ttlist1.size(); ++ii, --j)
                 {
                     // cout << "ii " << ii << endl;
-                    instance_array[r][c][k][ii+1].insert(ttlist1[ii]);
+                    instance_array[r][c][k][ii+1].insert(ttlist1[j]);
 
                 }                
                 // instance_array[k].insert(ttlist1.begin(), ttlist1.end()); //test this not sure
