@@ -686,10 +686,10 @@ void buildCMBRList() {
 
                         if (jj == 0)
                         {
-                            cout << "feature count " << fc-(k+1) << endl;
+                            cout << "feature count " << fc << endl;
                             // resize instance array for the new feature combination
-                            instance_array.resize(GRID_ROWS, vector<vector<vector<set<int>>>>(GRID_COLS, vector<vector<set<int>>>(fc+k+1, vector<set<int>>(cmbr_map[0][0][i][jj].featureCount+1))));
-                            cout << "c: " << instance_array[0][0].size()<< endl;
+                            instance_array.resize(GRID_ROWS, vector<vector<vector<set<int>>>>(GRID_COLS, vector<vector<set<int>>>(fc, vector<set<int>>(cmbr_map[0][0][i][jj].featureCount+1))));
+                            cout << "c: " << instance_array[0][0].size()<< " " << instance_array[0][0][0].size() << " " << instance_array[0][0][0].size() << endl;
                         }      
                         
 
