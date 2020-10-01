@@ -1,0 +1,728 @@
+Total rows: 1676
+801 601
+mbr array constructed
+CMBR Filter called for Layer 0
+Comb is 1100000000000
+Feature is 1 size is 6
+Feature is 0 size is 5
+Erasing Combination 1100000000000
+Time -> Function: cmbr_filter_layerwise 120765
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 2
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 6955456
+CMBR Filter called for Layer 1
+Comb is 1010000000000
+Feature is 1 size is 3
+Feature is 0 size is 10
+Erasing Combination 1010000000000
+Comb is 0110000000000
+Feature is 1 size is 5
+Feature is 0 size is 10
+Erasing Combination 0110000000000
+Comb is 0010011001101
+Time -> Function: cmbr_filter_layerwise 733641
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 18
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 11103506
+CMBR Filter called for Layer 2
+Comb is 1001000000000
+Feature is 1 size is 5
+Feature is 0 size is 6
+Erasing Combination 1001000000000
+Comb is 0101000000000
+Feature is 1 size is 5
+Feature is 0 size is 6
+Erasing Combination 0101000000000
+Comb is 0011000000000
+Feature is 1 size is 10
+Feature is 0 size is 6
+Erasing Combination 0011000000000
+Comb is 0001100011000
+Comb is 0000000000000
+Comb is 1001110000101
+Time -> Function: cmbr_filter_layerwise 1099450
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 15159466
+CMBR Filter called for Layer 3
+Comb is 1000100000000
+Feature is 1 size is 6
+Feature is 0 size is 28
+Erasing Combination 1000100000000
+Comb is 0100100000000
+Feature is 1 size is 5
+Feature is 0 size is 28
+Erasing Combination 0100100000000
+Comb is 0010100000000
+Feature is 1 size is 10
+Feature is 0 size is 28
+Erasing Combination 0010100000000
+Comb is 0001100000000
+Feature is 1 size is 6
+Feature is 0 size is 28
+Erasing Combination 0001100000000
+Comb is 1010011001101
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Time -> Function: cmbr_filter_layerwise 1913885
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 20481925
+CMBR Filter called for Layer 4
+Comb is 1000010000000
+Feature is 1 size is 4
+Feature is 0 size is 26
+Erasing Combination 1000010000000
+Comb is 0100010000000
+Feature is 1 size is 5
+Feature is 0 size is 18
+Erasing Combination 0100010000000
+Comb is 0010010000000
+Feature is 1 size is 10
+Feature is 0 size is 18
+Erasing Combination 0010010000000
+Comb is 0001010000000
+Feature is 1 size is 6
+Feature is 0 size is 26
+Erasing Combination 0001010000000
+Comb is 0000110000000
+Feature is 1 size is 28
+Feature is 0 size is 26
+Erasing Combination 0000110000000
+Comb is 0000101001000
+Comb is 0000101001000
+Comb is 0101000000000
+Comb is 0000000000000
+Comb is 0011100010001
+Comb is 0010101110001
+Comb is 0010101110001
+Comb is 0101000000000
+Comb is 0010011001101
+Comb is 1010011001101
+Time -> Function: cmbr_filter_layerwise 2779558
+Time -> Function: erase_cmbr_map 1
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 25525951
+CMBR Filter called for Layer 5
+Comb is 1000001000000
+Feature is 1 size is 4
+Feature is 0 size is 2
+Erasing Combination 1000001000000
+Comb is 0100001000000
+Feature is 1 size is 5
+Feature is 0 size is 1
+Erasing Combination 0100001000000
+Comb is 0010001000000
+Feature is 1 size is 3
+Feature is 0 size is 1
+Erasing Combination 0010001000000
+Comb is 0001001000000
+Feature is 1 size is 3
+Feature is 0 size is 1
+Erasing Combination 0001001000000
+Comb is 0000101000000
+Feature is 1 size is 20
+Feature is 0 size is 4
+Erasing Combination 0000101000000
+Comb is 0000011000000
+Feature is 1 size is 8
+Feature is 0 size is 4
+Erasing Combination 0000011000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Time -> Function: cmbr_filter_layerwise 3720045
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 2
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 31107575
+CMBR Filter called for Layer 6
+Comb is 1000000100000
+Feature is 1 size is 4
+Feature is 0 size is 7
+Erasing Combination 1000000100000
+Comb is 0100000100000
+Feature is 1 size is 4
+Feature is 0 size is 7
+Erasing Combination 0100000100000
+Comb is 0010000100000
+Feature is 1 size is 10
+Feature is 0 size is 7
+Erasing Combination 0010000100000
+Comb is 0001000100000
+Feature is 1 size is 6
+Feature is 0 size is 7
+Erasing Combination 0001000100000
+Comb is 0000100100000
+Feature is 1 size is 28
+Feature is 0 size is 7
+Erasing Combination 0000100100000
+Comb is 0000010100000
+Feature is 1 size is 9
+Feature is 0 size is 7
+Erasing Combination 0000010100000
+Comb is 0000001100000
+Feature is 1 size is 4
+Feature is 0 size is 5
+Erasing Combination 0000001100000
+Comb is 0101000000000
+Comb is 0010101110001
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 1010011001101
+Comb is 0101000000000
+Comb is 1111001100110
+Comb is 0111001100110
+Comb is 0101000101001
+Comb is 1101000101001
+Comb is 0001000000000
+Comb is 1010011001101
+Comb is 0010101110001
+Comb is 0010101110001
+Comb is 0101000000000
+Comb is 0010011001101
+Time -> Function: cmbr_filter_layerwise 4957944
+Time -> Function: erase_cmbr_map 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 4
+Time -> Function: buildCMBR jj to i loop 4
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 36923238
+CMBR Filter called for Layer 7
+Comb is 1000000010000
+Feature is 1 size is 4
+Feature is 0 size is 4
+Erasing Combination 1000000010000
+Comb is 0100000010000
+Feature is 1 size is 5
+Feature is 0 size is 3
+Erasing Combination 0100000010000
+Comb is 0010000010000
+Feature is 1 size is 10
+Feature is 0 size is 2
+Erasing Combination 0010000010000
+Comb is 0001000010000
+Feature is 1 size is 6
+Feature is 0 size is 3
+Erasing Combination 0001000010000
+Comb is 0000100010000
+Feature is 1 size is 28
+Feature is 0 size is 4
+Erasing Combination 0000100010000
+Comb is 0000010010000
+Feature is 1 size is 18
+Feature is 0 size is 4
+Erasing Combination 0000010010000
+Comb is 0000001010000
+Feature is 1 size is 1
+Feature is 0 size is 3
+Erasing Combination 0000001010000
+Comb is 0000000110000
+Feature is 1 size is 7
+Feature is 0 size is 4
+Erasing Combination 0000000110000
+Comb is 1011100000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0010101110001
+Comb is 0010101110001
+Comb is 0101000000000
+Comb is 0010011001101
+Comb is 1010011001101
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Time -> Function: cmbr_filter_layerwise 6313416
+Time -> Function: erase_cmbr_map 1
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 2
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 5
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 44873925
+CMBR Filter called for Layer 8
+Comb is 1000000001000
+Feature is 1 size is 6
+Feature is 0 size is 9
+Erasing Combination 1000000001000
+Comb is 0100000001000
+Feature is 1 size is 2
+Feature is 0 size is 9
+Erasing Combination 0100000001000
+Comb is 0010000001000
+Comb is 0001000001000
+Feature is 1 size is 2
+Feature is 0 size is 9
+Erasing Combination 0001000001000
+Comb is 0000100001000
+Feature is 1 size is 11
+Feature is 0 size is 9
+Erasing Combination 0000100001000
+Comb is 0000010001000
+Feature is 1 size is 1
+Feature is 0 size is 9
+Erasing Combination 0000010001000
+Comb is 0000001001000
+Feature is 1 size is 2
+Feature is 0 size is 9
+Erasing Combination 0000001001000
+Comb is 0000000101000
+Feature is 1 size is 3
+Feature is 0 size is 9
+Erasing Combination 0000000101000
+Comb is 0000000011000
+Feature is 1 size is 3
+Feature is 0 size is 9
+Erasing Combination 0000000011000
+Comb is 0101000000000
+Comb is 0100101011100
+Comb is 1100101011100
+Comb is 0001000111101
+Comb is 1001000111101
+Comb is 0101000000000
+Comb is 0100101011100
+Comb is 1100101011100
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 1100101011100
+Comb is 0001000111101
+Comb is 1001000111101
+Comb is 0101000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0101000000000
+Comb is 0001110101110
+Comb is 1001110101110
+Comb is 0110011110110
+Comb is 0110011110110
+Comb is 0101000000000
+Comb is 0001110101110
+Comb is 1001110101110
+Comb is 0110011110110
+Time -> Function: cmbr_filter_layerwise 8418904
+Time -> Function: erase_cmbr_map 1
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 8
+Time -> Function: buildCMBR jj to i loop 4
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 2752395
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 55301836
+CMBR Filter called for Layer 9
+Comb is 1000000000100
+Feature is 1 size is 6
+Feature is 0 size is 31
+Erasing Combination 1000000000100
+Comb is 0100000000100
+Feature is 1 size is 5
+Feature is 0 size is 31
+Erasing Combination 0100000000100
+Comb is 0010000000100
+Feature is 1 size is 10
+Feature is 0 size is 31
+Erasing Combination 0010000000100
+Comb is 0001000000100
+Feature is 1 size is 6
+Feature is 0 size is 31
+Erasing Combination 0001000000100
+Comb is 0000100000100
+Feature is 1 size is 28
+Feature is 0 size is 31
+Erasing Combination 0000100000100
+Comb is 0000010000100
+Feature is 1 size is 26
+Feature is 0 size is 31
+Erasing Combination 0000010000100
+Comb is 0000001000100
+Feature is 1 size is 4
+Feature is 0 size is 16
+Erasing Combination 0000001000100
+Comb is 0000000100100
+Feature is 1 size is 7
+Feature is 0 size is 31
+Erasing Combination 0000000100100
+Comb is 0000000010100
+Feature is 1 size is 4
+Feature is 0 size is 31
+Erasing Combination 0000000010100
+Comb is 0010000001100
+Comb is 0000000001100
+Feature is 1 size is 9
+Feature is 0 size is 15
+Erasing Combination 0000000001100
+Comb is 1010011001101
+Comb is 0010101110001
+Comb is 0010101110001
+Comb is 0101000000000
+Comb is 0010011001101
+Comb is 0101000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 1010011001101
+Comb is 0010101110001
+Comb is 0010101110001
+Comb is 0101000000000
+Comb is 0010011001101
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0010101110001
+Comb is 0010101110001
+Comb is 0101000000000
+Comb is 0010011001101
+Comb is 1010011001101
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Time -> Function: cmbr_filter_layerwise 10573788
+Time -> Function: erase_cmbr_map 1
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR jj to i loop 5
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 2
+Time -> Function: buildCMBR jj to i loop 4
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 2749349
+Time -> Function: buildCMBR jj to i loop 2747050
+Time -> Function: buildCMBR jj to i loop 0
+Time -> Function: buildCMBR k to i loop 66408171
+CMBR Filter called for Layer 10
+Comb is 1000000000010
+Feature is 1 size is 6
+Feature is 0 size is 12
+Erasing Combination 1000000000010
+Comb is 0100000000010
+Feature is 1 size is 5
+Feature is 0 size is 12
+Erasing Combination 0100000000010
+Comb is 0010000000010
+Feature is 1 size is 10
+Feature is 0 size is 12
+Erasing Combination 0010000000010
+Comb is 0001000000010
+Feature is 1 size is 6
+Feature is 0 size is 12
+Erasing Combination 0001000000010
+Comb is 0000100000010
+Feature is 1 size is 28
+Feature is 0 size is 12
+Erasing Combination 0000100000010
+Comb is 0000010000010
+Feature is 1 size is 26
+Feature is 0 size is 12
+Erasing Combination 0000010000010
+Comb is 0000001000010
+Feature is 1 size is 4
+Feature is 0 size is 11
+Erasing Combination 0000001000010
+Comb is 0000000100010
+Feature is 1 size is 7
+Feature is 0 size is 7
+Erasing Combination 0000000100010
+Comb is 0000000010010
+Feature is 1 size is 4
+Feature is 0 size is 12
+Erasing Combination 0000000010010
+Comb is 0010000001010
+Comb is 0000000001010
+Feature is 1 size is 9
+Feature is 0 size is 11
+Erasing Combination 0000000001010
+Comb is 0010000001110
+Comb is 0000000000110
+Feature is 1 size is 31
+Feature is 0 size is 22
+Erasing Combination 0000000000110
+Comb is 1000101110001
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0100001100110
+Comb is 1100001100110
+Comb is 0001110000101
+Comb is 0001110000101
+Comb is 0110011110100
+Comb is 0000000000000
+Comb is 0101000000000
+Comb is 0010011001101
+Comb is 1010011001101
+Comb is 0010101110001
+Comb is 0010101110001
+Comb is 0101000000000
+Comb is 0010011001101
+Comb is 1010011001101
+Comb is 0010101110001
+Comb is 0010101110001
+Comb is 0101000000000
+Comb is 0010011001101
+Comb is 1010011001101
+Comb is 0010101110001
+Comb is 0000000000010
+Comb is 0000000000010
+Comb is 0000000000010
+Comb is 0000000000010
+Comb is 0000000000010
+Comb is 0000000000010
+Comb is 0000000000010
+Comb is 0000000000010
+Comb is 0000000000010
+Comb is 0000000000011
+Comb is 0000000000010
+Comb is 0000000000100
+Comb is 0000000000010
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0010110010001
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Time -> Function: cmbr_filter_layerwise 14072595
+Time -> Function: erase_cmbr_map 1
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 2
+Time -> Function: buildCMBR jj to i loop 20
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 1
+Time -> Function: buildCMBR jj to i loop 2
+Time -> Function: buildCMBR jj to i loop 3
+Time -> Function: buildCMBR jj to i loop 5
+Time -> Function: buildCMBR jj to i loop 2699362
+Time -> Function: buildCMBR jj to i loop 2732045
+Time -> Function: buildCMBR jj to i loop 5980890
+Time -> Function: buildCMBR jj to i loop 2
+Time -> Function: buildCMBR k to i loop 80651904
+CMBR Filter called for Layer 11
+Comb is 1000000000001
+Feature is 1 size is 4
+Feature is 0 size is 2
+Erasing Combination 1000000000001
+Comb is 0100000000001
+Feature is 1 size is 5
+Feature is 0 size is 1
+Erasing Combination 0100000000001
+Comb is 0010000000001
+Feature is 1 size is 6
+Feature is 0 size is 1
+Erasing Combination 0010000000001
+Comb is 0001000000001
+Feature is 1 size is 6
+Feature is 0 size is 1
+Erasing Combination 0001000000001
+Comb is 0000100000001
+Feature is 1 size is 12
+Feature is 0 size is 2
+Erasing Combination 0000100000001
+Comb is 0000010000001
+Feature is 1 size is 18
+Feature is 0 size is 1
+Erasing Combination 0000010000001
+Comb is 0000001000001
+Feature is 1 size is 4
+Feature is 0 size is 1
+Erasing Combination 0000001000001
+Comb is 0000000100001
+Feature is 1 size is 3
+Feature is 0 size is 1
+Erasing Combination 0000000100001
+Comb is 0000000010001
+Feature is 1 size is 4
+Feature is 0 size is 2
+Erasing Combination 0000000010001
+Comb is 0010000001001
+Comb is 0000000001001
+Feature is 1 size is 9
+Feature is 0 size is 1
+Erasing Combination 0000000001001
+Comb is 0010000001101
+Comb is 0000000000101
+Feature is 1 size is 21
+Feature is 0 size is 2
+Erasing Combination 0000000000101
+Comb is 0010000001011
+Comb is 0010000001111
+Comb is 0000000000011
+Feature is 1 size is 12
+Feature is 0 size is 2
+Erasing Combination 0000000000011
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Comb is 0000000000000
+Time -> Function: cmbr_filter_layerwise 19153527
+Time -> Function: erase_cmbr_map 1
+Time -> Function: buildCMBRList 549578904
+cmbr layers constructed
