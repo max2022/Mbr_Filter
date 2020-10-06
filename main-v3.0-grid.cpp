@@ -215,6 +215,37 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
     vector<int> ttlist1;
     vector<vector<int>> ttlist2;
     int tt=0;
+
+    cout << "list 1 " << endl; 
+    for (int i = 0; i < list1.size(); ++i)
+    {
+        for (int j = 0; j < list1[i].size(); ++j)
+        {
+            cout << list1[i][j] << ", ";
+        }
+        cout << endl;
+    }
+
+    cout << "map 1 " << endl; 
+    for (int i = 0; i < map_l1.size(); ++i)
+    {
+        for (int j = 0; j < map_l1[i].size(); ++j)
+        {
+            cout << map_l1[i][j] << ", ";
+        }
+        cout << endl;
+    }
+
+    cout << "map 1 " << endl; 
+    for (int i = 0; i < map_l2.size(); ++i)
+    {
+        for (int j = 0; j < map_l2[i].size(); ++j)
+        {
+            cout << map_l2[i][j] << ", ";
+        }
+        cout << endl;
+    }
+
     // auto start = high_resolution_clock::now();
     for (int aa = 0; aa < list1.size(); ++aa)
     {
