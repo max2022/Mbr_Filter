@@ -279,7 +279,7 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
 }
 
 // find CMBRs of 2 features
-void findCMBRs(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMAX> comb, int fCount) {
+void findCMBRs(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMAX> comb, int fCount, int init_layer_count) {
     // 1D array to hold layer CMBRs
     vector<mbr> arr;
     arr.reserve(20000);
@@ -306,7 +306,7 @@ void findCMBRs(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMAX> comb, i
     int c, r, nc, nr, sr, sc, s;
     vector<mbr> box1;
 
-    int init_layer_count = cmbr_map[0][0][fid2-1].size();  
+    // int init_layer_count = cmbr_map[0][0][fid2-1].size();  
 
     int nrow[9] = {-1, -1, -1, 0, 0, 0, 1, 1, 1};
     int ncol[9] = {-1, 0, 1, -1, 0, 1, -1, 0, 1};
@@ -416,7 +416,7 @@ void findCMBRs(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMAX> comb, i
 
                 ret.combination = comb;  
                 ret.featureCount = fCount;
-                s = cmbr_map[sr][sc][fid2-1].size();  
+                // s = cmbr_map[sr][sc][fid2-1].size();  
                 // cout << "init " << init_layer_count << " s " << s << endl;
 
                 // if cmbr_map local sizes are not synch with lates, we may resize fid2 refers to step 1,2,...
@@ -430,7 +430,7 @@ void findCMBRs(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMAX> comb, i
                     // cout << "222 bqqqtttend inner " << cmbr_map[sr][sc][fid2-1].capacity() << endl;
 
                     // check if the CMBR pattern already exists in the selected cell
-                    if (init_layer_count + 1 == s)
+                    if (cmbr_map[sr][sc][fid2-1][init_layer_count].featureCount != 0)
                     {
                         // arr.shrink_to_fit();
                         // l2.shrink_to_fit();
@@ -503,6 +503,7 @@ void findCMBRs(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMAX> comb, i
         ret.featureCount = fCount;
         // cmbr_map[0][0][fid2-1].insert(cmbr_map[0][0][fid2-1].begin(), ret);
         cmbr_map[0][0][fid2-1].push_back(ret);
+        ret = {};
     }    
 }
 
@@ -734,6 +735,7 @@ void cmbr_filter_layerwise(int k)
     vector<int> erase_list;
     auto start = high_resolution_clock::now();
     cout << "CMBR Filter called for Layer " << k << endl;
+    cout << "instance Sieze: " << instance_array[0][0].size() << endl;
     //for merging all the grid cells to cell 0
     for (int row = 0; row < GRID_ROWS; row++)
     {
@@ -855,11 +857,12 @@ void buildCMBRList() {
 
     bitset<FMAX> temp_comb; 
 
-    int fc = 0;
+    int fc = 0, cmbr_loc;
 
     auto start = high_resolution_clock::now();
     for (int k = 0; k < layers; ++k)
     {  
+        cmbr_loc = 0;
         //cout <<"Layer " << k << " Building ..." << endl;
         //b = features[k+1]-1;
 
@@ -883,7 +886,7 @@ void buildCMBRList() {
             instance_array.resize(GRID_ROWS, vector<vector<vector<set<int>>>>(GRID_COLS, vector<vector<set<int>>>(1, vector<set<int>>(2))));
             // features[k]-1 returns the feature id -1 value of the kth feature
             // getCMBRLayerWCount2(k, k+1, 0, false, temp_comb, 2); 
-            findCMBRs(k, k+1, 0, false, temp_comb, 2); 
+            findCMBRs(k, k+1, 0, false, temp_comb, 2, cmbr_loc); 
             fc++;
 
         } else {
@@ -905,10 +908,11 @@ void buildCMBRList() {
                     // resize instance array for the new feature combination
                     // instance_array.resize(instance_array.size()+1, vector<set<int>>(2));
                     instance_array.resize(GRID_ROWS, vector<vector<vector<set<int>>>>(GRID_COLS, vector<vector<set<int>>>(fc, vector<set<int>>(12))));      //*******change manual 12**********                                 
+                    // cout << fc << " build insta size: " << instance_array[0][0].size() << endl;
                 }                
 
                 // getCMBRLayerWCount2(i, k+1, 0, false, temp_comb, 2); 
-                findCMBRs(i, k+1, 0, false, temp_comb, 2); 
+                findCMBRs(i, k+1, 0, false, temp_comb, 2, cmbr_loc++); 
             //}
 
             // find CMBRs with K+1 feature and previous layer CMBRs
@@ -927,6 +931,7 @@ void buildCMBRList() {
                         temp_comb = cmbr_map[0][0][i][jj].combination; // take combintion id from previous step
                         temp_comb[FMAX-2-k] = 1; 
                         cout << temp_comb << endl;
+                        cout << "---- " << cmbr_map[0][0][i][jj].featureCount+1 << endl;
 
                         // if (jj == 0)
                         // {
@@ -937,11 +942,11 @@ void buildCMBRList() {
                         // }      
                         
                         // getCMBRLayerWCount2(jj, k+1, i, true, temp_comb, cmbr_map[0][0][i][jj].featureCount+1); 
-                        findCMBRs(jj, k+1, i, true, temp_comb, cmbr_map[0][0][i][jj].featureCount+1); 
+                        findCMBRs(jj, k+1, i, true, temp_comb, cmbr_map[0][0][i][jj].featureCount+1, cmbr_loc++); 
                         fc++;
                     } 
-
                 }
+                // cmbr_loc++;
                 auto stop_jj = high_resolution_clock::now();
                 auto duration_jj = duration_cast<microseconds>(stop_jj - start_jj); 
                 print_time("Function: buildCMBR jj to i loop " + to_string(duration_jj.count()));                               
