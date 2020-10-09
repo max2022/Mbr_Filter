@@ -55,10 +55,14 @@ struct cmbr {
     vector<mbr> cmbr_array;
     vector<vector<int>> list1;
     vector<vector<int>> list2;
+    vector<set<int>> inst_array;
 };
 
 int GROWS = 802;
 int GCOLS = 602;
+
+vector<set<int>> tmp_inst_array(12);
+
 
 // saves all mbr information
 vector<vector<vector<vector<mbr>>>>  mbr_array(GROWS, vector<vector<vector<mbr>>>(GCOLS, vector<vector<mbr>>(FMAX)));
@@ -185,38 +189,6 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
     vector<vector<int>> ttlist2;
     int tt=0;
     auto start = high_resolution_clock::now();
-    // cout << "===" << list1.size() << endl;
-    // cout << "===" << map_l1.size() << endl;
-
-    // cout << "list 1 " << endl; 
-    // for (int i = 0; i < list1.size(); ++i)
-    // {
-    //     for (int j = 0; j < list1[i].size(); ++j)
-    //     {
-    //         cout << list1[i][j] << ", ";
-    //     }
-    //     cout << endl;
-    // }
-
-    // cout << "map 1 " << endl; 
-    // for (int i = 0; i < map_l1.size(); ++i)
-    // {
-    //     for (int j = 0; j < map_l1[i].size(); ++j)
-    //     {
-    //         cout << map_l1[i][j] << ", ";
-    //     }
-    //     cout << endl;
-    // }
-
-    // cout << "map 1 " << endl; 
-    // for (int i = 0; i < map_l2.size(); ++i)
-    // {
-    //     for (int j = 0; j < map_l2[i].size(); ++j)
-    //     {
-    //         cout << map_l2[i][j] << ", ";
-    //     }
-    //     cout << endl;
-    // }
 
     for (int aa = 0; aa < list1.size(); ++aa)
     {
@@ -252,7 +224,7 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
                 for (int ii = 0, j = ttlist1.size()-1; ii < ttlist1.size(); ++ii, --j)
                 {
                     // cout << "ii " << ii << endl;
-                    instance_array[r][c][k][ii+1].insert(ttlist1[j]);
+                    tmp_inst_array[ii+1].insert(ttlist1[j]);
                     // cout << ttlist1[j] << "-";
                 }               
                 // instance_array[k].insert(ttlist1.begin(), ttlist1.end()); //test this not sure
@@ -271,7 +243,7 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
 }
 
 // returns a cmbr structure for selected 2 MBRs with the count of CMBRs
-void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMAX> comb, int fCount) {
+void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMAX> comb, int fCount, int s) {
 
     // 1D array to hold layer CMBRs
     vector<mbr> arr;
@@ -281,6 +253,8 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
 
     // temporary varibale to track of calculated CMBR
     mbr cmbr_v;
+
+    bool ZeroFlag = false;
 
     // l1 and l2 maintains the lists from mbr1 and mbr2. l1[0] l2[0] will give 0th CMBR instances
     vector<vector<int>> l1;
@@ -294,14 +268,14 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
     t1.reserve(2);
     t2.reserve(1000);
 
-    int c, r, n1row, n1col,  n2row, n2col, s, t;
+    int c, r, n1row, n1col,  n2row, n2col, destR, destC;
 
     int n1[7] = {0, 0, 0, 0, 1, 2, 3};
     int n2[7] = {0, 1, 2, 3, 0, 0, 0};
 
     vector<mbr> box1;
 
-    int init_layer_count = cmbr_map[0][0][fid2-1].size() +1 ;  
+    // int init_layer_count = cmbr_map[0][0][fid2-1].size() +1 ;  
 
     // cout <<  "first insert cmbr_map: " << init_layer_count << endl;                      
 
@@ -313,10 +287,25 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
     {
         for (int col = 0; col < GRID_COLS; ++col)
         {
-            if (mbr_array[row][col].size() <= 0)
+            // check if we have anything to match in the given cell
+            if (cmbrFlag)
+            {
+                if (cmbr_map[row][col][crow].size() >= fid1 +1 )
+                {
+                    c =  cmbr_map[row][col][crow][fid1].cmbr_array.size();                    
+                } else {
+                    c = -1;
+                }
+            } else {
+                c = mbr_array[row][col][fid1].size();
+            }
+            // if both features do not exists in the cell, we may skip the cell
+            if ( c <= 0 && mbr_array[row][col][fid2].size() <= 0)
             {
                 continue;
             }
+
+
             n1row = row;
             n1col = col;
             for (int ii = 0, iii = 0; ii < 7; ++ii, ++iii)
@@ -335,6 +324,10 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                     n1row = row + iii/2;
                     n1col = col + iii%2;
                 }
+
+                // destination row and column
+                destR = row + iii/2;
+                destC = col + iii%2;
                 
                 if(n1row >= GRID_ROWS || n1col >= GRID_COLS || n2row >= GRID_ROWS || n2col >= GRID_COLS) 
                 {
@@ -345,17 +338,19 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                 // change MBR or CMBR for first box when checking for CMBR
                 if (cmbrFlag)
                 {
-                    // cout << "fid1 " << fid1 << endl; 
-                    // cout << "id1 " << id1 << endl; 
-                    // if (cmbr_map[n1row][n1col][crow][fid1].cmbr_array.size() > 0)
-                    // {
-                    //     cout << "fid2 " << fid2 << " fid1 " << fid1 << " crow " << crow << " new fid1=" << cmbr_map[n1row][n1col][crow][fid1].cmbr_array.size() << endl;                
-                        
-                    // }
+                    // if there are no CMBRs in the selected cell, skip calculation and move to next
+                    if (cmbr_map[n1row][n1col][crow].size() < fid1 + 1)
+                    {
+                        continue;
+                    }
+                    // cout << "before" << endl;
                     box1 = cmbr_map[n1row][n1col][crow][fid1].cmbr_array;
+                    // cout << "after" << endl;
                 } else {
                     box1 = mbr_array[n1row][n1col][fid1];
                 }
+                // cout << "1111after" << endl;
+
                                 
                 for (int i = 0; i < box1.size(); ++i)
                 {
@@ -368,15 +363,20 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                         cmbr_v = calculateCMBR(box1[i].x1, box1[i].y1, box1[i].x2, box1[i].y2, mbr_array[n2row][n2col][fid2][j].x1, mbr_array[n2row][n2col][fid2][j].y1, mbr_array[n2row][n2col][fid2][j].x2, mbr_array[n2row][n2col][fid2][j].y2);
                         if (!cmbr_v.empty)
                         {  
-                            c = floor((cmbr_v.x1 - GRID_MIN_X) / (DIST * 2));
-                            r = GRID_ROWS - 1 - floor((cmbr_v.y2 - GRID_MIN_Y) / (DIST * 2));
+                            // c = floor((cmbr_v.x1 - GRID_MIN_X) / (DIST * 2));
+                            // r = GRID_ROWS - 1 - floor((cmbr_v.y2 - GRID_MIN_Y) / (DIST * 2));
                             // cout << row + iii/2 << " " << col + iii%2 << " " << instance_array[row + iii/2][col + iii%2][init_layer_count].size() << " " << init_layer_count << endl;
 
                             arr.push_back(cmbr_v); 
                             t2.push_back(j + instance_sum[n2row][n2col][fid2]); 
-                            instance_array[row + iii/2][col + iii%2][init_layer_count - 1][0].insert(j + instance_sum[n2row][n2col][fid2]);                           
+                            // instance_array[destR][destC][s][0].insert(j + instance_sum[n2row][n2col][fid2]);                           
+                            tmp_inst_array[0].insert(j + instance_sum[n2row][n2col][fid2]);                           
                             // cout << "Push: j: " << j << " " << instance_sum[n2row][n2col][fid2] << endl;
                             // cout << comb << " -- " << row + iii/2 << " " << col + iii%2 << " " << cmbr_v.x1 << " " << cmbr_v.y1 << " " << cmbr_v.x2 << " " << cmbr_v.y2 << endl;
+                            if (destR == 0 && destC == 0)
+                            {
+                                ZeroFlag = true;
+                            }
                         } 
                     }
                     // if there are any CMBRs for i, add ID i to l1
@@ -384,7 +384,7 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                     {
                         if (!cmbrFlag)
                         {
-                            instance_array[row + iii/2][col + iii%2][init_layer_count - 1][1].insert(i + instance_sum[n1row][n1col][fid1]);
+                            tmp_inst_array[1].insert(i + instance_sum[n1row][n1col][fid1]);
                             // cout << "Push: i: " << i << " " << instance_sum[n1row][n1col][fid1] << endl;                                            
                             t1.push_back(i + instance_sum[n1row][n1col][fid1]);
                         } else {
@@ -399,65 +399,84 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                     }
                 }
                 ret.combination = comb;  
-                ret.featureCount = fCount;
-                s = cmbr_map[row + iii/2][col + iii%2][fid2-1].size();  
+                ret.featureCount = fCount; 
                 // cout << "init " << init_layer_count << " s " << s << endl;
 
                 if (arr.size() > 0)
-                {                    
+                { 
+                    // if cmbr_map local sizes are not synch with latest, we may resize fid2 refers to step 1,2,...
+                    if (cmbr_map[destR][destC][fid2-1].size() < pow(2, (fid2)))
+                    {
+                        cmbr_map[destR][destC][fid2-1].resize(pow(2, (fid2)));
+                    }                   
                     // check if the CMBR pattern already exists in the selected cell
-                    if (init_layer_count == s)
+                    if ( cmbr_map[destR][destC][fid2-1][s].featureCount == fCount)
                     {
 
-                        cmbr_map[row + iii/2][col + iii%2][fid2-1][s-1].cmbr_array.insert(cmbr_map[row + iii/2][col + iii%2][fid2-1][s-1].cmbr_array.end(), arr.begin(), arr.end());
-
-                        cmbr_map[row + iii/2][col + iii%2][fid2-1][s-1].list2.insert(cmbr_map[row + iii/2][col + iii%2][fid2-1][s-1].list2.end(), l2.begin(), l2.end());
+                        cmbr_map[destR][destC][fid2-1][s].cmbr_array.insert(cmbr_map[destR][destC][fid2-1][s].cmbr_array.end(), arr.begin(), arr.end());
+                        cmbr_map[destR][destC][fid2-1][s].list2.insert(cmbr_map[destR][destC][fid2-1][s].list2.end(), l2.begin(), l2.end());
+                        
+                        // error here. insert vector set to vector set?????
+                        cmbr_map[destR][destC][fid2-1][s].inst_array.insert(cmbr_map[destR][destC][fid2-1][s].inst_array.end(), tmp_inst_array.begin(), tmp_inst_array.end());
 
                         if (cmbrFlag)
                         {
                             // cout << "222 bqqqtttend inner " << endl;
 
                             // ret.list1 = instanceCombinationBuild(l1, cmbr_map[n1row][n1col][crow][fid1].list1, cmbr_map[n1row][n1col][crow][fid1].list2, init_layer_count - 1, row + iii/2, col + iii%2);                            
-                            ret.list1 = instanceCombinationBuild(l1, cmbr_map[n1row][n1col][crow][fid1].list1, cmbr_map[n1row][n1col][crow][fid1].list2, init_layer_count - 1, row + iii/2, col + iii%2);                            
+                            ret.list1 = instanceCombinationBuild(l1, cmbr_map[n1row][n1col][crow][fid1].list1, cmbr_map[n1row][n1col][crow][fid1].list2, s, destR, destC);                            
                             // cout << "4444 qqqtttend inner " << endl;
                             
-                            cmbr_map[row + iii/2][col + iii%2][fid2-1][s-1].list1.insert(cmbr_map[row + iii/2][col + iii%2][fid2-1][s-1].list1.end(), ret.list1.begin(), ret.list1.end());                            
+                            cmbr_map[destR][destC][fid2-1][s].list1.insert(cmbr_map[destR][destC][fid2-1][s].list1.end(), ret.list1.begin(), ret.list1.end());                            
                         } else {
-                            cmbr_map[row + iii/2][col + iii%2][fid2-1][s-1].list1.insert(cmbr_map[row + iii/2][col + iii%2][fid2-1][s-1].list1.end(), l1.begin(), l1.end());
+                            cmbr_map[destR][destC][fid2-1][s].list1.insert(cmbr_map[destR][destC][fid2-1][s].list1.end(), l1.begin(), l1.end());
                         }
                         // cout << "tttend inner " << endl;
                     } else {
                         ret.cmbr_array = arr;
-                        ret.list1 = l1;
+                        ret.list2 = l2;
+                        ret.inst_array = tmp_inst_array;
                         // check if matching is CMBR vs MBR                        
                         if (cmbrFlag)
                         {
-                            ret.list1 = instanceCombinationBuild(l1, cmbr_map[n1row][n1col][crow][fid1].list1, cmbr_map[n1row][n1col][crow][fid1].list2, init_layer_count - 1, row + iii/2, col + iii%2);                            
+                            ret.list1 = instanceCombinationBuild(l1, cmbr_map[n1row][n1col][crow][fid1].list1, cmbr_map[n1row][n1col][crow][fid1].list2, s, destR, destC);                            
                         } else {
                             ret.list1 = l1;
                         }
                         // cout << "rrrrrrrtttend inner " << endl;
 
                         // insert new feature combination if it does not exist in the cell 
-                        cmbr_map[row + iii/2][col + iii%2][fid2-1].push_back(ret); 
+                        // cmbr_map[destR][destC][fid2-1].push_back(ret); 
+                        cmbr_map[destR][destC][fid2-1].insert(cmbr_map[destR][destC][fid2-1].begin() + s, ret);
                         // cout <<  "in else n insert cmbr_map: " << cmbr_map[row + iii/2][col + iii%2][fid2-1].size() << endl;                      
                     }
                     l1.clear();
                     l2.clear();
                     arr.clear();
+                    tmp_inst_array.clear();
                     l1.reserve(2000);
                     l2.reserve(2000);
                     arr.reserve(20000); 
 
                 // insert new feature combination if it does not exist in the cell even if there are no cmbrs found in this cell
-                } else if (init_layer_count != s) {
-                    cmbr_map[row + iii/2][col + iii%2][fid2-1].push_back(ret);
-                    // cout <<  "out else n insert cmbr_map: " << cmbr_map[row + iii/2][col + iii%2][fid2-1].size() << endl;                      
-                }            
+                } 
+                // else if (init_layer_count != s) {
+                //     cmbr_map[row + iii/2][col + iii%2][fid2-1].push_back(ret);
+                //     // cout <<  "out else n insert cmbr_map: " << cmbr_map[row + iii/2][col + iii%2][fid2-1].size() << endl;                      
+                // }            
                 ret = {}; //reset ret
             }          
         }
     }
+    // if cell 0 did not get any CMBRs, we may add a null to referenece it
+    if (!ZeroFlag)
+    {
+        ret.combination = comb;  
+        ret.featureCount = fCount;
+        // cmbr_map[0][0][fid2-1].insert(cmbr_map[0][0][fid2-1].begin(), ret);
+        cmbr_map[0][0][fid2-1].push_back(ret);
+        ret = {};
+    } 
 }
 
 //erasing filtered out cmbr_maps layerwise
@@ -624,11 +643,12 @@ void buildCMBRList() {
 
     bitset<FMAX> temp_comb; 
 
-    int fc = 0;
+    int fc = 0, comb_loc;
 
     auto start = high_resolution_clock::now();
     for (int k = 0; k < layers; ++k)
     {  
+        comb_loc = 0;
         //cout <<"Layer " << k << " Building ..." << endl;
         //b = features[k+1]-1;
 
@@ -649,9 +669,9 @@ void buildCMBRList() {
             // resize instance array for the new feature combination
             // instance_array.resize(instance_array.size()+1, vector<set<int>>(2));
             // cout << instance_array.size() << endl;
-            instance_array.resize(GRID_ROWS, vector<vector<vector<set<int>>>>(GRID_COLS, vector<vector<set<int>>>(1, vector<set<int>>(2))));
+            // instance_array.resize(GRID_ROWS, vector<vector<vector<set<int>>>>(GRID_COLS, vector<vector<set<int>>>(1, vector<set<int>>(2))));
             // features[k]-1 returns the feature id -1 value of the kth feature
-            getCMBRLayerWCount2(k, k+1, 0, false, temp_comb, 2); 
+            getCMBRLayerWCount2(k, k+1, 0, false, temp_comb, 2, comb_loc++); 
             fc++;
 
         } else {
@@ -667,15 +687,15 @@ void buildCMBRList() {
                 temp_comb[FMAX-2-k] = 1;
                 cout << temp_comb << endl;
 
-                if (i == 0)
-                {
-                    fc += (k+1); 
-                    // resize instance array for the new feature combination
-                    // instance_array.resize(instance_array.size()+1, vector<set<int>>(2));
-                    instance_array.resize(GRID_ROWS, vector<vector<vector<set<int>>>>(GRID_COLS, vector<vector<set<int>>>(fc, vector<set<int>>(12))));      //*******change manual 12**********                                 
-                }                
+                // if (i == 0)
+                // {
+                //     fc += (k+1); 
+                //     // resize instance array for the new feature combination
+                //     // instance_array.resize(instance_array.size()+1, vector<set<int>>(2));
+                //     instance_array.resize(GRID_ROWS, vector<vector<vector<set<int>>>>(GRID_COLS, vector<vector<set<int>>>(fc, vector<set<int>>(12))));      //*******change manual 12**********                                 
+                // }                
 
-                getCMBRLayerWCount2(i, k+1, 0, false, temp_comb, 2); 
+                getCMBRLayerWCount2(i, k+1, 0, false, temp_comb, 2, comb_loc++); 
             //}
 
             // find CMBRs with K+1 feature and previous layer CMBRs
@@ -703,7 +723,7 @@ void buildCMBRList() {
                             //cout << "c: " << instance_array[0][0].size()<< " " << instance_array[0][0][0].size() << " " << instance_array[0][0][0][0].size() << endl;
                         // }      
                         
-                        getCMBRLayerWCount2(jj, k+1, i, true, temp_comb, cmbr_map[0][0][i][jj].featureCount+1); 
+                        getCMBRLayerWCount2(jj, k+1, i, true, temp_comb, cmbr_map[0][0][i][jj].featureCount+1, comb_loc++); 
                         fc++;
                     } 
 
@@ -718,10 +738,10 @@ void buildCMBRList() {
             print_time("Function: buildCMBR k to i loop " + to_string(duration_i.count()));
         }       
         
-        cmbr_filter_layerwise(k); 
+        // cmbr_filter_layerwise(k); 
 
         // clear temporary set structure
-        instance_array.clear();
+        // instance_array.clear();
 
         //cout <<"Layer " << k << " Built Successfully!!!" << endl;       
     }
