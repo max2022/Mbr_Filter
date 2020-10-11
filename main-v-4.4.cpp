@@ -50,25 +50,26 @@ struct mbr {
 // data structure hold cmbr info
 struct cmbr {
     bitset<FMAX> combination; 
-    int featureCount = 0;
+    int featureCount = -1;
     bool isDeleted = false;
+    bool isAccessed = false;
     vector<mbr> cmbr_array;
     vector<vector<int>> list1;
     vector<vector<int>> list2;
     vector<set<int>> inst_array;
 };
 
-int GROWS = 802;
-int GCOLS = 602;
 
 vector<set<int>> tmp_inst_array(12);
 
 
 // saves all mbr information
-vector<vector<vector<vector<mbr>>>>  mbr_array(GROWS, vector<vector<vector<mbr>>>(GCOLS, vector<vector<mbr>>(FMAX)));
+// vector<vector<vector<vector<mbr>>>>  mbr_array(GROWS, vector<vector<vector<mbr>>>(GCOLS, vector<vector<mbr>>(FMAX)));
+vector<vector<vector<vector<mbr>>>>  mbr_array;
 
 // data structure saves instance cumulative sum 
-vector<vector<vector<int>>> instance_sum(GROWS, vector<vector<int>>(GCOLS, vector<int>(FMAX, 0))); 
+// vector<vector<vector<int>>> instance_sum(GROWS, vector<vector<int>>(GCOLS, vector<int>(FMAX, 0))); 
+vector<vector<vector<int>>> instance_sum; 
 
 // // data structure saves MBR infor per cell
 // struct mbr_cell {
@@ -80,10 +81,11 @@ vector<vector<vector<int>>> instance_sum(GROWS, vector<vector<int>>(GCOLS, vecto
 // vector<vector<mbr_cell>>  mbr_array(801, vector<mbr_cell>(601));
 
 // 2D vector to keep track of all the combinations and instances realted
-vector<vector<vector<vector<cmbr>>>>  cmbr_map(GROWS, vector<vector<vector<cmbr>>>(GCOLS, vector<vector<cmbr>>(FMAX-1)));
+// vector<vector<vector<vector<cmbr>>>>  cmbr_map(GROWS, vector<vector<vector<cmbr>>>(GCOLS, vector<vector<cmbr>>(FMAX-1)));
+vector<vector<vector<vector<cmbr>>>>  cmbr_map;
 
 // intermediate data structure to hold unique instances ids for cmbrs in a perticular step in each cell
-vector<vector<vector<vector<set<int>>>>> instance_array;
+// vector<vector<vector<vector<set<int>>>>> instance_array;
 
 // calculate MBR for a given datapoint
 mbr getMBR(float px, float py) {
@@ -412,14 +414,14 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                         // cout << "hh---" << fCount << " " << cmbr_map[destR][destC][fid2-1][s].featureCount << endl;
 
                     // check if the CMBR pattern already exists in the selected cell
-                    if ( cmbr_map[destR][destC][fid2-1][s].featureCount == fCount)
+                    if (cmbr_map[destR][destC][fid2-1][s].isAccessed)
                     {
 
                         cmbr_map[destR][destC][fid2-1][s].cmbr_array.insert(cmbr_map[destR][destC][fid2-1][s].cmbr_array.end(), arr.begin(), arr.end());
                         cmbr_map[destR][destC][fid2-1][s].list2.insert(cmbr_map[destR][destC][fid2-1][s].list2.end(), l2.begin(), l2.end());
                         
                         // error here. insert vector set to vector set?????
-                        cout << "hh" << endl;
+                        // cout << "hh" << endl;
                         cmbr_map[destR][destC][fid2-1][s].inst_array.insert(cmbr_map[destR][destC][fid2-1][s].inst_array.end(), tmp_inst_array.begin(), tmp_inst_array.end());
                         // cout << "hh222" << endl;
 
@@ -447,12 +449,14 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                             ret.list1 = l1;
                         }
                         ret.inst_array = tmp_inst_array;
-                        
-                        // cout << "rrrrrrrtttend inner " << endl;
+                        ret.isAccessed = true;
+
+                        // cout << "rrrrrrrtttend inner " << ret.featureCount << endl;
 
                         // insert new feature combination if it does not exist in the cell 
                         // cmbr_map[destR][destC][fid2-1].push_back(ret); 
-                        cmbr_map[destR][destC][fid2-1].insert(cmbr_map[destR][destC][fid2-1].begin() + s, ret);
+                        // cmbr_map[destR][destC][fid2-1].insert(cmbr_map[destR][destC][fid2-1].begin() + s, ret);
+                        cmbr_map[destR][destC][fid2-1][s] = ret;
                         // cout <<  "in else n insert cmbr_map: " << cmbr_map[row + iii/2][col + iii%2][fid2-1].size() << endl;                      
                     }
                     l1.clear();
@@ -506,6 +510,7 @@ void erase_cmbr_map(int k, vector<int> erase_list)
         cmbr_map[0][0][k][erase_list[ii]].cmbr_array.clear();
         cmbr_map[0][0][k][erase_list[ii]].list1.clear();
         cmbr_map[0][0][k][erase_list[ii]].list2.clear();
+        cmbr_map[0][0][k][erase_list[ii]].inst_array.clear();
     }
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start); 
@@ -539,7 +544,7 @@ void cmbr_filter_layerwise(int k)
                 // if (!cmbr_map[row][col][k][comb].isDeleted)
                 {
                 	// cout << "xx" << endl;
-                    for(int ft = 0; ft < cmbr_map[row][col][k][comb].featureCount > 0 && cmbr_map[row][col][k][comb].inst_array.size(); ft++)                   
+                    for(int ft = 0; cmbr_map[row][col][k][comb].isAccessed && ft <  cmbr_map[row][col][k][comb].inst_array.size(); ft++)                   
                     {
                         // cout << ft << ", " << endl;
                         if(cmbr_map[row][col][k][comb].inst_array[ft].size() > 0){                          
@@ -767,6 +772,15 @@ int main()
     struct table_row *dat;
     dat = createArray("data/newData/Seattle2012_1676.csv");
     // dat = createArray("data/Point_Of_Interest_modified.csv");
+
+    cout << "Initialize start.." << endl;
+    
+    // initialize sizes for main 3 data structures 
+    mbr_array.resize(GRID_ROWS, vector<vector<vector<mbr>>>(GRID_COLS, vector<vector<mbr>>(FMAX)));
+	instance_sum.resize(GRID_ROWS, vector<vector<int>>(GRID_COLS, vector<int>(FMAX, 0))); 
+	cmbr_map.resize(GRID_ROWS, vector<vector<vector<cmbr>>>(GRID_COLS, vector<vector<cmbr>>(FMAX-1)));
+
+    cout << "Initialize End.." << endl;
 
     // test ----- START ----
 
