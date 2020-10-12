@@ -1,0 +1,231 @@
+Total rows: 1676
+802 602
+mbr array constructed
+1100000000000
+CMBR Filter called for Layer 0
+Comb is 1100000000000
+Feature is 1 size is 25
+Comb is 1100000000000
+Feature is 0 size is 27
+Erasing Combination 1100000000000
+1010000000000
+0110000000000
+CMBR Filter called for Layer 1
+Comb is 1010000000000
+Feature is 1 size is 17
+Comb is 1010000000000
+Feature is 0 size is 31
+Erasing Combination 1010000000000
+Comb is 0110000000000
+Feature is 1 size is 36
+Comb is 0110000000000
+Feature is 0 size is 38
+1001000000000
+0101000000000
+0111000000000
+---- 3
+0011000000000
+CMBR Filter called for Layer 2
+Comb is 1001000000000
+Feature is 1 size is 30
+Comb is 1001000000000
+Feature is 0 size is 31
+Comb is 0101000000000
+Feature is 1 size is 35
+Comb is 0101000000000
+Feature is 0 size is 31
+Comb is 0111000000000
+Feature is 2 size is 9
+Comb is 0111000000000
+Feature is 1 size is 9
+Comb is 0111000000000
+Feature is 0 size is 23
+Erasing Combination 0111000000000
+Comb is 0011000000000
+Feature is 1 size is 54
+Comb is 0011000000000
+Feature is 0 size is 46
+1000100000000
+0100100000000
+0110100000000
+---- 3
+0010100000000
+1001100000000
+---- 3
+0101100000000
+---- 3
+0011100000000
+---- 3
+0001100000000
+CMBR Filter called for Layer 3
+Comb is 1000100000000
+Feature is 1 size is 54
+Comb is 1000100000000
+Feature is 0 size is 139
+Comb is 0100100000000
+Feature is 1 size is 46
+Comb is 0100100000000
+Feature is 0 size is 140
+Comb is 0110100000000
+Feature is 2 size is 11
+Comb is 0110100000000
+Feature is 1 size is 11
+Comb is 0110100000000
+Feature is 0 size is 95
+Erasing Combination 0110100000000
+Comb is 0010100000000
+Feature is 1 size is 55
+Comb is 0010100000000
+Feature is 0 size is 128
+Comb is 1001100000000
+Feature is 2 size is 11
+Comb is 1001100000000
+Feature is 1 size is 11
+Comb is 1001100000000
+Feature is 0 size is 80
+Erasing Combination 1001100000000
+Comb is 0101100000000
+Feature is 2 size is 14
+Comb is 0101100000000
+Feature is 1 size is 14
+Comb is 0101100000000
+Feature is 0 size is 107
+Erasing Combination 0101100000000
+Comb is 0011100000000
+Feature is 2 size is 16
+Comb is 0011100000000
+Feature is 1 size is 16
+Comb is 0011100000000
+Feature is 0 size is 105
+Erasing Combination 0011100000000
+Comb is 0001100000000
+Feature is 1 size is 51
+Comb is 0001100000000
+Feature is 0 size is 143
+1000010000000
+0100010000000
+0110010000000
+---- 3
+0010010000000
+1001010000000
+---- 3
+0101010000000
+---- 3
+0011010000000
+---- 3
+0001010000000
+1000110000000
+---- 3
+0100110000000
+---- 3
+0010110000000
+---- 3
+0001110000000
+---- 3
+0000110000000
+CMBR Filter called for Layer 4
+Comb is 1000010000000
+Feature is 1 size is 21
+Comb is 1000010000000
+Feature is 0 size is 79
+Erasing Combination 1000010000000
+Comb is 0100010000000
+Feature is 1 size is 28
+Comb is 0100010000000
+Feature is 0 size is 48
+Erasing Combination 0100010000000
+Comb is 0110010000000
+Feature is 2 size is 7
+Comb is 0110010000000
+Feature is 1 size is 7
+Comb is 0110010000000
+Feature is 0 size is 43
+Erasing Combination 0110010000000
+Comb is 0010010000000
+Feature is 1 size is 60
+Comb is 0010010000000
+Feature is 0 size is 75
+Comb is 1001010000000
+Feature is 2 size is 6
+Comb is 1001010000000
+Feature is 1 size is 6
+Comb is 1001010000000
+Feature is 0 size is 60
+Erasing Combination 1001010000000
+Comb is 0101010000000
+Feature is 2 size is 8
+Comb is 0101010000000
+Feature is 1 size is 8
+Comb is 0101010000000
+Feature is 0 size is 35
+Erasing Combination 0101010000000
+Comb is 0011010000000
+Feature is 2 size is 12
+Comb is 0011010000000
+Feature is 1 size is 12
+Comb is 0011010000000
+Feature is 0 size is 45
+Erasing Combination 0011010000000
+Comb is 0001010000000
+Feature is 1 size is 38
+Comb is 0001010000000
+Feature is 0 size is 80
+Comb is 1000110000000
+Feature is 2 size is 10
+Comb is 1000110000000
+Feature is 1 size is 10
+Comb is 1000110000000
+Feature is 0 size is 71
+Erasing Combination 1000110000000
+Comb is 0100110000000
+Feature is 2 size is 9
+Comb is 0100110000000
+Feature is 1 size is 9
+Comb is 0100110000000
+Feature is 0 size is 43
+Erasing Combination 0100110000000
+Comb is 0010110000000
+Feature is 2 size is 12
+Comb is 0010110000000
+Feature is 1 size is 12
+Comb is 0010110000000
+Feature is 0 size is 46
+Erasing Combination 0010110000000
+Comb is 0001110000000
+Feature is 2 size is 13
+Comb is 0001110000000
+Feature is 1 size is 13
+Comb is 0001110000000
+Feature is 0 size is 65
+Erasing Combination 0001110000000
+Comb is 0000110000000
+Feature is 1 size is 155
+Comb is 0000110000000
+Feature is 0 size is 96
+1000001000000
+0100001000000
+0110001000000
+---- 3
+0010001000000
+1001001000000
+---- 3
+0101001000000
+---- 3
+0011001000000
+---- 3
+0001001000000
+1000101000000
+---- 3
+0100101000000
+---- 3
+0010101000000
+---- 3
+0001101000000
+---- 3
+0000101000000
+0010011000000
+---- 3
+0001011000000
+---- 3
+0000111000000
+---- 3
