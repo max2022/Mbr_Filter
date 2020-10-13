@@ -68,12 +68,13 @@ int GCOLS = 4805;
 
 // saves all mbr information
 // vector<vector<vector<vector<mbr>>>>  mbr_array(GROWS, vector<vector<vector<mbr>>>(GCOLS, vector<vector<mbr>>(FMAX)));
-vector<vector<vector<vector<mbr>>>>  mbr_array;
-// vector<mbr>  mbr_array[GRID_ROWS][GRID_COLS][FMAX];
+// vector<vector<vector<vector<mbr>>>>  mbr_array;
+vector<mbr> mbr_array[5504][4805][13];
 
 // data structure saves instance cumulative sum 
 // vector<vector<vector<int>>> instance_sum(GROWS, vector<vector<int>>(GCOLS, vector<int>(FMAX, 0))); 
-vector<vector<vector<int>>> instance_sum; 
+// vector<vector<vector<int>>> instance_sum; 
+int instance_sum[5504][4805][13] = {0}; 
 
 // // data structure saves MBR infor per cell
 // struct mbr_cell {
@@ -86,7 +87,8 @@ vector<vector<vector<int>>> instance_sum;
 
 // 2D vector to keep track of all the combinations and instances realted
 // vector<vector<vector<vector<cmbr>>>>  cmbr_map(GROWS, vector<vector<vector<cmbr>>>(GCOLS, vector<vector<cmbr>>(FMAX-1)));
-vector<vector<vector<vector<cmbr>>>>  cmbr_map;
+// vector<vector<vector<vector<cmbr>>>>  cmbr_map;
+vector<cmbr> cmbr_map[5504][4805][13 - 1];
 
 // intermediate data structure to hold unique instances ids for cmbrs in a perticular step in each cell
 // vector<vector<vector<vector<set<int>>>>> instance_array;
@@ -123,7 +125,7 @@ void getMBRList(struct table_row *data) {
         temp = getMBR(data[i].x, data[i].y);
         col = floor((temp.x1 - GRID_MIN_X) / (DIST * 2));
         row = GRID_ROWS - 1 - floor((temp.y2 - GRID_MIN_Y) / (DIST * 2));
-        // cout << "row " << row << " col " << col << " fid " << k << " point " << floor((temp.y2 - GRID_MIN_Y) / (DIST * 2)) << ", " << temp.y2 << ", " << temp.x1 << endl;
+        // cout << "row " << row << " col " << col << " fid " << k << " point " << floor(temp.y2 - GRID_MIN_Y) / (DIST * 2) << ", " << temp.y2 << endl;
 
         // calculate MBR using the getMBR() and assign it to the relavant feature instance
         mbr_array[row][col][k].push_back(temp);
@@ -140,17 +142,17 @@ void getMBRList(struct table_row *data) {
             {                          
                 if (j + 1 < GRID_COLS)
                 { 
-                    instance_sum[i][j + 1][k] = mbr_array[i][j][k].size() + instance_sum[i][j][k];      
-                    // if (mbr_array[i][j][k].size() > 0)
-                    // {
-                    //     cout << "ins: " << i << ", " << j << ", " << k << "- " << instance_sum[i][j + 1][k] << endl;
-                    // }    
+                    instance_sum[i][j + 1][k] = fcount[k] + instance_sum[i][j][k];      
+                    if (fcount[k] > 0)
+                    {
+                        cout << "ins: " << i << ", " << j << ", " << k << "- " << instance_sum[i][j + 1][k] << endl;
+                    }    
                 } else if(i + 1 < GRID_ROWS) { 
-                    instance_sum[i + 1][0][k] = mbr_array[i][j][k].size() + instance_sum[i][j][k];    
-                    // if (mbr_array[i][j][k].size() > 0)
-                    // {
-                    //     cout << "ins: " << i << ", " << j << ", " << k << "- " << instance_sum[i + 1][j][k] << endl;
-                    // }         
+                    instance_sum[i + 1][0][k] = fcount[k] + instance_sum[i][j][k];    
+                    if (fcount[k] > 0)
+                    {
+                        cout << "ins: " << i << ", " << j << ", " << k << "- " << instance_sum[i + 1][j][k] << endl;
+                    }         
                 }
             }
         }
@@ -307,10 +309,10 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                     c = -1;
                 }
             } else {
-                c = mbr_array[row][col][fid1].size();
+                c = fcount[fid1];
             }
             // if both features do not exists in the cell, we may skip the cell
-            if ( c <= 0 && mbr_array[row][col][fid2].size() <= 0)
+            if ( c <= 0 && fcount[fid2] <= 0)
             {
                 continue;
             }
@@ -366,7 +368,7 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                 {
                     // cout << "i " << i << " j size: " << mbr_array[n2row][n2col][fid2].size() << endl;
                     
-                    for (int j = 0; j < mbr_array[n2row][n2col][fid2].size(); ++j)
+                    for (int j = 0; j < fcount[fid2]mbr_array[n2row][n2col][fid2].size(); ++j)
                     {
                         // cout << "j " << j << endl;
 
@@ -936,19 +938,19 @@ int main()
     // dat = createArray("data/newData/Seattle2012_1676.csv");
     dat = createArray("data/Point_Of_Interest_modified.csv");
 
-    cout << mbr_array.max_size() << endl;
-    cout << instance_sum.max_size() << endl;
-    cout << cmbr_map.max_size() << endl;
+ //    cout << mbr_array.max_size() << endl;
+ //    cout << instance_sum.max_size() << endl;
+ //    cout << cmbr_map.max_size() << endl;
 
-    cout << "Initialize start.." << endl;
+ //    cout << "Initialize start.." << endl;
 
-    // initialize sizes for main 3 data structures 
-    mbr_array.resize(GRID_ROWS, vector<vector<vector<mbr>>>(GRID_COLS, vector<vector<mbr>>(FMAX)));
-    cout << "mbr_array initialized.." << endl;
-	instance_sum.resize(GRID_ROWS, vector<vector<int>>(GRID_COLS, vector<int>(FMAX, 0))); 
-    cout << "instance_sum initialized.." << endl;
-	cmbr_map.resize(GRID_ROWS, vector<vector<vector<cmbr>>>(GRID_COLS, vector<vector<cmbr>>(FMAX-1)));
-    cout << "cmbr_map initialized.." << endl;
+ //    // initialize sizes for main 3 data structures 
+ //    mbr_array.resize(GRID_ROWS, vector<vector<vector<mbr>>>(GRID_COLS, vector<vector<mbr>>(FMAX)));
+ //    cout << "mbr_array initialized.." << endl;
+	// instance_sum.resize(GRID_ROWS, vector<vector<int>>(GRID_COLS, vector<int>(FMAX, 0))); 
+ //    cout << "instance_sum initialized.." << endl;
+	// cmbr_map.resize(GRID_ROWS, vector<vector<vector<cmbr>>>(GRID_COLS, vector<vector<cmbr>>(FMAX-1)));
+ //    cout << "cmbr_map initialized.." << endl;
 
     // test ----- START ----
 

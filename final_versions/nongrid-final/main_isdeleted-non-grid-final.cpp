@@ -265,7 +265,7 @@ void erase_cmbr_map(int k, vector<int> erase_list)
 //cmbr filter layerwise where k is the layer number
 void cmbr_filter_layerwise(int k)
 {
-    cout << "CMBR Filter Layer is " << k << " and size is " << cmbr_map[k].size() <<endl;
+    // cout << "CMBR Filter Layer is " << k << " and size is " << cmbr_map[k].size() <<endl;
     prev_size += cmbr_map[k].size();
     vector<int> erase_list;
 
@@ -288,7 +288,8 @@ void cmbr_filter_layerwise(int k)
 				flag=1;
 			}		
 		}
-		result += ") -> (";
+        result += ") -> (";
+		// result += ", ";
 		//cout << result << endl;
         // list_1_each_cell_item_count
         int L1_item_count;
@@ -402,7 +403,8 @@ void cmbr_filter_layerwise(int k)
         }
         total_instances = fcount[FMAX-1-last_pos];
         //cout << "test pr before if list 2 " << list_2.size()/total_instances << endl;
-		result += to_string(list_2.size()) + ":" + to_string(fcount[FMAX-1-last_pos]) + ") -> " + to_string(cmbr_map[k][ii].count);
+        result += to_string(list_2.size()) + ":" + to_string(fcount[FMAX-1-last_pos]) + ") -> " + to_string(cmbr_map[k][ii].count);
+		// result += to_string(list_2.size()) + ":" + to_string(fcount[FMAX-1-last_pos]) + ", " + to_string(cmbr_map[k][ii].count);
         if((list_2.size()/total_instances) < pr)
         {
             pr = list_2.size()/total_instances;
@@ -428,6 +430,9 @@ void cmbr_filter_layerwise(int k)
 	auto stop = high_resolution_clock::now();
 	auto duration = duration_cast<microseconds>(stop - start); 
 	print_time("Function: cmbr_filter_layerwise " + to_string(duration.count()));
+
+    cout << cmbr_map[k].size() << " <- Before count. After count -> " << cmbr_map[k].size() - erase_list.size() << endl;
+
     erase_cmbr_map(k, erase_list);
     erase_list.clear();
     return;
@@ -566,7 +571,7 @@ int main()
 {
     
     //freopen ("out_nongrid_poi_20k.txt","w",stdout);   
-	freopen ("out_isdeleted_1676.txt","w",stdout);
+	// freopen ("out_isdeleted_1676.txt","w",stdout);
     // read data into a table_row structure type 1D array
     struct table_row *dat;
     //dat = createArray("data/poi_modified_20k.csv");
@@ -580,9 +585,9 @@ int main()
    
     // build CMBR tree 
     buildCMBRList(mbr_array);//, feature_ids);
-	print_cmbr_map();
-	cout << "cmbr layers constructed" << endl;
-    fclose(stdout);
+	// print_cmbr_map();
+	// cout << "cmbr layers constructed" << endl;
+    // fclose(stdout);
 
     return 0;
 }

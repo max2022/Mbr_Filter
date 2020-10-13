@@ -62,14 +62,10 @@ struct cmbr {
 
 vector<set<int>> tmp_inst_array(12);
 
-int GROWS = 5504;
-int GCOLS = 4805;
-
 
 // saves all mbr information
 // vector<vector<vector<vector<mbr>>>>  mbr_array(GROWS, vector<vector<vector<mbr>>>(GCOLS, vector<vector<mbr>>(FMAX)));
 vector<vector<vector<vector<mbr>>>>  mbr_array;
-// vector<mbr>  mbr_array[GRID_ROWS][GRID_COLS][FMAX];
 
 // data structure saves instance cumulative sum 
 // vector<vector<vector<int>>> instance_sum(GROWS, vector<vector<int>>(GCOLS, vector<int>(FMAX, 0))); 
@@ -91,9 +87,6 @@ vector<vector<vector<vector<cmbr>>>>  cmbr_map;
 // intermediate data structure to hold unique instances ids for cmbrs in a perticular step in each cell
 // vector<vector<vector<vector<set<int>>>>> instance_array;
 
-// grid cell
-// struct grid
-
 // calculate MBR for a given datapoint
 mbr getMBR(float px, float py) {
     mbr box;
@@ -112,7 +105,6 @@ void getMBRList(struct table_row *data) {
     int row, col;
     mbr temp;
 
-    cout << "Grid set Start..." << endl;
     for (int i = 0; i < ROWS; ++i) { 
         // check if feature id changes
         if (j != (data[i].id - 1)) {
@@ -123,18 +115,18 @@ void getMBRList(struct table_row *data) {
         temp = getMBR(data[i].x, data[i].y);
         col = floor((temp.x1 - GRID_MIN_X) / (DIST * 2));
         row = GRID_ROWS - 1 - floor((temp.y2 - GRID_MIN_Y) / (DIST * 2));
-        // cout << "row " << row << " col " << col << " fid " << k << " point " << floor((temp.y2 - GRID_MIN_Y) / (DIST * 2)) << ", " << temp.y2 << ", " << temp.x1 << endl;
+        // cout << "row " << row << " col " << col << " fid " << k << " point " << floor(temp.y2 - GRID_MIN_Y) / (DIST * 2) << ", " << temp.y2 << endl;
 
         // calculate MBR using the getMBR() and assign it to the relavant feature instance
         mbr_array[row][col][k].push_back(temp);
         // cout << "row " << row << " col " << col << " fid " << k << " point " << data[i].x << ", " << data[i].y << endl;        
         fcount[k] += 1; 
     }
-    cout << "Grid set..." << endl;
+
     // calculate cumulative sums
-    for (int i = 0; i < GRID_ROWS; ++i)
+    for (int i = 0; i < mbr_array.size(); ++i)
     {
-        for (int j = 0; j < GRID_COLS; ++j)
+        for (int j = 0; j < mbr_array[i].size(); ++j)
         {
             for (int k = 0; k < FMAX; ++k)
             {                          
@@ -175,7 +167,7 @@ float getMax(float a, float b) {
 }
 
 void print_time(string str){
-    // cout << "Time -> " << str << endl;
+    cout << "Time -> " << str << endl;
 }
 
 // returns CMBR for a given two MBRs
@@ -430,6 +422,8 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                         
                         // error here. insert vector set to vector set?????
                         // cout << "hh" << endl;
+                        cmbr_map[destR][destC][fid2-1][s].inst_array.insert(cmbr_map[destR][destC][fid2-1][s].inst_array.end(), tmp_inst_array.begin(), tmp_inst_array.end());
+                        // cout << "hh222" << endl;
 
                         if (cmbrFlag)
                         {
@@ -443,14 +437,6 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                         } else {
                             cmbr_map[destR][destC][fid2-1][s].list1.insert(cmbr_map[destR][destC][fid2-1][s].list1.end(), l1.begin(), l1.end());
                         }
-
-                        // following line replaced by for loop
-                        // cmbr_map[destR][destC][fid2-1][s].inst_array.insert(cmbr_map[destR][destC][fid2-1][s].inst_array.end(), tmp_inst_array.begin(), tmp_inst_array.end());
-                        for (int fiid = 0; fiid < fCount; ++fiid)
-                        {
-                            merge(cmbr_map[destR][destC][fid2-1][s].inst_array[fiid].begin(), cmbr_map[destR][destC][fid2-1][s].inst_array[fiid].end(), tmp_inst_array[fiid].begin(), tmp_inst_array[fiid].end(), inserter(cmbr_map[destR][destC][fid2-1][s].inst_array[fiid], cmbr_map[destR][destC][fid2-1][s].inst_array[fiid].begin()));
-                        }
-                        cout << "duplicate cell" << endl;
                         // cout << "tttend inner " << endl;
                     } else {
                         ret.cmbr_array = arr;
@@ -540,111 +526,13 @@ void erase_cmbr_map(int k, vector<int> erase_list)
 
 //cmbr filter layerwise where k is the layer number
 //vector<vector<vector<vector<set<int>>>>> instance_array; row col comb feature instance
-// void cmbr_filter_layerwise(int k)
-// {
-//     vector<vector<set<int>>> grid_pr(pow(2, k+1), vector<set<int>>(FMAX));//(cmbr_map[0][0][k].size());
-//     vector<int> erase_list;
-//     auto start = high_resolution_clock::now();
-//     cout << "CMBR Filter called for Layer " << k << endl;
-//     //for merging all the grid cells to cell 0
-//     for (int row = 0; row < GRID_ROWS; row++)
-//     {
-//         for (int col = 0; col < GRID_COLS; col++)
-//         {   
-//             //prev_size += cmbr_map[row][col][k].size();
-//             for(int comb = 0; comb < cmbr_map[row][col][k].size(); comb++)
-//             {
-//                 //each combination like AB, abc
-//                 // if (!cmbr_map[row][col][k][comb].isDeleted)
-//                 {
-//                 	// cout << "xx" << endl;
-//                     for(int ft = 0; cmbr_map[row][col][k][comb].isAccessed && ft <  cmbr_map[row][col][k][comb].inst_array.size(); ft++)                   
-//                     {
-//                         // cout << ft << ", " << cmbr_map[row][col][k][comb].inst_array[ft].size() << endl;
-//                         if(cmbr_map[row][col][k][comb].inst_array[ft].size() > 0){                          
-//                             // cout << "Before size is "  << " Combination is " << comb << " Feature is " << ft << endl;
-//                             // for(auto const &e: instance_array[0][0][comb][ft]){
-//                             //     cout << e << " ";
-//                             // } cout << endl;   
-
-//                             // cout << "cmbr Before size is " << cmbr_map[row][col][k][comb].cmbr_array.size() << " Combination is " << comb << " Feature is " << ft << endl;
-//                             // for (int i = 0; i < cmbr_map[row][col][k][comb].inst_array[ft].size(); ++i)
-//                             // {
-//                             //     cout << i << "-- ";  
-//                             // }
-//                             // cout << endl;  
-//                             // cout << "temp size: " << grid_pr[comb][ft].size() << endl;
-//                             merge(grid_pr[comb][ft].begin(), grid_pr[comb][ft].end(), cmbr_map[row][col][k][comb].inst_array[ft].begin(), cmbr_map[row][col][k][comb].inst_array[ft].end(), inserter(grid_pr[comb][ft], grid_pr[comb][ft].begin()));
-//                             // cout << "After size is " << " Combination is " << comb << " Feature is " << ft << endl;
-//                             // for(auto const &e: instance_array[0][0][comb][ft]){
-//                             //     cout << e << " ";
-//                             // } cout << endl;
-//                         }// for merging and printing only
-                        
-//                     }//ft
-//                 }// is delete if check cmbr_map
-//             }//comb
-//         }//col
-//     }//row
-//     cout << "merging finished" << endl;
-//     //now instance_array[0][0] will have the union info of all the cells
-//     for(int comb = 0; comb<grid_pr.size(); comb++) 
-//     {
-//         if (!cmbr_map[0][0][k][comb].isDeleted)
-//         {
-//             // if(instance_array[0][0].size() > 0){
-//                 double pr = 1.0;
-//                 bitset<FMAX> bit_comb = cmbr_map[0][0][k][comb].combination;
-//                 int pos = FMAX;
-//                 for(int ft = grid_pr[comb].size()-1; ft >= 0 ; ft--)   
-//                 {
-//                     if(grid_pr[comb][ft].size() > 0){
-//                         cout << "Comb is " << bit_comb << endl;
-//                         cout << "Feature is " << ft << " size is " << grid_pr[comb][ft].size() << endl;
-//                         double total_instances = 0;
-//                         for(int i = pos-1; i >= 0; i--){
-//                             if(bit_comb[i] == 1)
-//                             {
-//                                 pos = i;
-//                                 break;
-//                             }
-//                         }
-//                         total_instances = fcount[FMAX-1-pos];
-//                         double temp_pr = grid_pr[comb][ft].size()/total_instances;
-//                         if(temp_pr < pr){
-//                             pr = temp_pr;               
-//                         }
-//                     }//only those features with size > 0            
-//                 }//ft
-//                 if( pr < PI ){
-//                     cout << "Erasing Combination " << bit_comb << endl;
-//                     erase_list.push_back(comb);
-//                 }
-//             // }
-//         }
-//     }//comb
-//     grid_pr.clear();
-//     auto stop = high_resolution_clock::now();
-//     auto duration = duration_cast<microseconds>(stop - start); 
-//     print_time("Function: cmbr_filter_layerwise " + to_string(duration.count()));
-    
-//     erase_cmbr_map(k, erase_list);
-//     erase_list.clear();
-
-//     return;
-// }
-
 void cmbr_filter_layerwise(int k)
 {
-	int size = pow(2, k+1);
-    vector<vector<set<int>>> grid_pr(size, vector<set<int>>(FMAX));//(cmbr_map[0][0][k].size());
-	vector<int> cmbr_count(size, 0);
+    vector<vector<set<int>>> grid_pr(pow(2, k+1), vector<set<int>>(FMAX));//(cmbr_map[0][0][k].size());
+	vector<int> cmbr_count(pow(2, k+1));
     vector<int> erase_list;
-
-    int fc = 0;
-
     auto start = high_resolution_clock::now();
-    cout << "CMBR Filter called for Layer " << k << endl;
+    //cout << "CMBR Filter called for Layer " << k << endl;
     //for merging all the grid cells to cell 0
     for (int row = 0; row < GRID_ROWS; row++)
     {
@@ -655,17 +543,13 @@ void cmbr_filter_layerwise(int k)
             {
                 //each combination like AB, abc
                 // if (!cmbr_map[row][col][k][comb].isDeleted)
-                if(cmbr_map[row][col][k][comb].isAccessed)
+				cmbr_count[comb] += cmbr_map[row][col][k][comb].cmbr_array.size();
                 {
-					cmbr_count[comb] += cmbr_map[row][col][k][comb].cmbr_array.size();
-
                 	// cout << "xx" << endl;
-                    // for(int ft = 0; ft <  cmbr_map[row][col][k][comb].inst_array.size(); ft++)                   
-                    for(int ft = 0; ft <  cmbr_map[row][col][k][comb].featureCount; ft++)                   
+                    for(int ft = 0; cmbr_map[row][col][k][comb].isAccessed && ft <  cmbr_map[row][col][k][comb].inst_array.size(); ft++)                   
                     {
                         // cout << ft << ", " << endl;
-                        // if(cmbr_map[row][col][k][comb].inst_array[ft].size() > 0)
-                        {                          
+                        if(cmbr_map[row][col][k][comb].inst_array[ft].size() > 0){                          
                             // cout << "Before size is "  << " Combination is " << comb << " Feature is " << ft << endl;
                             // for(auto const &e: instance_array[0][0][comb][ft]){
                             //     cout << e << " ";
@@ -691,13 +575,12 @@ void cmbr_filter_layerwise(int k)
         }//col
     }//row
     //cout << "out" << endl;
-    // cout << "Merging done" << endl;
+    //cout << "****" << endl;
     //now instance_array[0][0] will have the union info of all the cells
 
     for(int comb = 0; comb<grid_pr.size(); comb++) 
     {
-    	// check if CMBR count is > 0
-        if (cmbr_count[comb] > 0)
+        if (!cmbr_map[0][0][k][comb].isDeleted)
         {
             // if(instance_array[0][0].size() > 0){
             double pr = 1.0;
@@ -706,21 +589,12 @@ void cmbr_filter_layerwise(int k)
 			
             int pos = FMAX;
 			int ft_loop = 0;
-            // cout << grid_pr.size() << " End-- " << comb << endl;
-
             for(int ft = grid_pr[comb].size()-1; ft >= 0 ; ft--)   
-            // for(int ft = cmbr_map[0][0][k][comb].featureCount - 1; ft >= 0 ; ft--)   
             {
-                if(grid_pr[comb][ft].size() > 0)
-                {
-
-                	if (ft == 0)
-					{
-						fc++;
-					}
+                if(grid_pr[comb][ft].size() > 0){
 					ft_loop += 1;
-                    // cout << "Comb is " << bit_comb << endl;
-                    // cout << "Feature is " << ft << " size is " << grid_pr[comb][ft].size() << endl;
+                    //cout << "Comb is " << bit_comb << endl;
+                    //cout << "Feature is " << ft << " size is " << grid_pr[comb][ft].size() << endl;
 					//for printing the bit comb features only 1st time
 					if(ft_loop == 1){
 						result += "(";
@@ -735,7 +609,6 @@ void cmbr_filter_layerwise(int k)
 							}		
 						}
 						result += ") -> (";
-						// result += ", ";
 					}
                     double total_instances = 0;
                     for(int i = pos-1; i >= 0; i--){
@@ -752,7 +625,6 @@ void cmbr_filter_layerwise(int k)
 					}
 					else{
 						result += ") -> " + to_string(cmbr_count[comb]) + "\n";
-						// result += ", " + to_string(cmbr_count[comb]) + "\n";
 					}
                     double temp_pr = grid_pr[comb][ft].size()/total_instances;
                     if(temp_pr < pr){
@@ -776,13 +648,13 @@ void cmbr_filter_layerwise(int k)
     auto stop = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(stop - start); 
     print_time("Function: cmbr_filter_layerwise " + to_string(duration.count()));
-
-    cout << "CMBR Layer " << k << " Finished. Original combination count: " << fc << " Prevalent count: " << fc - erase_list.size() << endl;
-    // cout << cmbr_map[0][0][k].size() << ", " << fc << ", " << fc - erase_list.size() << endl;
     
     erase_cmbr_map(k, erase_list);
     erase_list.clear();
+
+    return;
 }
+
 
 // check for selected CMBR
 bool isCombinationValid(thirteenBits const c) {
@@ -838,7 +710,7 @@ void buildCMBRList() {
             temp_comb[FMAX-1-k] = 1;
             temp_comb[FMAX-2-k] = 1;
 
-            // cout << temp_comb << endl;
+            //cout << temp_comb << endl;
 
             // resize instance array for the new feature combination
             // instance_array.resize(instance_array.size()+1, vector<set<int>>(2));
@@ -859,7 +731,7 @@ void buildCMBRList() {
                 temp_comb.reset();
                 temp_comb[FMAX-1-i] = 1;
                 temp_comb[FMAX-2-k] = 1;
-                // cout << temp_comb << endl;
+                //cout << temp_comb << endl;
 
                 // if (i == 0)
                 // {
@@ -887,7 +759,7 @@ void buildCMBRList() {
                         temp_comb.reset();
                         temp_comb = cmbr_map[0][0][i][jj].combination; // take combintion id from previous step
                         temp_comb[FMAX-2-k] = 1; 
-                        // cout << temp_comb << endl;
+                        //cout << temp_comb << endl;
 
                         // if (jj == 0)
                         // {
@@ -925,30 +797,42 @@ void buildCMBRList() {
     return ;
 } 
 
+/*
+void print_cmbr_map(){
+	//cout << "map: " << endl;
+    int curr_size = 0;
+    for (int i = 0; i < cmbr_map.size(); ++i)
+    {
+        //cout << "CMBR layer is " << i << endl;
+        for (int j = 0; j < cmbr_map[i].size(); ++j)
+        {       
+            //cout << cmbr_map[i][j].combination << "[" << cmbr_map[i][j].count << "]";
+            curr_size++;
+        }
+        //cout << "\n";
+    }
+    cout << "Size before = " << prev_size << " Size after = " << curr_size << endl; 
+	return;
+}*/
+
 int main()
 {
     
-    // freopen ("out_v_4.2_1676.txt","w",stdout);   
+    freopen ("out_v_4.4_1676.txt","w",stdout);   
 
     // read data into a table_row structure type 1D array
     struct table_row *dat;
-    // dat = createArray("data/newData/Seattle2012_bt_0.csv");
-    // dat = createArray("data/newData/Seattle2012_1676.csv");
-    dat = createArray("data/Point_Of_Interest_modified.csv");
+    dat = createArray("data/Seattle2012_1676.csv");
+    // dat = createArray("data/Point_Of_Interest_modified.csv");
 
-    cout << mbr_array.max_size() << endl;
-    cout << instance_sum.max_size() << endl;
-    cout << cmbr_map.max_size() << endl;
-
-    cout << "Initialize start.." << endl;
-
+    //cout << "Initialize start.." << endl;
+    
     // initialize sizes for main 3 data structures 
     mbr_array.resize(GRID_ROWS, vector<vector<vector<mbr>>>(GRID_COLS, vector<vector<mbr>>(FMAX)));
-    cout << "mbr_array initialized.." << endl;
 	instance_sum.resize(GRID_ROWS, vector<vector<int>>(GRID_COLS, vector<int>(FMAX, 0))); 
-    cout << "instance_sum initialized.." << endl;
 	cmbr_map.resize(GRID_ROWS, vector<vector<vector<cmbr>>>(GRID_COLS, vector<vector<cmbr>>(FMAX-1)));
-    cout << "cmbr_map initialized.." << endl;
+
+    //cout << "Initialize End.." << endl;
 
     // test ----- START ----
 
@@ -982,7 +866,7 @@ int main()
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 
     getMBRList(dat); 
 
-    cout << "mbr array constructed" << endl;
+    //cout << "mbr array constructed" << endl;
     // cout << GRID_ROWS << " " << GRID_COLS << endl;
 
     // // print mbr array
@@ -1050,7 +934,7 @@ int main()
     //  }
     
 
-    // fclose(stdout);
+    fclose(stdout);
 
     return 0;
 }

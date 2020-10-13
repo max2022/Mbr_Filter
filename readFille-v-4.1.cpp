@@ -50,9 +50,12 @@ struct table_row *createArray(const char *fileName) {
 
 	fscanf(fp, "%f, %f, %f, %f", &GRID_MIN_X, &GRID_MIN_Y, &x, &y);
 
+	GRID_MIN_X -= 5;
+	GRID_MIN_Y -= 5;
+
 	GRID_COLS = ceil((x - GRID_MIN_X)/(DIST * 2)) + 2;
 	GRID_ROWS = ceil((y - GRID_MIN_Y)/(DIST * 2)) + 2;
-	cout << GRID_ROWS << " " << GRID_COLS << endl;
+	cout << GRID_ROWS << " " << GRID_COLS << " " << GRID_MIN_X << " " << GRID_MIN_Y << endl;
 
 
 	fclose(fp);
