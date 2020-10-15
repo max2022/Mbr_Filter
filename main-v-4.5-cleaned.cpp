@@ -863,16 +863,18 @@ int main(int argc, char* argv[])
         tp_flag = true;
     }
 
-
     // read data into a table_row structure type 1D array
     struct table_row *dat;
-    // dat = createArray("data/newData/Seattle2012_bt_0.csv");
-    dat = createArray("data/newData/Seattle2012_1676.csv");
+    dat = createArray("data/Seattle2012_1.csv");
+
+    print_message("Total rows: " + to_string(ROWS));
+    
+    // dat = createArray("data/newData/Seattle2012_1676.csv");
     // dat = createArray("data/Point_Of_Interest_modified.csv");
 
-    print_message(to_string(mbr_array.max_size()));
-    print_message(to_string(instance_sum.max_size()));
-    print_message(to_string(cmbr_map.max_size()));
+    // print_message(to_string(mbr_array.max_size()));
+    // print_message(to_string(instance_sum.max_size()));
+    // print_message(to_string(cmbr_map.max_size()));
 
     print_message("Initialize start..");
 

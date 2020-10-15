@@ -38,7 +38,7 @@ struct table_row *createArray(const char *fileName) {
     }
 	
 	fscanf(fp, "%d", &ROWS);
-	cout << "Total rows: " << ROWS << endl;
+	// cout << "Total rows: " << ROWS << endl;
 
 	struct table_row* table_rows = (struct table_row*)malloc(sizeof(struct table_row) * ROWS);
 	
@@ -55,7 +55,7 @@ struct table_row *createArray(const char *fileName) {
 
 	GRID_COLS = ceil((x - GRID_MIN_X)/(DIST * 2)) + 2;
 	GRID_ROWS = ceil((y - GRID_MIN_Y)/(DIST * 2)) + 2;
-	cout << GRID_ROWS << " " << GRID_COLS << " " << GRID_MIN_X << " " << GRID_MIN_Y << endl;
+	// cout << GRID_ROWS << " " << GRID_COLS << " " << GRID_MIN_X << " " << GRID_MIN_Y << endl;
 
 
 	fclose(fp);
