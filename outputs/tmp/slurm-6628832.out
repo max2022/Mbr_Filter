@@ -1,0 +1,53 @@
+Total rows: 131158
+2152 1199 -5 -5
+768614336404564650
+768614336404564650
+768614336404564650
+Initialize start..
+mbr_array initialized..
+instance_sum initialized..
+cmbr_map initialized..
+Grid set Start...
+Grid set...
+mbr array constructed
+CMBR Filter called for Layer 0
+(0, 1) -> (3120:9728, 1452:2742) -> 9850
+CMBR Layer 0 Finished. Original combination count: 1 Prevalent count: 1
+CMBR Filter called for Layer 1
+(1, 2) -> (1141:2742, 1461:3726) -> 5768
+CMBR Layer 1 Finished. Original combination count: 3 Prevalent count: 1
+CMBR Filter called for Layer 2
+(0, 3) -> (4099:9728, 2895:4532) -> 17633
+(1, 3) -> (1245:2742, 1896:4532) -> 5252
+(2, 3) -> (1641:3726, 1555:4532) -> 7086
+CMBR Layer 2 Finished. Original combination count: 5 Prevalent count: 3
+CMBR Filter called for Layer 3
+(0, 4) -> (7283:9728, 14264:21539) -> 80493
+(1, 4) -> (1961:2742, 9394:21539) -> 24523
+(2, 4) -> (2558:3726, 9381:21539) -> 39419
+(0, 3, 4) -> (3634:9728, 2512:4532, 9031:21539) -> 600666
+(3, 4) -> (3405:4532, 11314:21539) -> 47696
+CMBR Layer 3 Finished. Original combination count: 9 Prevalent count: 5
+CMBR Filter called for Layer 4
+(2, 5) -> (1838:3726, 2452:5265) -> 9206
+(3, 5) -> (1455:4532, 2151:5265) -> 6939
+(4, 5) -> (8763:21539, 3295:5265) -> 50239
+CMBR Layer 4 Finished. Original combination count: 15 Prevalent count: 3
+CMBR Filter called for Layer 5
+(0, 6) -> (4658:9728, 9542:13254) -> 51179
+(1, 6) -> (927:2742, 5557:13254) -> 11945
+(3, 6) -> (2260:4532, 8677:13254) -> 35914
+(0, 4, 6) -> (4280:9728, 10470:21539, 9255:13254) -> 2567934
+(1, 4, 6) -> (857:2742, 6683:21539, 5472:13254) -> 849065
+(3, 4, 6) -> (2080:4532, 8527:21539, 8492:13254) -> 2320562
+(4, 6) -> (12873:21539, 12545:13254) -> 603769
+(5, 6) -> (1593:5265, 5096:13254) -> 25560
+CMBR Layer 5 Finished. Original combination count: 19 Prevalent count: 8
+CMBR Filter called for Layer 6
+(0, 7) -> (2960:9728, 3183:4604) -> 20439
+(3, 7) -> (1723:4532, 2866:4604) -> 15633
+(3, 4, 7) -> (1600:4532, 7466:21539, 2785:4604) -> 1314117
+(4, 7) -> (10931:21539, 4224:4604) -> 196271
+(4, 6, 7) -> (9165:21539, 9698:13254, 3575:4604) -> 18187319
+(6, 7) -> (9789:13254, 3653:4604) -> 172417
+CMBR Layer 6 Finished. Original combination count: 28 Prevalent count: 6

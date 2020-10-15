@@ -1,0 +1,56 @@
+Total rows: 83922
+1909 899 -5 -5
+768614336404564650
+768614336404564650
+768614336404564650
+Initialize start..
+mbr_array initialized..
+instance_sum initialized..
+cmbr_map initialized..
+Grid set Start...
+Grid set...
+mbr array constructed
+CMBR Filter called for Layer 0
+(0, 1) -> (2057:6206, 924:1723) -> 7337
+CMBR Layer 0 Finished. Original combination count: 1 Prevalent count: 1
+CMBR Filter called for Layer 1
+(1, 2) -> (725:1723, 918:2363) -> 4393
+CMBR Layer 1 Finished. Original combination count: 3 Prevalent count: 1
+CMBR Filter called for Layer 2
+(0, 3) -> (2718:6206, 1587:2594) -> 10482
+(1, 3) -> (754:1723, 1004:2594) -> 3055
+(2, 3) -> (1022:2363, 883:2594) -> 4227
+CMBR Layer 2 Finished. Original combination count: 5 Prevalent count: 3
+CMBR Filter called for Layer 3
+(0, 4) -> (4723:6206, 8535:12966) -> 48998
+(0, 1, 4) -> (1915:6206, 823:1723, 4380:12966) -> 214796
+(1, 4) -> (1235:1723, 5371:12966) -> 15058
+(2, 4) -> (1590:2363, 5459:12966) -> 21919
+(0, 3, 4) -> (2442:6206, 1386:2594, 5182:12966) -> 259400
+(3, 4) -> (1921:2594, 6414:12966) -> 20657
+CMBR Layer 3 Finished. Original combination count: 9 Prevalent count: 6
+CMBR Filter called for Layer 4
+(1, 5) -> (638:1723, 1013:3373) -> 3306
+(2, 5) -> (1198:2363, 1604:3373) -> 6598
+(3, 5) -> (865:2594, 1417:3373) -> 4100
+(4, 5) -> (5105:12966, 2122:3373) -> 26444
+CMBR Layer 4 Finished. Original combination count: 16 Prevalent count: 4
+CMBR Filter called for Layer 5
+(0, 6) -> (3125:6206, 6377:9325) -> 33810
+(1, 6) -> (589:1723, 3616:9325) -> 7827
+(3, 6) -> (1212:2594, 6108:9325) -> 15262
+(0, 4, 6) -> (2874:6206, 6129:12966, 6165:9325) -> 1112194
+(3, 4, 6) -> (1100:2594, 4720:12966, 5962:9325) -> 666305
+(4, 6) -> (7551:12966, 8798:9325) -> 388563
+CMBR Layer 5 Finished. Original combination count: 21 Prevalent count: 6
+CMBR Filter called for Layer 6
+(0, 7) -> (2070:6206, 1514:2294) -> 10859
+(1, 7) -> (524:1723, 971:2294) -> 3689
+(3, 7) -> (926:2594, 1132:2294) -> 4667
+(0, 4, 7) -> (1938:6206, 5085:12966, 1451:2294) -> 342767
+(3, 4, 7) -> (844:2594, 4082:12966, 1075:2294) -> 170466
+(4, 7) -> (6362:12966, 2019:2294) -> 45607
+(4, 6, 7) -> (5152:12966, 6623:9325, 1564:2294) -> 5301153
+(6, 7) -> (6689:9325, 1616:2294) -> 63784
+CMBR Layer 6 Finished. Original combination count: 28 Prevalent count: 8
+slurmstepd: error: *** JOB 6628743 ON c402-053 CANCELLED AT 2020-10-13T16:21:23 DUE TO TIME LIMIT ***
