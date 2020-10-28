@@ -53,6 +53,25 @@ vector<vector<cmbr_comb>> cmbr_map(FMAX-1);
 // 2D vector for holding all the cmbr info
 vector<vector<cmbr> > cmbr_arr(FMAX-1);
 
+bool tp_flag = false;
+bool mp_flag = false;
+
+// print time info
+void print_time(string str){
+    if (tp_flag)
+    {
+        cout << "Time -> " << str << endl;        
+    }
+}
+
+// print messge
+void print_message(string str) {
+    if (mp_flag)
+    {
+        cout << str << endl;        
+    }
+}
+
 // calculate MBR for a given datapoint
 mbr getMBR(float px, float py) {
     mbr box;
@@ -98,10 +117,6 @@ float getMax(float a, float b) {
         return a;
     }
     return b;
-}
-
-void print_time(string str){
-	// cout << "Time -> " << str << endl;
 }
 
 // returns CMBR for a given two MBRs
@@ -423,7 +438,7 @@ void cmbr_filter_layerwise(int k)
         {
             //cout << "survivor cmbr is --->  " << cmbr_map[k][ii].combination << endl;
 			//Debug format for comparison
-			cout << result << endl;
+			print_message(result);
         }
 		}
     }//end ii
@@ -431,7 +446,7 @@ void cmbr_filter_layerwise(int k)
 	auto duration = duration_cast<microseconds>(stop - start); 
 	print_time("Function: cmbr_filter_layerwise " + to_string(duration.count()));
 
-    cout << cmbr_map[k].size() << " <- Before count. After count -> " << cmbr_map[k].size() - erase_list.size() << endl;
+    // cout << cmbr_map[k].size() << " <- Before count. After count -> " << cmbr_map[k].size() - erase_list.size() << endl;
 
     erase_cmbr_map(k, erase_list);
     erase_list.clear();
@@ -546,7 +561,7 @@ void buildCMBRList(vector<vector<mbr>> mbrs) {//, int *features) {
     }
 	auto stop = high_resolution_clock::now();
 	auto duration = duration_cast<microseconds>(stop - start); 
-	print_time("Function: buildCMBRList " + to_string(duration.count()));
+	print_message("Function: buildCMBRList " + to_string(duration.count()));
     return ;
 } 
 
@@ -563,19 +578,32 @@ void print_cmbr_map(){
         }
         //cout << "\n";
     }
-    cout << "Size before = " << prev_size << " Size after = " << curr_size << endl; 
+    // cout << "Size before = " << prev_size << " Size after = " << curr_size << endl; 
 	return;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
     
     //freopen ("out_nongrid_poi_20k.txt","w",stdout);   
 	// freopen ("out_isdeleted_1676.txt","w",stdout);
+
+    if (argc > 1 && strcmp(argv[1], "true") == 0)
+    {
+        mp_flag = true;
+    }
+    if (argc > 2 && strcmp(argv[2], "true") == 0)
+    {
+        tp_flag = true;
+    }
+
     // read data into a table_row structure type 1D array
     struct table_row *dat;
     //dat = createArray("data/poi_modified_20k.csv");
-	dat = createArray("../data/newData/Seattle2012_1676.csv");	
+	dat = createArray("../../data/newData/Seattle2012_1676.csv");	
+
+    print_message("Total rows: " + to_string(ROWS));
+
 
     // calculate MBR for all the datapoints. 
     // returns a 2D array. 1st-D : Features, 2nd-D: instances per each feature 

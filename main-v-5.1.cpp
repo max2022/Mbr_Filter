@@ -196,7 +196,7 @@ mbr calculateCMBR(float ax1, float ay1, float ax2, float ay2, float bx1, float b
 }
 
 // read previous stel cmbr instance combination and save it to list1
-vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<vector<int>> map_l1, vector<vector<int>> map_l2) {
+vector<vector<int>> instanceCombinationBuild(vector<vector<int>>& list1, vector<vector<int>>& map_l1, vector<vector<int>>& map_l2) {
     vector<int> ttlist1;
     vector<vector<int>> ttlist2;
     int tt=0;
@@ -296,7 +296,7 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
     int n1[7] = {0, 0, 0, 0, 1, 2, 3};
     int n2[7] = {0, 1, 2, 3, 0, 0, 0};
 
-    vector<mbr> box1;
+    vector<mbr>* box1;
 
     // int init_layer_count = cmbr_map[0][0][fid2-1].size() +1 ;  
 
@@ -367,15 +367,15 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                         continue;
                     }
                     // cout << "before" << endl;
-                    box1 = cmbr_map[n1row][n1col][crow][fid1].cmbr_array;
+                    box1 = &cmbr_map[n1row][n1col][crow][fid1].cmbr_array;
                     // cout << "after" << endl;
                 } else {
-                    box1 = mbr_array[n1row][n1col][fid1];
+                    box1 = &mbr_array[n1row][n1col][fid1];
                 }
                 // cout << "1111after" << endl;
 
                                 
-                for (int i = 0; i < box1.size(); ++i)
+                for (int i = 0; i < (*box1).size(); ++i)
                 {
                     // cout << "i " << i << " j size: " << mbr_array[n2row][n2col][fid2].size() << endl;
                     
@@ -383,7 +383,7 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                     {
                         // cout << "j " << j << endl;
 
-                        cmbr_v = calculateCMBR(box1[i].x1, box1[i].y1, box1[i].x2, box1[i].y2, mbr_array[n2row][n2col][fid2][j].x1, mbr_array[n2row][n2col][fid2][j].y1, mbr_array[n2row][n2col][fid2][j].x2, mbr_array[n2row][n2col][fid2][j].y2);
+                        cmbr_v = calculateCMBR((*box1)[i].x1, (*box1)[i].y1, (*box1)[i].x2, (*box1)[i].y2, mbr_array[n2row][n2col][fid2][j].x1, mbr_array[n2row][n2col][fid2][j].y1, mbr_array[n2row][n2col][fid2][j].x2, mbr_array[n2row][n2col][fid2][j].y2);
                         if (!cmbr_v.empty)
                         {  
                             // c = floor((cmbr_v.x1 - GRID_MIN_X) / (DIST * 2));
@@ -537,7 +537,7 @@ void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMA
                     l1.clear();
                     l2.clear();                
                     tmp_inst_array.clear();
-                	tmp_inst_array.resize(12);
+                    tmp_inst_array.resize(12);
                     // arr.clear();
                     l1.reserve(2000);
                     l2.reserve(2000);
@@ -881,7 +881,7 @@ int main(int argc, char* argv[])
     struct table_row *dat;
     // dat = createArray("data/Seattle2012_1.csv");
     // dat = createArray("data/newData/Seattle2012_1676.csv");
-    dat = createArray("data/Point_Of_Interest_modified.csv");
+    dat = createArray("data/newData/Point_Of_Interest_modified_xx10.csv");
 
     // print_message(to_string(mbr_array.max_size()));
     // print_message(to_string(instance_sum.max_size()));
@@ -895,9 +895,9 @@ int main(int argc, char* argv[])
     // initialize sizes for main 3 data structures 
     mbr_array.resize(GRID_ROWS, vector<vector<vector<mbr>>>(GRID_COLS, vector<vector<mbr>>(FMAX)));
     print_message("mbr_array initialized..");
-	instance_sum.resize(GRID_ROWS, vector<vector<int>>(GRID_COLS, vector<int>(FMAX, 0))); 
+    instance_sum.resize(GRID_ROWS, vector<vector<int>>(GRID_COLS, vector<int>(FMAX, 0))); 
     print_message("instance_sum initialized..");
-	cmbr_map.resize(GRID_ROWS, vector<vector<vector<cmbr>>>(GRID_COLS, vector<vector<cmbr>>(FMAX-1)));
+    cmbr_map.resize(GRID_ROWS, vector<vector<vector<cmbr>>>(GRID_COLS, vector<vector<cmbr>>(FMAX-1)));
     print_message("cmbr_map initialized..");
 
     // test ----- START ----

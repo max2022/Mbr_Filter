@@ -196,7 +196,7 @@ mbr calculateCMBR(float ax1, float ay1, float ax2, float ay2, float bx1, float b
 }
 
 // read previous stel cmbr instance combination and save it to list1
-vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<vector<int>> map_l1, vector<vector<int>> map_l2) {
+vector<vector<int>> instanceCombinationBuild(vector<vector<int>>& list1, vector<vector<int>>& map_l1, vector<vector<int>>& map_l2) {
     vector<int> ttlist1;
     vector<vector<int>> ttlist2;
     int tt=0;
@@ -259,6 +259,22 @@ vector<vector<int>> instanceCombinationBuild(vector<vector<int>> list1, vector<v
 
 // returns a cmbr structure for selected 2 MBRs with the count of CMBRs
 void getCMBRLayerWCount2(int fid1, int fid2, int crow, bool cmbrFlag, bitset<FMAX> comb, int fCount, int s) {
+
+
+feature_count = 10; (10 bits) 2 bytes variable is needed:
+std::vector<vector<int>> map_combinations(1024); 
+
+a4b2c1 () -> 111 -> 7
+
+cmbr(a4 b2 c1)  -> ABC, cmbr, 0
+cmbr(a4 b5 c2)  -> ABC, cmbr, 1
+
+instance combination1: a4 b2 c1
+
+instance combination2: a4 b5 c2
+
+
+A B C: a4b2c1, a4b5c2,
 
     // temperary array sizes
     int arr_size = 20000;
@@ -826,7 +842,13 @@ void buildCMBRList() {
                         // }      
                         if (isCombinationPrevalent(k, temp_comb, cmbr_map[0][0][i][jj].featureCount+1))
                         {
-                            getCMBRLayerWCount2(jj, k+1, i, true, temp_comb, cmbr_map[0][0][i][jj].featureCount+1, comb_loc);                 
+                            getCMBRLayerWCount2(
+                              /*column number of the previous step*/jj, 
+                              /*new feature id*/k+1, 
+                              /*step number*/i, 
+                              /*cmbr-mbr*/true, 
+                              /*feature comb bitset*/temp_comb,
+                              /**/  cmbr_map[0][0][i][jj].featureCount+1, comb_loc);                 
                             cmbr_filter_combinationwise(k, comb_loc); 
                         }
                         comb_loc++;

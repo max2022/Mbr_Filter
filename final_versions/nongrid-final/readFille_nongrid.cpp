@@ -31,7 +31,6 @@ struct table_row *createArray(const char *fileName) {
     }
 	
 	fscanf(fp, "%d", &ROWS);
-	cout << "Total rows: " << ROWS << endl;
 
 	struct table_row* table_rows = (struct table_row*)malloc(sizeof(struct table_row) * ROWS);
 	
